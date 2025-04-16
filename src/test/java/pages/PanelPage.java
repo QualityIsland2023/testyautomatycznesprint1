@@ -37,7 +37,7 @@ public class PanelPage {
     private WebElement zakladkaCertyfikatyMenuBoczne;
 
     @FindBy(xpath ="//div[contains(text(),'Ustawienia')]")
-    private WebElement divUstawienia;
+    private WebElement zakladkaUstawienia;
 
     @FindBy(xpath = "//a[contains(text(), 'Powiadomienia')]")
     private WebElement zakladkaPowiadomieniaMenuBoczne;
@@ -74,7 +74,7 @@ public class PanelPage {
 
 
         public void kliknijPrzyciskUstawienia() {
-        wait.waitForClickability(divUstawienia).click();
+        wait.waitForClickability(zakladkaUstawienia).click();
     }
 
     public void przejdzDoZakladkiPowiadomienia(){

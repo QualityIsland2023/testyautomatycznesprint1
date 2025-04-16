@@ -37,7 +37,7 @@ public class PanelPage {
     private WebElement zakladkaCertyfikatyMenuBoczne;
 
     @FindBy(xpath ="//div[contains(text(),'Ustawienia')]")
-    private WebElement divUstawienia;
+    private WebElement zakladkaUstawienia;
 
 
 
@@ -70,7 +70,7 @@ public class PanelPage {
 
 
         public void kliknijPrzyciskUstawienia() {
-        wait.waitForClickability(divUstawienia).click();
+        wait.waitForClickability(zakladkaUstawienia).click();
     }
 
 

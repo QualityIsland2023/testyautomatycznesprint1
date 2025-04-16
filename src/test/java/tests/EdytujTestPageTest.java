@@ -40,7 +40,7 @@ public class EdytujTestPageTest extends TestBase {
 
     }
 
-    @Test(priority = 20, enabled = true, description = "Weryfikacja trona edycji testow zlokalizowana po nacisnieciu w test w zakladce testy, posiada prawidlowy tytul.")
+    @Test(priority = 20, enabled = true, description = "Weryfikacja czy strona edycji testow zlokalizowana po nacisnieciu w test w zakladce testy, posiada prawidlowy tytul.")
     public void weryfikacjaTytuluStronyEdytujTest() {
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();

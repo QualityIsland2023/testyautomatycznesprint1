@@ -24,7 +24,7 @@ public class CertyfikatyPageTest extends TestBase {
         certyfikatyPage = new CertyfikatyPage(driver);
     }
 
-    @Test(priority = 10, enabled = true, description = "Weryfikacja czy strona edycji testow zlokalizowana po nacisnieciu w test w zakladce testy, posiada prawidlowy adres URL.")
+    @Test(priority = 10, enabled = true, description = "Weryfikacja czy zakladka certyfikaty w menu bocznym, posiada prawidlowy adres URL.")
     public void weryfikacjaAdresuURLZakladkiCeretyfikaty() {
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
@@ -35,7 +35,7 @@ public class CertyfikatyPageTest extends TestBase {
 
     }
 
-    @Test(priority = 20, enabled = true, description = "Weryfikacja trona edycji testow zlokalizowana po nacisnieciu w test w zakladce testy, posiada prawidlowy tytul.")
+    @Test(priority = 20, enabled = true, description = "Weryfikacja czy zakladka certyfikaty w menu bocznym, posiada prawidlowy tytul.")
     public void weryfikacjaTytuluZakladkiCeretyfikaty() {
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();

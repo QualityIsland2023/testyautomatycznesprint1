@@ -36,11 +36,8 @@ public class PanelPage {
     @FindBy(xpath = "//div[contains(text(), 'Certyfikaty')]")
     private WebElement zakladkaCertyfikatyMenuBoczne;
 
-    @FindBy(xpath = "//div[contains(text(), 'Raporty')]")
-    private WebElement zakladkaRaportyMenuBoczne;
-
-    @FindBy(xpath = "//div[contains(text(), 'Narzędzia')]")
-    private WebElement zakladkaNarzedziaMenuBoczne;
+    @FindBy(xpath ="//div[contains(text(),'Ustawienia')]")
+    private WebElement divUstawienia;
 
     @FindBy(xpath = "//a[contains(text(), 'Powiadomienia')]")
     private WebElement zakladkaPowiadomieniaMenuBoczne;
@@ -53,34 +50,31 @@ public class PanelPage {
 
     /****************************Operacje na webelementach START **********************************************/
 
-    public boolean weryfikacjaCzyMojePubligoButtonIstnieje(){
-        boolean status = false;
+        public boolean weryfikacjaCzyMojePubligoButtonIstnieje(){
+            boolean status = false;
 
-        if(wait.waitForVisibility(mojePubligoButtonMenuGorne).isDisplayed()){
-            status = true;
+            if(wait.waitForVisibility(mojePubligoButtonMenuGorne).isDisplayed()){
+                status = true;
 
-            System.out.println("Konto zostalo poprawnie zalogowane.");
-        }else{
-            System.out.println("Nie udalo sie poprawnie zalogowac.");
+                System.out.println("Konto zostalo poprawnie zalogowane.");
+            }else{
+                System.out.println("Nie udalo sie poprawnie zalogowac.");
+            }
+
+            return status;
         }
 
-        return status;
-    }
+        public void przejdzDoZakladkiTesty(){
+            wait.waitForClickability(zakladkaTestyMenuBoczne).click();
+        }
 
-    public void przejdzDoZakladkiTesty(){
-        wait.waitForClickability(zakladkaTestyMenuBoczne).click();
-    }
+        public void przejdzDoZakladkiCertyfikaty(){
+            wait.waitForClickability(zakladkaCertyfikatyMenuBoczne).click();
+        }
 
-    public void przejdzDoZakladkiCertyfikaty(){
-        wait.waitForClickability(zakladkaCertyfikatyMenuBoczne).click();
-    }
 
-    public void przejdzDoZakladkiRaporty(){
-        wait.waitForClickability(zakladkaRaportyMenuBoczne).click();
-    }
-
-    public void przejdzDoZakladkiNarzedzia(){
-        wait.waitForClickability(zakladkaNarzedziaMenuBoczne).click();
+        public void kliknijPrzyciskUstawienia() {
+        wait.waitForClickability(divUstawienia).click();
     }
 
     public void przejdzDoZakladkiPowiadomienia(){

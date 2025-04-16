@@ -36,6 +36,9 @@ public class PanelPage {
     @FindBy(xpath = "//div[contains(text(), 'Certyfikaty')]")
     private WebElement zakladkaCertyfikatyMenuBoczne;
 
+    @FindBy(xpath = "//div[contains(text(), 'Raporty')]")
+    private WebElement zakladkaRaportyMenuBoczne;
+
 
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
@@ -43,27 +46,31 @@ public class PanelPage {
 
     /****************************Operacje na webelementach START **********************************************/
 
-        public boolean weryfikacjaCzyMojePubligoButtonIstnieje(){
-            boolean status = false;
+    public boolean weryfikacjaCzyMojePubligoButtonIstnieje(){
+        boolean status = false;
 
-            if(wait.waitForVisibility(mojePubligoButtonMenuGorne).isDisplayed()){
-                status = true;
+        if(wait.waitForVisibility(mojePubligoButtonMenuGorne).isDisplayed()){
+            status = true;
 
-                System.out.println("Konto zostalo poprawnie zalogowane.");
-            }else{
-                System.out.println("Nie udalo sie poprawnie zalogowac.");
-            }
-
-            return status;
+            System.out.println("Konto zostalo poprawnie zalogowane.");
+        }else{
+            System.out.println("Nie udalo sie poprawnie zalogowac.");
         }
 
-        public void przejdzDoZakladkiTesty(){
-            wait.waitForClickability(zakladkaTestyMenuBoczne).click();
-        }
+        return status;
+    }
 
-        public void przejdzDoZakladkiCertyfikaty(){
-            wait.waitForClickability(zakladkaCertyfikatyMenuBoczne).click();
-        }
+    public void przejdzDoZakladkiTesty(){
+        wait.waitForClickability(zakladkaTestyMenuBoczne).click();
+    }
+
+    public void przejdzDoZakladkiCertyfikaty(){
+        wait.waitForClickability(zakladkaCertyfikatyMenuBoczne).click();
+    }
+
+    public void przejdzDoZakladkiRaporty(){
+        wait.waitForClickability(zakladkaRaportyMenuBoczne).click();
+    }
 
 
 

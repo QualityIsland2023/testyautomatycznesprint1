@@ -39,6 +39,9 @@ public class PanelPage {
     @FindBy(xpath = "//div[contains(text(), 'Raporty')]")
     private WebElement zakladkaRaportyMenuBoczne;
 
+    @FindBy(xpath = "//div[contains(text(), 'Narzędzia')]")
+    private WebElement zakladkaNarzedziaMenuBoczne;
+
 
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
@@ -70,6 +73,10 @@ public class PanelPage {
 
     public void przejdzDoZakladkiRaporty(){
         wait.waitForClickability(zakladkaRaportyMenuBoczne).click();
+    }
+
+    public void przejdzDoZakladkiNarzedzia(){
+        wait.waitForClickability(zakladkaNarzedziaMenuBoczne).click();
     }
 
 

@@ -1,0 +1,53 @@
+package tests;
+
+import org.checkerframework.checker.units.qual.N;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import pages.CertyfikatyPage;
+import pages.LoginPageNew;
+import pages.NarzedziaPage;
+import pages.PanelPage;
+
+public class NarzedziaPageTest extends TestBase {
+
+    /****************sekja techniczna START **********************************************/
+
+    private LoginPageNew loginPageNew; //instancja strony logowania
+    private PanelPage panelPage;
+    private NarzedziaPage narzedziaPage;
+
+    /*****************sekja techniczna KONIEC **********************************************/
+
+    @BeforeMethod
+    public void setUPLoginPage() {
+        //inicjalizacja strony logowania , linijka techniczna, konfiguracyjna
+        loginPageNew = new LoginPageNew(driver);
+        panelPage = new PanelPage(driver);
+        narzedziaPage = new NarzedziaPage(driver);
+
+    }
+
+    @Test(priority = 10, enabled = true, description = "Weryfikacja czy zakladka narzedzia w menu bocznym, posiada prawidlowy adres URL.")
+    public void weryfikacjaAdresuURLZakladkiNarzedzia() {
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiNarzedzia();
+
+        Assert.assertEquals(narzedziaPage.zwrocAktualnyURLZakladkiNarzedzia(), narzedziaPage.zwrocPoprawnyURLZakladkiNarzedzia());
+
+    }
+
+    @Test(priority = 20, enabled = true, description = "Weryfikacja czy zakladka narzedzia w menu bocznym, posiada prawidlowy tytul.")
+    public void weryfikacjaTytuluZakladkiNarzedzia() {
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiNarzedzia();
+
+        Assert.assertEquals(narzedziaPage.zwrocAktualnyTytulZakladkiNarzedzia(), narzedziaPage.zwrocPoprawnyTytulZakladkiNarzedzia());
+    }
+
+
+}

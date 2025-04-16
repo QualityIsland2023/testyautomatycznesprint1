@@ -42,7 +42,11 @@ public class PanelPage {
     @FindBy(xpath = "//div[contains(text(), 'Narzędzia')]")
     private WebElement zakladkaNarzedziaMenuBoczne;
 
+    @FindBy(xpath = "//a[contains(text(), 'Powiadomienia')]")
+    private WebElement zakladkaPowiadomieniaMenuBoczne;
 
+    @FindBy(xpath = "//a[contains(text(), 'Logi')]")
+    private WebElement zakladkaLogiMenuBoczne;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
@@ -79,9 +83,13 @@ public class PanelPage {
         wait.waitForClickability(zakladkaNarzedziaMenuBoczne).click();
     }
 
+    public void przejdzDoZakladkiPowiadomienia(){
+        driver.get("https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-notifications");
+    }
 
-
-
+    public void przejdzDoZakladkiLogi(){
+        driver.get("https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-logs");
+    }
 
     /**********************************Operacje na webelementach KONIEC ******************************************/
 

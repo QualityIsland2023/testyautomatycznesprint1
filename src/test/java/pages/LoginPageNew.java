@@ -58,6 +58,15 @@ public class LoginPageNew {
     }
 
 
+    public void wykonajLogowanie() {
+        wpiszLoginDoPolaNazwaUzytkownika();
+        wpiszHasloDoPolaHaslo();
+        nacisnijPrzyciskZalogujSie();
+
+
+    }
+
+
 
     /**********************************Operacje na webelementach KONIEC ******************************************/
 

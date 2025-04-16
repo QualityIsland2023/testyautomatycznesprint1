@@ -36,6 +36,9 @@ public class PanelPage {
     @FindBy(xpath = "//div[contains(text(), 'Certyfikaty')]")
     private WebElement zakladkaCertyfikatyMenuBoczne;
 
+    @FindBy(xpath ="//div[contains(text(),'Ustawienia')]")
+    private WebElement divUstawienia;
+
 
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
@@ -64,6 +67,11 @@ public class PanelPage {
         public void przejdzDoZakladkiCertyfikaty(){
             wait.waitForClickability(zakladkaCertyfikatyMenuBoczne).click();
         }
+
+
+        public void kliknijPrzyciskUstawienia() {
+        wait.waitForClickability(divUstawienia).click();
+    }
 
 
 

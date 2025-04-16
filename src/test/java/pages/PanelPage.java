@@ -45,6 +45,12 @@ public class PanelPage {
     @FindBy(xpath = "//a[contains(text(), 'Logi')]")
     private WebElement zakladkaLogiMenuBoczne;
 
+    @FindBy(xpath = "//div[contains(text(), 'Narzędzia')]")
+    private WebElement zakladkaNarzedziaMenuBoczne;
+
+    @FindBy(xpath = "//div[contains(text(), 'Raporty')]")
+    private WebElement zakladkaRaportyMenuBoczne;
+
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
 
@@ -72,18 +78,26 @@ public class PanelPage {
             wait.waitForClickability(zakladkaCertyfikatyMenuBoczne).click();
         }
 
+        public void przejdzDoZakladkiNarzedzia(){
+            wait.waitForClickability(zakladkaNarzedziaMenuBoczne).click();
+        }
+
+        public void przejdzDoZakladkiRaporty(){
+            wait.waitForClickability(zakladkaRaportyMenuBoczne).click();
+        }
+
 
         public void kliknijPrzyciskUstawienia() {
         wait.waitForClickability(zakladkaUstawienia).click();
-    }
+        }
 
-    public void przejdzDoZakladkiPowiadomienia(){
-        driver.get("https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-notifications");
-    }
+        public void przejdzDoZakladkiPowiadomienia(){
+            driver.get("https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-notifications");
+        }
 
-    public void przejdzDoZakladkiLogi(){
-        driver.get("https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-logs");
-    }
+        public void przejdzDoZakladkiLogi(){
+            driver.get("https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-logs");
+        }
 
     /**********************************Operacje na webelementach KONIEC ******************************************/
 

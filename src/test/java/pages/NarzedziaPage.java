@@ -1,23 +1,22 @@
 package pages;
-
 import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class PanelPage {
+public class NarzedziaPage {
+
     /************************Seckja techniczno konfiguracyjna START **********************************************/
     //przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
-
+    private static final String login =  PropertiesReader.read("login");
+    private static final String haslo =  PropertiesReader.read("password");
 
     // Konstruktor, który przyjmuje przeglądarkę, linia techniczna / konfiguracyjna
     private WebDriver driver;
     private Waits wait;
 
     //konstrukotor, który tworzy nową instancję strony logowania
-    public PanelPage(WebDriver driver){
+    public NarzedziaPage(WebDriver driver){
         this.driver = driver;
         this.wait = new Waits(driver);
         PageFactory.initElements(driver, this);
@@ -27,48 +26,35 @@ public class PanelPage {
 
     /************************Repozytorium webelementów START **********************************************/
 
-    @FindBy(xpath = "//span[contains(text(), 'Moje Publigo')]")
-    private WebElement mojePubligoButtonMenuGorne;
-
-    @FindBy(xpath = "//div[contains(text(), 'Testy')]")
-    private WebElement zakladkaTestyMenuBoczne;
-
-    @FindBy(xpath = "//div[contains(text(), 'Certyfikaty')]")
-    private WebElement zakladkaCertyfikatyMenuBoczne;
-
-
+    String poprawnyURLZakladkiNarzedzia = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-tools";
+    String poprawnyTytulZakladkiNarzedzia = "Narzędzia ‹ Platforma kursów online — WordPress";
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
 
     /****************************Operacje na webelementach START **********************************************/
 
-        public boolean weryfikacjaCzyMojePubligoButtonIstnieje(){
-            boolean status = false;
+    public String zwrocAktualnyURLZakladkiNarzedzia(){
+        System.out.println("Aktualny adres URL strony to: " + driver.getCurrentUrl());
+        return driver.getCurrentUrl();
+    }
 
-            if(wait.waitForVisibility(mojePubligoButtonMenuGorne).isDisplayed()){
-                status = true;
+    public String zwrocPoprawnyURLZakladkiNarzedzia(){
+        System.out.println("Poprawny adres URL strony to: " + poprawnyURLZakladkiNarzedzia);
+        return poprawnyURLZakladkiNarzedzia;
+    }
 
-                System.out.println("Konto zostalo poprawnie zalogowane.");
-            }else{
-                System.out.println("Nie udalo sie poprawnie zalogowac.");
-            }
+    public String zwrocAktualnyTytulZakladkiNarzedzia(){
+        System.out.println("Aktualny tytul strony to: " + driver.getTitle());
+        return driver.getTitle();
+    }
 
-            return status;
-        }
-
-        public void przejdzDoZakladkiTesty(){
-            wait.waitForClickability(zakladkaTestyMenuBoczne).click();
-        }
-
-        public void przejdzDoZakladkiCertyfikaty(){
-            wait.waitForClickability(zakladkaCertyfikatyMenuBoczne).click();
-        }
-
-
-
-
+    public String zwrocPoprawnyTytulZakladkiNarzedzia(){
+        System.out.println("Poprawny tytul strony to: " + poprawnyTytulZakladkiNarzedzia);
+        return poprawnyTytulZakladkiNarzedzia;
+    }
 
     /**********************************Operacje na webelementach KONIEC ******************************************/
+
 
 }

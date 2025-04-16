@@ -25,7 +25,7 @@ public class CertyfikatyPageTest extends TestBase {
     }
 
     @Test(priority = 10, enabled = true, description = "Weryfikacja czy strona edycji testow zlokalizowana po nacisnieciu w test w zakladce testy, posiada prawidlowy adres URL.")
-    public void weryfikacjaAdresuURLStronyEdytujTest() {
+    public void weryfikacjaAdresuURLZakladkiCeretyfikaty() {
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
         loginPageNew.nacisnijPrzyciskZalogujSie();
@@ -36,7 +36,7 @@ public class CertyfikatyPageTest extends TestBase {
     }
 
     @Test(priority = 20, enabled = true, description = "Weryfikacja trona edycji testow zlokalizowana po nacisnieciu w test w zakladce testy, posiada prawidlowy tytul.")
-    public void weryfikacjaTytuluStronyEdytujTest() {
+    public void weryfikacjaTytuluZakladkiCeretyfikaty() {
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
         loginPageNew.nacisnijPrzyciskZalogujSie();

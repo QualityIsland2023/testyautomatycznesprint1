@@ -23,13 +23,13 @@ public class LoginPageTestNew extends TestBase {
             panelPage = new PanelPage(driver);
         }
 
-        @Test
+        @Test(priority = 10, enabled = true, description = "Weryfikacja czy użytkownik może się poprawnie zalogować do aplikacji.")
         public void weryfikacjaLogowaniaDoAplikacji(){
             loginPageNew.wpiszHasloDoPolaHaslo();
             loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
             loginPageNew.nacisnijPrzyciskZalogujSie();
 
-            Assert.assertTrue(panelPage.weryfikacjaCzyMojePubligoButtonIstnieje());
+            Assert.assertTrue(panelPage.weryfikacjaCzyMojePubligoButtonIstnieje(), "Nie udało się poprawnie zalogować.");
 
         }
 }

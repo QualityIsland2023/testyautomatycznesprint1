@@ -58,6 +58,9 @@ public class PanelPage {
     @FindBy(xpath = "//div[contains(text(), 'Komentarze')]")
     private WebElement zakladkaKomentarze;
 
+    @FindBy(xpath = "//div[contains(text(), 'Usługi')]")
+    private WebElement zakladkaUslugi;
+
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
     @FindBy(xpath = "//div[contains(text(), 'Kursy')]")
@@ -99,6 +102,9 @@ public class PanelPage {
         wait.waitForClickability(zakladkaKursyMenuBoczne).click();
     }
 
+        public void przejdzDoZakladkiUslugi() {
+            wait.waitForClickability(zakladkaUslugi).click();
+        }
 
         public void kliknijPrzyciskUstawienia() {
         wait.waitForClickability(zakladkaUstawienia).click();

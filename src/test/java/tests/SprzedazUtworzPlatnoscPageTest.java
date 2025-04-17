@@ -3,6 +3,10 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.LoginPageNew;
+import pages.PanelPage;
+import pages.SprzedazUtworzPlatnoscPage;
+import pages.SprzedazZamowieniaPage;
 
 
 public class SprzedazUtworzPlatnoscPageTest extends TestBase {

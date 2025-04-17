@@ -76,10 +76,15 @@ public class PanelPage {
     @FindBy(xpath = "//*[contains(text(),'Historia cen')]")
     private WebElement historiaCenMenuLista;
 
-    /***************************Repozytorium webelementów KONIEC ******************************************/
+    @FindBy(xpath = "//div[contains(text(), 'Usługi')]")
+    private WebElement zakladkaUslugi;
 
     @FindBy(xpath = "//div[contains(text(), 'Kursy')]")
     private WebElement zakladkaKursyMenuBoczne;
+
+    /***************************Repozytorium webelementów KONIEC ******************************************/
+
+
 
     /****************************Operacje na webelementach START **********************************************/
 
@@ -115,8 +120,11 @@ public class PanelPage {
 
         public void przejdzDoZakladkiKursy(){
         wait.waitForClickability(zakladkaKursyMenuBoczne).click();
-    }
+        }
 
+        public void przejdzDoZakladkiUslugi() {
+            wait.waitForClickability(zakladkaUslugi).click();
+        }
 
         public void kliknijPrzyciskUstawienia() {
         wait.waitForClickability(zakladkaUstawienia).click();

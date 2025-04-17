@@ -1,0 +1,54 @@
+package tests;
+
+
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import pages.KursyPage;
+import pages.WszyscyUczestnicyPage;
+import pages.LoginPageNew;
+import pages.PanelPage;
+
+
+public class WszyscyUczestnicyPageTest extends TestBase  {
+
+    /****************sekja techniczna START **********************************************/
+
+    private LoginPageNew loginPageNew; //instancja strony logowania
+    private PanelPage panelPage;
+    private KursyPage kursyPage;
+    private WszyscyUczestnicyPage wszyscyUczestnicyPage;
+
+    /*****************sekja techniczna KONIEC **********************************************/
+
+    @BeforeMethod
+    public void setUPWszyscyUczestnicyPage(){
+        loginPageNew = new LoginPageNew(driver);
+        panelPage = new PanelPage(driver);
+        kursyPage = new KursyPage(driver);
+        wszyscyUczestnicyPage = new WszyscyUczestnicyPage(driver);
+    }
+
+    @Test(priority = 10, enabled = true, description = "Weryfikacja poprawnego adresu strony 'Wszyscy uczestnicy'")
+    public void weryfikacjaPoprawnegoAdresuStronyWszyscyUczestnicy(){
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiKursy();
+        kursyPage.przejdzDoZakladkiKursyWszyscyUczestnicy();
+
+        Assert.assertEquals(wszyscyUczestnicyPage.zwrocUrlAktualnejStrony(), wszyscyUczestnicyPage.zwrocPoprawnyUrlKursyWszyscyUczestnicy(), "Adres url nie jest poprawny");
+    }
+
+    @Test(priority = 20, enabled = true, description = "Weryfikacja poprawnego tytułu strony 'Wszyscy uczestnicy'")
+    public void weryfikacjaTytuluStronyWszyscyUczestnicy(){
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiKursy();
+        kursyPage.przejdzDoZakladkiKursyWszyscyUczestnicy();
+
+        Assert.assertEquals(wszyscyUczestnicyPage.zwroctTytulAktualnejStrony(), wszyscyUczestnicyPage.zwrocPoprawnyTytulStronyKursyWszyscyUczestnicy(), "Nazwy pozycji w menu głównego nie są poprawne" );
+    }
+
+}

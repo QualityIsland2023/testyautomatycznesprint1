@@ -7,8 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SprzedazPlatnosciZaplanowanePage {
 
-    /************************ Sekcja techniczno konfiguracyjna START **********************************************/
-    //przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
+    //************************ Sekcja techniczno konfiguracyjna START **********************************************/
+    // Przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
     private static final String login =  PropertiesReader.read("login");
     private static final String haslo =  PropertiesReader.read("password");
 
@@ -16,17 +16,17 @@ public class SprzedazPlatnosciZaplanowanePage {
     private WebDriver driver;
     private Waits wait;
 
-    //Konstrukotor, który tworzy nową instancję strony logowania
+    // Konstrukotor, który tworzy nową instancję strony logowania
     public SprzedazPlatnosciZaplanowanePage(WebDriver driver){
         this.driver = driver;
         this.wait = new Waits(driver);
         PageFactory.initElements(driver, this);
     }
 
-    /************************ Sekcja techniczno konfiguracyjna KONIEC **********************************************/
+    //************************ Sekcja techniczno konfiguracyjna KONIEC **********************************************/
 
 
-    /************************Repozytorium webelementów START **********************************************/
+    //************************Repozytorium webelementów START **********************************************/
 
     // Oczekiwany (poprawny) tytuł strony "Płatności zaplanowane"
     String poprawnyTytulStronyPlatnosciZaplanowane = "Płatności zaplanowane ‹ Platforma kursów online — WordPress";
@@ -41,7 +41,7 @@ public class SprzedazPlatnosciZaplanowanePage {
 
 
 
-    /***************************Repozytorium webelementów KONIEC ******************************************/
+    //***************************Repozytorium webelementów KONIEC ******************************************/
 
 
     /****************************Operacje na webelementach START **********************************************/
@@ -76,6 +76,6 @@ public class SprzedazPlatnosciZaplanowanePage {
 
 
 
-    /**********************************Operacje na webelementach KONIEC ******************************************/
+    //**********************************Operacje na webelementach KONIEC ******************************************/
 
 }

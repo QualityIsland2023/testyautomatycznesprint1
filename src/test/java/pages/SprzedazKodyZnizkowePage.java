@@ -7,8 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SprzedazKodyZnizkowePage {
 
-    /************************ Sekcja techniczno konfiguracyjna START **********************************************/
-    //przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
+    //************************ Sekcja techniczno konfiguracyjna START **********************************************/
+    // Przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
     private static final String login =  PropertiesReader.read("login");
     private static final String haslo =  PropertiesReader.read("password");
 
@@ -16,7 +16,7 @@ public class SprzedazKodyZnizkowePage {
     private WebDriver driver;
     private Waits wait;
 
-    //Konstrukotor, który tworzy nową instancję strony logowania
+    // Konstrukotor, który tworzy nową instancję strony logowania
     public SprzedazKodyZnizkowePage(WebDriver driver){
         this.driver = driver;
         this.wait = new Waits(driver);
@@ -40,10 +40,10 @@ public class SprzedazKodyZnizkowePage {
 
 
 
-    /***************************Repozytorium webelementów KONIEC ******************************************/
+    //***************************Repozytorium webelementów KONIEC ******************************************/
 
 
-    /****************************Operacje na webelementach START **********************************************/
+    //****************************Operacje na webelementach START **********************************************/
 
     // Zwraca aktualny tytuł strony "Kody zniżkowe" i wypisuje go w konsoli
     public String zwrocAktualnyTytulStronyKodyZnizkowe(){
@@ -74,6 +74,6 @@ public class SprzedazKodyZnizkowePage {
 
 
 
-    /**********************************Operacje na webelementach KONIEC ******************************************/
+    //**********************************Operacje na webelementach KONIEC ******************************************/
 
 }

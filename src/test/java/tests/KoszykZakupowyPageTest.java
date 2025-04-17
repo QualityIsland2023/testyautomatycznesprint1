@@ -46,7 +46,7 @@ public class KoszykZakupowyPageTest extends TestBase  {
     }
 
     // Test weryfikujący, czy tytuł strony "Koszyk Zakupowy" jest poprawny
-    @Test(priority = 120, enabled = true, description = "Weryfikacja url strony koszyk Zakupowy")
+    @Test(priority = 120, enabled = true, description = "Weryfikacja tytulu strony koszyk Zakupowy")
     public void zweryfikujPoprawnyTytulKoszykZakupowy() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijPrzyciskUstawienia();

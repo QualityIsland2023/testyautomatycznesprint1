@@ -28,7 +28,10 @@ import org.openqa.selenium.support.PageFactory;
 
     /************************Repozytorium webelementów START **********************************************/
 
+    // Oczekiwany (poprawny) adres URL strony "Ustawienia"
     private String poprawnyUrlUstawienia = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-settings&autofocus=general";
+
+     // Oczekiwany (poprawny) tytul strony "Ustawienia"
     private String poprawnyTytulUstawienia = "Ustawienia ‹ Platforma kursów online — WordPress";
 
      @FindBy(xpath ="//a[contains(text(),'Szablony')]")
@@ -87,25 +90,30 @@ import org.openqa.selenium.support.PageFactory;
     /****************************Operacje na webelementach START **********************************************/
 
 
+    // Zwraca oczekiwany (poprawny) URL strony "Ustawienia" i wypisuje go w konsoli
     public String getPoprawnyUrlUstawienia() {
         System.out.println("Poprawny url strony ustawienia: " + poprawnyUrlUstawienia);
         return poprawnyUrlUstawienia;
     }
 
+     // Zwraca aktualny URL przeglądanej strony "Ustawienia" i wypisuje go w konsoli
     public String getAktualnyUrlUstawienia() {
         System.out.println("Aktualny url strony ustawienia: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 
+     // Zwraca oczekiwany (poprawny) tytul "Ustawienia" i wypisuje go w konsoli
      public String getPoprawnyTytulUstawienia() {
          System.out.println("Poprawny tytul strony ustawienia: " + poprawnyTytulUstawienia);
          return poprawnyTytulUstawienia;
      }
 
+     // Zwraca aktualny tytul przeglądanej strony "Ustawienia" i wypisuje go w konsoli
      public String getAktualnyTytulUstawienia() {
          System.out.println("Aktualny tytul strony ustawienia: " + driver.getTitle());
          return driver.getTitle();
      }
+
 
      public void kliknijLinkSzablony() {
          wait.waitForClickability(linkSzablony).click();

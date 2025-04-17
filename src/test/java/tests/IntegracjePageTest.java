@@ -44,7 +44,7 @@ public class IntegracjePageTest extends TestBase  {
     }
 
     // Test weryfikujący, czy tytuł strony "Integracje" jest poprawny
-    @Test(priority = 120, enabled = true, description = "Weryfikacja url strony inegracje")
+    @Test(priority = 120, enabled = true, description = "Weryfikacja tytulu strony inegracje")
     public void zweryfikujPoprawnyTytulIntegracje() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijPrzyciskUstawienia();

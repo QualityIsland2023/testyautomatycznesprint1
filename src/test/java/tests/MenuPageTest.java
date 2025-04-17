@@ -39,7 +39,7 @@ public class MenuPageTest extends TestBase  {
         Assert.assertEquals(menuPage.getAktualnyUrlMenu(), menuPage.getPoprawnyUrlMenu(),  "Url strony menu nie jest poprawny");
     }
 
-    @Test(priority = 120, enabled = true, description = "Weryfikacja url strony menu")
+    @Test(priority = 120, enabled = true, description = "Weryfikacja tytulu strony menu")
     public void zweryfikujPoprawnyTytulUMenu() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijPrzyciskUstawienia();

@@ -39,7 +39,7 @@ public class KsiegowePageTest extends TestBase  {
         Assert.assertEquals(ksiegowePage.getAktualnyUrlKsiegowe(), ksiegowePage.getPoprawnyUrlKsiegowe(),  "Url strony ksiegowe nie jest poprawny");
     }
 
-    @Test(priority = 120, enabled = true, description = "Weryfikacja url strony ksiegowe")
+    @Test(priority = 120, enabled = true, description = "Weryfikacja tytulu strony ksiegowe")
     public void zweryfikujPoprawnyTytulKsiegowe() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijPrzyciskUstawienia();

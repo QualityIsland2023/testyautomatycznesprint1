@@ -28,7 +28,10 @@ public class SprzedazKodyZnizkowePage {
 
     /************************Repozytorium webelementów START **********************************************/
 
+    // Oczekiwany (poprawny) tytuł strony "Kody zniżkowe"
     String poprawnyTytulStronyKodyZnizkowe = "Kody zniżkowe ‹ Platforma kursów online — WordPress";
+
+    // Oczekiwany (poprawny) adres URL strony "Kody zniżkowe"
     String poprawnyURLStronyKodyZnizkowe = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-discounts";
 
 
@@ -42,22 +45,25 @@ public class SprzedazKodyZnizkowePage {
 
     /****************************Operacje na webelementach START **********************************************/
 
-
+    // Zwraca aktualny tytuł strony "Kody zniżkowe" i wypisuje go w konsoli
     public String zwrocAktualnyTytulStronyKodyZnizkowe(){
         System.out.println("Aktualny tytuł strony: " + driver.getTitle());
         return driver.getTitle();
     }
 
+    // Zwraca oczekiwany (poprawny) tytuł strony "Kody zniżkowe" i wypisuje go w konsoli
     public String zwrocPoprawnyTytulStronyKodyZnizkowe(){
         System.out.println("Poprawny tytuł strony KODY ZNIŻKOWE: " + poprawnyTytulStronyKodyZnizkowe);
         return poprawnyTytulStronyKodyZnizkowe;
     }
 
+    // Zwraca aktualny adres URL strony "Kody zniżkowe" i wypisuje go w konsoli
     public String zwrocAktualnyUrlStronyKodyZnizkowe(){
         System.out.println("Aktualny URL: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 
+    // Zwraca oczekiwany (poprawny) adres URL strony "Kody zniżkowe" i wypisuje go w konsoli
     public String zwrocPoprawnyUrlStronyKodyZnizkowe() {
         System.out.println("Poprawny URL strony KODY ZNIŻKOWE: " + poprawnyURLStronyKodyZnizkowe);
         return poprawnyURLStronyKodyZnizkowe;

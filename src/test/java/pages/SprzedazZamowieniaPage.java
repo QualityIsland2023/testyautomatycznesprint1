@@ -30,7 +30,10 @@ public class SprzedazZamowieniaPage {
 
     /************************Repozytorium webelementów START **********************************************/
 
+    // Oczekiwany (poprawny) tytuł strony "Zamówienia"
     String poprawnyTytulStronyZamowienia = "Zamówienia ‹ Platforma kursów online — WordPress";
+
+    // Oczekiwany (poprawny) adres URL strony "Zamówienia"
     String poprawnyURLStronyZamowienia = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-payment-history";
 
     @FindBy(xpath = "//*[contains(text(),'Dodaj zamówienie')]")
@@ -45,26 +48,31 @@ public class SprzedazZamowieniaPage {
 
     /****************************Operacje na webelementach START **********************************************/
 
+    // Zwraca aktualny tytuł strony "Zamówienia" i wypisuje go w konsoli
     public String zwrocAktualnyTytulStronyZamowienia(){
         System.out.println("Aktualny tytuł strony: " + driver.getTitle());
         return driver.getTitle();
     }
 
+    // Zwraca oczekiwany (poprawny) tytuł strony "Zamówienia" i wypisuje go w konsoli
     public String zwrocPoprawnyTytulStronyZamowienia(){
         System.out.println("Poprawny tytuł strony ZAMÓWIENIA: " + poprawnyTytulStronyZamowienia);
         return poprawnyTytulStronyZamowienia;
     }
 
+    // Zwraca aktualny adres URL strony "Zamówienia" i wypisuje go w konsoli
     public String zwrocAktualnyUrlStronyZamowienia(){
         System.out.println("Aktualny URL: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 
+    // Zwraca oczekiwany (poprawny) adres URL strony "Zamówienia" i wypisuje go w konsoli
     public String zwrocPoprawnyUrlStronyZamowienia() {
         System.out.println("Poprawny URL strony ZAMÓWIENIA: " + poprawnyURLStronyZamowienia);
         return poprawnyURLStronyZamowienia;
     }
 
+    // Przechodzi do strony "Utwórz Płatność" poprzez kliknięcie przycisku "Dodaj zamówienie"
     public void przejdzDoStronyUtworzPlatnosc(){
 
         wait.waitForVisibility(dodajZamowienieButton).click();

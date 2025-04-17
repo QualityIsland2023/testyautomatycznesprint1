@@ -28,7 +28,10 @@ public class SprzedazKlienciPage {
 
     /************************Repozytorium webelementów START **********************************************/
 
+    // Oczekiwany (poprawny) tytuł strony "Klienci"
     String poprawnyTytulStronyKlienci = "Klienci ‹ Platforma kursów online — WordPress";
+
+    // Oczekiwany (poprawny) adres URL strony "Klienci"
     String poprawnyURLStronyKlienci = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-customers";
 
 
@@ -42,21 +45,25 @@ public class SprzedazKlienciPage {
 
     /****************************Operacje na webelementach START **********************************************/
 
+    // Zwraca aktualny tytuł strony "Klienci" i wypisuje go w konsoli
     public String zwrocAktualnyTytulStronyKlienci(){
         System.out.println("Aktualny tytuł strony: " + driver.getTitle());
         return driver.getTitle();
     }
 
+    // Zwraca oczekiwany (poprawny) tytuł strony "Klienci" i wypisuje go w konsoli
     public String zwrocPoprawnyTytulStronyKlienci(){
         System.out.println("Poprawny tytuł strony KLIENCI: " + poprawnyTytulStronyKlienci);
         return poprawnyTytulStronyKlienci;
     }
 
+    // Zwraca aktualny adres URL strony "Klienci" i wypisuje go w konsoli
     public String zwrocAktualnyUrlStronyKlienci(){
         System.out.println("Aktualny URL: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 
+    // Zwraca oczekiwany (poprawny) adres URL strony "Klienci" i wypisuje go w konsoli
     public String zwrocPoprawnyUrlStronyKlienci() {
         System.out.println("Poprawny URL strony KLIENCI: " + poprawnyURLStronyKlienci);
         return poprawnyURLStronyKlienci;

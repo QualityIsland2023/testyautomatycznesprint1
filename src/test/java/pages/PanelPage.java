@@ -58,8 +58,23 @@ public class PanelPage {
     @FindBy(xpath = "//div[contains(text(), 'Komentarze')]")
     private WebElement zakladkaKomentarze;
 
-    @FindBy(xpath = "//div[contains(text(), 'Usługi')]")
-    private WebElement zakladkaUslugi;
+    @FindBy(xpath ="//div[contains(text(),'Sprzedaż')]" )
+    private WebElement sprzedazMenuLista;
+
+    @FindBy(xpath = "//*[contains(text(),'Zamówienia')]")
+    private WebElement zamowieniaMenuLista;
+
+    @FindBy(xpath = "//*[contains(text(),'Płatności zaplanowane')]")
+    private WebElement platnosciZaplanowaneMenuLista;
+
+    @FindBy(xpath = "//*[contains(text(),'Kody zniżkowe')]")
+    private WebElement kodyZnizkoweMenuLista;
+
+    @FindBy(xpath = "//*[contains(text(),'Klienci')]")
+    private WebElement klienciMenuLista;
+
+    @FindBy(xpath = "//*[contains(text(),'Historia cen')]")
+    private WebElement historiaCenMenuLista;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
@@ -102,9 +117,6 @@ public class PanelPage {
         wait.waitForClickability(zakladkaKursyMenuBoczne).click();
     }
 
-        public void przejdzDoZakladkiUslugi() {
-            wait.waitForClickability(zakladkaUslugi).click();
-        }
 
         public void kliknijPrzyciskUstawienia() {
         wait.waitForClickability(zakladkaUstawienia).click();
@@ -124,6 +136,36 @@ public class PanelPage {
 
         public void przejdzDoZakladkiLogi(){
             driver.get("https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-logs");
+        }
+
+        public void kliknijSprzedazZamowieniaMenu(){
+            Actions actions = new Actions(driver);
+            actions.moveToElement(sprzedazMenuLista).perform();
+            wait.waitForVisibility(zamowieniaMenuLista).click();
+        }
+
+        public void kliknijSprzedazPlatnosciZaplanowaneMenu(){
+            Actions actions = new Actions(driver);
+            actions.moveToElement(sprzedazMenuLista).perform();
+            wait.waitForVisibility(platnosciZaplanowaneMenuLista).click();
+        }
+
+        public void kliknijSprzedazKodyZnizkoweMenu(){
+            Actions actions = new Actions(driver);
+            actions.moveToElement(sprzedazMenuLista).perform();
+            wait.waitForVisibility(kodyZnizkoweMenuLista).click();
+        }
+
+        public void kliknijSprzedazKlienciMenu(){
+            Actions actions = new Actions(driver);
+            actions.moveToElement(sprzedazMenuLista).perform();
+            wait.waitForVisibility(klienciMenuLista).click();
+        }
+
+        public void kliknijSprzedazHistoriaCenMenu(){
+            Actions actions = new Actions(driver);
+            actions.moveToElement(sprzedazMenuLista).perform();
+            wait.waitForVisibility(historiaCenMenuLista).click();
         }
 
     /**********************************Operacje na webelementach KONIEC ******************************************/

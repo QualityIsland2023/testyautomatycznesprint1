@@ -10,14 +10,14 @@ import pages.SprzedazZamowieniaPage;
 
 public class SprzedazZamowieniaPageTest extends TestBase {
 
-    /**************** Sekcja techniczna START **********************************************/
+    //**************** Sekcja techniczna START **********************************************/
 
     private LoginPageNew loginPageNew;
     private PanelPage panelPage;
     private SprzedazZamowieniaPage sprzedazZamowieniaPage;
 
 
-    /***************** Sekcja techniczna KONIEC **********************************************/
+    //***************** Sekcja techniczna KONIEC **********************************************/
 
     @BeforeMethod
     public void setUPLoginPage(){
@@ -27,7 +27,7 @@ public class SprzedazZamowieniaPageTest extends TestBase {
         sprzedazZamowieniaPage = new SprzedazZamowieniaPage(driver);
     }
 
-    @Test(priority = 10, enabled = true, description = "Weryfikacja tytyłu strony ZAMÓWIENIA")
+    @Test(priority = 10, enabled = true, description = "Weryfikacja tytułu strony ZAMÓWIENIA")
     public void weryfikacjaTytuluStronyZamowienia(){
 
         loginPageNew.wykonajLogowanie();

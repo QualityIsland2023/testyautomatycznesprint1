@@ -10,13 +10,13 @@ import pages.SprzedazHistoriaCenPage;
 
 public class SprzedazHistoriaCenPageTest extends TestBase {
 
-    /**************** Sekcja techniczna START **********************************************/
+    //**************** Sekcja techniczna START **********************************************/
 
     private LoginPageNew loginPageNew;
     private PanelPage panelPage;
     private SprzedazHistoriaCenPage sprzedazHistoriaCenPage; //instancja strony logowania
 
-    /***************** Sekcja techniczna KONIEC **********************************************/
+    //***************** Sekcja techniczna KONIEC **********************************************/
 
     @BeforeMethod
     public void setUPLoginPage(){
@@ -27,7 +27,7 @@ public class SprzedazHistoriaCenPageTest extends TestBase {
     }
 
 
-    @Test(priority = 10, enabled = true, description = "Weryfikacja tytyłu strony HISTORIA CEN")
+    @Test(priority = 10, enabled = true, description = "Weryfikacja tytułu strony HISTORIA CEN")
     public void weryfikacjaTytuluStronyHistoriaCen(){
 
         loginPageNew.wykonajLogowanie();

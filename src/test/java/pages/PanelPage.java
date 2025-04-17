@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class PanelPage {
-    /************************Seckja techniczno konfiguracyjna START **********************************************/
+    //************************Seckja techniczno konfiguracyjna START **********************************************/
     //przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
 
 
@@ -24,9 +24,9 @@ public class PanelPage {
         PageFactory.initElements(driver, this);
     }
 
-    /************************Seckja techniczno konfiguracyjna KONIEC**********************************************/
+    //************************Seckja techniczno konfiguracyjna KONIEC**********************************************/
 
-    /************************Repozytorium webelementów START **********************************************/
+    //************************Repozytorium webelementów START **********************************************/
 
     @FindBy(xpath = "//span[contains(text(), 'Moje Publigo')]")
     private WebElement mojePubligoButtonMenuGorne;
@@ -82,11 +82,11 @@ public class PanelPage {
     @FindBy(xpath = "//div[contains(text(), 'Kursy')]")
     private WebElement zakladkaKursyMenuBoczne;
 
-    /***************************Repozytorium webelementów KONIEC ******************************************/
+   //***************************Repozytorium webelementów KONIEC ******************************************/
 
 
 
-    /****************************Operacje na webelementach START **********************************************/
+    //****************************Operacje na webelementach START **********************************************/
 
         public boolean weryfikacjaCzyMojePubligoButtonIstnieje(){
             boolean status = false;
@@ -146,36 +146,44 @@ public class PanelPage {
             driver.get("https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-logs");
         }
 
+        // Przechodzi do strony "Zamówienia": menu boczne > mouse hover "Sprzedaż" > kliknij "Zamówienia"
         public void kliknijSprzedazZamowieniaMenu(){
             Actions actions = new Actions(driver);
             actions.moveToElement(sprzedazMenuLista).perform();
             wait.waitForVisibility(zamowieniaMenuLista).click();
         }
 
+        // Przechodzi do strony "Płatności zaplanowane": menu boczne > mouse hover "Sprzedaż" > kliknij "Płatności zaplanowane"
         public void kliknijSprzedazPlatnosciZaplanowaneMenu(){
             Actions actions = new Actions(driver);
             actions.moveToElement(sprzedazMenuLista).perform();
             wait.waitForVisibility(platnosciZaplanowaneMenuLista).click();
         }
 
+        // Przechodzi do strony "Kody zniżkowe": menu boczne > mouse hover "Sprzedaż" > kliknij "Kody zniżkowe"
         public void kliknijSprzedazKodyZnizkoweMenu(){
             Actions actions = new Actions(driver);
             actions.moveToElement(sprzedazMenuLista).perform();
             wait.waitForVisibility(kodyZnizkoweMenuLista).click();
         }
 
+        // Przechodzi do strony "Klienci": menu boczne > mouse hover "Sprzedaż" > kliknij "Klienci"
         public void kliknijSprzedazKlienciMenu(){
             Actions actions = new Actions(driver);
             actions.moveToElement(sprzedazMenuLista).perform();
             wait.waitForVisibility(klienciMenuLista).click();
         }
 
+        // Przechodzi do strony "Historia cen": menu boczne > mouse hover "Sprzedaż" > kliknij "Historia cen"
         public void kliknijSprzedazHistoriaCenMenu(){
             Actions actions = new Actions(driver);
             actions.moveToElement(sprzedazMenuLista).perform();
             wait.waitForVisibility(historiaCenMenuLista).click();
         }
 
-    /**********************************Operacje na webelementach KONIEC ******************************************/
+
+
+
+    //**********************************Operacje na webelementach KONIEC ******************************************/
 
 }

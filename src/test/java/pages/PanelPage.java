@@ -60,6 +60,8 @@ public class PanelPage {
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
+    @FindBy(xpath = "//div[contains(text(), 'Kursy')]")
+    private WebElement zakladkaKursyMenuBoczne;
 
     /****************************Operacje na webelementach START **********************************************/
 
@@ -92,6 +94,10 @@ public class PanelPage {
         public void przejdzDoZakladkiRaporty(){
             wait.waitForClickability(zakladkaRaportyMenuBoczne).click();
         }
+
+        public void przejdzDoZakladkiKursy(){
+        wait.waitForClickability(zakladkaKursyMenuBoczne).click();
+    }
 
 
         public void kliknijPrzyciskUstawienia() {

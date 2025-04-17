@@ -39,7 +39,7 @@ public class SposobyPlatnosciPageTest extends TestBase  {
         Assert.assertEquals(sposobyPlatnosciPage.getAktualnyUrlSposobyPlatnosci(), sposobyPlatnosciPage.getPoprawnyUrlSposobyPlatnosci(),  "Url strony sposoby Platnosci nie jest poprawny");
     }
 
-    @Test(priority = 120, enabled = true, description = "Weryfikacja url strony sposoby Platnosci")
+    @Test(priority = 120, enabled = true, description = "Weryfikacja tytulu strony sposoby Platnosci")
     public void zweryfikujPoprawnyTytulSposobyPlatnosci() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijPrzyciskUstawienia();

@@ -39,7 +39,7 @@ public class SzablonyPageTest extends TestBase  {
         Assert.assertEquals(szablonyPage.getAktualnyUrlSzablony(), szablonyPage.getPoprawnyUrlSzablony(),  "Url strony szablony nie jest poprawny");
     }
 
-    @Test(priority = 120, enabled = true, description = "Weryfikacja url strony szablony")
+    @Test(priority = 120, enabled = true, description = "Weryfikacja tytulu strony szablony")
     public void zweryfikujPoprawnyTytulUSzablony() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijPrzyciskUstawienia();

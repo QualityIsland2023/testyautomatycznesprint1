@@ -9,9 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 public class EdycjaUslugiPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
-    //przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
-    private static final String login =  PropertiesReader.read("login");
-    private static final String haslo =  PropertiesReader.read("password");
 
     // Konstruktor, który przyjmuje przeglądarkę, linia techniczna / konfiguracyjna
     private WebDriver driver;
@@ -28,20 +25,7 @@ public class EdycjaUslugiPage {
 
     /************************Repozytorium webelementów START **********************************************/
 
-    @FindBy(xpath = "//button[text()='Utwórz nową usługę']")
-    WebElement utworzNowaUslugeButton;
 
-    @FindBy(id = "name")
-    WebElement nazwaUslugiInput;
-
-    @FindBy(id = "price")
-    WebElement cenaInput;
-
-    @FindBy(xpath = "//button[text()='Utwórz i edytuj']")
-    WebElement utworzIEdytujButton;
-
-    @FindBy(xpath = "//button[text()='Anuluj']")
-    WebElement anulujButton;
 
     String poprawnyURLStronyEdycjaUslugi = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-editor-service&edit_service_id=1205&autofocus=general";
     String poprawnyTytulStronyEdycjaUslugi = "Edycja usługi ‹ Platforma kursów online — WordPress";

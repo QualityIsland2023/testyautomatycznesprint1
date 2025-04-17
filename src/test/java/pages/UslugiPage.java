@@ -2,14 +2,13 @@ package pages;
 import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class UslugiPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
-    //przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
-    private static final String login =  PropertiesReader.read("login");
-    private static final String haslo =  PropertiesReader.read("password");
 
     // Konstruktor, który przyjmuje przeglądarkę, linia techniczna / konfiguracyjna
     private WebDriver driver;
@@ -28,6 +27,21 @@ public class UslugiPage {
 
     String poprawnyURLZakladkiUslugi = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-services";
     String poprawnyTytulZakladkiUslugi = "Usługi ‹ Platforma kursów online — WordPress";
+
+    @FindBy(xpath = "//button[text()='Utwórz nową usługę']")
+    WebElement utworzNowaUslugeButton;
+
+    @FindBy(id = "name")
+    WebElement nazwaUslugiInput;
+
+    @FindBy(id = "price")
+    WebElement cenaInput;
+
+    @FindBy(xpath = "//button[text()='Utwórz i edytuj']")
+    WebElement utworzIEdytujButton;
+
+    @FindBy(xpath = "//button[text()='Anuluj']")
+    WebElement anulujButton;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
@@ -52,6 +66,29 @@ public class UslugiPage {
     public String zwrocPoprawnyTytulZakladkiUslugi() {
         System.out.println("Poprawny tytul strony to: " + poprawnyTytulZakladkiUslugi);
         return poprawnyTytulZakladkiUslugi;
+    }
+
+    public void nacisnijPrzyciskUtworzNowaUsluge() {
+        wait.waitForClickability(utworzIEdytujButton).click();
+    }
+
+    public void wprowadzNazweUslugiDoPolaNazwaUslugi() {
+        wait.waitForVisibility(nazwaUslugiInput).sendKeys("testtest");
+    }
+
+    public void wprowadzCeneDoPolaCena() {
+        wait.waitForVisibility(cenaInput).sendKeys("123");
+    }
+
+    public void nacisnijPrzyciskUtworzIEdytuj() {
+        wait.waitForClickability(utworzIEdytujButton).click();
+    }
+
+    public void przejdzDoStronyEdycjaUslugi() {
+        nacisnijPrzyciskUtworzNowaUsluge();
+        wprowadzNazweUslugiDoPolaNazwaUslugi();
+        wprowadzCeneDoPolaCena();
+        nacisnijPrzyciskUtworzIEdytuj();
     }
 
     /**********************************Operacje na webelementach KONIEC ******************************************/

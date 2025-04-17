@@ -1,11 +1,13 @@
-package tests;
+package pages;
 
 import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class SprzedazKodyZnizkowePage {
+public class SprzedazZamowieniaPage {
 
     /************************ Sekcja techniczno konfiguracyjna START **********************************************/
     //przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
@@ -17,7 +19,7 @@ public class SprzedazKodyZnizkowePage {
     private Waits wait;
 
     //Konstrukotor, który tworzy nową instancję strony logowania
-    public SprzedazKodyZnizkowePage(WebDriver driver){
+    public SprzedazZamowieniaPage(WebDriver driver){
         this.driver = driver;
         this.wait = new Waits(driver);
         PageFactory.initElements(driver, this);
@@ -28,10 +30,11 @@ public class SprzedazKodyZnizkowePage {
 
     /************************Repozytorium webelementów START **********************************************/
 
-    String poprawnyTytulStronyKodyZnizkowe = "Kody zniżkowe ‹ Platforma kursów online — WordPress";
-    String poprawnyURLStronyKodyZnizkowe = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-discounts";
+    String poprawnyTytulStronyZamowienia = "Zamówienia ‹ Platforma kursów online — WordPress";
+    String poprawnyURLStronyZamowienia = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-payment-history";
 
-
+    @FindBy(xpath = "//*[contains(text(),'Dodaj zamówienie')]")
+    private WebElement dodajZamowienieButton;
 
 
 
@@ -42,26 +45,31 @@ public class SprzedazKodyZnizkowePage {
 
     /****************************Operacje na webelementach START **********************************************/
 
-
-    public String zwrocAktualnyTytulStronyKodyZnizkowe(){
+    public String zwrocAktualnyTytulStronyZamowienia(){
         System.out.println("Aktualny tytuł strony: " + driver.getTitle());
         return driver.getTitle();
     }
 
-    public String zwrocPoprawnyTytulStronyKodyZnizkowe(){
-        System.out.println("Poprawny tytuł strony KODY ZNIŻKOWE: " + poprawnyTytulStronyKodyZnizkowe);
-        return poprawnyTytulStronyKodyZnizkowe;
+    public String zwrocPoprawnyTytulStronyZamowienia(){
+        System.out.println("Poprawny tytuł strony ZAMÓWIENIA: " + poprawnyTytulStronyZamowienia);
+        return poprawnyTytulStronyZamowienia;
     }
 
-    public String zwrocAktualnyUrlStronyKodyZnizkowe(){
+    public String zwrocAktualnyUrlStronyZamowienia(){
         System.out.println("Aktualny URL: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 
-    public String zwrocPoprawnyUrlStronyKodyZnizkowe() {
-        System.out.println("Poprawny URL strony KODY ZNIŻKOWE: " + poprawnyURLStronyKodyZnizkowe);
-        return poprawnyURLStronyKodyZnizkowe;
+    public String zwrocPoprawnyUrlStronyZamowienia() {
+        System.out.println("Poprawny URL strony ZAMÓWIENIA: " + poprawnyURLStronyZamowienia);
+        return poprawnyURLStronyZamowienia;
     }
+
+    public void przejdzDoStronyUtworzPlatnosc(){
+
+        wait.waitForVisibility(dodajZamowienieButton).click();
+    }
+
 
 
 

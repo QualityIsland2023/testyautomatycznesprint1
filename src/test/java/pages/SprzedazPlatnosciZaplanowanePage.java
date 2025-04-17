@@ -1,11 +1,11 @@
-package tests;
+package pages;
 
 import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class SprzedazUtworzPlatnoscPage {
+public class SprzedazPlatnosciZaplanowanePage {
 
     /************************ Sekcja techniczno konfiguracyjna START **********************************************/
     //przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
@@ -17,7 +17,7 @@ public class SprzedazUtworzPlatnoscPage {
     private Waits wait;
 
     //Konstrukotor, który tworzy nową instancję strony logowania
-    public SprzedazUtworzPlatnoscPage(WebDriver driver){
+    public SprzedazPlatnosciZaplanowanePage(WebDriver driver){
         this.driver = driver;
         this.wait = new Waits(driver);
         PageFactory.initElements(driver, this);
@@ -28,8 +28,9 @@ public class SprzedazUtworzPlatnoscPage {
 
     /************************Repozytorium webelementów START **********************************************/
 
-    String poprawnyTytulStronyUtworzPlatnosc = "Utwórz płatność ‹ Platforma kursów online — WordPress";
-    String poprawnyURLStronyUtworzPlatnosc = "https://mmrmqpr585.publigo.onl/wp-admin/options.php?page=edd-manual-purchase";
+    String poprawnyTytulStronyPlatnosciZaplanowane = "Płatności zaplanowane ‹ Platforma kursów online — WordPress";
+    String poprawnyURLStronyPlatnosciZaplanowane = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-scheduled-payments";
+
 
 
 
@@ -42,24 +43,24 @@ public class SprzedazUtworzPlatnoscPage {
 
     /****************************Operacje na webelementach START **********************************************/
 
-    public String zwrocAktualnyTytulStronyUtworzPlatnosc(){
+    public String zwrocAktualnyTytulStronyPlatnosciZaplanowane(){
         System.out.println("Aktualny tytuł strony: " + driver.getTitle());
         return driver.getTitle();
     }
 
-    public String zwrocPoprawnyTytulStronyUtworzPlatnosc(){
-        System.out.println("Poprawny tytuł strony UTWÓRZ PŁATNOŚĆ: " + poprawnyTytulStronyUtworzPlatnosc);
-        return poprawnyTytulStronyUtworzPlatnosc;
+    public String zwrocPoprawnyTytulStronyPlatnosciZaplanowane(){
+        System.out.println("Poprawny tytuł strony PŁATNOŚCI ZAPLANOWANE: " + poprawnyTytulStronyPlatnosciZaplanowane);
+        return poprawnyTytulStronyPlatnosciZaplanowane;
     }
 
-    public String zwrocAktualnyUrlStronyUtworzPlatnosc(){
+    public String zwrocAktualnyUrlStronyPlatnosciZaplanowane(){
         System.out.println("Aktualny URL: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 
-    public String zwrocPoprawnyUrlStronyUtworzPlatnosc() {
-        System.out.println("Poprawny URL strony UTWÓRZ PŁATNOŚĆ: " + poprawnyURLStronyUtworzPlatnosc);
-        return poprawnyURLStronyUtworzPlatnosc;
+    public String zwrocPoprawnyUrlStronyPlatnosciZaplanowane() {
+        System.out.println("Poprawny URL strony PŁATNOŚCI ZAPLANOWANE: " + poprawnyURLStronyPlatnosciZaplanowane);
+        return poprawnyURLStronyPlatnosciZaplanowane;
     }
 
 

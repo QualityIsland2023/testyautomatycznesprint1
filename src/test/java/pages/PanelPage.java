@@ -1,9 +1,10 @@
 package pages;
 
-import config.PropertiesReader;
 import helpers.Waits;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -51,6 +52,12 @@ public class PanelPage {
     @FindBy(xpath = "//div[contains(text(), 'Raporty')]")
     private WebElement zakladkaRaportyMenuBoczne;
 
+    @FindBy(xpath = "//div[contains(text(), 'Media')]")
+    private WebElement zakladkaMedia;
+
+    @FindBy(xpath = "//div[contains(text(), 'Komentarze')]")
+    private WebElement zakladkaKomentarze;
+
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
 
@@ -93,6 +100,14 @@ public class PanelPage {
 
         public void przejdzDoZakladkiPowiadomienia(){
             driver.get("https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-notifications");
+        }
+
+        public void przejdzDoZakladkiMedia() {
+            zakladkaMedia.click();
+        }
+
+        public void przejdzDoZakladkiKomentarze() {
+            zakladkaKomentarze.click();
         }
 
         public void przejdzDoZakladkiLogi(){

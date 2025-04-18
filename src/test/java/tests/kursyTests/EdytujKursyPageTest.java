@@ -60,7 +60,7 @@ public class EdytujKursyPageTest extends TestBase {
         kursyPage.nacisnijPrzyciskUtworzIEdytuj();
         edytujKursyPage.poczekajNaOknoUEdycjaKursu();
 
-        Assert.assertEquals(edytujKursyPage.zwroctTytulAktualnejStrony(), edytujKursyPage.zwrocPoprawnyTytulStronyEdytujKursy(), "Nazwy pozycji w menu głównego nie są poprawne" );
+        Assert.assertEquals(edytujKursyPage.zwroctTytulAktualnejStrony(), edytujKursyPage.zwrocPoprawnyTytulStronyEdytujKursy(), "Tytuł strony nie jest poprawny" );
     }
 
 }

@@ -46,7 +46,7 @@ public class KursyPageTest extends TestBase {
         loginPageNew.nacisnijPrzyciskZalogujSie();
         panelPage.przejdzDoZakladkiKursy();
 
-        Assert.assertEquals(kursyPage.zwroctTytulAktualnejStrony(), kursyPage.zwrocPoprawnyTytulStronyKursy(), "Nazwy pozycji w menu głównego nie są poprawne" );
+        Assert.assertEquals(kursyPage.zwroctTytulAktualnejStrony(), kursyPage.zwrocPoprawnyTytulStronyKursy(), "Tytuł strony nie jest poprawny" );
     }
 
 }

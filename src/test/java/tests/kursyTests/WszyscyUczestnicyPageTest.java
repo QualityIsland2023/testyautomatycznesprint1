@@ -49,7 +49,7 @@ public class WszyscyUczestnicyPageTest extends TestBase {
         panelPage.przejdzDoZakladkiKursy();
         kursyPage.przejdzDoZakladkiKursyWszyscyUczestnicy();
 
-        Assert.assertEquals(wszyscyUczestnicyPage.zwroctTytulAktualnejStrony(), wszyscyUczestnicyPage.zwrocPoprawnyTytulStronyKursyWszyscyUczestnicy(), "Nazwy pozycji w menu głównego nie są poprawne" );
+        Assert.assertEquals(wszyscyUczestnicyPage.zwroctTytulAktualnejStrony(), wszyscyUczestnicyPage.zwrocPoprawnyTytulStronyKursyWszyscyUczestnicy(), "Tytuł strony nie jest poprawny" );
     }
 
 }

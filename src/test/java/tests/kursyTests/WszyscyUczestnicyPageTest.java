@@ -32,8 +32,8 @@ public class WszyscyUczestnicyPageTest extends TestBase {
     // Test weryfikujący, czy adres URL strony 'Wszyscy uczestnicy' jest poprawny
     @Test(priority = 10, enabled = true, description = "Weryfikacja poprawnego adresu strony 'Wszyscy uczestnicy'")
     public void weryfikacjaPoprawnegoAdresuStronyWszyscyUczestnicy(){
-        loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.nacisnijPrzyciskZalogujSie();
         panelPage.przejdzDoZakladkiKursy();
         kursyPage.przejdzDoZakladkiKursyWszyscyUczestnicy();
@@ -43,8 +43,8 @@ public class WszyscyUczestnicyPageTest extends TestBase {
     // Test weryfikujący, czy tytuł strony 'Wszyscy uczestnicy' jest poprawny
     @Test(priority = 20, enabled = true, description = "Weryfikacja poprawnego tytułu strony 'Wszyscy uczestnicy'")
     public void weryfikacjaTytuluStronyWszyscyUczestnicy(){
-        loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.nacisnijPrzyciskZalogujSie();
         panelPage.przejdzDoZakladkiKursy();
         kursyPage.przejdzDoZakladkiKursyWszyscyUczestnicy();

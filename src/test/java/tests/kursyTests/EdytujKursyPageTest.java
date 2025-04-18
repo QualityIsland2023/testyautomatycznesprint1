@@ -33,8 +33,8 @@ public class EdytujKursyPageTest extends TestBase {
     // Test weryfikujący, czy adres URL strony 'Edycja kursu' jest poprawny
     @Test(priority = 10, enabled = true, description = "Weryfikacja poprawnego adresu strony 'Edycja kursu'")
     public void weryfikacjaPoprawnegoAdresuStronyEdytujKursy(){
-        loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.nacisnijPrzyciskZalogujSie();
         panelPage.przejdzDoZakladkiKursy();
         kursyPage.przejdzDoTworzeniaNowegoKursu();
@@ -49,8 +49,8 @@ public class EdytujKursyPageTest extends TestBase {
     // Test weryfikujący, czy tytuł strony 'Edycja kursu' jest poprawny
     @Test(priority = 20, enabled = true, description = "Weryfikacja poprawnego tytułu strony 'Edycja kursu'")
     public void weryfikacjaTytuluStronyEdytujKursy(){
-        loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.nacisnijPrzyciskZalogujSie();
         panelPage.przejdzDoZakladkiKursy();
         kursyPage.przejdzDoTworzeniaNowegoKursu();

@@ -1,27 +1,25 @@
- package pages;
+ package pages.raporty;
 
 import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.util.ArrayList;
-import java.util.List;
 
  public class RaportyPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
-    //przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
+
+    //przypisanie loginu i hasła z pliku konfiguracyjnego
     private static final String login =  PropertiesReader.read("login");
     private static final String haslo =  PropertiesReader.read("password");
 
-    // Konstruktor, który przyjmuje przeglądarkę, linia techniczna / konfiguracyjna
+     //konstruktory przyjmujące przeglądarkę i obiekt klasy Waits
     private WebDriver driver;
     private Waits wait;
 
-    //konstrukotor, który tworzy nową instancję strony logowania
+     //konstrukotor tworzący nową instancję strony
+     //inicjalizacja drivera oraz obiektów klasy Waits
+     //inicjalizacja wszystkich elementów strony za pomocą PageFactory
     public RaportyPage(WebDriver driver){
         this.driver = driver;
         this.wait = new Waits(driver);
@@ -33,7 +31,9 @@ import java.util.List;
 
     /************************Repozytorium webelementów START **********************************************/
 
+    //oczekiwany (poprawny) adres URL strony
     String poprawnyURLRaportow = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-sales-report";
+     //oczekiwany (poprawny) tytuł strony
     String poprawnyTytulStronyRaporty  ="Raporty ‹ Platforma kursów online — WordPress";
 
 
@@ -43,25 +43,25 @@ import java.util.List;
 
     /****************************Operacje na webelementach START **********************************************/
 
-
-     public String zwrocUrlAktualnejStrony(){
-        System.out.println("Aktualny URL strony: " + driver.getCurrentUrl());
-        return driver.getCurrentUrl();
-    }
-
+    //zwrócenie poprawnego url strony 'Raporty' i wypisanie go w konsoli
     public String zwrocPoprawnyUrlRaportow(){
         System.out.println("Poprawny URL strony raportów: " + poprawnyURLRaportow);
         return poprawnyURLRaportow;
     }
-
+     //zwrócenie aktualnego url strony i wypisanie go w konsoli
+     public String zwrocUrlAktualnejStrony(){
+         System.out.println("Aktualny URL strony: " + driver.getCurrentUrl());
+         return driver.getCurrentUrl();
+     }
+     //zwrócenie poprawnego tytułu strony 'Raporty' i wypisanie go w konsoli
+     public String zwrocPoprawnyTytulStronyRaporty(){
+         System.out.println("Poprawny tytuł strony raportów: " + poprawnyTytulStronyRaporty);
+         return poprawnyTytulStronyRaporty;
+     }
+     //zwrócenie aktualnego tytułu strony i wypisanie go w konsoli
     public String zwroctTytulAktualnejStrony(){
         System.out.println("Aktualny tytuł strony: " + driver.getTitle());
         return driver.getTitle();
-    }
-
-    public String zwrocPoprawnyTytulStronyRaporty(){
-        System.out.println("Poprawny tytuł strony raportów: " + poprawnyTytulStronyRaporty);
-        return poprawnyTytulStronyRaporty;
     }
 
     /**********************************Operacje na webelementach KONIEC ******************************************/

@@ -1,4 +1,4 @@
- package pages;
+ package pages.ustawienia;
 
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;

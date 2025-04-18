@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
  public class KursyPage {
 
-    /************************Seckja techniczno konfiguracyjna START **********************************************/
+    /************************ Seckja techniczno konfiguracyjna START **********************************************/
 
     //przypisanie loginu i hasła z pliku konfiguracyjnego
     private static final String login =  PropertiesReader.read("login");
@@ -27,9 +27,9 @@ import org.openqa.selenium.support.PageFactory;
         this.wait = new Waits(driver);
         PageFactory.initElements(driver, this);
     }
-    /************************Seckja techniczno konfiguracyjna KONIEC**********************************************/
+    /************************ Seckja techniczno konfiguracyjna KONIEC**********************************************/
 
-    /************************Repozytorium Webelementów START *****************************************************/
+    /************************ Repozytorium Webelementów START *****************************************************/
 
     //oczekiwany (poprawny) adres URL strony
     String poprawnyURLKursow = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-courses";
@@ -55,10 +55,10 @@ import org.openqa.selenium.support.PageFactory;
      private WebElement utworzIEdytujButton;
 
 
-    /***************************Repozytorium Webelementów KONIEC ******************************************/
+    /*************************** Repozytorium Webelementów KONIEC ******************************************/
 
 
-    /****************************Operacje na Webelementach START **********************************************/
+    /**************************** Operacje na Webelementach START **********************************************/
 
     //zwrócenie poprawnego url strony 'Kursy' i wypisanie go w konsoli
     public String zwrocPoprawnyUrlKursow(){
@@ -107,6 +107,6 @@ import org.openqa.selenium.support.PageFactory;
          wait.waitForClickability(utworzIEdytujButton).click();
      }
 
-    /**********************************Operacje na Webelementach KONIEC ******************************************/
+    /********************************** Operacje na Webelementach KONIEC ******************************************/
 
 }

@@ -19,6 +19,7 @@ public class KursyPageTest extends TestBase {
     private KursyPage kursyPage;
 
     /*****************sekja techniczna KONIEC **********************************************/
+
     // Metoda uruchamiana przed każdym testem
     // Inicjalizacja obiektów stron potrzebnych do wykonania testów
     @BeforeMethod

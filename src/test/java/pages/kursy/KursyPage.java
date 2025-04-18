@@ -9,32 +9,32 @@ import org.openqa.selenium.support.PageFactory;
 
  public class KursyPage {
 
-    /************************ Seckja techniczno konfiguracyjna START **********************************************/
+     /************************ Seckja techniczno konfiguracyjna START **********************************************/
 
-    //przypisanie loginu i hasła z pliku konfiguracyjnego
-    private static final String login =  PropertiesReader.read("login");
-    private static final String haslo =  PropertiesReader.read("password");
+     //przypisanie loginu i hasła z pliku konfiguracyjnego
+     private static final String login = PropertiesReader.read("login");
+     private static final String haslo = PropertiesReader.read("password");
 
-    //konstruktory przyjmujące przeglądarkę i obiekt klasy Waits
-    private WebDriver driver;
-    private Waits wait;
+     //konstruktory przyjmujące przeglądarkę i obiekt klasy Waits
+     private WebDriver driver;
+     private Waits wait;
 
-    //konstrukotor tworzący nową instancję strony
-    //inicjalizacja drivera oraz obiektów klasy Waits
-    //inicjalizacja wszystkich elementów strony za pomocą PageFactory
-    public KursyPage(WebDriver driver){
-        this.driver = driver;
-        this.wait = new Waits(driver);
-        PageFactory.initElements(driver, this);
-    }
-    /************************ Seckja techniczno konfiguracyjna KONIEC**********************************************/
+     //konstrukotor tworzący nową instancję strony
+     //inicjalizacja drivera oraz obiektów klasy Waits
+     //inicjalizacja wszystkich elementów strony za pomocą PageFactory
+     public KursyPage(WebDriver driver) {
+         this.driver = driver;
+         this.wait = new Waits(driver);
+         PageFactory.initElements(driver, this);
+     }
+     /************************ Seckja techniczno konfiguracyjna KONIEC**********************************************/
 
-    /************************ Repozytorium Webelementów START *****************************************************/
+     /************************ Repozytorium Webelementów START *****************************************************/
 
-    //oczekiwany (poprawny) adres URL strony
-    String poprawnyURLKursow = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-courses";
-    //oczekiwany (poprawny) tytuł strony
-    String poprawnyTytulStronyKursy  ="Kursy ‹ Platforma kursów online — WordPress";
+     //oczekiwany (poprawny) adres URL strony
+     String poprawnyURLKursow = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-courses";
+     //oczekiwany (poprawny) tytuł strony
+     String poprawnyTytulStronyKursy = "Kursy ‹ Platforma kursów online — WordPress";
 
      @FindBy(xpath = "//a[contains(text(), 'Wszyscy uczestnicy')]")
      private WebElement zakladkaKursyWszyscyUczestnicyMenuBoczne;
@@ -54,59 +54,127 @@ import org.openqa.selenium.support.PageFactory;
      @FindBy(xpath = "//button[contains(@id, 'save-courses_popup_editor')]")
      private WebElement utworzIEdytujButton;
 
+     @FindBy(xpath = "//button[contains(text(), 'Typy danych')]")
+     private WebElement typyDanychButton;
 
-    /*************************** Repozytorium Webelementów KONIEC ******************************************/
+     @FindBy(xpath = "//p[contains(text(), 'Wybierz które kolumny mają być widoczne w tabeli')]")
+     private WebElement sekcjaWybierzKtoreElementyMajaBycWidoczne;
 
 
-    /**************************** Operacje na Webelementach START **********************************************/
+     /*************************** Repozytorium Webelementów KONIEC ******************************************/
 
-    //zwrócenie poprawnego url strony 'Kursy' i wypisanie go w konsoli
-    public String zwrocPoprawnyUrlKursow(){
-        System.out.println("Poprawny URL strony kursów: " + poprawnyURLKursow);
-        return poprawnyURLKursow;
-    }
+
+     /**************************** Operacje na Webelementach START **********************************************/
+
+     //zwrócenie poprawnego url strony 'Kursy' i wypisanie go w konsoli
+     public String zwrocPoprawnyUrlKursow() {
+         System.out.println("Poprawny URL strony kursów: " + poprawnyURLKursow);
+         return poprawnyURLKursow;
+     }
+
      //zwrócenie aktualnego url strony i wypisanie go w konsoli
-     public String zwrocUrlAktualnejStrony(){
+     public String zwrocUrlAktualnejStrony() {
          System.out.println("Aktualny URL strony: " + driver.getCurrentUrl());
          return driver.getCurrentUrl();
      }
+
      //zwrócenie poprawnego tytułu strony 'Kursy' i wypisanie go w konsoli
-     public String zwrocPoprawnyTytulStronyKursy(){
+     public String zwrocPoprawnyTytulStronyKursy() {
          System.out.println("Poprawny tytuł strony kursów: " + poprawnyTytulStronyKursy);
          return poprawnyTytulStronyKursy;
      }
+
      //zwrócenie aktualnego tytułu strony i wypisanie go w konsoli
-    public String zwroctTytulAktualnejStrony(){
-        System.out.println("Aktualny tytuł strony: " + driver.getTitle());
-        return driver.getTitle();
-    }
-    //przejście do zakładki 'Wszyscy uczestnicy'
-     public void przejdzDoZakladkiKursyWszyscyUczestnicy(){
+     public String zwroctTytulAktualnejStrony() {
+         System.out.println("Aktualny tytuł strony: " + driver.getTitle());
+         return driver.getTitle();
+     }
+
+     //przejście do zakładki 'Wszyscy uczestnicy'
+     public void przejdzDoZakladkiKursyWszyscyUczestnicy() {
          wait.waitForClickability(zakladkaKursyWszyscyUczestnicyMenuBoczne).click();
      }
-    //kliknięcie przycisku 'Utwórz nowy kurs'
-     public void przejdzDoTworzeniaNowegoKursu(){
+
+     //kliknięcie przycisku 'Utwórz nowy kurs'
+     public void przejdzDoTworzeniaNowegoKursu() {
          wait.waitForClickability(utworzNowyKursButton).click();
      }
-    //oczekiwanie na pojawienie się okna 'Utwórz nowy kurs'
-     public void poczekajNaOknoUtworzNowyKurs(){
+
+     //oczekiwanie na pojawienie się okna 'Utwórz nowy kurs'
+     public void poczekajNaOknoUtworzNowyKurs() {
          wait.waitForVisibility(utworzNowyKurs);
      }
-    //wpisanie nazwy kursu
-     public void wpiszNazweKursu(){
+
+     //wpisanie nazwy kursu
+     public void wpiszNazweKursu() {
          wait.waitForVisibility(nazwaKursuInput).clear();
          wait.waitForVisibility(nazwaKursuInput).sendKeys("Test kurs");
      }
-    //wpisanie ceny kursu
-     public void wpiszCeneKursu(){
+
+     //wpisanie ceny kursu
+     public void wpiszCeneKursu() {
          wait.waitForClickability(cenaKursuInput).clear();
          wait.waitForVisibility(cenaKursuInput).sendKeys("100");
      }
+
      //kliknięcie przcisku 'Utwórz i edytuj'
-     public void nacisnijPrzyciskUtworzIEdytuj(){
+     public void nacisnijPrzyciskUtworzIEdytuj() {
          wait.waitForClickability(utworzIEdytujButton).click();
+
      }
+
+     //oczekiwanie na pojawienie się przycisku 'Utwórz nowy kurs'
+     public void oczekiwanieNaButtonUtworzNowyKurs(){
+         wait.waitForClickability(utworzNowyKursButton);
+     }
+
+     //metoda sprawdzajaca, czy przycisk 'Utwórz nowy kurs' jest wyświetlony i aktywny
+     public boolean sprawdzCzyButtonUtworzNowyKursIstnieje() {
+         boolean status = false;
+         if (utworzNowyKursButton.isDisplayed() && utworzNowyKursButton.isEnabled()) {
+             status = true;
+             System.out.println("Przycisk 'Utwórz nowy kurs' jest wyświetlony i aktywny.");
+         }
+        return status;
+     }
+
+     //naciśnięcie przycisku 'Typy danych'
+     public void nacisnijButtonTypyDanych(){
+         wait.waitForClickability(typyDanychButton).click();
+     }
+
+     //metoda sprawdzajaca, czy przycisk 'Typy danych' jest wyświetlony i aktywny
+     public boolean sprawdzCzyButtonTypyDanychIstnieje() {
+         boolean status = false;
+         if (typyDanychButton.isDisplayed() && typyDanychButton.isEnabled()) {
+             status = true;
+             System.out.println("Przycisk 'Typy danych' jest wyświetlony i aktywny.");
+         }
+         return status;
+     }
+
+     //oczekiwanie na pojawienie się przycisku 'Typy Danych'
+     public void oczekiwanieNaButtonTypyDanych(){
+         wait.waitForClickability(typyDanychButton);
+     }
+
+     //oczekiwanie na pojawienie się sekcji 'Wybierz, które kolumny mają być widoczne w tabeli'
+     public void oczekiwanieNaSekcjeWybierzKtoreElementyMajaBycWidoczne(){
+         wait.waitForClickability(sekcjaWybierzKtoreElementyMajaBycWidoczne);
+     }
+
+     //metoda sprawdzajaca, czy sekcja 'Wybierz, które kolumny mają być widoczne w tabeli' jest wyświetlona
+     public boolean sprawdzCzySekcjaWybierzKtoreElementyMajaBycWidoczneJestWyswietlona() {
+         boolean status = false;
+         if (sekcjaWybierzKtoreElementyMajaBycWidoczne.isDisplayed()) {
+             status = true;
+             System.out.println("Sekcja 'Wybierz, które kolumny mają być widoczne w tabeli' jest wyświetlona.");
+         }
+         return status;
+     }
+
+ }
 
     /********************************** Operacje na Webelementach KONIEC ******************************************/
 
-}
+

@@ -1,15 +1,16 @@
-package tests;
+package tests.ustawienia_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.WiadomosciPage;
-import pages.UstawieniaPage;
+import pages.ustawienia_pages.WiadomosciPage;
+import pages.ustawienia_pages.UstawieniaPage;
+import tests.TestBase;
 
 
-public class WiadomosciPageTest extends TestBase  {
+public class WiadomosciPageTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 
@@ -19,7 +20,7 @@ public class WiadomosciPageTest extends TestBase  {
     // Obiekt reprezentujący stronę ustawień
     private UstawieniaPage ustawieniaPage;
     // Obiekt reprezentujący stronę "Wiadomosci"
-    private WiadomosciPage WiadomosciPage;
+    private WiadomosciPage wiadomosciPage;
     /*****************sekja techniczna KONIEC **********************************************/
 
     @BeforeMethod
@@ -29,7 +30,7 @@ public class WiadomosciPageTest extends TestBase  {
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
         ustawieniaPage = new UstawieniaPage(driver);
-        WiadomosciPage = new WiadomosciPage(driver);
+        wiadomosciPage = new WiadomosciPage(driver);
     }
 
 
@@ -40,7 +41,7 @@ public class WiadomosciPageTest extends TestBase  {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijPrzyciskUstawienia();
         ustawieniaPage.kliknijLinkWiadomosci();
-        Assert.assertEquals(WiadomosciPage.getAktualnyUrlWiadomosci(), WiadomosciPage.getPoprawnyUrlWiadomosci(),  "Url strony Wiadomosci nie jest poprawny");
+        Assert.assertEquals(wiadomosciPage.getAktualnyUrlWiadomosci(), wiadomosciPage.getPoprawnyUrlWiadomosci(),  "Url strony Wiadomosci nie jest poprawny");
     }
 
     // Test weryfikujący, czy tytuł strony "Wiadomosci" jest poprawny
@@ -49,7 +50,15 @@ public class WiadomosciPageTest extends TestBase  {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijPrzyciskUstawienia();
         ustawieniaPage.kliknijLinkWiadomosci();
-        Assert.assertEquals(WiadomosciPage.getAktualnyTytulWiadomosci(), WiadomosciPage.getPoprawnyTytulWiadomosci(),  "Tytul strony Wiadomosci nie jest poprawny");
+        Assert.assertEquals(wiadomosciPage.getAktualnyTytulWiadomosci(), wiadomosciPage.getPoprawnyTytulWiadomosci(),  "Tytul strony Wiadomosci nie jest poprawny");
+    }
+
+    @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce wiadomosci")
+    public void zweryfikujPoprawnoscSekcjiWiadomosci() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijPrzyciskUstawienia();
+        ustawieniaPage.kliknijLinkWiadomosci();
+        Assert.assertTrue(wiadomosciPage.czyZakladkaWiadomosciPosiadaWlasciweSekcje(),   "Sekcje w zakladce wiadomosci nie sa poprawne");
     }
 
 

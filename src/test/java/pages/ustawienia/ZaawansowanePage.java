@@ -1,7 +1,9 @@
- package pages;
+ package pages.ustawienia_pages;
 
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
  public class ZaawansowanePage {
@@ -34,6 +36,9 @@ import org.openqa.selenium.support.PageFactory;
 
     // Oczekiwany (poprawny) tytuł strony "Zaawansowane"
     private String poprawnyTytulZaawansowane = "Ustawienia ‹ Platforma kursów online — WordPress";
+
+     @FindBy(xpath ="//span[contains(text(),'Zaawansowane')]")
+     private WebElement sekcjaZaawansowane;
 
 
 
@@ -75,6 +80,11 @@ import org.openqa.selenium.support.PageFactory;
      public String getAktualnyTytulZaawansowane() {
          System.out.println("Aktualny tytul strony Zaawansowane: " + driver.getTitle());
          return driver.getTitle();
+     }
+
+     public boolean czyZakladkaZaawansowanePosiadaWlasciweSekcje() {
+
+         return wait.waitForVisibility(sekcjaZaawansowane).isDisplayed();
      }
 
 

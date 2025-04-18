@@ -1,7 +1,9 @@
- package pages;
+ package pages.ustawienia_pages;
 
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
  public class SposobyPlatnosciPage {
@@ -35,6 +37,18 @@ import org.openqa.selenium.support.PageFactory;
 
      // Oczekiwany (poprawny) tytuł strony "Sposoby Platnosci"
     private String poprawnyTytulSposobyPlatnosci = "Ustawienia ‹ Platforma kursów online — WordPress";
+
+     @FindBy(xpath ="//span[contains(text(),'Konfiguracja i testy')]")
+     private WebElement sekcjaKonfiguracjaTesty;
+
+     @FindBy(xpath ="//span[contains(text(),'Płatności elektroniczne bankowe oraz cykliczne')]")
+     private WebElement sekcjaPlatnosciBankoweCykliczne;
+
+     @FindBy(xpath ="//span[contains(text(),'Płatności elektroniczne bankowe')]")
+     private WebElement sekcjaPlatnosciElektroniczneBankowe;
+
+     @FindBy(xpath ="//span[contains(text(),'Pozostałe typy płatności')]")
+     private WebElement sekcjaPozostaleTypyPlatnosci;
 
 
 
@@ -78,6 +92,13 @@ import org.openqa.selenium.support.PageFactory;
          return driver.getTitle();
      }
 
+     public boolean czyZakladkaSposobyPlatnosciPosiadaWlasciweSekcje() {
+
+         return (wait.waitForVisibility(sekcjaKonfiguracjaTesty).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaPlatnosciBankoweCykliczne).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaPlatnosciElektroniczneBankowe).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaPozostaleTypyPlatnosci).isDisplayed());
+     }
 
 
 
@@ -89,6 +110,8 @@ import org.openqa.selenium.support.PageFactory;
 
 
 
-    /**********************************Operacje na webelementach KONIEC ******************************************/
+
+
+     /**********************************Operacje na webelementach KONIEC ******************************************/
 
 }

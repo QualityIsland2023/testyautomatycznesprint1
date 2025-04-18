@@ -1,4 +1,4 @@
-package tests;
+package tests.ustawienia_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -6,10 +6,11 @@ import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.MenuPage;
 import pages.PanelPage;
-import pages.UstawieniaPage;
+import pages.ustawienia_pages.UstawieniaPage;
+import tests.TestBase;
 
 
-public class MenuPageTest extends TestBase  {
+public class MenuPageTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 

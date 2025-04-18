@@ -1,7 +1,9 @@
- package pages;
+ package pages.ustawienia_pages;
 
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
  public class WlaczModulyPage {
@@ -34,6 +36,18 @@ import org.openqa.selenium.support.PageFactory;
 
     // Oczekiwany (poprawny) tytuł strony "WlaczModuly"
     private String poprawnyTytulWlaczModuly = "Ustawienia ‹ Platforma kursów online — WordPress";
+
+     @FindBy(xpath ="//span[contains(text(),'Typy produktów')]")
+     private WebElement sekcjaTypyProduktow;
+
+     @FindBy(xpath ="//span[contains(text(),'Marketing i sprzedaż')]")
+     private WebElement sekcjaMarketingSprzedaz;
+
+     @FindBy(xpath ="//span[contains(text(),'Komunikacja')]")
+     private WebElement sekcjaKomunikacja;
+
+     @FindBy(xpath ="//span[contains(text(),'Pliki')]")
+     private WebElement sekcjaPliki;
 
 
 
@@ -75,6 +89,14 @@ import org.openqa.selenium.support.PageFactory;
      public String getAktualnyTytulWlaczModuly() {
          System.out.println("Aktualny tytul strony WlaczModuly: " + driver.getTitle());
          return driver.getTitle();
+     }
+
+     public boolean czyZakladkaWlaczModulyPosiadaWlasciweSekcje() {
+
+         return (wait.waitForVisibility(sekcjaTypyProduktow).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaMarketingSprzedaz).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaKomunikacja).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaPliki).isDisplayed());
      }
 
 

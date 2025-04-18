@@ -1,15 +1,16 @@
-package tests;
+package tests.ustawienia_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.UstawieniaPage;
-import pages.ZaawansowanePage;
+import pages.ustawienia_pages.UstawieniaPage;
+import pages.ustawienia_pages.ZaawansowanePage;
+import tests.TestBase;
 
 
-public class ZaawansowanePageTest extends TestBase  {
+public class ZaawansowanePageTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 
@@ -50,6 +51,14 @@ public class ZaawansowanePageTest extends TestBase  {
         panelPage.kliknijPrzyciskUstawienia();
         ustawieniaPage.kliknijLinkZaawansowane();
         Assert.assertEquals(zaawansowanePage.getAktualnyTytulZaawansowane(), zaawansowanePage.getPoprawnyTytulZaawansowane(),  "Tytul strony Zaawansowane nie jest poprawny");
+    }
+
+    @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce zaawansowane")
+    public void zweryfikujPoprawnoscSekcjiZaawansowane() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijPrzyciskUstawienia();
+        ustawieniaPage.kliknijLinkZaawansowane();
+        Assert.assertTrue(zaawansowanePage.czyZakladkaZaawansowanePosiadaWlasciweSekcje(),   "Sekcje w zakladce zaawansowane nie sa poprawne");
     }
 
 

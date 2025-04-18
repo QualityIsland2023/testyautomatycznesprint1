@@ -1,4 +1,4 @@
-package tests;
+package tests.ustawienia_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -6,10 +6,11 @@ import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
 import pages.SzablonyPage;
-import pages.UstawieniaPage;
+import pages.ustawienia_pages.UstawieniaPage;
+import tests.TestBase;
 
 
-public class SzablonyPageTest extends TestBase  {
+public class SzablonyPageTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 

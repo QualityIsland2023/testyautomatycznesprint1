@@ -1,15 +1,16 @@
-package tests;
+package tests.ustawienia_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.KsiegowePage;
+import pages.ustawienia_pages.KsiegowePage;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.UstawieniaPage;
+import pages.ustawienia_pages.UstawieniaPage;
+import tests.TestBase;
 
 
-public class KsiegowePageTest extends TestBase  {
+public class KsiegowePageTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 
@@ -45,6 +46,14 @@ public class KsiegowePageTest extends TestBase  {
         panelPage.kliknijPrzyciskUstawienia();
         ustawieniaPage.kliknijLinkKsiegowe();
         Assert.assertEquals(ksiegowePage.getAktualnyTytulKsiegowe(), ksiegowePage.getPoprawnyTytulKsiegowe(),  "Tytul strony ksiegowe nie jest poprawny");
+    }
+
+    @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce ksiegowe")
+    public void zweryfikujPoprawnoscSekcjiZakladkaKsiegowe() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijPrzyciskUstawienia();
+        ustawieniaPage.kliknijLinkKsiegowe();
+        Assert.assertTrue(ksiegowePage.czyZakladkaKsiegowePosiadaWlasciweSekcje(),   "Sekcje w zakladce ksiegowe nie sa poprawne");
     }
 
 

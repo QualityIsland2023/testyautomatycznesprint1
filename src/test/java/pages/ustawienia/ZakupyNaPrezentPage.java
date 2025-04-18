@@ -1,7 +1,9 @@
- package pages;
+ package pages.ustawienia_pages;
 
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
  public class ZakupyNaPrezentPage {
@@ -34,6 +36,12 @@ import org.openqa.selenium.support.PageFactory;
 
     // Oczekiwany (poprawny) tytuł strony "Zakupy Na Prezent"
     private String poprawnyTytulZakupyNaPrezent = "Ustawienia ‹ Platforma kursów online — WordPress";
+
+     @FindBy(xpath ="//span[contains(text(),'Zakupy na prezent')]")
+     private WebElement sekcjaZakupyNaPrezent;
+
+     @FindBy(xpath ="//span[contains(text(),'Voucher jako PDF')]")
+     private WebElement sekcjaVoucherJakoPDF;
 
 
 
@@ -75,6 +83,12 @@ import org.openqa.selenium.support.PageFactory;
      public String getAktualnyTytulZakupyNaPrezent() {
          System.out.println("Aktualny tytul strony Zakupy Na Prezent: " + driver.getTitle());
          return driver.getTitle();
+     }
+
+     public boolean czyZakladkaZakupyNaPrezentPosiadaWlasciweSekcje() {
+
+         return (wait.waitForVisibility(sekcjaZakupyNaPrezent).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaVoucherJakoPDF).isDisplayed());
      }
 
 

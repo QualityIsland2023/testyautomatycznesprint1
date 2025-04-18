@@ -1,7 +1,9 @@
- package pages;
+ package pages.ustawienia_pages;
 
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
  public class KoszykZakupowyPage {
@@ -34,6 +36,25 @@ import org.openqa.selenium.support.PageFactory;
 
     // Oczekiwany (poprawny) tytuł strony "Koszyk Zakupowy"
     private String poprawnyTytulKoszykZakupowy = "Ustawienia ‹ Platforma kursów online — WordPress";
+
+     @FindBy(xpath ="//span[contains(text(),'Widok koszyka')]")
+     private WebElement sekcjaWidokKoszyka;
+
+     @FindBy(xpath ="//span[contains(text(),'Dane w formularzu')]")
+     private WebElement sekcjaDaneFormularz;
+
+     @FindBy(xpath ="//span[contains(text(),'Dodatkowe checkboxy')]")
+     private WebElement sekcjaDodatkoweCheckboxy;
+
+     @FindBy(xpath ="//span[contains(text(),'Regulamin')]")
+     private WebElement sekcjaRegulamin;
+
+     @FindBy(xpath ="//span[contains(text(),'Dodatkowe ustawienia')]")
+     private WebElement sekcjaDodatkoweUstawienia;
+
+     @FindBy(xpath ="//span[contains(text(),'Sidebar | stopka (koszyk ofertowy)')]")
+     private WebElement sekcjaSidebarStopka;
+
 
 
 
@@ -77,6 +98,15 @@ import org.openqa.selenium.support.PageFactory;
          return driver.getTitle();
      }
 
+     public boolean czyZakladkaKoszykZakupowyPosiadaWlasciweSekcje() {
+
+         return (wait.waitForVisibility(sekcjaWidokKoszyka).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaDaneFormularz).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaDodatkoweCheckboxy).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaRegulamin).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaDodatkoweUstawienia).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaSidebarStopka).isDisplayed());
+     }
 
 
 
@@ -88,6 +118,8 @@ import org.openqa.selenium.support.PageFactory;
 
 
 
-    /**********************************Operacje na webelementach KONIEC ******************************************/
+
+
+     /**********************************Operacje na webelementach KONIEC ******************************************/
 
 }

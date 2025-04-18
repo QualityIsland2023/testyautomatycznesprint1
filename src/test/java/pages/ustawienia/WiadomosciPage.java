@@ -1,7 +1,9 @@
- package pages;
+ package pages.ustawienia_pages;
 
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
  public class WiadomosciPage {
@@ -34,6 +36,24 @@ import org.openqa.selenium.support.PageFactory;
 
     // Oczekiwany (poprawny) tytuł strony "Wiadomosci"
     private String poprawnyTytulWiadomosci = "Ustawienia ‹ Platforma kursów online — WordPress";
+
+     @FindBy(xpath ="//span[contains(text(),'Nadawca')]")
+     private WebElement sekcjaNadawca;
+
+     @FindBy(xpath ="//span[contains(text(),' Wiadomość wysyłana po zakupie')]")
+     private WebElement sekcjaWiadomoscWysylanaPoZakupie;
+
+     @FindBy(xpath ="//span[contains(text(),' Wiadomość wysyłana po założeniu konta')]")
+     private WebElement sekcjaWiadomoscWysylanaPoZalozeniuKonta;
+
+     @FindBy(xpath ="//span[contains(text(),'Kody rabatowe')]")
+     private WebElement sekcjaKodyRabatowe;
+
+     @FindBy(xpath ="//span[contains(text(),'Raporty')]")
+     private WebElement sekcjaRaporty;
+
+     @FindBy(xpath ="//span[contains(text(),'Przypomnienia')]")
+     private WebElement sekcjaPrzypomnienia;
 
 
 
@@ -75,6 +95,16 @@ import org.openqa.selenium.support.PageFactory;
      public String getAktualnyTytulWiadomosci() {
          System.out.println("Aktualny tytul strony Wiadomosci: " + driver.getTitle());
          return driver.getTitle();
+     }
+
+     public boolean czyZakladkaWiadomosciPosiadaWlasciweSekcje() {
+
+         return (wait.waitForVisibility(sekcjaNadawca).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaWiadomoscWysylanaPoZakupie).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaWiadomoscWysylanaPoZalozeniuKonta).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaKodyRabatowe).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaRaporty).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaPrzypomnienia).isDisplayed());
      }
 
 

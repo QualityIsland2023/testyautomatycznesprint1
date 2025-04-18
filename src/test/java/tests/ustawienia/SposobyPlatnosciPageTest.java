@@ -1,15 +1,16 @@
-package tests;
+package tests.ustawienia_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.SposobyPlatnosciPage;
-import pages.UstawieniaPage;
+import pages.ustawienia_pages.SposobyPlatnosciPage;
+import pages.ustawienia_pages.UstawieniaPage;
+import tests.TestBase;
 
 
-public class SposobyPlatnosciPageTest extends TestBase  {
+public class SposobyPlatnosciPageTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 
@@ -45,6 +46,14 @@ public class SposobyPlatnosciPageTest extends TestBase  {
         panelPage.kliknijPrzyciskUstawienia();
         ustawieniaPage.kliknijLinkSposobyPlatnosci();
         Assert.assertEquals(sposobyPlatnosciPage.getAktualnyTytulSposobyPlatnosci(), sposobyPlatnosciPage.getPoprawnyTytulSposobyPlatnosci(),  "Tytul strony sposoby Platnosci nie jest poprawny");
+    }
+
+    @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce sposoby platnosci")
+    public void zweryfikujPoprawnoscSekcjiZakladkaSposobyPlatnosci() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijPrzyciskUstawienia();
+        ustawieniaPage.kliknijLinkSposobyPlatnosci();
+        Assert.assertTrue(sposobyPlatnosciPage.czyZakladkaSposobyPlatnosciPosiadaWlasciweSekcje(),   "Sekcje w zakladce sposoby platnosci nie sa poprawne");
     }
 
 

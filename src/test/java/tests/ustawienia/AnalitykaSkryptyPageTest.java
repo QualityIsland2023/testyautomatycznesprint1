@@ -1,15 +1,16 @@
-package tests;
+package tests.ustawienia_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.ustawienia.AnalitykaSkryptyPage;
+import pages.ustawienia_pages.AnalitykaSkryptyPage;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.UstawieniaPage;
+import pages.ustawienia_pages.UstawieniaPage;
+import tests.TestBase;
 
 
-public class AnalitykaSkryptyPageTest extends TestBase  {
+public class AnalitykaSkryptyPageTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 
@@ -51,6 +52,14 @@ public class AnalitykaSkryptyPageTest extends TestBase  {
         panelPage.kliknijPrzyciskUstawienia();
         ustawieniaPage.kliknijLinkAnalitykaSkrypty();
         Assert.assertEquals(avalitykaSkryptyPage.getAktualnyTytulAnalitykaSkrypty(), avalitykaSkryptyPage.getPoprawnyTytulAnalitykaSkrypty(),  "Tytul strony AnalitykaSkrypty nie jest poprawny");
+    }
+
+    @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce analityka skrypty")
+    public void zweryfikujPoprawnoscSekcjiAnalitykaSkrypty() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijPrzyciskUstawienia();
+        ustawieniaPage.kliknijLinkAnalitykaSkrypty();
+        Assert.assertTrue(avalitykaSkryptyPage.czyZakladkaAnalitykaSkryptyPosiadaWlasciweSekcje(), "Sekcje w zakladce analityka skrypty nie sa poprawne");
     }
 
 

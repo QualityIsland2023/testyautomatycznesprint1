@@ -1,15 +1,16 @@
-package tests;
+package tests.ustawienia_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.WlaczModulyPage;
-import pages.UstawieniaPage;
+import pages.ustawienia_pages.WlaczModulyPage;
+import pages.ustawienia_pages.UstawieniaPage;
+import tests.TestBase;
 
 
-public class WlaczModulyPageTest extends TestBase  {
+public class WlaczModulyPageTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 
@@ -50,6 +51,14 @@ public class WlaczModulyPageTest extends TestBase  {
         panelPage.kliknijPrzyciskUstawienia();
         ustawieniaPage.kliknijLinkWlaczModuly();
         Assert.assertEquals(wlaczModuly.getAktualnyTytulWlaczModuly(), wlaczModuly.getPoprawnyTytulWlaczModuly(),  "Tytul strony WlaczModuly nie jest poprawny");
+    }
+
+    @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce wlacz moduly")
+    public void zweryfikujPoprawnoscSekcjiWlaczModuly() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijPrzyciskUstawienia();
+        ustawieniaPage.kliknijLinkWlaczModuly();
+        Assert.assertTrue(wlaczModuly.czyZakladkaWlaczModulyPosiadaWlasciweSekcje(),   "Sekcje w zakladce wlacz moduly nie sa poprawne");
     }
 
 

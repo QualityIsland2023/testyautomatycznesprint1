@@ -1,7 +1,9 @@
- package pages;
+ package pages.ustawienia_pages;
 
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
  public class IntegracjePage {
@@ -34,6 +36,21 @@ import org.openqa.selenium.support.PageFactory;
 
     // Oczekiwany (poprawny) tytuł strony "Integracje"
     private String poprawnyTytulIntegracje = "Ustawienia ‹ Platforma kursów online — WordPress";
+
+     @FindBy(xpath ="//span[contains(text(),'Systemy fakturujące')]")
+     private WebElement sekcjaSystemyFakturujace;
+
+     @FindBy(xpath ="//span[contains(text(),'Akcje')]")
+     private WebElement sekcjaAkcje;
+
+     @FindBy(xpath ="//span[contains(text(),'Polskojęzyczne')]")
+     private WebElement sekcjaPolskojezyczne;
+
+     @FindBy(xpath ="//span[contains(text(),'Angielskojęzyczne')]")
+     private WebElement sekcjaAngielskojezyczne;
+
+     @FindBy(xpath ="//span[contains(text(),'Społeczności')]")
+     private WebElement sekcjaSpolecznosci;
 
 
 
@@ -75,6 +92,15 @@ import org.openqa.selenium.support.PageFactory;
      public String getAktualnyTytulIntegracje() {
          System.out.println("Aktualny tytul strony integracje: " + driver.getTitle());
          return driver.getTitle();
+     }
+
+     public boolean czyZakladkaIntegracjePosiadaWlasciweSekcje() {
+
+         return (wait.waitForVisibility(sekcjaSystemyFakturujace).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaAkcje).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaPolskojezyczne).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaAngielskojezyczne).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaSpolecznosci).isDisplayed());
      }
 
 

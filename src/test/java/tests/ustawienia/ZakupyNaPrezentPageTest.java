@@ -1,15 +1,16 @@
-package tests;
+package tests.ustawienia_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.UstawieniaPage;
-import pages.ZakupyNaPrezentPage;
+import pages.ustawienia_pages.UstawieniaPage;
+import pages.ustawienia_pages.ZakupyNaPrezentPage;
+import tests.TestBase;
 
 
-public class ZakupyNaPrezentPageTest extends TestBase  {
+public class ZakupyNaPrezentPageTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 
@@ -50,6 +51,14 @@ public class ZakupyNaPrezentPageTest extends TestBase  {
         panelPage.kliknijPrzyciskUstawienia();
         ustawieniaPage.kliknijLinkZakupyNaPrezent();
         Assert.assertEquals(zakupyNaPrezentPage.getAktualnyTytulZakupyNaPrezent(), zakupyNaPrezentPage.getPoprawnyTytulZakupyNaPrezent(),  "Tytul strony Zakupy Na Prezent nie jest poprawny");
+    }
+
+    @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce zakupy na prezent")
+    public void zweryfikujPoprawnoscSekcjiWiadomosci() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijPrzyciskUstawienia();
+        ustawieniaPage.kliknijLinkZakupyNaPrezent();
+        Assert.assertTrue(zakupyNaPrezentPage.czyZakladkaZakupyNaPrezentPosiadaWlasciweSekcje(),   "Sekcje w zakladce zakupy na prezent nie sa poprawne");
     }
 
 

@@ -1,15 +1,16 @@
-package tests;
+package tests.ustawienia_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.KoszykZakupowyPage;
+import pages.ustawienia_pages.KoszykZakupowyPage;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.UstawieniaPage;
+import pages.ustawienia_pages.UstawieniaPage;
+import tests.TestBase;
 
 
-public class KoszykZakupowyPageTest extends TestBase  {
+public class KoszykZakupowyPageTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 
@@ -52,6 +53,14 @@ public class KoszykZakupowyPageTest extends TestBase  {
         panelPage.kliknijPrzyciskUstawienia();
         ustawieniaPage.kliknijLinkKoszykZakupowy();
         Assert.assertEquals(koszykZakupowyPage.getAktualnyTytulKoszykZakupowy(), koszykZakupowyPage.getPoprawnyTytulKoszykZakupowy(),  "Tytul strony koszyk Zakupowy nie jest poprawny");
+    }
+
+    @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce koszyk zakupowy")
+    public void zweryfikujPoprawnoscSekcjiKoszykZakupowy() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijPrzyciskUstawienia();
+        ustawieniaPage.kliknijLinkKoszykZakupowy();
+        Assert.assertTrue(koszykZakupowyPage.czyZakladkaKoszykZakupowyPosiadaWlasciweSekcje(),   "Sekcje w zakladce koszyk zakupowy nie sa poprawne");
     }
 
 

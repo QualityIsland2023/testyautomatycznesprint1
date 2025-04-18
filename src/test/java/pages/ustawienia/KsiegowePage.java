@@ -1,7 +1,9 @@
- package pages;
+ package pages.ustawienia_pages;
 
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
  public class KsiegowePage {
@@ -34,6 +36,15 @@ import org.openqa.selenium.support.PageFactory;
 
     // Oczekiwany (poprawny) tytuł strony "Ksiegowe"
     private String poprawnyTytulKsiegowe = "Ustawienia ‹ Platforma kursów online — WordPress";
+
+     @FindBy(xpath ="//span[contains(text(),'Waluta')]")
+     private WebElement sekcjaWaluta;
+
+     @FindBy(xpath ="//span[contains(text(),'Fakturowanie')]")
+     private WebElement sekcjaFakturowanie;
+
+     @FindBy(xpath ="//span[contains(text(),'API GUS')]")
+     private WebElement sekcjaAPIGUS;
 
 
 
@@ -76,6 +87,16 @@ import org.openqa.selenium.support.PageFactory;
          System.out.println("Aktualny tytul strony ksiegowe: " + driver.getTitle());
          return driver.getTitle();
      }
+
+     public boolean czyZakladkaKsiegowePosiadaWlasciweSekcje() {
+
+         return (wait.waitForVisibility(sekcjaWaluta).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaFakturowanie).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaAPIGUS).isDisplayed());
+     }
+
+
+
 
 
 

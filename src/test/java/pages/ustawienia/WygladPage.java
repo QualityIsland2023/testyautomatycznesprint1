@@ -1,7 +1,9 @@
- package pages;
+ package pages.ustawienia_pages;
 
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
  public class WygladPage {
@@ -34,6 +36,15 @@ import org.openqa.selenium.support.PageFactory;
 
     // Oczekiwany (poprawny) tytuł strony "Wygląd"
     private String poprawnyTytulWyglad = "Ustawienia ‹ Platforma kursów online — WordPress";
+
+     @FindBy(xpath ="//span[contains(text(),'Ustawienia widoku kursu')]")
+     private WebElement sekcjaUstawieniaWidokuKursu;
+
+     @FindBy(xpath ="//span[contains(text(),'Ustawienia katalogu')]")
+     private WebElement sekcjaUstawieniaKatalogu;
+
+     @FindBy(xpath ="//span[contains(text(),'Ustawienia widoku oferty')]")
+     private WebElement sekcjaUstawieniaWidokuOferty;
 
 
 
@@ -75,6 +86,13 @@ import org.openqa.selenium.support.PageFactory;
      public String getAktualnyTytulWyglad() {
          System.out.println("Aktualny tytul strony wyglad: " + driver.getTitle());
          return driver.getTitle();
+     }
+
+     public boolean czyZakladkaWygladPosiadaWlasciweSekcje() {
+
+         return (wait.waitForVisibility(sekcjaUstawieniaWidokuKursu).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaUstawieniaKatalogu).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaUstawieniaWidokuOferty).isDisplayed());
      }
 
 

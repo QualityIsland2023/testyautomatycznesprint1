@@ -1,15 +1,16 @@
-package tests;
+package tests.ustawienia_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.UstawieniaPage;
-import pages.IntegracjePage;
+import pages.ustawienia_pages.UstawieniaPage;
+import pages.ustawienia_pages.IntegracjePage;
+import tests.TestBase;
 
 
-public class IntegracjePageTest extends TestBase  {
+public class IntegracjePageTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 
@@ -19,7 +20,7 @@ public class IntegracjePageTest extends TestBase  {
     // Obiekt reprezentujący stronę ustawień
     private UstawieniaPage ustawieniaPage;
     // Obiekt reprezentujący stronę "Integracje"
-    private IntegracjePage inegracjePage;
+    private IntegracjePage integracjePage;
     /*****************sekja techniczna KONIEC **********************************************/
 
     @BeforeMethod
@@ -29,7 +30,7 @@ public class IntegracjePageTest extends TestBase  {
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
         ustawieniaPage = new UstawieniaPage(driver);
-        inegracjePage = new IntegracjePage(driver);
+        integracjePage = new IntegracjePage(driver);
     }
 
 
@@ -40,7 +41,7 @@ public class IntegracjePageTest extends TestBase  {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijPrzyciskUstawienia();
         ustawieniaPage.kliknijLinkIntegracje();
-        Assert.assertEquals(inegracjePage.getAktualnyUrlIntegracje(), inegracjePage.getPoprawnyUrlIntegracje(),  "Url strony inegracje nie jest poprawny");
+        Assert.assertEquals(integracjePage.getAktualnyUrlIntegracje(), integracjePage.getPoprawnyUrlIntegracje(),  "Url strony inegracje nie jest poprawny");
     }
 
     // Test weryfikujący, czy tytuł strony "Integracje" jest poprawny
@@ -49,7 +50,15 @@ public class IntegracjePageTest extends TestBase  {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijPrzyciskUstawienia();
         ustawieniaPage.kliknijLinkIntegracje();
-        Assert.assertEquals(inegracjePage.getAktualnyTytulIntegracje(), inegracjePage.getPoprawnyTytulIntegracje(),  "Tytul strony inegracje nie jest poprawny");
+        Assert.assertEquals(integracjePage.getAktualnyTytulIntegracje(), integracjePage.getPoprawnyTytulIntegracje(),  "Tytul strony inegracje nie jest poprawny");
+    }
+
+    @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce integracje")
+    public void zweryfikujPoprawnoscSekcjiIntegracje() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijPrzyciskUstawienia();
+        ustawieniaPage.kliknijLinkIntegracje();
+        Assert.assertTrue(integracjePage.czyZakladkaIntegracjePosiadaWlasciweSekcje(),   "Sekcje w zakladce integracje nie sa poprawne");
     }
 
 

@@ -1,7 +1,9 @@
- package pages.ustawienia;
+ package pages.ustawienia_pages;
 
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
  public class AnalitykaSkryptyPage {
@@ -34,6 +36,15 @@ import org.openqa.selenium.support.PageFactory;
 
     // Oczekiwany (poprawny) tytuł strony "AnalitykaSkrypty"
     private String poprawnyTytulAnalitykaSkrypty = "Ustawienia ‹ Platforma kursów online — WordPress";
+
+     @FindBy(xpath ="//span[contains(text(),'Google')]")
+     private WebElement sekcjaGoogle;
+
+     @FindBy(xpath ="//span[contains(text(),'Facebook')]")
+     private WebElement sekcjaFacebook;
+
+     @FindBy(xpath ="//span[contains(text(),'Dodatkowe skrypty')]")
+     private WebElement sekcjaDodatkoweSkrypty;
 
 
 
@@ -75,6 +86,13 @@ import org.openqa.selenium.support.PageFactory;
      public String getAktualnyTytulAnalitykaSkrypty() {
          System.out.println("Aktualny tytul strony AnalitykaSkrypty: " + driver.getTitle());
          return driver.getTitle();
+     }
+
+     public boolean czyZakladkaAnalitykaSkryptyPosiadaWlasciweSekcje() {
+
+         return (wait.waitForVisibility(sekcjaGoogle).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaFacebook).isDisplayed() &&
+                 wait.waitForVisibility(sekcjaDodatkoweSkrypty).isDisplayed());
      }
 
 

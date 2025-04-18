@@ -1,11 +1,11 @@
-package tests.ustawienia_tests;
+package tests.ustawienia;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
-import pages.ustawienia_pages.CertyfikatyPage;
-import pages.ustawienia_pages.UstawieniaPage;
+import pages.ustawienia.CertyfikatyPage;
+import pages.ustawienia.UstawieniaPage;
 import tests.TestBase;
 
 public class CertyfikatyPageTest extends TestBase {

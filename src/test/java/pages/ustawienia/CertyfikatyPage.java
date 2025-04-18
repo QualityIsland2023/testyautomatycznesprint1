@@ -1,4 +1,4 @@
-package pages.ustawienia_pages;
+package pages.ustawienia;
 import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;

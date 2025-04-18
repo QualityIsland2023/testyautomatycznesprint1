@@ -1,12 +1,12 @@
-package tests.ustawienia_tests;
+package tests.ustawienia;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.ustawienia_pages.KsiegowePage;
+import pages.ustawienia.KsiegowePage;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.ustawienia_pages.UstawieniaPage;
+import pages.ustawienia.UstawieniaPage;
 import tests.TestBase;
 
 

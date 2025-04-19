@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.MediaPage;
 import pages.PanelPage;
+import pages.media.DodajWideoPage;
 import pages.media.WideoPage;
 import tests.TestBase;
 
@@ -15,6 +16,7 @@ public class WideoPageTest extends TestBase {
     private PanelPage panelPage;
     private MediaPage mediaPage;
     private WideoPage wideoPage;
+    private DodajWideoPage dodajWideoPage;
 
     @BeforeMethod
     public void setUpWideoPage() {
@@ -22,7 +24,9 @@ public class WideoPageTest extends TestBase {
         panelPage = new PanelPage(driver);
         mediaPage = new MediaPage(driver);
         wideoPage = new WideoPage(driver);
+        dodajWideoPage = new DodajWideoPage(driver);
     }
+
     // Metoda wewnętrzna - wykonuje wszystkie kroki począwszy od panelu logowania przenosząc nas do strony "Wideo"
     private void przejdzDoZakladkiWideo() {
         loginPageNew.wykonajLogowanie();
@@ -32,17 +36,68 @@ public class WideoPageTest extends TestBase {
 
     // Sprawdza czy adres URL strony "Wideo" jest poprawny
     @Test(priority = 100, enabled = true, description = "Weryfikacja adresu URL strony 'Wideo'")
-    public void weryfikacjaAdresuUrlZakladkiWideo() {
+    public void weryfikacjaAdresuUrlZakladkiWideoTest() {
         przejdzDoZakladkiWideo();
-        Assert.assertEquals(driver.getCurrentUrl(), wideoPage.getPoprawnyUrlStrony(), "Adres URL strony jest niepoprawny.");
+        Assert.assertEquals(driver.getCurrentUrl(), wideoPage.getPoprawnyUrlStrony(),
+                "Adres URL strony jest niepoprawny");
     }
 
     // Sprawdza czy tytuł strony "Wideo" jest poprawny
     @Test(priority = 110, enabled = true, description = "Weryfikacja tytułu strony 'Wideo'")
-    public void weryfikacjaTytuluZakladkiWideo() {
+    public void weryfikacjaTytuluZakladkiWideoTest() {
         przejdzDoZakladkiWideo();
-        Assert.assertEquals(driver.getTitle(), wideoPage.getPoprawnyTytulStrony(), "Tytuł strony jest niepoprawny.");
+        Assert.assertEquals(driver.getTitle(), wideoPage.getPoprawnyTytulStrony(),
+                "Tytuł strony jest niepoprawny");
     }
 
+    // Sprawdza czy button "Dodaj wideo" istnieje
+    @Test(priority = 120, enabled = true, description = "Weryfikacja czy button 'Dodaj wideo' istnieje")
+    public void weryfikacjaCzyButtonDodajWideoIstniejeTest() {
+        przejdzDoZakladkiWideo();
+        Assert.assertTrue(wideoPage.getDodajWideoButton().isDisplayed());
+    }
+
+    // Sprawdza czy button "Typy danych" istnieje
+    @Test(priority = 130, enabled = true, description = "Weryfikacja czy button 'Typy danych' istnieje")
+    public void weryfikacjaCzyButtonTypyDanychIstniejeTest() {
+        przejdzDoZakladkiWideo();
+        Assert.assertTrue(wideoPage.getTypyDanychButton().isDisplayed());
+    }
+
+    // Sprawdza czy po kliknięciu buttona "Typy danych"
+    // pojawia się menu z checkboxami elementów, które mają być widoczne w tabeli
+    @Test(priority = 140, enabled = true, description =
+            "Weryfikacja czy button 'Typy danych' rozwija menu wyboru checkboxów")
+    public void weryfikacjaCzyButtonTypyDanychRozwijaMenuWyboruCheckboxowTest() {
+        przejdzDoZakladkiWideo();
+        wideoPage.kliknijTypyDanychButton();
+
+        int oczekiwanaIloscCheckboxow = 5;
+        int aktualnaIloscCheckboxow = wideoPage.getCheckboxyKolumnTabeli().size();
+
+        Assert.assertEquals(aktualnaIloscCheckboxow, oczekiwanaIloscCheckboxow,
+                "Nie można poprawnie zweryfikować checkboxów w menu 'Typy danych'");
+    }
+
+    // Sprawdza czy po kliknięciu buttona "Dodaj wideo" otwiera się ekran "Prześlij plik wideo"
+    @Test(priority = 150, enabled = true,
+            description = "Weryfikacja czy button 'Dodaj wideo' otwiera stronę 'Prześlij plik wideo'")
+    public void weryfikacjaCzyButtonDodajWideoOtwieraStronePrzeslijPlikWideoTest() {
+        przejdzDoZakladkiWideo();
+
+        wideoPage.kliknijDodajWideoButton();
+        Assert.assertTrue(dodajWideoPage.getNaglowekPrzeslijPlikWideo().isDisplayed(),
+                "Nie znaleziono nagłówka strony 'Prześlij plik wideo'");
+    }
+
+    @Test(priority = 160, enabled = true,
+            description = "Weryfikacja czy button 'Dodaj wideo' otwiera stronę 'Prześlij plik wideo'")
+    public void weryfikacjaCzyPoKliknieciuDodajWideoButtonPojawiSieTextOPobieraniuWideoTest() {
+        przejdzDoZakladkiWideo();
+
+        wideoPage.kliknijDodajWideoButton();
+        Assert.assertTrue(dodajWideoPage.getNieBedzieMozliwosciPobraniaText().isDisplayed(),
+                "Nie znaleziono tekstu o braku możliwości pobrania wgranych na serwer wideo");
+    }
 
 }

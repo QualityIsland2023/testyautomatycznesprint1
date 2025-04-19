@@ -35,16 +35,33 @@ public class DodajWideoPageTest extends TestBase {
 
     // Sprawdza czy adres URL strony "Dodaj wideo" jest poprawny
     @Test(priority = 100, enabled = true, description = "Weryfikacja adresu URL strony 'Dodaj wideo'")
-    public void weryfikacjaAdresuUrlStronyDodajWideo() {
+    public void weryfikacjaAdresuUrlStronyDodajWideoTest() {
         przejdzDoStronyDodajWideo();
-        Assert.assertEquals(driver.getCurrentUrl(), dodajWideoPage.getPoprawnyUrlStrony(), "Adres URL strony jest niepoprawny.");
+        Assert.assertEquals(driver.getCurrentUrl(), dodajWideoPage.getPoprawnyUrlStrony(),
+                "Adres URL strony jest niepoprawny");
     }
 
     // Sprawdza czy tytuł strony "Dodaj wideo" jest poprawny
     @Test(priority = 110, enabled = true, description = "Weryfikacja tytułu strony 'Dodaj wideo'")
-    public void weryfikacjaTytuluStronyDodajWideo() {
+    public void weryfikacjaTytuluStronyDodajWideoTest() {
         przejdzDoStronyDodajWideo();
-        Assert.assertEquals(driver.getTitle(), dodajWideoPage.getPoprawnyTytulStrony(), "Tytuł strony jest niepoprawny.");
+        Assert.assertEquals(driver.getTitle(), dodajWideoPage.getPoprawnyTytulStrony(),
+                "Tytuł strony jest niepoprawny");
+    }
+
+    // Sprawdza czy tytuł strony "Dodaj wideo" jest poprawny
+    @Test(priority = 120, enabled = true, description = "Weryfikacja czy button 'Upuść pliki wideo tutaj' istnieje")
+    public void weryfikacjaCzyIstniejeButtonUpuscPlikiWideoTutaj() {
+        przejdzDoStronyDodajWideo();
+        Assert.assertTrue(dodajWideoPage.getUpuscPlikiWideoTutajButton().isDisplayed(),
+                "Nie znaleziono buttona 'Upuść pliki wideo tutaj'");
+    }
+
+    @Test(priority = 130, enabled = true, description = "Weryfikacja czy button 'Wróć' istnieje")
+    public void weryfikacjaCzyIstniejeButtonWroc() {
+        przejdzDoStronyDodajWideo();
+        Assert.assertTrue(dodajWideoPage.getWrocButton().isDisplayed(),
+                "Nie znaleziono buttona 'Wróć'");
     }
 
 }

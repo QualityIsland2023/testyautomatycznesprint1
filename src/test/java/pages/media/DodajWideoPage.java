@@ -1,4 +1,4 @@
-package pages;
+package pages.media;
 
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
@@ -6,12 +6,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class WideoPage {
+public class DodajWideoPage {
 
     private WebDriver driver;
     private Waits wait;
 
-    public WideoPage(WebDriver driver) {
+    // Poprawny URL podstrony "Dodaj wideo"
+    private String poprawnyUrlWideo = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-video-uploader";
+
+    // Poprawny tytuł podstrony "Dodaj wideo"
+    private String poprawnyTytulWideo = "‹ Platforma kursów online — WordPress";
+
+
+    public DodajWideoPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new Waits(driver);
         PageFactory.initElements(driver, this);
@@ -24,17 +31,6 @@ public class WideoPage {
     public String getPoprawnyTytulStrony() {
         return poprawnyTytulWideo;
     }
-
-    private String poprawnyUrlWideo = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-videos";
-    private String poprawnyTytulWideo = "Wideo ‹ Platforma kursów online — WordPress";
-
-    @FindBy(linkText = "Dodaj wideo")
-    private WebElement dodajWideoButton;
-
-    public void kliknijDodajWideoButton() {
-        dodajWideoButton.click();
-    }
-
 
 
 }

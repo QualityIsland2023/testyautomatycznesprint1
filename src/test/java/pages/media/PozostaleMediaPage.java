@@ -1,4 +1,4 @@
-package pages;
+package pages.media;
 
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +8,13 @@ public class PozostaleMediaPage {
 
     private WebDriver driver;
     private Waits wait;
+
+
+    // Poprawny URL podstrony "Pozostałe media"
+    private String poprawnyUrlPozostaleMedia = "https://mmrmqpr585.publigo.onl/wp-admin/upload.php";
+
+    // Poprawny tytuł podstrony "Pozostałe media"
+    private String poprawnyTytulPozostaleMedia = "Biblioteka mediów ‹ Platforma kursów online — WordPress";
 
     public PozostaleMediaPage(WebDriver driver) {
         this.driver = driver;
@@ -22,9 +29,5 @@ public class PozostaleMediaPage {
     public String getPoprawnyTytulStrony() {
         return poprawnyTytulPozostaleMedia;
     }
-
-    private String poprawnyUrlPozostaleMedia = "https://mmrmqpr585.publigo.onl/wp-admin/upload.php";
-    private String poprawnyTytulPozostaleMedia = "Biblioteka mediów ‹ Platforma kursów online — WordPress";
-
 
 }

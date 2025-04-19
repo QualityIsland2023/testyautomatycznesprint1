@@ -1,10 +1,11 @@
-package tests;
+package tests.mediaTests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.*;
+import pages.media.PozostaleMediaPage;
+import tests.TestBase;
 
 public class PozostaleMediaPageTest extends TestBase {
 
@@ -21,19 +22,21 @@ public class PozostaleMediaPageTest extends TestBase {
         pozostaleMediaPage = new PozostaleMediaPage(driver);
     }
 
-
+    // Metoda wewnętrzna - wykonuje wszystkie kroki począwszy od panelu logowania przenosząc nas do strony "Pozostałe wideo"
     private void przejdzDoZakladkiPozostaleMedia() {
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkiMedia();
         mediaPage.przejdzDoZakladkiPozostaleMedia();
     }
 
+    // Sprawdza czy adres URL strony "Pozostałe media" jest poprawny
     @Test(priority = 100, enabled = true, description = "Weryfikacja adresu URL strony 'Pozostałe media'")
     public void weryfikacjaAdresuUrlZakladkiWideo() {
         przejdzDoZakladkiPozostaleMedia();
         Assert.assertEquals(driver.getCurrentUrl(), pozostaleMediaPage.getPoprawnyUrlStrony(), "Adres URL strony jest niepoprawny.");
     }
 
+    // Sprawdza czy tytuł strony "Pozostałe media" jest poprawny
     @Test(priority = 110, enabled = true, description = "Weryfikacja tytułu strony 'Pozostałe media'")
     public void weryfikacjaTytuluZakladkiWideo() {
         przejdzDoZakladkiPozostaleMedia();

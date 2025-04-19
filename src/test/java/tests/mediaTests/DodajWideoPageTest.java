@@ -1,9 +1,12 @@
-package tests;
+package tests.mediaTests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
+import pages.media.DodajWideoPage;
+import pages.media.WideoPage;
+import tests.TestBase;
 
 public class DodajWideoPageTest extends TestBase {
 
@@ -22,6 +25,7 @@ public class DodajWideoPageTest extends TestBase {
         dodajWideoPage = new DodajWideoPage(driver);
     }
 
+    // Metoda wewnętrzna - wykonuje wszystkie kroki począwszy od panelu logowania przenosząc nas do strony "Dodaj wideo"
     private void przejdzDoStronyDodajWideo() {
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkiMedia();
@@ -29,12 +33,14 @@ public class DodajWideoPageTest extends TestBase {
         wideoPage.kliknijDodajWideoButton();
     }
 
+    // Sprawdza czy adres URL strony "Dodaj wideo" jest poprawny
     @Test(priority = 100, enabled = true, description = "Weryfikacja adresu URL strony 'Dodaj wideo'")
     public void weryfikacjaAdresuUrlStronyDodajWideo() {
         przejdzDoStronyDodajWideo();
         Assert.assertEquals(driver.getCurrentUrl(), dodajWideoPage.getPoprawnyUrlStrony(), "Adres URL strony jest niepoprawny.");
     }
 
+    // Sprawdza czy tytuł strony "Dodaj wideo" jest poprawny
     @Test(priority = 110, enabled = true, description = "Weryfikacja tytułu strony 'Dodaj wideo'")
     public void weryfikacjaTytuluStronyDodajWideo() {
         przejdzDoStronyDodajWideo();

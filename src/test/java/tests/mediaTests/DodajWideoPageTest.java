@@ -49,14 +49,15 @@ public class DodajWideoPageTest extends TestBase {
                 "Tytuł strony jest niepoprawny");
     }
 
-    // Sprawdza czy tytuł strony "Dodaj wideo" jest poprawny
-    @Test(priority = 120, enabled = true, description = "Weryfikacja czy button 'Upuść pliki wideo tutaj' istnieje")
+    // Sprawdza czy button "Upuść pliki wideo tutaj..." istnieje
+    @Test(priority = 120, enabled = true, description = "Weryfikacja czy button 'Upuść pliki wideo tutaj...' istnieje")
     public void weryfikacjaCzyIstniejeButtonUpuscPlikiWideoTutaj() {
         przejdzDoStronyDodajWideo();
         Assert.assertTrue(dodajWideoPage.getUpuscPlikiWideoTutajButton().isDisplayed(),
-                "Nie znaleziono buttona 'Upuść pliki wideo tutaj'");
+                "Nie znaleziono buttona 'Upuść pliki wideo tutaj...'");
     }
 
+    // Sprawdza czy button "Wróć" istnieje na stronie
     @Test(priority = 130, enabled = true, description = "Weryfikacja czy button 'Wróć' istnieje")
     public void weryfikacjaCzyIstniejeButtonWroc() {
         przejdzDoStronyDodajWideo();

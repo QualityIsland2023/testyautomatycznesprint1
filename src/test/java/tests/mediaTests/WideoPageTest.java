@@ -54,14 +54,14 @@ public class WideoPageTest extends TestBase {
     @Test(priority = 120, enabled = true, description = "Weryfikacja czy button 'Dodaj wideo' istnieje")
     public void weryfikacjaCzyButtonDodajWideoIstniejeTest() {
         przejdzDoZakladkiWideo();
-        Assert.assertTrue(wideoPage.getDodajWideoButton().isDisplayed());
+        Assert.assertTrue(wideoPage.getDodajWideoButton().isDisplayed(), "Nie znaleziono buttona 'Dodaj Wideo'");
     }
 
     // Sprawdza czy button "Typy danych" istnieje
     @Test(priority = 130, enabled = true, description = "Weryfikacja czy button 'Typy danych' istnieje")
     public void weryfikacjaCzyButtonTypyDanychIstniejeTest() {
         przejdzDoZakladkiWideo();
-        Assert.assertTrue(wideoPage.getTypyDanychButton().isDisplayed());
+        Assert.assertTrue(wideoPage.getTypyDanychButton().isDisplayed(), "Nie znaleziono buttona 'Typy danych'");
     }
 
     // Sprawdza czy po kliknięciu buttona "Typy danych"
@@ -90,14 +90,15 @@ public class WideoPageTest extends TestBase {
                 "Nie znaleziono nagłówka strony 'Prześlij plik wideo'");
     }
 
+    // Sprawdza czy po kliknięciu buttona "Dodaj wideo" komunikat "Uwaga! Po wczytaniu plików wideo..." jest widoczny "
     @Test(priority = 160, enabled = true,
-            description = "Weryfikacja czy button 'Dodaj wideo' otwiera stronę 'Prześlij plik wideo'")
-    public void weryfikacjaCzyPoKliknieciuDodajWideoButtonPojawiSieTextOPobieraniuWideoTest() {
+            description = "Weryfikacja czy komunikat 'Uwaga! Po wczytaniu plików wideo...' jest widoczny'")
+    public void weryfikacjaCzyPoKliknieciuDodajWideoButtonPojawiSieTekstOPobieraniuWideoTest() {
         przejdzDoZakladkiWideo();
 
         wideoPage.kliknijDodajWideoButton();
         Assert.assertTrue(dodajWideoPage.getNieBedzieMozliwosciPobraniaText().isDisplayed(),
-                "Nie znaleziono tekstu o braku możliwości pobrania wgranych na serwer wideo");
+                "Nie znaleziono tekstu 'Uwaga! Po wczytaniu plików wideo...'");
     }
 
 }

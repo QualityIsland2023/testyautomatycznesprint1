@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
  public class WygladPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
@@ -89,14 +92,37 @@ import org.openqa.selenium.support.PageFactory;
      }
 
      public boolean czyZakladkaWygladPosiadaWlasciweSekcje() {
+         Map<String, WebElement> sekcje = new LinkedHashMap<>();
+         sekcje.put("Ustawienia widoku kursu", sekcjaUstawieniaWidokuKursu);
+         sekcje.put("Ustawienia katalogu", sekcjaUstawieniaKatalogu);
+         sekcje.put("Ustawienia widoku oferty", sekcjaUstawieniaWidokuOferty);
 
-         return (wait.waitForVisibility(sekcjaUstawieniaWidokuKursu).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaUstawieniaKatalogu).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaUstawieniaWidokuOferty).isDisplayed());
+         boolean wszystkieWidoczne = true;
+
+         for (Map.Entry<String, WebElement> entry : sekcje.entrySet()) {
+             String nazwaSekcji = entry.getKey();
+             WebElement elementSekcji = entry.getValue();
+
+             try {
+                 if (!wait.waitForVisibility(elementSekcji).isDisplayed()) {
+                     System.out.println("Sekcja niewidoczna: " + nazwaSekcji);
+                     wszystkieWidoczne = false;
+                 } else {
+                     System.out.println("Sekcja widoczna: " + nazwaSekcji);
+                 }
+             } catch (Exception e) {
+                 System.out.println("Błąd podczas sprawdzania sekcji: " + nazwaSekcji);
+                 e.printStackTrace();
+                 wszystkieWidoczne = false;
+             }
+         }
+
+         return wszystkieWidoczne;
      }
 
 
 
-    /**********************************Operacje na webelementach KONIEC ******************************************/
+
+     /**********************************Operacje na webelementach KONIEC ******************************************/
 
 }

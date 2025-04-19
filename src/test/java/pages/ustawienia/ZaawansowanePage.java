@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
  public class ZaawansowanePage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
@@ -83,8 +86,30 @@ import org.openqa.selenium.support.PageFactory;
      }
 
      public boolean czyZakladkaZaawansowanePosiadaWlasciweSekcje() {
+         Map<String, WebElement> sekcje = new LinkedHashMap<>();
+         sekcje.put("Zaawansowane", sekcjaZaawansowane);
 
-         return wait.waitForVisibility(sekcjaZaawansowane).isDisplayed();
+         boolean wszystkieWidoczne = true;
+
+         for (Map.Entry<String, WebElement> entry : sekcje.entrySet()) {
+             String nazwaSekcji = entry.getKey();
+             WebElement elementSekcji = entry.getValue();
+
+             try {
+                 if (!wait.waitForVisibility(elementSekcji).isDisplayed()) {
+                     System.out.println("Sekcja niewidoczna: " + nazwaSekcji);
+                     wszystkieWidoczne = false;
+                 } else {
+                     System.out.println("Sekcja widoczna: " + nazwaSekcji);
+                 }
+             } catch (Exception e) {
+                 System.out.println("Błąd podczas sprawdzania sekcji: " + nazwaSekcji);
+                 e.printStackTrace();
+                 wszystkieWidoczne = false;
+             }
+         }
+
+         return wszystkieWidoczne;
      }
 
 
@@ -98,6 +123,7 @@ import org.openqa.selenium.support.PageFactory;
 
 
 
-    /**********************************Operacje na webelementach KONIEC ******************************************/
+
+     /**********************************Operacje na webelementach KONIEC ******************************************/
 
 }

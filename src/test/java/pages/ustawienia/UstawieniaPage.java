@@ -6,7 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
  public class UstawieniaPage {
 
@@ -101,7 +104,7 @@ import java.util.List;
      private WebElement sekcjaZarzadzanieKomentarzami;
 
      @FindBy(xpath ="//span[contains(text(),'Administracyjne')]")
-     private WebElement sekcjaAdmininstracyjne;
+     private WebElement sekcjaAdministracyjne;
 
      @FindBy(xpath ="//span[contains(text(),'Stopka')]")
      private WebElement sekcjaStopka;
@@ -179,24 +182,74 @@ import java.util.List;
                  linkZaawansowane.getText().equals("Zaawansowane"));
      }
 
-     public boolean czyMenuGlowneUstawieniaZawieraWlasciwePozycje() {
 
-         return (linkGlowne.isDisplayed() &&
-                 linkSzablony.isDisplayed() &&
-                 linkMenu.isDisplayed() &&
-                 linkUstawieniaWyglad.isDisplayed());
+     public boolean czyMenuGlowneUstawieniaZawieraWlasciwePozycje() {
+         Map<String, WebElement> pozycje = new LinkedHashMap<>();
+         pozycje.put("Główne", linkGlowne);
+         pozycje.put("Szablony", linkSzablony);
+         pozycje.put("Menu", linkMenu);
+         pozycje.put("Wygląd", linkUstawieniaWyglad);
+
+         boolean wszystkieWidoczne = true;
+
+         for (Map.Entry<String, WebElement> entry : pozycje.entrySet()) {
+             String nazwaPozycji = entry.getKey();
+             WebElement elementPozycji = entry.getValue();
+
+             try {
+                 if (!wait.waitForVisibility(elementPozycji).isDisplayed()) {
+                     System.out.println("Pozycja niewidoczna: " + nazwaPozycji);
+                     wszystkieWidoczne = false;
+                 } else {
+                     System.out.println("Pozycja widoczna: " + nazwaPozycji);
+                 }
+             } catch (Exception e) {
+                 System.out.println("Błąd podczas sprawdzania pozycji: " + nazwaPozycji);
+                 e.printStackTrace();
+                 wszystkieWidoczne = false;
+             }
+         }
+
+         return wszystkieWidoczne;
      }
 
-     public boolean czyZakladkaPodstawowePosiadaWlasciweSekcje() {
 
-         return (wait.waitForVisibility(sekcjaSerwis).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaBranding).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaStronyFunkcjonalne).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaZarzadzanieKomentarzami).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaAdmininstracyjne).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaStopka).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaRODO).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaSprzedaz).isDisplayed());
+
+
+     public boolean czyZakladkaPodstawowePosiadaWlasciweSekcje() {
+         Map<String, WebElement> sekcje = new LinkedHashMap<>();
+         sekcje.put("Serwis", sekcjaSerwis);
+         sekcje.put("Branding", sekcjaBranding);
+         sekcje.put("Strony funkcjonalne", sekcjaStronyFunkcjonalne);
+         sekcje.put("Zarządzanie komentarzami", sekcjaZarzadzanieKomentarzami);
+         sekcje.put("Administracyjne", sekcjaAdministracyjne);
+         sekcje.put("Stopka", sekcjaStopka);
+         sekcje.put("RODO", sekcjaRODO);
+         sekcje.put("Sprzedaż", sekcjaSprzedaz);
+
+         boolean wszystkieWidoczne = true;
+
+         for (Map.Entry<String, WebElement> entry : sekcje.entrySet()) {
+             String nazwaSekcji = entry.getKey();
+             WebElement elementSekcji = entry.getValue();
+
+             try {
+                 if (!wait.waitForVisibility(elementSekcji).isDisplayed()) {
+                     System.out.println("Sekcja niewidoczna: " + nazwaSekcji);
+                     wszystkieWidoczne = false;
+                 }
+
+                 else {
+                     System.out.println("Sekcja widoczna: " + nazwaSekcji);
+                 }
+             } catch (Exception e) {
+                 System.out.println("Błąd podczas sprawdzania sekcji: " + nazwaSekcji);
+                 e.printStackTrace();
+                 wszystkieWidoczne = false;
+             }
+         }
+
+         return wszystkieWidoczne;
      }
 
 

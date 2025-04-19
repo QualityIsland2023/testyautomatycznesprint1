@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
  public class KoszykZakupowyPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
@@ -99,14 +102,37 @@ import org.openqa.selenium.support.PageFactory;
      }
 
      public boolean czyZakladkaKoszykZakupowyPosiadaWlasciweSekcje() {
+         Map<String, WebElement> sekcje = new LinkedHashMap<>();
+         sekcje.put("Widok koszyka", sekcjaWidokKoszyka);
+         sekcje.put("Dane w formularzu", sekcjaDaneFormularz);
+         sekcje.put("Dodatkowe checkboxy", sekcjaDodatkoweCheckboxy);
+         sekcje.put("Regulamin", sekcjaRegulamin);
+         sekcje.put("Dodatkowe ustawienia", sekcjaDodatkoweUstawienia);
+         sekcje.put("Sidebar | stopka (koszyk ofertowy)", sekcjaSidebarStopka);
 
-         return (wait.waitForVisibility(sekcjaWidokKoszyka).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaDaneFormularz).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaDodatkoweCheckboxy).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaRegulamin).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaDodatkoweUstawienia).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaSidebarStopka).isDisplayed());
+         boolean wszystkieWidoczne = true;
+
+         for (Map.Entry<String, WebElement> entry : sekcje.entrySet()) {
+             String nazwaSekcji = entry.getKey();
+             WebElement elementSekcji = entry.getValue();
+
+             try {
+                 if (!wait.waitForVisibility(elementSekcji).isDisplayed()) {
+                     System.out.println("Sekcja niewidoczna: " + nazwaSekcji);
+                     wszystkieWidoczne = false;
+                 } else {
+                     System.out.println("Sekcja widoczna: " + nazwaSekcji);
+                 }
+             } catch (Exception e) {
+                 System.out.println("Błąd podczas sprawdzania sekcji: " + nazwaSekcji);
+                 e.printStackTrace();
+                 wszystkieWidoczne = false;
+             }
+         }
+
+         return wszystkieWidoczne;
      }
+
 
 
 

@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
  public class IntegracjePage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
@@ -95,12 +98,34 @@ import org.openqa.selenium.support.PageFactory;
      }
 
      public boolean czyZakladkaIntegracjePosiadaWlasciweSekcje() {
+         Map<String, WebElement> sekcje = new LinkedHashMap<>();
+         sekcje.put("Systemy fakturujące", sekcjaSystemyFakturujace);
+         sekcje.put("Akcje", sekcjaAkcje);
+         sekcje.put("Polskojęzyczne", sekcjaPolskojezyczne);
+         sekcje.put("Angielskojęzyczne", sekcjaAngielskojezyczne);
+         sekcje.put("Społeczności", sekcjaSpolecznosci);
 
-         return (wait.waitForVisibility(sekcjaSystemyFakturujace).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaAkcje).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaPolskojezyczne).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaAngielskojezyczne).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaSpolecznosci).isDisplayed());
+         boolean wszystkieWidoczne = true;
+
+         for (Map.Entry<String, WebElement> entry : sekcje.entrySet()) {
+             String nazwaSekcji = entry.getKey();
+             WebElement elementSekcji = entry.getValue();
+
+             try {
+                 if (!wait.waitForVisibility(elementSekcji).isDisplayed()) {
+                     System.out.println("Sekcja niewidoczna: " + nazwaSekcji);
+                     wszystkieWidoczne = false;
+                 } else {
+                     System.out.println("Sekcja widoczna: " + nazwaSekcji);
+                 }
+             } catch (Exception e) {
+                 System.out.println("Błąd podczas sprawdzania sekcji: " + nazwaSekcji);
+                 e.printStackTrace();
+                 wszystkieWidoczne = false;
+             }
+         }
+
+         return wszystkieWidoczne;
      }
 
 
@@ -114,6 +139,7 @@ import org.openqa.selenium.support.PageFactory;
 
 
 
-    /**********************************Operacje na webelementach KONIEC ******************************************/
+
+     /**********************************Operacje na webelementach KONIEC ******************************************/
 
 }

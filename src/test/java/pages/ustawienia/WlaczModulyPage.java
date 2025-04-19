@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
  public class WlaczModulyPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
@@ -92,11 +95,33 @@ import org.openqa.selenium.support.PageFactory;
      }
 
      public boolean czyZakladkaWlaczModulyPosiadaWlasciweSekcje() {
+         Map<String, WebElement> sekcje = new LinkedHashMap<>();
+         sekcje.put("Typy produktów", sekcjaTypyProduktow);
+         sekcje.put("Marketing i sprzedaż", sekcjaMarketingSprzedaz);
+         sekcje.put("Komunikacja", sekcjaKomunikacja);
+         sekcje.put("Pliki", sekcjaPliki);
 
-         return (wait.waitForVisibility(sekcjaTypyProduktow).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaMarketingSprzedaz).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaKomunikacja).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaPliki).isDisplayed());
+         boolean wszystkieWidoczne = true;
+
+         for (Map.Entry<String, WebElement> entry : sekcje.entrySet()) {
+             String nazwaSekcji = entry.getKey();
+             WebElement elementSekcji = entry.getValue();
+
+             try {
+                 if (!wait.waitForVisibility(elementSekcji).isDisplayed()) {
+                     System.out.println("Sekcja niewidoczna: " + nazwaSekcji);
+                     wszystkieWidoczne = false;
+                 } else {
+                     System.out.println("Sekcja widoczna: " + nazwaSekcji);
+                 }
+             } catch (Exception e) {
+                 System.out.println("Błąd podczas sprawdzania sekcji: " + nazwaSekcji);
+                 e.printStackTrace();
+                 wszystkieWidoczne = false;
+             }
+         }
+
+         return wszystkieWidoczne;
      }
 
 
@@ -110,6 +135,7 @@ import org.openqa.selenium.support.PageFactory;
 
 
 
-    /**********************************Operacje na webelementach KONIEC ******************************************/
+
+     /**********************************Operacje na webelementach KONIEC ******************************************/
 
 }

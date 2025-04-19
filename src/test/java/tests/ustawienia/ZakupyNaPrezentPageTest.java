@@ -54,7 +54,7 @@ public class ZakupyNaPrezentPageTest extends TestBase {
     }
 
     @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce zakupy na prezent")
-    public void zweryfikujPoprawnoscSekcjiWiadomosci() {
+    public void zweryfikujPoprawnoscSekcjiZakupyNaPrezent() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijPrzyciskUstawienia();
         ustawieniaPage.kliknijLinkZakupyNaPrezent();

@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
  public class SposobyPlatnosciPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
@@ -93,12 +96,35 @@ import org.openqa.selenium.support.PageFactory;
      }
 
      public boolean czyZakladkaSposobyPlatnosciPosiadaWlasciweSekcje() {
+         Map<String, WebElement> sekcje = new LinkedHashMap<>();
+         sekcje.put("Konfiguracja i testy", sekcjaKonfiguracjaTesty);
+         sekcje.put("Płatności elektroniczne bankowe oraz cykliczne", sekcjaPlatnosciBankoweCykliczne);
+         sekcje.put("Płatności elektroniczne bankowe", sekcjaPlatnosciElektroniczneBankowe);
+         sekcje.put("Pozostałe typy płatności", sekcjaPozostaleTypyPlatnosci);
 
-         return (wait.waitForVisibility(sekcjaKonfiguracjaTesty).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaPlatnosciBankoweCykliczne).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaPlatnosciElektroniczneBankowe).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaPozostaleTypyPlatnosci).isDisplayed());
+         boolean wszystkieWidoczne = true;
+
+         for (Map.Entry<String, WebElement> entry : sekcje.entrySet()) {
+             String nazwaSekcji = entry.getKey();
+             WebElement elementSekcji = entry.getValue();
+
+             try {
+                 if (!wait.waitForVisibility(elementSekcji).isDisplayed()) {
+                     System.out.println("Sekcja niewidoczna: " + nazwaSekcji);
+                     wszystkieWidoczne = false;
+                 } else {
+                     System.out.println("Sekcja widoczna: " + nazwaSekcji);
+                 }
+             } catch (Exception e) {
+                 System.out.println("Błąd podczas sprawdzania sekcji: " + nazwaSekcji);
+                 e.printStackTrace();
+                 wszystkieWidoczne = false;
+             }
+         }
+
+         return wszystkieWidoczne;
      }
+
 
 
 

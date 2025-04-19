@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
  public class WiadomosciPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
@@ -98,13 +101,35 @@ import org.openqa.selenium.support.PageFactory;
      }
 
      public boolean czyZakladkaWiadomosciPosiadaWlasciweSekcje() {
+         Map<String, WebElement> sekcje = new LinkedHashMap<>();
+         sekcje.put("Nadawca", sekcjaNadawca);
+         sekcje.put("Wiadomość wysyłana po zakupie", sekcjaWiadomoscWysylanaPoZakupie);
+         sekcje.put("Wiadomość wysyłana po założeniu konta", sekcjaWiadomoscWysylanaPoZalozeniuKonta);
+         sekcje.put("Kody rabatowe", sekcjaKodyRabatowe);
+         sekcje.put("Raporty", sekcjaRaporty);
+         sekcje.put("Przypomnienia", sekcjaPrzypomnienia);
 
-         return (wait.waitForVisibility(sekcjaNadawca).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaWiadomoscWysylanaPoZakupie).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaWiadomoscWysylanaPoZalozeniuKonta).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaKodyRabatowe).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaRaporty).isDisplayed() &&
-                 wait.waitForVisibility(sekcjaPrzypomnienia).isDisplayed());
+         boolean wszystkieWidoczne = true;
+
+         for (Map.Entry<String, WebElement> entry : sekcje.entrySet()) {
+             String nazwaSekcji = entry.getKey();
+             WebElement elementSekcji = entry.getValue();
+
+             try {
+                 if (!wait.waitForVisibility(elementSekcji).isDisplayed()) {
+                     System.out.println("Sekcja niewidoczna: " + nazwaSekcji);
+                     wszystkieWidoczne = false;
+                 } else {
+                     System.out.println("Sekcja widoczna: " + nazwaSekcji);
+                 }
+             } catch (Exception e) {
+                 System.out.println("Błąd podczas sprawdzania sekcji: " + nazwaSekcji);
+                 e.printStackTrace();
+                 wszystkieWidoczne = false;
+             }
+         }
+
+         return wszystkieWidoczne;
      }
 
 
@@ -118,6 +143,7 @@ import org.openqa.selenium.support.PageFactory;
 
 
 
-    /**********************************Operacje na webelementach KONIEC ******************************************/
+
+     /**********************************Operacje na webelementach KONIEC ******************************************/
 
 }

@@ -54,6 +54,7 @@ public class AnalitykaSkryptyPageTest extends TestBase {
         Assert.assertEquals(avalitykaSkryptyPage.getAktualnyTytulAnalitykaSkrypty(), avalitykaSkryptyPage.getPoprawnyTytulAnalitykaSkrypty(),  "Tytul strony AnalitykaSkrypty nie jest poprawny");
     }
 
+    // Test weryfikujący poprawność widocznych sekcji w zakładce "Analityka Skrypty"
     @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce analityka skrypty")
     public void zweryfikujPoprawnoscSekcjiAnalitykaSkrypty() {
         loginPageNew.wykonajLogowanie();

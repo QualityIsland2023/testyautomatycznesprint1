@@ -53,6 +53,7 @@ public class WlaczModulyPageTest extends TestBase {
         Assert.assertEquals(wlaczModuly.getAktualnyTytulWlaczModuly(), wlaczModuly.getPoprawnyTytulWlaczModuly(),  "Tytul strony WlaczModuly nie jest poprawny");
     }
 
+    // Test weryfikujący poprawność widocznych sekcji w zakładce "Wlacz moduly"
     @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce wlacz moduly")
     public void zweryfikujPoprawnoscSekcjiWlaczModuly() {
         loginPageNew.wykonajLogowanie();

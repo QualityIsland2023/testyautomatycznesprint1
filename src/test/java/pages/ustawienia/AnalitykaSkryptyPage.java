@@ -34,32 +34,17 @@ import java.util.Map;
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) adres URL strony "AnalitykaSkrypty"
+    // Stałe zawierające poprawne wartości do weryfikacji strony
     private String poprawnyUrlAnalitykaSkrypty = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-settings&autofocus=analytics";
-
-    // Oczekiwany (poprawny) tytuł strony "AnalitykaSkrypty"
     private String poprawnyTytulAnalitykaSkrypty = "Ustawienia ‹ Platforma kursów online — WordPress";
 
-     @FindBy(xpath ="//span[contains(text(),'Google')]")
-     private WebElement sekcjaGoogle;
-
-     @FindBy(xpath ="//span[contains(text(),'Facebook')]")
-     private WebElement sekcjaFacebook;
-
-     @FindBy(xpath ="//span[contains(text(),'Dodatkowe skrypty')]")
-     private WebElement sekcjaDodatkoweSkrypty;
-
-
-
-
-
-
-
+     // Sekcje dostępne w zakładce "Analityka i skrypty"
+     @FindBy(xpath ="//span[contains(text(),'Google')]") private WebElement sekcjaGoogle;
+     @FindBy(xpath ="//span[contains(text(),'Facebook')]") private WebElement sekcjaFacebook;
+     @FindBy(xpath ="//span[contains(text(),'Dodatkowe skrypty')]") private WebElement sekcjaDodatkoweSkrypty;
 
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
-
-
 
 
 
@@ -91,6 +76,7 @@ import java.util.Map;
          return driver.getTitle();
      }
 
+     // Sprawdza, czy wszystkie sekcje w zakładce "AnalitykaSkrypty" są widoczne
      public boolean czyZakladkaAnalitykaSkryptyPosiadaWlasciweSekcje() {
          Map<String, WebElement> sekcje = new LinkedHashMap<>();
          sekcje.put("Google", sekcjaGoogle);

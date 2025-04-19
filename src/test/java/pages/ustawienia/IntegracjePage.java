@@ -34,39 +34,18 @@ import java.util.Map;
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) adres URL strony "Integracje"
+    // Stałe zawierające poprawne wartości do weryfikacji strony
     private String poprawnyUrlIntegracje = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-settings&autofocus=integrations";
-
-    // Oczekiwany (poprawny) tytuł strony "Integracje"
     private String poprawnyTytulIntegracje = "Ustawienia ‹ Platforma kursów online — WordPress";
 
-     @FindBy(xpath ="//span[contains(text(),'Systemy fakturujące')]")
-     private WebElement sekcjaSystemyFakturujace;
-
-     @FindBy(xpath ="//span[contains(text(),'Akcje')]")
-     private WebElement sekcjaAkcje;
-
-     @FindBy(xpath ="//span[contains(text(),'Polskojęzyczne')]")
-     private WebElement sekcjaPolskojezyczne;
-
-     @FindBy(xpath ="//span[contains(text(),'Angielskojęzyczne')]")
-     private WebElement sekcjaAngielskojezyczne;
-
-     @FindBy(xpath ="//span[contains(text(),'Społeczności')]")
-     private WebElement sekcjaSpolecznosci;
-
-
-
-
-
-
-
-
+     // Sekcje dostępne w zakładce "Integracje"
+     @FindBy(xpath ="//span[contains(text(),'Systemy fakturujące')]") private WebElement sekcjaSystemyFakturujace;
+     @FindBy(xpath ="//span[contains(text(),'Akcje')]") private WebElement sekcjaAkcje;
+     @FindBy(xpath ="//span[contains(text(),'Polskojęzyczne')]") private WebElement sekcjaPolskojezyczne;
+     @FindBy(xpath ="//span[contains(text(),'Angielskojęzyczne')]") private WebElement sekcjaAngielskojezyczne;
+     @FindBy(xpath ="//span[contains(text(),'Społeczności')]") private WebElement sekcjaSpolecznosci;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
-
-
-
 
 
 
@@ -97,6 +76,7 @@ import java.util.Map;
          return driver.getTitle();
      }
 
+     // Sprawdza, czy wszystkie sekcje w zakładce "Integracje" są widoczne
      public boolean czyZakladkaIntegracjePosiadaWlasciweSekcje() {
          Map<String, WebElement> sekcje = new LinkedHashMap<>();
          sekcje.put("Systemy fakturujące", sekcjaSystemyFakturujace);

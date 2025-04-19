@@ -54,6 +54,7 @@ public class WygladPageTest extends TestBase {
         Assert.assertEquals(wygladPage.getAktualnyTytulWyglad(), wygladPage.getPoprawnyTytulWyglad(),  "Tytul strony wyglad nie jest poprawny");
     }
 
+    // Test weryfikujący poprawność widocznych sekcji w zakładce "Wyglad"
     @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce wyglad")
     public void zweryfikujPoprawnoscSekcjiWyglad() {
         loginPageNew.wykonajLogowanie();

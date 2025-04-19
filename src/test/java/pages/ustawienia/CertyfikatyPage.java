@@ -1,5 +1,4 @@
 package pages.ustawienia;
-import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,15 +11,15 @@ import java.util.Map;
 public class CertyfikatyPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
-    //przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
-    private static final String login =  PropertiesReader.read("login");
-    private static final String haslo =  PropertiesReader.read("password");
 
-    // Konstruktor, który przyjmuje przeglądarkę, linia techniczna / konfiguracyjna
+    // Obiekt WebDriver, służący do sterowania przeglądarką
     private WebDriver driver;
+    // Obiekt klasy Waits, służący do obsługi  oczekiwań
     private Waits wait;
 
-    //konstrukotor, który tworzy nową instancję strony logowania
+    // Konstruktor klasy AnalitykaSkryptyPage
+    // Inicjalizuje driver oraz obiekt klasy Waits
+    // Inicjalizuje wszystkie elementy strony za pomocą PageFactory
     public CertyfikatyPage(WebDriver driver){
         this.driver = driver;
         this.wait = new Waits(driver);
@@ -31,14 +30,12 @@ public class CertyfikatyPage {
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) adres URL strony "Certyfikaty"
+    // Stałe zawierające poprawne wartości do weryfikacji strony
     private String poprawnyUrlCertyfikaty = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-settings&autofocus=certificate";
-
-    // Oczekiwany (poprawny) tytuł strony "Certyfikaty"
     private String poprawnyTytulCertyfikaty = "Ustawienia ‹ Platforma kursów online — WordPress";
 
-    @FindBy(xpath ="//span[contains(text(),'Certyfikaty')]")
-    private WebElement sekcjaCertyfikaty;
+    // Sekcje dostępne w zakładce "Certyfikaty"
+    @FindBy(xpath ="//span[contains(text(),'Certyfikaty')]") private WebElement sekcjaCertyfikaty;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
@@ -69,6 +66,7 @@ public class CertyfikatyPage {
         return driver.getTitle();
     }
 
+    // Sprawdza, czy wszystkie sekcje w zakładce "Certyfikaty" są widoczne
     public boolean czyZakladkaCertyfikatyPosiadaWlasciweSekcje() {
         Map<String, WebElement> sekcje = new LinkedHashMap<>();
         sekcje.put("Certyfikaty", sekcjaCertyfikaty);

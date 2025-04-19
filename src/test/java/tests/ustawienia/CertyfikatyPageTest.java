@@ -12,7 +12,7 @@ public class CertyfikatyPageTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 
-    private LoginPageNew loginPageNew; //instancja strony logowania
+    private LoginPageNew loginPageNew;
     private PanelPage panelPage;
     private UstawieniaPage ustawieniaPage;
     private CertyfikatyPage certyfikatyPage;
@@ -21,7 +21,8 @@ public class CertyfikatyPageTest extends TestBase {
 
     @BeforeMethod
     public void setUPLoginPage() {
-        //inicjalizacja strony logowania , linijka techniczna, konfiguracyjna
+        // Metoda uruchamiana przed każdym testem
+        // Inicjalizacja obiektów stron potrzebnych do wykonania testów
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
         ustawieniaPage = new UstawieniaPage(driver);
@@ -46,6 +47,7 @@ public class CertyfikatyPageTest extends TestBase {
         Assert.assertEquals(certyfikatyPage.getAktualnyTytulCertyfikaty(), certyfikatyPage.getPoprawnyTytulCertyfikaty(),  "Tytul strony Certyfikaty nie jest poprawny");
     }
 
+    // Test weryfikujący poprawność widocznych sekcji w zakładce "Certyfikaty"
     @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce certyfikaty")
     public void zweryfikujPoprawnoscSekcjiCertyfikaty() {
         loginPageNew.wykonajLogowanie();

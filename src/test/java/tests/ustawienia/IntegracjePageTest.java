@@ -53,6 +53,7 @@ public class IntegracjePageTest extends TestBase {
         Assert.assertEquals(integracjePage.getAktualnyTytulIntegracje(), integracjePage.getPoprawnyTytulIntegracje(),  "Tytul strony inegracje nie jest poprawny");
     }
 
+    // Test weryfikujący poprawność widocznych sekcji w zakładce "Integracje"
     @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce integracje")
     public void zweryfikujPoprawnoscSekcjiIntegracje() {
         loginPageNew.wykonajLogowanie();

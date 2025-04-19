@@ -23,7 +23,8 @@ public class SzablonyPageTest extends TestBase {
 
     @BeforeMethod
     public void setUpSzablonyPage(){
-        //inicjalizacja strony szablony , linijka techniczna, konfiguracyjna
+        // Metoda uruchamiana przed każdym testem
+        // Inicjalizacja obiektów stron potrzebnych do wykonania testów
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
         ustawieniaPage = new UstawieniaPage(driver);
@@ -32,6 +33,7 @@ public class SzablonyPageTest extends TestBase {
 
 
 
+    // Test weryfikujący, czy adres URL strony "Szablony" jest poprawny
     @Test(priority = 110, enabled = true, description = "Weryfikacja url strony szablony")
     public void zweryfikujPoprawnyUrlUSzablony() {
         loginPageNew.wykonajLogowanie();
@@ -40,6 +42,7 @@ public class SzablonyPageTest extends TestBase {
         Assert.assertEquals(szablonyPage.getAktualnyUrlSzablony(), szablonyPage.getPoprawnyUrlSzablony(),  "Url strony szablony nie jest poprawny");
     }
 
+    // Test weryfikujący, czy tytuł strony "Szablony" jest poprawny
     @Test(priority = 120, enabled = true, description = "Weryfikacja tytulu strony szablony")
     public void zweryfikujPoprawnyTytulUSzablony() {
         loginPageNew.wykonajLogowanie();

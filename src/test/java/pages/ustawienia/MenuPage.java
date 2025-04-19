@@ -31,17 +31,10 @@ import org.openqa.selenium.support.PageFactory;
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) adres URL strony "Menu"
+
+    // Stałe zawierające poprawne wartości do weryfikacji strony
     private String poprawnyUrlMenu = "https://mmrmqpr585.publigo.onl/wp-admin/nav-menus.php";
-
-     // Oczekiwany (poprawny) tytuł strony "Menu"
     private String poprawnyTytulMenu = "Menu ‹ Platforma kursów online — WordPress";
-
-
-
-
-
-
 
 
 

@@ -23,7 +23,8 @@ public class SposobyPlatnosciPageTest extends TestBase {
 
     @BeforeMethod
     public void setUpSposobyPlatnosciPage(){
-        //inicjalizacja strony sposoby Platnosci , linijka techniczna, konfiguracyjna
+        // Metoda uruchamiana przed każdym testem
+        // Inicjalizacja obiektów stron potrzebnych do wykonania testów
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
         ustawieniaPage = new UstawieniaPage(driver);
@@ -32,6 +33,7 @@ public class SposobyPlatnosciPageTest extends TestBase {
 
 
 
+    // Test weryfikujący, czy adres URL strony "Sposoby platnosci" jest poprawny
     @Test(priority = 110, enabled = true, description = "Weryfikacja url strony sposoby Platnosci")
     public void zweryfikujPoprawnyUrlSposobyPlatnosci() {
         loginPageNew.wykonajLogowanie();
@@ -40,6 +42,7 @@ public class SposobyPlatnosciPageTest extends TestBase {
         Assert.assertEquals(sposobyPlatnosciPage.getAktualnyUrlSposobyPlatnosci(), sposobyPlatnosciPage.getPoprawnyUrlSposobyPlatnosci(),  "Url strony sposoby Platnosci nie jest poprawny");
     }
 
+    // Test weryfikujący, czy tytuł strony "Sposoby platnosci" jest poprawny
     @Test(priority = 120, enabled = true, description = "Weryfikacja tytulu strony sposoby Platnosci")
     public void zweryfikujPoprawnyTytulSposobyPlatnosci() {
         loginPageNew.wykonajLogowanie();
@@ -48,6 +51,7 @@ public class SposobyPlatnosciPageTest extends TestBase {
         Assert.assertEquals(sposobyPlatnosciPage.getAktualnyTytulSposobyPlatnosci(), sposobyPlatnosciPage.getPoprawnyTytulSposobyPlatnosci(),  "Tytul strony sposoby Platnosci nie jest poprawny");
     }
 
+    // Test weryfikujący poprawność widocznych sekcji w zakładce "Sposoby platnosci"
     @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce sposoby platnosci")
     public void zweryfikujPoprawnoscSekcjiZakladkaSposobyPlatnosci() {
         loginPageNew.wykonajLogowanie();

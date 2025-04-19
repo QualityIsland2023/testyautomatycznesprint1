@@ -23,7 +23,8 @@ public class MenuPageTest extends TestBase {
 
     @BeforeMethod
     public void setUpMenuPage(){
-        //inicjalizacja strony menu , linijka techniczna, konfiguracyjna
+        // Metoda uruchamiana przed każdym testem
+        // Inicjalizacja obiektów stron potrzebnych do wykonania testów
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
         ustawieniaPage = new UstawieniaPage(driver);
@@ -32,6 +33,7 @@ public class MenuPageTest extends TestBase {
 
 
 
+    // Test weryfikujący, czy adres URL strony "Menu" jest poprawny
     @Test(priority = 110, enabled = true, description = "Weryfikacja url strony menu")
     public void zweryfikujPoprawnyUrlUMenu() {
         loginPageNew.wykonajLogowanie();
@@ -40,6 +42,7 @@ public class MenuPageTest extends TestBase {
         Assert.assertEquals(menuPage.getAktualnyUrlMenu(), menuPage.getPoprawnyUrlMenu(),  "Url strony menu nie jest poprawny");
     }
 
+    // Test weryfikujący, czy tytul strony "Menu" jest poprawny
     @Test(priority = 120, enabled = true, description = "Weryfikacja tytulu strony menu")
     public void zweryfikujPoprawnyTytulUMenu() {
         loginPageNew.wykonajLogowanie();
@@ -47,11 +50,6 @@ public class MenuPageTest extends TestBase {
         ustawieniaPage.kliknijLinkMenu();
         Assert.assertEquals(menuPage.getAktualnyTytulMenu(), menuPage.getPoprawnyTytulMenu(),  "Tytul strony menu nie jest poprawny");
     }
-
-
-
-
-
 
 
 }

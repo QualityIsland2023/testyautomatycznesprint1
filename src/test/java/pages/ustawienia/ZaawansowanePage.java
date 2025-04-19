@@ -34,28 +34,14 @@ import java.util.Map;
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) adres URL strony "Zaawansowane"
+    // Stałe zawierające poprawne wartości do weryfikacji strony
     private String poprawnyUrlZaawansowane = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-settings&autofocus=advanced";
-
-    // Oczekiwany (poprawny) tytuł strony "Zaawansowane"
     private String poprawnyTytulZaawansowane = "Ustawienia ‹ Platforma kursów online — WordPress";
 
-     @FindBy(xpath ="//span[contains(text(),'Zaawansowane')]")
-     private WebElement sekcjaZaawansowane;
-
-
-
-
-
-
-
-
+     // Sekcje dostępne w zakładce "Zaawansowane"
+     @FindBy(xpath ="//span[contains(text(),'Zaawansowane')]") private WebElement sekcjaZaawansowane;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
-
-
-
-
 
 
     /****************************Operacje na webelementach START **********************************************/
@@ -85,6 +71,7 @@ import java.util.Map;
          return driver.getTitle();
      }
 
+     // Sprawdza, czy wszystkie sekcje w zakładce "Zaawansowane" są widoczne
      public boolean czyZakladkaZaawansowanePosiadaWlasciweSekcje() {
          Map<String, WebElement> sekcje = new LinkedHashMap<>();
          sekcje.put("Zaawansowane", sekcjaZaawansowane);
@@ -111,18 +98,6 @@ import java.util.Map;
 
          return wszystkieWidoczne;
      }
-
-
-
-
-
-
-
-
-
-
-
-
 
      /**********************************Operacje na webelementach KONIEC ******************************************/
 

@@ -34,34 +34,17 @@ import java.util.Map;
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) adres URL strony "Wygląd"
+    // Stałe zawierające poprawne wartości do weryfikacji strony
     private String poprawnyUrlWyglad = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-settings&autofocus=design";
-
-    // Oczekiwany (poprawny) tytuł strony "Wygląd"
     private String poprawnyTytulWyglad = "Ustawienia ‹ Platforma kursów online — WordPress";
 
-     @FindBy(xpath ="//span[contains(text(),'Ustawienia widoku kursu')]")
-     private WebElement sekcjaUstawieniaWidokuKursu;
-
-     @FindBy(xpath ="//span[contains(text(),'Ustawienia katalogu')]")
-     private WebElement sekcjaUstawieniaKatalogu;
-
-     @FindBy(xpath ="//span[contains(text(),'Ustawienia widoku oferty')]")
-     private WebElement sekcjaUstawieniaWidokuOferty;
-
-
-
-
-
-
-
+     // Sekcje dostępne w zakładce "Wyglad"
+     @FindBy(xpath ="//span[contains(text(),'Ustawienia widoku kursu')]") private WebElement sekcjaUstawieniaWidokuKursu;
+     @FindBy(xpath ="//span[contains(text(),'Ustawienia katalogu')]") private WebElement sekcjaUstawieniaKatalogu;
+     @FindBy(xpath ="//span[contains(text(),'Ustawienia widoku oferty')]") private WebElement sekcjaUstawieniaWidokuOferty;
 
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
-
-
-
-
 
 
     /****************************Operacje na webelementach START **********************************************/
@@ -91,6 +74,7 @@ import java.util.Map;
          return driver.getTitle();
      }
 
+     // Sprawdza, czy wszystkie sekcje w zakładce "Wyglad" są widoczne
      public boolean czyZakladkaWygladPosiadaWlasciweSekcje() {
          Map<String, WebElement> sekcje = new LinkedHashMap<>();
          sekcje.put("Ustawienia widoku kursu", sekcjaUstawieniaWidokuKursu);
@@ -119,8 +103,6 @@ import java.util.Map;
 
          return wszystkieWidoczne;
      }
-
-
 
 
      /**********************************Operacje na webelementach KONIEC ******************************************/

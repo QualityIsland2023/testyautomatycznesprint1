@@ -16,11 +16,12 @@ import java.util.Map;
     /************************Seckja techniczno konfiguracyjna START **********************************************/
 
 
-    // Konstruktor, który przyjmuje przeglądarkę, linia techniczna / konfiguracyjna
+    // Przeglądarka używana do wykonywania operacji testowych
     private WebDriver driver;
+    // Pomocnicza klasa do czekania na widoczność i klikalność elementów
     private Waits wait;
 
-    //konstrukotor, który tworzy nową instancję strony logowania
+    // Konstruktor strony inicjalizuje pola i elementy strony
     public UstawieniaPage(WebDriver driver){
         this.driver = driver;
         this.wait = new Waits(driver);
@@ -32,94 +33,43 @@ import java.util.Map;
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) adres URL strony "Ustawienia"
+    // Stałe zawierające poprawne wartości do weryfikacji strony
     private String poprawnyUrlUstawienia = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-settings&autofocus=general";
-
-     // Oczekiwany (poprawny) tytul strony "Ustawienia"
     private String poprawnyTytulUstawienia = "Ustawienia ‹ Platforma kursów online — WordPress";
-
     private Integer poprawnaIloscPozycjiMenuBoczne = 12;
 
-     @FindBy(xpath ="//a[contains(text(),'Główne')]")
-     private WebElement linkGlowne;
+     // Główne zakładki menu (lewa kolumna)
+     @FindBy(xpath = "//a[contains(text(),'Główne')]") private WebElement linkGlowne;
+     @FindBy(xpath = "//a[contains(text(),'Szablony')]") private WebElement linkSzablony;
+     @FindBy(xpath = "//a[contains(text(),'Menu')]") private WebElement linkMenu;
+     @FindBy(xpath = "//a[contains(text(),'Wygląd')]") private WebElement linkUstawieniaWyglad;
 
-     @FindBy(xpath ="//a[contains(text(),'Szablony')]")
-     private WebElement linkSzablony;
+     // Zakładki poziome w głównym widoku strony ustawień
+     @FindBy(id = "general") private WebElement linkPodstawowe;
+     @FindBy(id = "accounting") private WebElement linkKsiegowe;
+     @FindBy(id = "payments") private WebElement linkSposobyPlatnosci;
+     @FindBy(id = "design") private WebElement linkWyglad;
+     @FindBy(id = "integrations") private WebElement linkIntegracje;
+     @FindBy(id = "cart") private WebElement linkKoszykZakupowy;
+     @FindBy(id = "messages") private WebElement linkWiadomosci;
+     @FindBy(id = "gift") private WebElement linkZakupyNaPrezent;
+     @FindBy(id = "certificate") private WebElement linkCertyfikaty;
+     @FindBy(id = "analytics") private WebElement linkAnalitykaSkrypty;
+     @FindBy(id = "modules") private WebElement linkWlaczModuly;
+     @FindBy(id = "advanced") private WebElement linkZaawansowane;
 
-     @FindBy(xpath ="//a[contains(text(),'Menu')]")
-     private WebElement linkMenu;
+     // Lista wszystkich pozycji menu bocznego (ikony)
+     @FindBy(className = "set-ico") private List<WebElement> pozycjeMenuBoczne;
 
-     @FindBy(xpath ="//a[contains(text(),'Wygląd')]")
-     private WebElement linkUstawieniaWyglad;
-
-     @FindBy(id ="general")
-     private WebElement linkPodstawowe;
-
-     @FindBy(id ="accounting")
-     private WebElement linkKsiegowe;
-
-     @FindBy(id ="payments")
-     private WebElement linkSposobyPlatnosci;
-
-     @FindBy(id ="design")
-     private WebElement linkWyglad;
-
-     @FindBy(id ="integrations")
-     private WebElement linkIntegracje;
-
-     @FindBy(id ="cart")
-     private WebElement linkKoszykZakupowy;
-
-     @FindBy(id ="messages")
-     private WebElement linkWiadomosci;
-
-     @FindBy(id ="gift")
-     private WebElement linkZakupyNaPrezent;
-
-     @FindBy(id ="certificate")
-     private WebElement linkCertyfikaty;
-
-     @FindBy(id ="analytics")
-     private WebElement linkAnalitykaSkrypty;
-
-     @FindBy(id ="modules")
-     private WebElement linkWlaczModuly;
-
-     @FindBy(id ="advanced")
-     private WebElement linkZaawansowane;
-
-     @FindBy(className = "set-ico")
-     private List<WebElement> pozycjeMenuBoczne;
-
-     @FindBy(xpath ="//span[contains(text(),'Serwis')]")
-     private WebElement sekcjaSerwis;
-
-     @FindBy(xpath ="//span[contains(text(),'Branding')]")
-     private WebElement sekcjaBranding;
-
-     @FindBy(xpath ="//span[contains(text(),'Strony funkcjonalne')]")
-     private WebElement sekcjaStronyFunkcjonalne;
-
-     @FindBy(xpath ="//span[contains(text(),'Zarządzanie komentarzami')]")
-     private WebElement sekcjaZarzadzanieKomentarzami;
-
-     @FindBy(xpath ="//span[contains(text(),'Administracyjne')]")
-     private WebElement sekcjaAdministracyjne;
-
-     @FindBy(xpath ="//span[contains(text(),'Stopka')]")
-     private WebElement sekcjaStopka;
-
-     @FindBy(xpath ="//span[contains(text(),'RODO')]")
-     private WebElement sekcjaRODO;
-
-     @FindBy(xpath ="//span[contains(text(),'Sprzedaż')]")
-     private WebElement sekcjaSprzedaz;
-
-
-
-
-
-
+     // Sekcje dostępne w zakładce "Podstawowe"
+     @FindBy(xpath = "//span[contains(text(),'Serwis')]") private WebElement sekcjaSerwis;
+     @FindBy(xpath = "//span[contains(text(),'Branding')]") private WebElement sekcjaBranding;
+     @FindBy(xpath = "//span[contains(text(),'Strony funkcjonalne')]") private WebElement sekcjaStronyFunkcjonalne;
+     @FindBy(xpath = "//span[contains(text(),'Zarządzanie komentarzami')]") private WebElement sekcjaZarzadzanieKomentarzami;
+     @FindBy(xpath = "//span[contains(text(),'Administracyjne')]") private WebElement sekcjaAdministracyjne;
+     @FindBy(xpath = "//span[contains(text(),'Stopka')]") private WebElement sekcjaStopka;
+     @FindBy(xpath = "//span[contains(text(),'RODO')]") private WebElement sekcjaRODO;
+     @FindBy(xpath = "//span[contains(text(),'Sprzedaż')]") private WebElement sekcjaSprzedaz;
 
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
@@ -156,16 +106,19 @@ import java.util.Map;
          return driver.getTitle();
      }
 
+     // Zwraca i wypisuje liczbę aktualnie widocznych pozycji menu bocznego
      public Integer aktualnaLiczbaPozycjiMenuBoczne() {
         System.out.println("Aktualna ilosc pozycji menu boczne: " + pozycjeMenuBoczne.size());
         return pozycjeMenuBoczne.size();
      }
 
+     // Zwraca i wypisuje poprawną, oczekiwaną liczbę pozycji menu bocznego
      public Integer zwrocPoprawnaIloscPozycjiMenuBoczne() {
         System.out.println("Pooprawna ilosc pozycji menu boczne: " + poprawnaIloscPozycjiMenuBoczne);
         return poprawnaIloscPozycjiMenuBoczne;
      }
 
+     // Weryfikuje, czy wszystkie zakładki bocznego menu posiadają poprawne napisy
      public boolean czyPozycjeMenuBoczneUstawieniaSaPoprawne() {
 
          return (linkPodstawowe.getText().equals("Podstawowe") &&
@@ -183,6 +136,7 @@ import java.util.Map;
      }
 
 
+     // Sprawdza, czy zakładki w głównym menu są widoczne
      public boolean czyMenuGlowneUstawieniaZawieraWlasciwePozycje() {
          Map<String, WebElement> pozycje = new LinkedHashMap<>();
          pozycje.put("Główne", linkGlowne);
@@ -214,8 +168,7 @@ import java.util.Map;
      }
 
 
-
-
+     // Sprawdza, czy wszystkie sekcje w zakładce "Podstawowe" są widoczne
      public boolean czyZakladkaPodstawowePosiadaWlasciweSekcje() {
          Map<String, WebElement> sekcje = new LinkedHashMap<>();
          sekcje.put("Serwis", sekcjaSerwis);
@@ -253,8 +206,7 @@ import java.util.Map;
      }
 
 
-
-
+     // Kliknięcia w odpowiednie zakładki
      public void kliknijLinkSzablony() {
          wait.waitForClickability(linkSzablony).click();
      }

@@ -10,13 +10,13 @@ import pages.SprzedazKlienciPage;
 
 public class SprzedazKlienciPageTest extends TestBase {
 
-    /**************** Sekcja techniczna START **********************************************/
+    //**************** Sekcja techniczna START **********************************************/
 
     private LoginPageNew loginPageNew;
     private PanelPage panelPage;
     private SprzedazKlienciPage sprzedazKlienciPage; //instancja strony logowania
 
-    /***************** Sekcja techniczna KONIEC **********************************************/
+    //***************** Sekcja techniczna KONIEC **********************************************/
 
     @BeforeMethod
     public void setUPLoginPage(){
@@ -27,7 +27,7 @@ public class SprzedazKlienciPageTest extends TestBase {
     }
 
 
-    @Test(priority = 10, enabled = true, description = "Weryfikacja tytyłu strony KLIENCI")
+    @Test(priority = 10, enabled = true, description = "Weryfikacja tytułu strony KLIENCI")
     public void weryfikacjaTytuluStronyKlienci(){
 
         loginPageNew.wykonajLogowanie();;

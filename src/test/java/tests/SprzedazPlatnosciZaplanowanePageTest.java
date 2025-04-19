@@ -10,13 +10,13 @@ import pages.SprzedazPlatnosciZaplanowanePage;
 
 public class SprzedazPlatnosciZaplanowanePageTest extends TestBase {
 
-    /**************** Sekcja techniczna START **********************************************/
+    //**************** Sekcja techniczna START **********************************************/
 
     private LoginPageNew loginPageNew;
     private PanelPage panelPage;
     private SprzedazPlatnosciZaplanowanePage sprzedazPlatnosciZaplanowanePage; //instancja strony logowania
 
-    /***************** Sekcja techniczna KONIEC **********************************************/
+    //***************** Sekcja techniczna KONIEC **********************************************/
 
     @BeforeMethod
     public void setUPLoginPage(){
@@ -27,7 +27,7 @@ public class SprzedazPlatnosciZaplanowanePageTest extends TestBase {
     }
 
 
-    @Test(priority = 10, enabled = true, description = "Weryfikacja tytyłu strony PŁATNOŚCI ZAPLANOWANE")
+    @Test(priority = 10, enabled = true, description = "Weryfikacja tytułu strony PŁATNOŚCI ZAPLANOWANE")
     public void weryfikacjaTytuluStronyPlatnosciZaplanowane(){
 
         loginPageNew.wykonajLogowanie();

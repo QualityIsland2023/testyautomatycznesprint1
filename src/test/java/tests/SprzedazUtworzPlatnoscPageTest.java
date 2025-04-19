@@ -11,7 +11,7 @@ import pages.SprzedazZamowieniaPage;
 
 public class SprzedazUtworzPlatnoscPageTest extends TestBase {
 
-    /**************** Sekcja techniczna START **********************************************/
+    //**************** Sekcja techniczna START **********************************************/
 
     private LoginPageNew loginPageNew;
     private PanelPage panelPage;
@@ -19,7 +19,7 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
     private SprzedazUtworzPlatnoscPage sprzedazUtworzPlatnoscPage;
 
 
-    /***************** Sekcja techniczna KONIEC **********************************************/
+    //***************** Sekcja techniczna KONIEC **********************************************/
 
     @BeforeMethod
     public void setUPLoginPage(){
@@ -30,7 +30,7 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
         sprzedazUtworzPlatnoscPage = new SprzedazUtworzPlatnoscPage(driver);
     }
 
-    @Test(priority = 10, enabled = true, description = "Weryfikacja tytyłu strony UTWÓRZ PŁATNOŚĆ")
+    @Test(priority = 10, enabled = true, description = "Weryfikacja tytułu strony UTWÓRZ PŁATNOŚĆ")
     public void weryfikacjaTytuluStronyUtworzPlatnosc(){
 
         loginPageNew.wykonajLogowanie();

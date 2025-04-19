@@ -10,13 +10,13 @@ import pages.SprzedazKodyZnizkowePage;
 
 public class SprzedazKodyZnizkowePageTest extends TestBase {
 
-    /**************** Sekcja techniczna START **********************************************/
+    //**************** Sekcja techniczna START **********************************************/
 
     private LoginPageNew loginPageNew;
     private PanelPage panelPage;
     private SprzedazKodyZnizkowePage sprzedazKodyZnizkowePage; //instancja strony logowania
 
-    /***************** Sekcja techniczna KONIEC **********************************************/
+    //***************** Sekcja techniczna KONIEC **********************************************/
 
     @BeforeMethod
     public void setUPLoginPage(){
@@ -26,7 +26,7 @@ public class SprzedazKodyZnizkowePageTest extends TestBase {
         sprzedazKodyZnizkowePage = new SprzedazKodyZnizkowePage(driver);
     }
 
-    @Test(priority = 10, enabled = true, description = "Weryfikacja tytyłu strony KODY ZNIŻKOWE")
+    @Test(priority = 10, enabled = true, description = "Weryfikacja tytułu strony KODY ZNIŻKOWE")
     public void weryfikacjaTytuluStronyKodyZnizkowe(){
 
         loginPageNew.wykonajLogowanie();

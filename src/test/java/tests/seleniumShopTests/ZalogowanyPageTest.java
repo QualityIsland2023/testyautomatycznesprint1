@@ -1,15 +1,11 @@
-package tests;
+package tests.seleniumShopTests;
 
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
-import pages.AdresyPage;
-import pages.LoginPage;
-import pages.MainPage;
-import pages.ZalogowanyPage;
+import pages.seleniumShop.ZalogowanyPage;
+import tests.TestBase;
 
 
-public class ZalogowanyPageTest extends TestBase  {
+public class ZalogowanyPageTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 

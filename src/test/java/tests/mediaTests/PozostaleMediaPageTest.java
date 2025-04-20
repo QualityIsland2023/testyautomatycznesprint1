@@ -22,7 +22,8 @@ public class PozostaleMediaPageTest extends TestBase {
         pozostaleMediaPage = new PozostaleMediaPage(driver);
     }
 
-    // Metoda wewnętrzna - wykonuje wszystkie kroki począwszy od panelu logowania przenosząc nas do strony "Pozostałe wideo"
+    // Metoda wewnętrzna - wykonuje wszystkie kroki począwszy
+    // od panelu logowania przenosząc nas do strony "Pozostałe wideo"
     private void przejdzDoZakladkiPozostaleMedia() {
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkiMedia();
@@ -46,7 +47,8 @@ public class PozostaleMediaPageTest extends TestBase {
     }
 
     // Sprawdza czy na stronie istnieje button "Dodaj nowy plik multimedialny"
-    @Test(priority = 120, enabled = true, description = "Weryfikacja czy istnieje button 'Dodaj nowy plik multimedialny'")
+    @Test(priority = 120, enabled = true,
+            description = "Weryfikacja czy istnieje button 'Dodaj nowy plik multimedialny'")
     public void weryfikacjaCzyButtonDodajNowyPlikMultimedialnyIstniejeTest() {
         przejdzDoZakladkiPozostaleMedia();
         Assert.assertTrue(pozostaleMediaPage.getDodajNowyPlikMultimedialnyButton().isDisplayed(),

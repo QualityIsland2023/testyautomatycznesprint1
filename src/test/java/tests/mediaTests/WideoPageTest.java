@@ -70,6 +70,7 @@ public class WideoPageTest extends TestBase {
             "Weryfikacja czy button 'Typy danych' rozwija menu wyboru checkboxów")
     public void weryfikacjaCzyButtonTypyDanychRozwijaMenuWyboruCheckboxowTest() {
         przejdzDoZakladkiWideo();
+
         wideoPage.kliknijTypyDanychButton();
 
         int oczekiwanaIloscCheckboxow = 5;
@@ -86,6 +87,7 @@ public class WideoPageTest extends TestBase {
         przejdzDoZakladkiWideo();
 
         wideoPage.kliknijDodajWideoButton();
+
         Assert.assertTrue(dodajWideoPage.getNaglowekPrzeslijPlikWideo().isDisplayed(),
                 "Nie znaleziono nagłówka strony 'Prześlij plik wideo'");
     }
@@ -97,6 +99,7 @@ public class WideoPageTest extends TestBase {
         przejdzDoZakladkiWideo();
 
         wideoPage.kliknijDodajWideoButton();
+
         Assert.assertTrue(dodajWideoPage.getNieBedzieMozliwosciPobraniaText().isDisplayed(),
                 "Nie znaleziono tekstu 'Uwaga! Po wczytaniu plików wideo...'");
     }

@@ -29,6 +29,7 @@ public class WszyscyUczestnicyPageTest extends TestBase {
         kursyPage = new KursyPage(driver);
         wszyscyUczestnicyPage = new WszyscyUczestnicyPage(driver);
     }
+
     // Test weryfikujący, czy adres URL strony 'Wszyscy uczestnicy' jest poprawny
     @Test(priority = 10, enabled = true, description = "Weryfikacja poprawnego adresu strony 'Wszyscy uczestnicy'")
     public void weryfikacjaPoprawnegoAdresuStronyWszyscyUczestnicy(){
@@ -38,8 +39,10 @@ public class WszyscyUczestnicyPageTest extends TestBase {
         panelPage.przejdzDoZakladkiKursy();
         kursyPage.przejdzDoZakladkiKursyWszyscyUczestnicy();
 
-        Assert.assertEquals(wszyscyUczestnicyPage.zwrocUrlAktualnejStrony(), wszyscyUczestnicyPage.zwrocPoprawnyUrlKursyWszyscyUczestnicy(), "Adres url nie jest poprawny");
+        Assert.assertEquals(wszyscyUczestnicyPage.zwrocUrlAktualnejStrony(), wszyscyUczestnicyPage.zwrocPoprawnyUrlKursyWszyscyUczestnicy(),
+                "Adres url nie jest poprawny");
     }
+
     // Test weryfikujący, czy tytuł strony 'Wszyscy uczestnicy' jest poprawny
     @Test(priority = 20, enabled = true, description = "Weryfikacja poprawnego tytułu strony 'Wszyscy uczestnicy'")
     public void weryfikacjaTytuluStronyWszyscyUczestnicy(){
@@ -49,7 +52,8 @@ public class WszyscyUczestnicyPageTest extends TestBase {
         panelPage.przejdzDoZakladkiKursy();
         kursyPage.przejdzDoZakladkiKursyWszyscyUczestnicy();
 
-        Assert.assertEquals(wszyscyUczestnicyPage.zwroctTytulAktualnejStrony(), wszyscyUczestnicyPage.zwrocPoprawnyTytulStronyKursyWszyscyUczestnicy(), "Tytuł strony nie jest poprawny" );
+        Assert.assertEquals(wszyscyUczestnicyPage.zwroctTytulAktualnejStrony(), wszyscyUczestnicyPage.zwrocPoprawnyTytulStronyKursyWszyscyUczestnicy(),
+                "Tytuł strony nie jest poprawny" );
     }
 
 }

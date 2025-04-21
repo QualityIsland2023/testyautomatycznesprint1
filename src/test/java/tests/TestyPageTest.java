@@ -103,4 +103,16 @@ public class TestyPageTest extends TestBase {
         Assert.assertTrue(testyPage.zweryfikujCzyLiczbaNiezaznaczonychCheckboxowJestPoprawna());
 
     }
+
+    @Test(priority = 60, enabled = true, description = "Weryfikacja czy tabela w zakladce testy posiada wszystkie kolumny.")
+    public void weryfikacjaCzyTabelaWZakladceTestyPosiadaPoprawneKolumny() {
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiTesty();
+        testyPage.nacisnijPrzyciskTypyDanychWZakladceTesty();
+
+        Assert.assertTrue(testyPage.zweryfikujCzyTabelaWZakladceTestyPosiadaPoprawneKolumny(), "Kolumny w tabeli w zakladce testy nie posiada wszystkich kolumn.");
+
+    }
 }

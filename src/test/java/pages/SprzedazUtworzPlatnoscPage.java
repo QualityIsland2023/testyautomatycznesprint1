@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.*;
+
 public class SprzedazUtworzPlatnoscPage {
 
     //************************ Sekcja techniczno konfiguracyjna START **********************************************/
@@ -30,20 +32,60 @@ public class SprzedazUtworzPlatnoscPage {
 
     //************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) tytuł strony "Utwórz płatność"
-    String poprawnyTytulStronyUtworzPlatnosc = "Utwórz płatność ‹ Platforma kursów online — WordPress";
+    // STAŁE POPRAWNE ELEMENTY STRONY:
 
-    // Oczekiwany (poprawny) adres URL strony "Utwórz płatność"
-    String poprawnyURLStronyUtworzPlatnosc = "https://mmrmqpr585.publigo.onl/wp-admin/options.php?page=edd-manual-purchase";
+    private String poprawnyTytulStronyUtworzPlatnosc = "Utwórz płatność ‹ Platforma kursów online — WordPress";
+    private String poprawnyURLStronyUtworzPlatnosc = "https://mmrmqpr585.publigo.onl/wp-admin/options.php?page=edd-manual-purchase";
+    private int prawidlowaLiczbaPozycjiFormularza = 8;
 
+
+    // ELEMENTY NA STRONIE:
+
+    //Tytuł:
     @FindBy(xpath = "//*[contains(text(),'Utwórz nową płatność')]")
     private WebElement sekcjaTytulowaUtworzNowaPlatnosc;
 
+    // Listy rozwijalne:
     @FindBy(xpath = "//*[contains(text(),'Wybierz Produkty')]")
     private WebElement listaWybierzProdukty;
 
+    // Przyciski:
     @FindBy(xpath = "//*[contains(text(),'Dodaj kolejny')]")
     private WebElement dodajKolejnyButton;
+
+    // Pola formularza:
+    @FindBy(xpath = "//*[contains(@class, 'form-field')]")
+    private List<WebElement> pozycjeFormularzaUtworzNowaPlatnosc;
+
+    @FindBy(xpath = "//label[contains(text(),'Produkt')]")
+    private WebElement pozycjaProdukt;
+
+    @FindBy(xpath = "//label[contains(text(),'Email lub ID kupującego')]")
+    private WebElement pozycjaEmailLubIDKupujacego;
+
+    @FindBy(xpath = "//label[contains(text(),'Imię')]")
+    private WebElement pozycjaImie;
+
+    @FindBy(xpath = "//label[contains(text(),'Nazwisko')]")
+    private WebElement pozycjaNazwisko;
+
+    @FindBy(xpath = "//label[contains(text(),'Kwota')]")
+    private WebElement pozycjaKwota;
+
+    @FindBy(xpath = "//th[contains(text(),'Status płatności')]")
+    private WebElement pozycjaStatusPlatnosci;
+
+    @FindBy(xpath = "//th[contains(text(), 'Wyślij potwierdzenie zakupu')]")
+    private WebElement pozycjaWyslijPotwierdzenieZakupu;
+
+    @FindBy(xpath = "//label[contains(text(),'Data')]")
+    private WebElement pozycjaData;
+
+
+
+
+
+
 
 
 
@@ -137,6 +179,75 @@ public class SprzedazUtworzPlatnoscPage {
 
         return status;
     }
+
+    // Zwraca aktualną liczbę pozycji formularza "Utwórz nową płatność"
+    public int zwrocAktualnaLiczbePozycjiFormularzaUtworzNowaPlatnosc(){
+        System.out.println("Liczba pozycji formularza UTWÓRZ NOWĄ PŁATNOŚĆ: " + pozycjeFormularzaUtworzNowaPlatnosc.size());
+        return pozycjeFormularzaUtworzNowaPlatnosc.size();
+    }
+
+    // Zwraca oczekiwaną (poprawną) liczbę pozycji formularza "Utwórz nową płatność"
+    public int zwrocPoprawnaLiczbePozycjiFormularzaUtworzNowaPlatnosc(){
+        System.out.println("Oczekiwana liczba pozycji formularza UTWÓRZ NOWĄ PŁATNOŚĆ: " + prawidlowaLiczbaPozycjiFormularza);
+        return prawidlowaLiczbaPozycjiFormularza;
+    }
+
+    // Sprawdza, czy aktualne nazwy pozycji formularza są takie same, jak oczekiwane
+    public boolean zweryfikujNazwyPozycjiFormularzaUtworzNowaPlatnosc() {
+        Map<String, WebElement> nazwyPozycji = new HashMap<>();
+        nazwyPozycji.put("Produkt", pozycjaProdukt);
+        nazwyPozycji.put("Email lub ID kupującego", pozycjaEmailLubIDKupujacego);
+        nazwyPozycji.put("Imię", pozycjaImie);
+        nazwyPozycji.put("Nazwisko", pozycjaNazwisko);
+        nazwyPozycji.put("Kwota", pozycjaKwota);
+        nazwyPozycji.put("Status płatności", pozycjaStatusPlatnosci);
+        nazwyPozycji.put("Wyślij potwierdzenie zakupu", pozycjaWyslijPotwierdzenieZakupu);
+        nazwyPozycji.put("Data", pozycjaData);
+
+        boolean status = true;
+
+        for (Map.Entry<String, WebElement> entry : nazwyPozycji.entrySet()) {
+            String oczekiwanaNazwaPozycji = entry.getKey();
+            WebElement aktualnaNazwaPozycji = entry.getValue();
+
+            try {
+                WebElement obecnyElement = wait.waitForVisibility(aktualnaNazwaPozycji);
+
+                boolean nazwaWidoczna = obecnyElement.isDisplayed();
+                boolean nazwaZgodna = obecnyElement.getText().trim().equals(oczekiwanaNazwaPozycji);
+
+                if (!nazwaWidoczna || !nazwaZgodna) {
+                    if (!nazwaWidoczna) {
+                        System.out.println("Pozycja formularza nie jest widoczna: " + oczekiwanaNazwaPozycji);
+                    }
+                    if (!nazwaZgodna) {
+                        System.out.println("Nazwa pozycji formularza jest niezgodna. "
+                                + "Oczekiwano: '" + oczekiwanaNazwaPozycji + "' "
+                                + "Znaleziono: '" + obecnyElement.getText().trim() + "' ");
+                    }
+                    status = false;
+                } else {
+                    System.out.println("Pozycje formularza są widoczne i mają zgodne nazwy : " + oczekiwanaNazwaPozycji);
+                }
+
+
+            } catch (Exception e) {
+                System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma pozycji: " + oczekiwanaNazwaPozycji);
+                e.printStackTrace();
+                status = false;
+            }
+        }
+
+        return status;
+
+
+    }
+
+
+
+
+
+
 
 
 

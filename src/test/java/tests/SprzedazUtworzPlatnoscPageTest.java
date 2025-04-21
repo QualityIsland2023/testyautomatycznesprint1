@@ -84,6 +84,29 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
                 "Przycisk DODAJ KOLEJNY nie jest widoczny");
     }
 
+    @Test(priority = 60, enabled = true, description = "Weryfikacja liczby pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ")
+    public void weryfikacjaLiczbyPozycjiWFormularzuUtworzNowaPlatnosc() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijSprzedazZamowieniaMenu();
+        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+
+        Assert.assertEquals(sprzedazUtworzPlatnoscPage.zwrocAktualnaLiczbePozycjiFormularzaUtworzNowaPlatnosc(),
+                sprzedazUtworzPlatnoscPage.zwrocPoprawnaLiczbePozycjiFormularzaUtworzNowaPlatnosc(),
+                "Niepoprawna liczba pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ");
+    }
+
+    @Test(priority = 70, enabled = true, description = "Weryfikacja nazw pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ")
+    public void weryfikacjaNazwPozycjiWFormularzuUtworzNowaPlatnosc() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijSprzedazZamowieniaMenu();
+        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+
+        Assert.assertTrue(sprzedazUtworzPlatnoscPage.zweryfikujNazwyPozycjiFormularzaUtworzNowaPlatnosc(),
+                "Pozycje w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ są niewidoczne lub mają nieprawidłowe nazwy");
+    }
+
+
+
 
 
 

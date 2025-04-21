@@ -64,13 +64,14 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
                 "Nie wyświetla się ekran UTWÓRZ NOWĄ PŁATNOŚĆ po kliknięciu przycisku DODAJ ZAMÓWIENIE");
     }
 
-    @Test(priority = 30, enabled = true, description = "Weryfikacja, czy lista WYBIERZ PRODUKTY istnieje")
-    public void weryfikacjaWyswietleniaListyWybierzProdukty() {
+    @Test(priority = 40, enabled = true, description = "Weryfikacja, czy lista WYBIERZ PRODUKTY jest widoczna i klikalna")
+    public void weryfikacjaWidocznosciListyWybierzProdukty() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
         sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
 
-       Assert.assertTrue(sprzedazUtworzPlatnoscPage.zweryfikujCzyListaProduktowIstnieje(),
+        Assert.assertTrue(sprzedazUtworzPlatnoscPage.zweryfikujCzyListaProduktowIstnieje()
+                        &&sprzedazUtworzPlatnoscPage.zweryfikujCzyListaProduktowJestKlikalna(),
                 "Nie wyświetla się lista WYBIERZ PRODUKTY na stronie UTWÓRZ PŁATNOŚĆ");
     }
 

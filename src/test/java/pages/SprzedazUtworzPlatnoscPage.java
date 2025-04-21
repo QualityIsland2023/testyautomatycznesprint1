@@ -87,6 +87,7 @@ public class SprzedazUtworzPlatnoscPage {
         return status;
     }
 
+    // Sprawdza, czy lista "Wybierz produkty" jest widoczna
     public boolean zweryfikujCzyListaProduktowIstnieje(){
         boolean status = false;
 
@@ -100,6 +101,26 @@ public class SprzedazUtworzPlatnoscPage {
         return status;
 
     }
+
+    // Sprawdza, czy lista "Wybierz produkty" jest klikalna
+    public boolean zweryfikujCzyListaProduktowJestKlikalna(){
+        wait.waitForClickability(listaWybierzProdukty).click();
+
+        boolean status = false;
+        if(listaWybierzProdukty.isEnabled()){
+            status = true;
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ lista WYBIERZ PRODUKTY jest klikalna");
+        }else {
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ lista WYBIERZ PRODUKTY nie jest klikalna");
+        }
+
+        return status;
+
+    }
+
+
+
+
 
 
 

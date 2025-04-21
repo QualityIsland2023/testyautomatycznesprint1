@@ -57,7 +57,7 @@ public class TestyPageTest extends TestBase {
 
     }
 
-    @Test(priority = 40, enabled = true, description = "Weryfikacja czy przycisk 'Typy danych'v wyswietla sie z zakladce testy znajdujacej sie w menu bocznym.")
+    @Test(priority = 40, enabled = true, description = "Weryfikacja czy przycisk 'Typy danych' wyswietla sie z zakladce testy znajdujacej sie w menu bocznym.")
     public void weryfikacjaCzyWZakladceTestyJestButtonTypyDanych() {
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
@@ -65,6 +65,18 @@ public class TestyPageTest extends TestBase {
         panelPage.przejdzDoZakladkiTesty();
 
         Assert.assertTrue(testyPage.zweryfikujCzyButtonTypyDanychIstnieje());
+
+    }
+
+    @Test(priority = 40, enabled = true, description = "Weryfikacja czy sekcja 'Wybierz które kolumny mają być widoczne w tabeli' pojawia sie po nacisnieciu przycisku 'Typy danych' w zakladce testy znajdujacej sie w menu bocznym.")
+    public void weryfikacjaCzyPoKliknieciuTypyDanychButtonPojawiaSieSekcjaWybierzKtoreKolumnyMajaBycWidoczneWTabeli() {
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiTesty();
+        testyPage.nacisnijPrzyciskTypyDanychWZakladceTesty();
+
+        Assert.assertTrue(testyPage.zweryfikujCzySekcjaWybierzKtoreKolumnyMajaBycWidoczneWTabeliIstnieje());
 
     }
 }

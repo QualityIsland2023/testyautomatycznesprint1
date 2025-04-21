@@ -45,6 +45,9 @@ public class TestyPage {
     @FindBy(xpath = "//button[contains(text(), 'Typy danych')]")
     private WebElement typyDanychButton;
 
+    @FindBy(xpath = "//p[contains(text(), 'Wybierz które kolumny mają być widoczne w tabeli')]")
+    private WebElement sekcjaWybierzKtoreKolumnyMajaBycWidoczneWTabeli;
+
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
@@ -106,7 +109,24 @@ public class TestyPage {
 
     }
 
+    public void nacisnijPrzyciskTypyDanychWZakladceTesty(){
+        wait.waitForVisibility(typyDanychButton).click();
+    }
 
+    public boolean zweryfikujCzySekcjaWybierzKtoreKolumnyMajaBycWidoczneWTabeliIstnieje(){
+        boolean status = false;
+
+        if(sekcjaWybierzKtoreKolumnyMajaBycWidoczneWTabeli.isDisplayed()){
+            status = true;
+
+            System.out.println("Sekcja 'Wybierz które kolumny mają być widoczne w tabeli' pojawia sie poprawnie.");
+        }else{
+            System.out.println("Sekcja 'Wybierz które kolumny mają być widoczne w tabeli' nie pojawia sie po kliknieciu w przycisk 'Typy danych'.");
+        }
+
+        return status;
+
+    }
 
 
 

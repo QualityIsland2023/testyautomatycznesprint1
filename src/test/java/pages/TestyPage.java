@@ -118,7 +118,7 @@ public class TestyPage {
         if(liczbaWynikowNaStrone.isDisplayed()){
             status = true;
 
-            System.out.println("Na stronie testy jest lista 'Wynikow na strone'.");
+            System.out.println("Na stronie testy znajduje sie lista 'Wynikow na strone'.");
         }else{
             System.out.println("Lista 'Wynikow na strone' nie  znajduje sie w zakladce testy.");
         }
@@ -133,7 +133,7 @@ public class TestyPage {
         if(typyDanychButton.isDisplayed()){
             status = true;
 
-            System.out.println("Na stronie testy jest przycisk 'Typy danych'.");
+            System.out.println("Na stronie testy znajduje sie przycisk 'Typy danych'.");
         }else{
             System.out.println("Przycisk 'Typy danych' nie  znajduje sie w zakladce testy.");
         }
@@ -161,7 +161,7 @@ public class TestyPage {
 
     }
 
-    public boolean zweryfikujCzyPoNacisnieciuTypyDanychButtonPojawiaSie8Checkboxow(){
+    public boolean zweryfikujCzyPoNacisnieciuTypyDanychButtonPojawiaSiePoprawnaLiczbaCheckboxow(){
         boolean status = false;
 
         if(listaCheckboxowWTypachDanych.size() == 8){

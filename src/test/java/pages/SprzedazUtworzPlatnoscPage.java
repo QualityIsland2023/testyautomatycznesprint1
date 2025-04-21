@@ -51,7 +51,7 @@ public class SprzedazUtworzPlatnoscPage {
 
     // Zwraca aktualny tytuł strony "Utwórz płatność" i wypisuje go w konsoli
     public String zwrocAktualnyTytulStronyUtworzPlatnosc(){
-        System.out.println("Aktualny tytuł strony: " + driver.getTitle());
+        System.out.println("Aktualny tytuł strony UTWÓRZ PŁATNOŚĆ: " + driver.getTitle());
         return driver.getTitle();
     }
 
@@ -63,7 +63,7 @@ public class SprzedazUtworzPlatnoscPage {
 
     // Zwraca aktualny adres URL strony "Utwórz płatność" i wypisuje go w konsoli
     public String zwrocAktualnyUrlStronyUtworzPlatnosc(){
-        System.out.println("Aktualny URL: " + driver.getCurrentUrl());
+        System.out.println("Aktualny URL strony UTWÓRZ PŁATNOŚĆ: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 

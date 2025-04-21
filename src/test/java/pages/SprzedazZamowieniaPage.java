@@ -39,6 +39,11 @@ public class SprzedazZamowieniaPage {
     @FindBy(xpath = "//*[contains(text(),'Dodaj zamówienie')]")
     private WebElement dodajZamowienieButton;
 
+    @FindBy(xpath = "//button[contains(text(),'Typy danych')]")
+    private WebElement typyDanychButton;
+
+
+
 
 
 
@@ -77,6 +82,18 @@ public class SprzedazZamowieniaPage {
 
         wait.waitForVisibility(dodajZamowienieButton).click();
     }
+
+    // Zwraca przycisk "Dodaj zamówienie"
+    public WebElement zwrocDodajZamowienieButton(){
+        return dodajZamowienieButton;
+    }
+
+    // Zwraca przycisk "Typy danych"
+    public WebElement zwrocTypyDanychButton(){
+        return typyDanychButton;
+    }
+
+
 
 
 

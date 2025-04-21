@@ -49,6 +49,27 @@ public class SprzedazZamowieniaPageTest extends TestBase {
                 "Adres url strony ZAMÓWIENIA nie jest poprawny");
     }
 
+    @Test(priority = 30, enabled = true, description = "Weryfikacja widoczności przycisku DODAJ ZAMÓWIENIE")
+    public void weryfikacjaWidocznosciPrzyciskuDodajZamowienie(){
+
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijSprzedazZamowieniaMenu();
+
+        Assert.assertTrue(sprzedazZamowieniaPage.zwrocDodajZamowienieButton().isDisplayed(),
+                "Przycisk 'Dodaj zamówienie' nie jest widoczny");
+    }
+
+    @Test(priority = 40, enabled = true, description = "Weryfikacja widoczności przycisku TYPY DANYCH")
+    public void weryfikacjaWidocznosciPrzyciskuTypyDanych(){
+
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijSprzedazZamowieniaMenu();
+
+        Assert.assertTrue(sprzedazZamowieniaPage.zwrocTypyDanychButton().isDisplayed(),
+                "Przycisk 'Typy danych' nie jest widoczny");
+    }
+
+
 
 
 

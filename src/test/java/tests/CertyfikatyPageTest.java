@@ -90,4 +90,16 @@ public class CertyfikatyPageTest extends TestBase {
         Assert.assertTrue(certyfikatyPage.zweryfikujCzyPoNacisnieciuTypyDanychButtonPojawiaSiePoprawnaLiczbaCheckboxow());
 
     }
+
+    @Test(priority = 70, enabled = true, description = "Weryfikacja czy po nacisnieciu przycisku 'Typy danych' w zakladce certyfikaty w menu bocznym, liczba zaznaczonych checkboxow jest prawidlowa.")
+    public void weryfikacjaCzyPoKliknieciuTypyDanychLiczbaNiezaznaczonychCheckboxowJestPoprawna() {
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiCertyfikaty();
+        certyfikatyPage.nacisnijPrzyciskTypyDanychWZakladceCertyfikaty();
+
+        Assert.assertTrue(certyfikatyPage.zweryfikujCzyLiczbaZaznaczonychCheckboxowJestPoprawna());
+
+    }
 }

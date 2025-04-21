@@ -32,6 +32,8 @@ public class CertyfikatyPage {
 
     String poprawnyURLZakladkiCertyfikaty = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-certificates";
     String poprawnyTytulZakladkiCertyfikaty = "Certyfikaty ‹ Platforma kursów online — WordPress";
+    int zaznaczoneCheckboxy = 0;
+    int niezaznaczoneCheckboxy = 0;
 
     @FindBy(xpath = "//span[contains(text(), 'Wyników na stronę')]")
     private WebElement liczbaWynikowNaStrone;
@@ -78,7 +80,7 @@ public class CertyfikatyPage {
 
             System.out.println("W zakladce certyfikaty znajduje sie lista 'Wynikow na strone'.");
         }else{
-            System.out.println("Lista 'Wynikow na strone' nie  znajduje sie w zakladce certyfikaty.");
+            System.out.println("Lista 'Wynikow na strone' nie znajduje sie w zakladce certyfikaty.");
         }
 
         return status;
@@ -134,7 +136,27 @@ public class CertyfikatyPage {
 
     }
 
+    public boolean zweryfikujCzyLiczbaZaznaczonychCheckboxowJestPoprawna(){
+        boolean status = false;
 
+        for(WebElement checkbox : listaCheckboxowWTypachDanych){
+            if(checkbox.isSelected()){
+                zaznaczoneCheckboxy++;
+            }else{
+                niezaznaczoneCheckboxy++;
+            }
+
+        }
+
+        if(zaznaczoneCheckboxy == 6){
+            status = true;
+            System.out.println("Liczba zaznaczonych checkboxow jest poprawna, wynosi: " + zaznaczoneCheckboxy);
+        }else{
+            System.out.println("Liczba zaznaczonych checkboxow jest niepoprawna, wynosi: " + zaznaczoneCheckboxy);
+        }
+        return status;
+
+    }
 
     /**********************************Operacje na webelementach KONIEC ******************************************/
 

@@ -32,6 +32,8 @@ public class CertyfikatyPage {
 
     String poprawnyURLZakladkiCertyfikaty = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-certificates";
     String poprawnyTytulZakladkiCertyfikaty = "Certyfikaty ‹ Platforma kursów online — WordPress";
+    int zaznaczoneCheckboxy = 0;
+    int niezaznaczoneCheckboxy = 0;
 
     @FindBy(xpath = "//span[contains(text(), 'Wyników na stronę')]")
     private WebElement liczbaWynikowNaStrone;
@@ -44,6 +46,27 @@ public class CertyfikatyPage {
 
     @FindBy(css = "input[type='checkbox']")
     private List<WebElement> listaCheckboxowWTypachDanych;
+
+    @FindBy(xpath = "//div[contains(text(), 'Kurs')]")
+    private WebElement kolumnaKursWTabeli;
+
+    @FindBy(xpath = "//div[contains(text(), 'Imię i nazwisko')]")
+    private WebElement kolumnaImieINazwiskoWTabeli;
+
+    @FindBy(xpath = "//div[contains(text(), 'Email')]")
+    private WebElement kolumnaEmailWTabeli;
+
+    @FindBy(xpath = "//div[contains(text(), 'Numer certyfikatu')]")
+    private WebElement kolumnaNumerCertyfikatuWTabeli;
+
+    @FindBy(xpath = "//div[contains(text(), 'Data utworzenia')]")
+    private WebElement kolumnaDataUtworzeniaWTabeli;
+
+    @FindBy(xpath = "//th[contains(text(), 'Więcej')]")
+    private WebElement kolumnaWiecejWTabeli;
+
+    @FindBy(xpath = "//div[contains(text(), 'Id')]")
+    private WebElement kolumnaIdWTabeli;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
@@ -78,7 +101,7 @@ public class CertyfikatyPage {
 
             System.out.println("W zakladce certyfikaty znajduje sie lista 'Wynikow na strone'.");
         }else{
-            System.out.println("Lista 'Wynikow na strone' nie  znajduje sie w zakladce certyfikaty.");
+            System.out.println("Lista 'Wynikow na strone' nie znajduje sie w zakladce certyfikaty.");
         }
 
         return status;
@@ -134,7 +157,38 @@ public class CertyfikatyPage {
 
     }
 
+    public boolean zweryfikujCzyLiczbaZaznaczonychCheckboxowJestPoprawna(){
+        boolean status = false;
 
+        for(WebElement checkbox : listaCheckboxowWTypachDanych){
+            if(checkbox.isSelected()){
+                zaznaczoneCheckboxy++;
+            }else{
+                niezaznaczoneCheckboxy++;
+            }
+
+        }
+
+        if(zaznaczoneCheckboxy == 6){
+            status = true;
+            System.out.println("Liczba zaznaczonych checkboxow jest poprawna, wynosi: " + zaznaczoneCheckboxy);
+        }else{
+            System.out.println("Liczba zaznaczonych checkboxow jest niepoprawna, wynosi: " + zaznaczoneCheckboxy);
+        }
+        return status;
+
+    }
+
+    public boolean zweryfikujCzyTabelaWZakladceCertyfikatyPosiadaPoprawneKolumny(){
+        boolean status = false;
+
+        if(kolumnaIdWTabeli.isDisplayed() && kolumnaKursWTabeli.isDisplayed() && kolumnaEmailWTabeli.isDisplayed() && kolumnaNumerCertyfikatuWTabeli.isDisplayed() && kolumnaDataUtworzeniaWTabeli.isDisplayed() && kolumnaWiecejWTabeli.isDisplayed() && kolumnaImieINazwiskoWTabeli.isDisplayed()){
+            status = true;
+            System.out.println("Tabela w zakladce certyfikaty posiada wszystkie kolumny.");
+        }
+
+        return status;
+    }
 
     /**********************************Operacje na webelementach KONIEC ******************************************/
 

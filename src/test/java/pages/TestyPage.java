@@ -120,7 +120,7 @@ public class TestyPage {
 
             System.out.println("Na stronie testy znajduje sie lista 'Wynikow na strone'.");
         }else{
-            System.out.println("Lista 'Wynikow na strone' nie  znajduje sie w zakladce testy.");
+            System.out.println("Lista 'Wynikow na strone' nie znajduje sie w zakladce testy.");
         }
 
         return status;
@@ -135,7 +135,7 @@ public class TestyPage {
 
             System.out.println("Na stronie testy znajduje sie przycisk 'Typy danych'.");
         }else{
-            System.out.println("Przycisk 'Typy danych' nie  znajduje sie w zakladce testy.");
+            System.out.println("Przycisk 'Typy danych' nie znajduje sie w zakladce testy.");
         }
 
         return status;

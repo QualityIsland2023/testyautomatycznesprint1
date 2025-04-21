@@ -90,4 +90,27 @@ public class CertyfikatyPageTest extends TestBase {
         Assert.assertTrue(certyfikatyPage.zweryfikujCzyPoNacisnieciuTypyDanychButtonPojawiaSiePoprawnaLiczbaCheckboxow());
 
     }
+
+    @Test(priority = 70, enabled = true, description = "Weryfikacja czy po nacisnieciu przycisku 'Typy danych' w zakladce certyfikaty w menu bocznym, liczba zaznaczonych checkboxow jest prawidlowa.")
+    public void weryfikacjaCzyPoKliknieciuTypyDanychLiczbaNiezaznaczonychCheckboxowJestPoprawna() {
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiCertyfikaty();
+        certyfikatyPage.nacisnijPrzyciskTypyDanychWZakladceCertyfikaty();
+
+        Assert.assertTrue(certyfikatyPage.zweryfikujCzyLiczbaZaznaczonychCheckboxowJestPoprawna());
+
+    }
+
+    @Test(priority = 80, enabled = true, description = "Weryfikacja czy tabela w zakladce certyfikaty posiada wszystkie kolumny.")
+    public void weryfikacjaCzyTabelaWZakladceTestyPosiadaPoprawneKolumny() {
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiCertyfikaty();
+
+        Assert.assertTrue(certyfikatyPage.zweryfikujCzyTabelaWZakladceCertyfikatyPosiadaPoprawneKolumny(), "Tabela w zakladce certyfikaty nie posiada wszystkich kolumn.");
+
+    }
 }

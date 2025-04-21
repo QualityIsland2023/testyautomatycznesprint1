@@ -110,9 +110,8 @@ public class TestyPageTest extends TestBase {
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
         loginPageNew.nacisnijPrzyciskZalogujSie();
         panelPage.przejdzDoZakladkiTesty();
-        testyPage.nacisnijPrzyciskTypyDanychWZakladceTesty();
 
-        Assert.assertTrue(testyPage.zweryfikujCzyTabelaWZakladceTestyPosiadaPoprawneKolumny(), "Kolumny w tabeli w zakladce testy nie posiada wszystkich kolumn.");
+        Assert.assertTrue(testyPage.zweryfikujCzyTabelaWZakladceTestyPosiadaPoprawneKolumny(), "Tabela w zakladce testy nie posiada wszystkich kolumn.");
 
     }
 }

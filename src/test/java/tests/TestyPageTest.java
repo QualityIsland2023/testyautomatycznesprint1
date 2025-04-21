@@ -91,4 +91,16 @@ public class TestyPageTest extends TestBase {
         Assert.assertTrue(testyPage.zweryfikujCzyPoNacisnieciuTypyDanychButtonPojawiaSie8Checkboxow());
 
     }
+
+    @Test(priority = 50, enabled = true, description = "Weryfikacja czy po nacisnieciu przycisku 'Typy danych' w zakladce testy w menu bocznym, liczba niezaznaczonych checkboxow jest prawidlowa.")
+    public void weryfikacjaCzyPoKliknieciuTypyDanychLiczbaNiezaznaczonychCheckboxowJestPoprawna() {
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiTesty();
+        testyPage.nacisnijPrzyciskTypyDanychWZakladceTesty();
+
+        Assert.assertTrue(testyPage.zweryfikujCzyLiczbaNiezaznaczonychCheckboxowJestPoprawna());
+
+    }
 }

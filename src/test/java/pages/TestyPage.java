@@ -32,6 +32,8 @@ public class TestyPage {
 
     String poprawnyURLZakladkiTesty = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-tests";
     String poprawnyTytulZakladkiTesty = "Zakończone testy ‹ Platforma kursów online — WordPress";
+    int niezaznaczoneCheckboxy = 0;
+    int zaznaczoneCheckboxy = 0;
 
     @FindBy(xpath = "//td[contains(@class, 'type-id')]/a")
     private List<WebElement> pozycjeZakonczonychTestow;
@@ -48,8 +50,10 @@ public class TestyPage {
     @FindBy(xpath = "//p[contains(text(), 'Wybierz które kolumny mają być widoczne w tabeli')]")
     private WebElement sekcjaWybierzKtoreKolumnyMajaBycWidoczneWTabeli;
 
-    @FindBy(className = "checkbox-replacement")
+    @FindBy(css = "input[type='checkbox']")
     private List<WebElement> listaCheckboxowWTypachDanych;
+
+
 
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
@@ -140,6 +144,29 @@ public class TestyPage {
             System.out.println("Liczba checkboxow jest prawidlowa, wynosi " + listaCheckboxowWTypachDanych.size());
         }else{
             System.out.println("Liczba checkboxow jest nieprawidlowa, wynosi " + listaCheckboxowWTypachDanych.size());
+        }
+
+        return status;
+
+    }
+
+    public boolean zweryfikujCzyLiczbaNiezaznaczonychCheckboxowJestPoprawna(){
+        boolean status = false;
+
+        for(WebElement checkbox : listaCheckboxowWTypachDanych){
+            if(!checkbox.isSelected()){
+                niezaznaczoneCheckboxy++;
+            }else{
+                zaznaczoneCheckboxy++;
+            }
+        }
+
+        if(niezaznaczoneCheckboxy == 1){
+            status = true;
+            System.out.println("Liczba niezaznaczonych checkboxow jest poprawna i wynosi: " + niezaznaczoneCheckboxy);
+            System.out.println("Liczba zaznaczonych checkboxow wynosi: " + zaznaczoneCheckboxy);
+        }else{
+            System.out.println("Liczba niezaznaczonych checkboxow nie jest poprawna, wynosi: " + niezaznaczoneCheckboxy);
         }
 
         return status;

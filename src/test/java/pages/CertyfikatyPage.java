@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class CertyfikatyPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
@@ -40,6 +42,9 @@ public class CertyfikatyPage {
     @FindBy(xpath = "//p[contains(text(), 'Wybierz które kolumny mają być widoczne w tabeli')]")
     private WebElement sekcjaWybierzKtoreKolumnyMajaBycWidoczneWTabeli;
 
+    @FindBy(css = "input[type='checkbox']")
+    private List<WebElement> listaCheckboxowWTypachDanych;
+
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
 
@@ -71,9 +76,9 @@ public class CertyfikatyPage {
         if(liczbaWynikowNaStrone.isDisplayed()){
             status = true;
 
-            System.out.println("Na stronie testy jest lista 'Wynikow na strone'.");
+            System.out.println("W zakladce certyfikaty znajduje sie lista 'Wynikow na strone'.");
         }else{
-            System.out.println("Lista 'Wynikow na strone' nie  znajduje sie w zakladce testy.");
+            System.out.println("Lista 'Wynikow na strone' nie  znajduje sie w zakladce certyfikaty.");
         }
 
         return status;
@@ -114,7 +119,20 @@ public class CertyfikatyPage {
 
     }
 
+    public boolean zweryfikujCzyPoNacisnieciuTypyDanychButtonPojawiaSiePoprawnaLiczbaCheckboxow(){
+        boolean status = false;
 
+        if(listaCheckboxowWTypachDanych.size() == 6){
+            status = true;
+
+            System.out.println("Liczba checkboxow jest prawidlowa, wynosi " + listaCheckboxowWTypachDanych.size());
+        }else{
+            System.out.println("Liczba checkboxow jest nieprawidlowa, wynosi " + listaCheckboxowWTypachDanych.size());
+        }
+
+        return status;
+
+    }
 
 
 

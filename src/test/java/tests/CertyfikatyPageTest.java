@@ -50,7 +50,7 @@ public class CertyfikatyPageTest extends TestBase {
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
         loginPageNew.nacisnijPrzyciskZalogujSie();
-        panelPage.przejdzDoZakladkiTesty();
+        panelPage.przejdzDoZakladkiCertyfikaty();
 
         Assert.assertTrue(certyfikatyPage.zweryfikujCzyNapisWynikowNaStroneIstniejeWZakladceCertyfikaty());
 
@@ -61,7 +61,7 @@ public class CertyfikatyPageTest extends TestBase {
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
         loginPageNew.nacisnijPrzyciskZalogujSie();
-        panelPage.przejdzDoZakladkiTesty();
+        panelPage.przejdzDoZakladkiCertyfikaty();
 
         Assert.assertTrue(certyfikatyPage.zweryfikujCzyButtonTypyDanychIstniejeWZakladceCertyfikaty());
 
@@ -72,10 +72,22 @@ public class CertyfikatyPageTest extends TestBase {
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
         loginPageNew.nacisnijPrzyciskZalogujSie();
-        panelPage.przejdzDoZakladkiTesty();
+        panelPage.przejdzDoZakladkiCertyfikaty();;
         certyfikatyPage.nacisnijPrzyciskTypyDanychWZakladceCertyfikaty();
 
         Assert.assertTrue(certyfikatyPage.zweryfikujCzySekcjaWybierzKtoreKolumnyMajaBycWidoczneWTabeliIstniejeWZakladceCertyfikaty());
+
+    }
+
+    @Test(priority = 60, enabled = true, description = "Weryfikacja czy po nacisnieciu przycisku 'Typy danych' pojawia sie poprawna liczba checkboxow w zakladce certyfikaty znajdujacej sie w menu bocznym.")
+    public void weryfikacjaCzyPoKliknieciuTypyDanychButtonPojawiaSiePoprawnaLiczbaCheckboxow() {
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiCertyfikaty();
+        certyfikatyPage.nacisnijPrzyciskTypyDanychWZakladceCertyfikaty();
+
+        Assert.assertTrue(certyfikatyPage.zweryfikujCzyPoNacisnieciuTypyDanychButtonPojawiaSiePoprawnaLiczbaCheckboxow());
 
     }
 }

@@ -76,8 +76,8 @@ public class SprzedazZamowieniaPageTest extends TestBase {
         panelPage.kliknijSprzedazZamowieniaMenu();
         sprzedazZamowieniaPage.kliknijTypyDanychButton();
 
-        Assert.assertEquals(sprzedazZamowieniaPage.zwrocAktualnaInformacjeWSekcjiTypyDanych(),
-                sprzedazZamowieniaPage.zwrocPoprawnaInformacjeWSekcjiTypyDanych(),
+        Assert.assertEquals(sprzedazZamowieniaPage.zwrocAktualnyTekstInformacjiWSekcjiTypyDanych(),
+                sprzedazZamowieniaPage.zwrocPoprawnyTekstInformacjiWSekcjiTypyDanych(),
                 "Informacja w sekcji 'Typy danych' nie jest poprawna");
     }
 

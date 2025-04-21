@@ -67,7 +67,7 @@ public class SprzedazZamowieniaPage {
 
     // Zwraca aktualny tytuł strony "Zamówienia" i wypisuje go w konsoli
     public String zwrocAktualnyTytulStronyZamowienia(){
-        System.out.println("Aktualny tytuł strony: " + driver.getTitle());
+        System.out.println("Aktualny tytuł strony ZAMÓWIENIA: " + driver.getTitle());
         return driver.getTitle();
     }
 
@@ -79,7 +79,7 @@ public class SprzedazZamowieniaPage {
 
     // Zwraca aktualny adres URL strony "Zamówienia" i wypisuje go w konsoli
     public String zwrocAktualnyUrlStronyZamowienia(){
-        System.out.println("Aktualny URL: " + driver.getCurrentUrl());
+        System.out.println("Aktualny URL strony ZAMÓWIENIA: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 
@@ -89,42 +89,46 @@ public class SprzedazZamowieniaPage {
         return poprawnyURLStronyZamowienia;
     }
 
-    // Przechodzi do strony "Utwórz Płatność" poprzez kliknięcie przycisku "Dodaj zamówienie"
+    // Klika przycisk "Dodaj zamówienie" i wypisuje go w konsoli
     public void kliknijDodajZamowienieButton(){
-
+        System.out.println("Klikam przycisk: " + dodajZamowienieButton.getText());
         wait.waitForVisibility(dodajZamowienieButton).click();
     }
 
-    // Zwraca przycisk "Dodaj zamówienie"
+    // Zwraca przycisk "Dodaj zamówienie" i wypisuje go w konsoli
     public WebElement zwrocDodajZamowienieButton(){
-        return dodajZamowienieButton;
+        System.out.println("Widać przycisk: " + dodajZamowienieButton.getText());
+        return wait.waitForVisibility(dodajZamowienieButton);
     }
 
-    // Zwraca przycisk "Typy danych"
+    // Zwraca przycisk "Typy danych" i wypisuje go w konsoli
     public WebElement zwrocTypyDanychButton(){
-        return typyDanychButton;
+        System.out.println("Widać przycisk: " + typyDanychButton.getText());
+        return wait.waitForVisibility(typyDanychButton);
     }
 
-    // Kliknięcie przycisku "Typy danych"
+    // Klika przycisk "Typy danych" i wypisuje go w konsoli
     public void kliknijTypyDanychButton(){
+        System.out.println("Klikam przycisk: " + typyDanychButton.getText());
         wait.waitForVisibility(typyDanychButton).click();
     }
 
-    // Zwraca aktualny tekst informacji w sekcji "Typy danych"
-    public String zwrocAktualnaInformacjeWSekcjiTypyDanych(){
+    // Zwraca aktualny tekst informacji w sekcji "Typy danych" i wypisuje go w konsoli
+    public String zwrocAktualnyTekstInformacjiWSekcjiTypyDanych(){
         System.out.println("Aktualna informacja w sekcji 'Typy danych': " + informacjaWSekcjiTypyDanych.getText());
         return informacjaWSekcjiTypyDanych.getText();
     }
 
-    // Zwraca oczekiwany (poprawny) tekst informacji w sekcji "Typy danych"
-    public String zwrocPoprawnaInformacjeWSekcjiTypyDanych(){
+    // Zwraca oczekiwany (poprawny) tekst informacji w sekcji "Typy danych" i wypisuje go w konsoli
+    public String zwrocPoprawnyTekstInformacjiWSekcjiTypyDanych(){
         System.out.println("Oczekiwana informacja w sekcji 'Typy danych': " + poprawnaInformacjaWSekcjiTypyDanych);
         return poprawnaInformacjaWSekcjiTypyDanych;
     }
 
-    // Zwraca informację w sekcji "Typy danych"
+    // Zwraca informację w sekcji "Typy danych" i wypisuje ją w konsoli
     public WebElement zwrocInformacjeWSekcjiTypyDanych(){
-        return informacjaWSekcjiTypyDanych;
+        System.out.println("Widać informację: " + informacjaWSekcjiTypyDanych.getText());
+        return wait.waitForVisibility(informacjaWSekcjiTypyDanych);
     }
 
 

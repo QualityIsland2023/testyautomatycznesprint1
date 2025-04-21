@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
+import pages.LoginPageNew;
 import pages.PanelPage;
 
 public class LoginPageTestNew extends TestBase {

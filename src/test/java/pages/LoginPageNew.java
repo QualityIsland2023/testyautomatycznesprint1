@@ -66,6 +66,13 @@ public class LoginPageNew {
 
     }
 
+    public boolean sprawdzCzyTekstWZrodleStronyIstnieje(){
+        boolean status = wait.waitForTextInPageSource("Witaj");
+        System.out.println("Szukany tekst: " + "Witaj");
+        return status;
+
+    }
+
 
 
     /**********************************Operacje na webelementach KONIEC ******************************************/

@@ -1,34 +1,32 @@
-package tests.seleniumShopTests;
+package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.seleniumShop.LoginPage;
-import tests.TestBase;
+import pages.LoginPageNew;
 
 
-public class LoginPageTest extends TestBase {
+public class LoginPageTest extends TestBase  {
 
     /****************sekja techniczna START **********************************************/
 
-    private LoginPage loginPage; //instancja strony logowania
+    private LoginPageNew loginPage; //instancja strony logowania
 
     /*****************sekja techniczna KONIEC **********************************************/
 
     @BeforeMethod
     public void setUPLoginPage(){
         //inicjalizacja strony logowania , linijka techniczna, konfiguracyjna
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPageNew(driver);
     }
 
 
 
     @Test
     public void weryfikacjaLogowaniaDoAplikacji(){
-        //loginPage.przejscieDoEkranuLogowania();
-        loginPage.wpiszLoginDoPolaLogin();
-        loginPage.wpiszHasloDoPolaHaslo();
-        loginPage.nacisnijPrzyciskZalogujSie();
+        loginPage.wykonajLogowanie();
+
 
         Assert.assertTrue(loginPage.sprawdzCzyTekstWZrodleStronyIstnieje(), "Nie znaleziono tekstu Witaj na stronie");
 

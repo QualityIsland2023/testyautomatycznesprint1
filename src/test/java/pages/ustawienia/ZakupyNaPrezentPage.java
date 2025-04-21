@@ -84,11 +84,21 @@ import java.util.Map;
              WebElement elementSekcji = entry.getValue();
 
              try {
-                 if (!wait.waitForVisibility(elementSekcji).isDisplayed()) {
-                     System.out.println("Sekcja niewidoczna: " + nazwaSekcji);
+                 WebElement widocznyElement = wait.waitForVisibility(elementSekcji);
+
+                 boolean czyWidoczny = widocznyElement.isDisplayed();
+                 boolean czyTekstZgodny = widocznyElement.getText().trim().equals(nazwaSekcji);
+
+                 if (!czyWidoczny || !czyTekstZgodny) {
+                     if (!czyWidoczny) {
+                         System.out.println("Sekcja niewidoczna: " + nazwaSekcji);
+                     }
+                     if (!czyTekstZgodny) {
+                         System.out.println("Tekst sekcji niezgodny: oczekiwano \"" + nazwaSekcji + "\", znaleziono \"" + widocznyElement.getText().trim() + "\"");
+                     }
                      wszystkieWidoczne = false;
                  } else {
-                     System.out.println("Sekcja widoczna: " + nazwaSekcji);
+                     System.out.println("Sekcja widoczna i tekst zgodny: " + nazwaSekcji);
                  }
              } catch (Exception e) {
                  System.out.println("Błąd podczas sprawdzania sekcji: " + nazwaSekcji);

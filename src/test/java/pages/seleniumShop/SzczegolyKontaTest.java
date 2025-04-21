@@ -1,14 +1,14 @@
-package tests;
+package pages.seleniumShop;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.seleniumShop.LoginPage;
-import pages.SzczegolyKontaPage;
 import pages.seleniumShop.MainPage;
+import tests.TestBase;
 
 
-public class SzczegolyKontaTest extends TestBase  {
+public class SzczegolyKontaTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 

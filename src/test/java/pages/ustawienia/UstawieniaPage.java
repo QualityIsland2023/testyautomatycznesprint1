@@ -120,20 +120,53 @@ import java.util.Map;
 
      // Weryfikuje, czy wszystkie zakładki bocznego menu posiadają poprawne napisy
      public boolean czyPozycjeMenuBoczneUstawieniaSaPoprawne() {
+         Map<String, WebElement> pozycjeMenu = new LinkedHashMap<>();
+         pozycjeMenu.put("Podstawowe", linkPodstawowe);
+         pozycjeMenu.put("Księgowe", linkKsiegowe);
+         pozycjeMenu.put("Sposoby płatności", linkSposobyPlatnosci);
+         pozycjeMenu.put("Wygląd", linkWyglad);
+         pozycjeMenu.put("Integracje", linkIntegracje);
+         pozycjeMenu.put("Koszyk zakupowy", linkKoszykZakupowy);
+         pozycjeMenu.put("Wiadomości", linkWiadomosci);
+         pozycjeMenu.put("Zakupy na prezent", linkZakupyNaPrezent);
+         pozycjeMenu.put("Certyfikaty", linkCertyfikaty);
+         pozycjeMenu.put("Analityka i skrypty", linkAnalitykaSkrypty);
+         pozycjeMenu.put("Włącz moduły", linkWlaczModuly);
+         pozycjeMenu.put("Zaawansowane", linkZaawansowane);
 
-         return (linkPodstawowe.getText().equals("Podstawowe") &&
-                 linkKsiegowe.getText().equals("Księgowe") &&
-                 linkSposobyPlatnosci.getText().equals("Sposoby płatności") &&
-                 linkWyglad.getText().equals("Wygląd") &&
-                 linkIntegracje.getText().equals("Integracje") &&
-                 linkKoszykZakupowy.getText().equals("Koszyk zakupowy") &&
-                 linkWiadomosci.getText().equals("Wiadomości") &&
-                 linkZakupyNaPrezent.getText().equals("Zakupy na prezent") &&
-                 linkCertyfikaty.getText().equals("Certyfikaty") &&
-                 linkAnalitykaSkrypty.getText().equals("Analityka i skrypty") &&
-                 linkWlaczModuly.getText().equals("Włącz moduły") &&
-                 linkZaawansowane.getText().equals("Zaawansowane"));
+         boolean wszystkieWidoczne = true;
+
+         for (Map.Entry<String, WebElement> entry : pozycjeMenu.entrySet()) {
+             String nazwaPozycji = entry.getKey();
+             WebElement elementPozycji = entry.getValue();
+
+             try {
+                 WebElement widocznyElement = wait.waitForVisibility(elementPozycji);
+
+                 boolean czyWidoczny = widocznyElement.isDisplayed();
+                 boolean czyTekstZgodny = widocznyElement.getText().trim().equals(nazwaPozycji);
+
+                 if (!czyWidoczny || !czyTekstZgodny) {
+                     if (!czyWidoczny) {
+                         System.out.println("Pozycja niewidoczna: " + nazwaPozycji);
+                     }
+                     if (!czyTekstZgodny) {
+                         System.out.println("Tekst pozycji niezgodny: oczekiwano \"" + nazwaPozycji + "\", znaleziono \"" + widocznyElement.getText().trim() + "\"");
+                     }
+                     wszystkieWidoczne = false;
+                 } else {
+                     System.out.println("Pozycja widoczna i tekst zgodny: " + nazwaPozycji);
+                 }
+             } catch (Exception e) {
+                 System.out.println("Błąd podczas sprawdzania pozycji: " + nazwaPozycji);
+                 e.printStackTrace();
+                 wszystkieWidoczne = false;
+             }
+         }
+
+         return wszystkieWidoczne;
      }
+
 
 
      // Sprawdza, czy zakładki w głównym menu są widoczne
@@ -151,11 +184,21 @@ import java.util.Map;
              WebElement elementPozycji = entry.getValue();
 
              try {
-                 if (!wait.waitForVisibility(elementPozycji).isDisplayed()) {
-                     System.out.println("Pozycja niewidoczna: " + nazwaPozycji);
+                 WebElement widocznyElement = wait.waitForVisibility(elementPozycji);
+
+                 boolean czyWidoczny = widocznyElement.isDisplayed();
+                 boolean czyTekstZgodny = widocznyElement.getText().trim().equals(nazwaPozycji);
+
+                 if (!czyWidoczny || !czyTekstZgodny) {
+                     if (!czyWidoczny) {
+                         System.out.println("Pozycja niewidoczna: " + nazwaPozycji);
+                     }
+                     if (!czyTekstZgodny) {
+                         System.out.println("Tekst pozycji niezgodny: oczekiwano \"" + nazwaPozycji + "\", znaleziono \"" + widocznyElement.getText().trim() + "\"");
+                     }
                      wszystkieWidoczne = false;
                  } else {
-                     System.out.println("Pozycja widoczna: " + nazwaPozycji);
+                     System.out.println("Pozycja widoczna i tekst zgodny: " + nazwaPozycji);
                  }
              } catch (Exception e) {
                  System.out.println("Błąd podczas sprawdzania pozycji: " + nazwaPozycji);
@@ -187,13 +230,21 @@ import java.util.Map;
              WebElement elementSekcji = entry.getValue();
 
              try {
-                 if (!wait.waitForVisibility(elementSekcji).isDisplayed()) {
-                     System.out.println("Sekcja niewidoczna: " + nazwaSekcji);
-                     wszystkieWidoczne = false;
-                 }
+                 WebElement widocznyElement = wait.waitForVisibility(elementSekcji);
 
-                 else {
-                     System.out.println("Sekcja widoczna: " + nazwaSekcji);
+                 boolean czyWidoczny = widocznyElement.isDisplayed();
+                 boolean czyTekstZgodny = widocznyElement.getText().trim().equals(nazwaSekcji);
+
+                 if (!czyWidoczny || !czyTekstZgodny) {
+                     if (!czyWidoczny) {
+                         System.out.println("Sekcja niewidoczna: " + nazwaSekcji);
+                     }
+                     if (!czyTekstZgodny) {
+                         System.out.println("Tekst sekcji niezgodny: oczekiwano \"" + nazwaSekcji + "\", znaleziono \"" + widocznyElement.getText().trim() + "\"");
+                     }
+                     wszystkieWidoczne = false;
+                 } else {
+                     System.out.println("Sekcja widoczna i tekst zgodny: " + nazwaSekcji);
                  }
              } catch (Exception e) {
                  System.out.println("Błąd podczas sprawdzania sekcji: " + nazwaSekcji);

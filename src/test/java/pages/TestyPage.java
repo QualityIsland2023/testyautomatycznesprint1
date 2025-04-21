@@ -42,6 +42,9 @@ public class TestyPage {
     @FindBy(xpath = "//span[contains(text(), 'Wyników na stronę')]")
     private WebElement liczbaWynikowNaStrone;
 
+    @FindBy(xpath = "//button[contains(text(), 'Typy danych')]")
+    private WebElement typyDanychButton;
+
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
@@ -88,7 +91,20 @@ public class TestyPage {
 
     }
 
+    public boolean zweryfikujCzyButtonTypyDanychIstnieje(){
+        boolean status = false;
 
+        if(typyDanychButton.isDisplayed()){
+            status = true;
+
+            System.out.println("Na stronie testy jest przycisk 'Typy danych'.");
+        }else{
+            System.out.println("Przycisk 'Typy danych' nie  znajduje sie w zakladce testy.");
+        }
+
+        return status;
+
+    }
 
 
 

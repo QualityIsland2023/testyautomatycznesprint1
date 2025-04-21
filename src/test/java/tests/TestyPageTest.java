@@ -46,14 +46,25 @@ public class TestyPageTest extends TestBase {
         Assert.assertEquals(testyPage.zwrocPoprawnyTytulZakladkiTesty(), testyPage.zwrocAktualnyTytulZakladkiTesty());
     }
 
-    @Test
-    public void weryfikacjaCzyListaWynikowNaStroneJestWZakldaceTesty(){
+    @Test(priority = 30, enabled = true, description = "Weryfikacja czy lista 'Wynikow na strone' wyswietla sie z zakladce testy znajdujacej sie w menu bocznym.")
+    public void weryfikacjaCzyListaWynikowNaStroneJestWZakldaceTesty() {
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
         loginPageNew.nacisnijPrzyciskZalogujSie();
         panelPage.przejdzDoZakladkiTesty();
 
         Assert.assertTrue(testyPage.zweryfikujCzyNapisWynikowNaStroneIstnieje());
+
+    }
+
+    @Test(priority = 40, enabled = true, description = "Weryfikacja czy przycisk 'Typy danych'v wyswietla sie z zakladce testy znajdujacej sie w menu bocznym.")
+    public void weryfikacjaCzyWZakladceTestyJestButtonTypyDanych() {
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiTesty();
+
+        Assert.assertTrue(testyPage.zweryfikujCzyButtonTypyDanychIstnieje());
 
     }
 }

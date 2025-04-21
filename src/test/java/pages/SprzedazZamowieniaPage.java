@@ -36,11 +36,23 @@ public class SprzedazZamowieniaPage {
     // Oczekiwany (poprawny) adres URL strony "Zamówienia"
     String poprawnyURLStronyZamowienia = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-payment-history";
 
+    // Oczekiwana (poprawna) informacja w sekcji po kliknięciu przycisku "Typy danych"
+    String poprawnaInformacjaWSekcjiTypyDanych = "Wybierz, które kolumny mają być widoczne w tabeli:";
+
     @FindBy(xpath = "//*[contains(text(),'Dodaj zamówienie')]")
     private WebElement dodajZamowienieButton;
 
     @FindBy(xpath = "//button[contains(text(),'Typy danych')]")
     private WebElement typyDanychButton;
+
+    @FindBy(className = "dynamic-table__column-visibility-checkboxes__hint")
+    private WebElement informacjaWSekcjiTypyDanych;
+
+//    Xpath zamienny/alternatywny po poprawie błędu interpunkcyjnego w tekście informacji w sekcji "Typy danych"
+//    @FindBy(xpath = "//*[contains(text(),'Wybierz, które kolumny mają być widoczne w tabeli')]")
+//    private WebElement informacjaWSekcjiTypyDanych;
+
+
 
 
 
@@ -92,6 +104,31 @@ public class SprzedazZamowieniaPage {
     public WebElement zwrocTypyDanychButton(){
         return typyDanychButton;
     }
+
+    // Kliknięcie przycisku "Typy danych"
+    public void kliknijTypyDanychButton(){
+        wait.waitForVisibility(typyDanychButton).click();
+    }
+
+    // Zwraca aktualny tekst informacji w sekcji "Typy danych"
+    public String zwrocAktualnaInformacjeWSekcjiTypyDanych(){
+        System.out.println("Aktualna informacja w sekcji 'Typy danych': " + informacjaWSekcjiTypyDanych.getText());
+        return informacjaWSekcjiTypyDanych.getText();
+    }
+
+    // Zwraca oczekiwany (poprawny) tekst informacji w sekcji "Typy danych"
+    public String zwrocPoprawnaInformacjeWSekcjiTypyDanych(){
+        System.out.println("Oczekiwana informacja w sekcji 'Typy danych': " + poprawnaInformacjaWSekcjiTypyDanych);
+        return poprawnaInformacjaWSekcjiTypyDanych;
+    }
+
+    // Zwraca informację w sekcji "Typy danych"
+    public WebElement zwrocInformacjeWSekcjiTypyDanych(){
+        return informacjaWSekcjiTypyDanych;
+    }
+
+
+
 
 
 

@@ -69,6 +69,29 @@ public class SprzedazZamowieniaPageTest extends TestBase {
                 "Przycisk 'Typy danych' nie jest widoczny");
     }
 
+    @Test(priority = 50, enabled = true, description = "Weryfikacja poprawnego tekstu informacji w sekcji TYPY DANYCH")
+    public void weryfikacjaPoprawnegoTekstuInformacjiWSekcjiTypyDanych(){
+
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijSprzedazZamowieniaMenu();
+        sprzedazZamowieniaPage.kliknijTypyDanychButton();
+
+        Assert.assertEquals(sprzedazZamowieniaPage.zwrocAktualnaInformacjeWSekcjiTypyDanych(),
+                sprzedazZamowieniaPage.zwrocPoprawnaInformacjeWSekcjiTypyDanych(),
+                "Informacja w sekcji 'Typy danych' nie jest poprawna");
+    }
+
+    @Test(priority = 60, enabled = true, description = "Weryfikacja widoczności informacji w sekcji TYPY DANYCH")
+    public void weryfikacjaWidocznosciInformacjiWSekcjiTypyDanych(){
+
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijSprzedazZamowieniaMenu();
+        sprzedazZamowieniaPage.kliknijTypyDanychButton();
+
+        Assert.assertTrue(sprzedazZamowieniaPage.zwrocInformacjeWSekcjiTypyDanych().isDisplayed(),
+                "Informacja w sekcji 'Typy danych' nie jest widoczna");
+    }
+
 
 
 

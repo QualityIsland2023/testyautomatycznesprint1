@@ -48,6 +48,9 @@ public class TestyPage {
     @FindBy(xpath = "//p[contains(text(), 'Wybierz które kolumny mają być widoczne w tabeli')]")
     private WebElement sekcjaWybierzKtoreKolumnyMajaBycWidoczneWTabeli;
 
+    @FindBy(className = "checkbox-replacement")
+    private List<WebElement> listaCheckboxowWTypachDanych;
+
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
@@ -122,6 +125,21 @@ public class TestyPage {
             System.out.println("Sekcja 'Wybierz które kolumny mają być widoczne w tabeli' pojawia sie poprawnie.");
         }else{
             System.out.println("Sekcja 'Wybierz które kolumny mają być widoczne w tabeli' nie pojawia sie po kliknieciu w przycisk 'Typy danych'.");
+        }
+
+        return status;
+
+    }
+
+    public boolean zweryfikujCzyPoNacisnieciuTypyDanychButtonPojawiaSie8Checkboxow(){
+        boolean status = false;
+
+        if(listaCheckboxowWTypachDanych.size() == 8){
+            status = true;
+
+            System.out.println("Liczba checkboxow jest prawidlowa, wynosi " + listaCheckboxowWTypachDanych.size());
+        }else{
+            System.out.println("Liczba checkboxow jest nieprawidlowa, wynosi " + listaCheckboxowWTypachDanych.size());
         }
 
         return status;

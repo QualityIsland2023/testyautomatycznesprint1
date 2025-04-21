@@ -79,4 +79,16 @@ public class TestyPageTest extends TestBase {
         Assert.assertTrue(testyPage.zweryfikujCzySekcjaWybierzKtoreKolumnyMajaBycWidoczneWTabeliIstnieje());
 
     }
+
+    @Test(priority = 40, enabled = true, description = "Weryfikacja czy sekcja 'Wybierz które kolumny mają być widoczne w tabeli' pojawia sie po nacisnieciu przycisku 'Typy danych' w zakladce testy znajdujacej sie w menu bocznym.")
+    public void weryfikacjaCzyPoKliknieciuTypyDanychButtonPojawiaSiePoprawnaLiczbaCheckboxow() {
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiTesty();
+        testyPage.nacisnijPrzyciskTypyDanychWZakladceTesty();
+
+        Assert.assertTrue(testyPage.zweryfikujCzyPoNacisnieciuTypyDanychButtonPojawiaSie8Checkboxow());
+
+    }
 }

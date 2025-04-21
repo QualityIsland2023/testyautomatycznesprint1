@@ -42,7 +42,7 @@ import java.util.Map;
      // Sekcje dostępne w zakładce "Sposoby platnosci"
      @FindBy(xpath ="//span[contains(text(),'Konfiguracja i testy')]") private WebElement sekcjaKonfiguracjaTesty;
      @FindBy(xpath ="//span[contains(text(),'Płatności elektroniczne bankowe oraz cykliczne')]") private WebElement sekcjaPlatnosciBankoweCykliczne;
-     @FindBy(xpath ="//span[contains(text(),'Płatności elektroniczne bankowe')]") private WebElement sekcjaPlatnosciElektroniczneBankowe;
+     @FindBy(xpath ="//span[text()='Płatności elektroniczne bankowe']") private WebElement sekcjaPlatnosciElektroniczneBankowe;
      @FindBy(xpath ="//span[contains(text(),'Pozostałe typy płatności')]") private WebElement sekcjaPozostaleTypyPlatnosci;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/

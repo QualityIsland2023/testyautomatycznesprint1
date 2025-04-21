@@ -36,9 +36,11 @@ public class SprzedazUtworzPlatnoscPage {
     // Oczekiwany (poprawny) adres URL strony "Utwórz płatność"
     String poprawnyURLStronyUtworzPlatnosc = "https://mmrmqpr585.publigo.onl/wp-admin/options.php?page=edd-manual-purchase";
 
-    // Sekcja tytułowa na stronie "Utwórz płatność"
     @FindBy(xpath = "//*[contains(text(),'Utwórz nową płatność')]")
     private WebElement sekcjaTytulowaUtworzNowaPlatnosc;
+
+    @FindBy(xpath = "//*[contains(text(),'Wybierz Produkty')]")
+    private WebElement listaWybierzProdukty;
 
 
 
@@ -73,10 +75,30 @@ public class SprzedazUtworzPlatnoscPage {
         return poprawnyURLStronyUtworzPlatnosc;
     }
 
-    // Zwraca sekcję tytułową na stronie "Utwórz płatność" i wypisuje ją w konsoli
-    public WebElement zwrocSekcjeTytulowaUtworzNowaPlatnosc(){
-        System.out.println("Sekcja tytułowa na stronie UTWÓRZ PŁATNOŚĆ: " + sekcjaTytulowaUtworzNowaPlatnosc.getText());
-        return sekcjaTytulowaUtworzNowaPlatnosc;
+    // Sprawdza, czy sekcja tytułowa "Utwórz nową płatność" jest widoczna
+    public boolean zwrocSekcjeTytulowaUtworzNowaPlatnosc(){
+        boolean status = false;
+        if(sekcjaTytulowaUtworzNowaPlatnosc.isDisplayed()){
+            status = true;
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje sekcja tytułowa UTWÓRZ NOWĄ PŁATNOŚĆ");
+        }else {
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma sekcji tytułowej UTWÓRZ NOWĄ PŁATNOŚĆ");
+        }
+        return status;
+    }
+
+    public boolean zweryfikujCzyListaProduktowIstnieje(){
+        boolean status = false;
+
+        if(listaWybierzProdukty.isDisplayed()){
+            status = true;
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje lista WYBIERZ PRODUKTY");
+        }else{
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma listy WYBIERZ PRODUKTY");
+        }
+
+        return status;
+
     }
 
 

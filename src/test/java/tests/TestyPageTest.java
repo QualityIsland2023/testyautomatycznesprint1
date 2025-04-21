@@ -68,7 +68,7 @@ public class TestyPageTest extends TestBase {
 
     }
 
-    @Test(priority = 40, enabled = true, description = "Weryfikacja czy sekcja 'Wybierz które kolumny mają być widoczne w tabeli' pojawia sie po nacisnieciu przycisku 'Typy danych' w zakladce testy znajdujacej sie w menu bocznym.")
+    @Test(priority = 50, enabled = true, description = "Weryfikacja czy sekcja 'Wybierz które kolumny mają być widoczne w tabeli' pojawia sie po nacisnieciu przycisku 'Typy danych' w zakladce testy znajdujacej sie w menu bocznym.")
     public void weryfikacjaCzyPoKliknieciuTypyDanychButtonPojawiaSieSekcjaWybierzKtoreKolumnyMajaBycWidoczneWTabeli() {
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
@@ -80,7 +80,7 @@ public class TestyPageTest extends TestBase {
 
     }
 
-    @Test(priority = 40, enabled = true, description = "Weryfikacja czy sekcja 'Wybierz które kolumny mają być widoczne w tabeli' pojawia sie po nacisnieciu przycisku 'Typy danych' w zakladce testy znajdujacej sie w menu bocznym.")
+    @Test(priority = 60, enabled = true, description = "Weryfikacja czy sekcja 'Wybierz które kolumny mają być widoczne w tabeli' pojawia sie po nacisnieciu przycisku 'Typy danych' w zakladce testy znajdujacej sie w menu bocznym.")
     public void weryfikacjaCzyPoKliknieciuTypyDanychButtonPojawiaSiePoprawnaLiczbaCheckboxow() {
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
@@ -88,11 +88,11 @@ public class TestyPageTest extends TestBase {
         panelPage.przejdzDoZakladkiTesty();
         testyPage.nacisnijPrzyciskTypyDanychWZakladceTesty();
 
-        Assert.assertTrue(testyPage.zweryfikujCzyPoNacisnieciuTypyDanychButtonPojawiaSie8Checkboxow());
+        Assert.assertTrue(testyPage.zweryfikujCzyPoNacisnieciuTypyDanychButtonPojawiaSiePoprawnaLiczbaCheckboxow());
 
     }
 
-    @Test(priority = 50, enabled = true, description = "Weryfikacja czy po nacisnieciu przycisku 'Typy danych' w zakladce testy w menu bocznym, liczba niezaznaczonych checkboxow jest prawidlowa.")
+    @Test(priority = 70, enabled = true, description = "Weryfikacja czy po nacisnieciu przycisku 'Typy danych' w zakladce testy w menu bocznym, liczba niezaznaczonych checkboxow jest prawidlowa.")
     public void weryfikacjaCzyPoKliknieciuTypyDanychLiczbaNiezaznaczonychCheckboxowJestPoprawna() {
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
@@ -104,7 +104,7 @@ public class TestyPageTest extends TestBase {
 
     }
 
-    @Test(priority = 60, enabled = true, description = "Weryfikacja czy tabela w zakladce testy posiada wszystkie kolumny.")
+    @Test(priority = 80, enabled = true, description = "Weryfikacja czy tabela w zakladce testy posiada wszystkie kolumny.")
     public void weryfikacjaCzyTabelaWZakladceTestyPosiadaPoprawneKolumny() {
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();

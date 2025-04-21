@@ -44,4 +44,38 @@ public class CertyfikatyPageTest extends TestBase {
 
         Assert.assertEquals(certyfikatyPage.zwrocAktualnyTytulZakladkiCertyfikatyt(), certyfikatyPage.zwrocPoprawnyTytulZakladkiCertyfikaty());
     }
+
+    @Test(priority = 30, enabled = true, description = "Weryfikacja czy lista 'Wynikow na strone' wyswietla sie z zakladce certyfikaty znajdujacej sie w menu bocznym.")
+    public void weryfikacjaCzyListaWynikowNaStroneJestWZakldaceCertyfikaty() {
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiTesty();
+
+        Assert.assertTrue(certyfikatyPage.zweryfikujCzyNapisWynikowNaStroneIstniejeWZakladceCertyfikaty());
+
+    }
+
+    @Test(priority = 40, enabled = true, description = "Weryfikacja czy przycisk 'Typy danych' wyswietla sie z zakladce certyfikaty znajdujacej sie w menu bocznym.")
+    public void weryfikacjaCzyWZakladceCertyfikatyJestButtonTypyDanych() {
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiTesty();
+
+        Assert.assertTrue(certyfikatyPage.zweryfikujCzyButtonTypyDanychIstniejeWZakladceCertyfikaty());
+
+    }
+
+    @Test(priority = 50, enabled = true, description = "Weryfikacja czy sekcja 'Wybierz które kolumny mają być widoczne w tabeli' pojawia sie po nacisnieciu przycisku 'Typy danych' w zakladce certyfikaty znajdujacej sie w menu bocznym.")
+    public void weryfikacjaCzyPoKliknieciuTypyDanychButtonPojawiaSieSekcjaWybierzKtoreKolumnyMajaBycWidoczneWTabeli() {
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiTesty();
+        certyfikatyPage.nacisnijPrzyciskTypyDanychWZakladceCertyfikaty();
+
+        Assert.assertTrue(certyfikatyPage.zweryfikujCzySekcjaWybierzKtoreKolumnyMajaBycWidoczneWTabeliIstniejeWZakladceCertyfikaty());
+
+    }
 }

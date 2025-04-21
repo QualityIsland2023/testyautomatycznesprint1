@@ -1,13 +1,13 @@
-package tests;
+package tests.seleniumShopTests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.LoginPage;
+import pages.seleniumShop.LoginPage;
+import tests.TestBase;
 
 
-public class LoginPageTest extends TestBase  {
+public class LoginPageTest extends TestBase {
 
     /****************sekja techniczna START **********************************************/
 
@@ -25,7 +25,7 @@ public class LoginPageTest extends TestBase  {
 
     @Test
     public void weryfikacjaLogowaniaDoAplikacji(){
-        loginPage.przejscieDoEkranuLogowania();
+        //loginPage.przejscieDoEkranuLogowania();
         loginPage.wpiszLoginDoPolaLogin();
         loginPage.wpiszHasloDoPolaHaslo();
         loginPage.nacisnijPrzyciskZalogujSie();

@@ -39,7 +39,8 @@ public class TestyPage {
     @FindBy(xpath = "//span[contains(text(), '#')]")
     private WebElement hashtagPrzyIDTestow;
 
-
+    @FindBy(xpath = "//span[contains(text(), 'Wyników na stronę')]")
+    private WebElement liczbaWynikowNaStrone;
 
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
@@ -70,6 +71,21 @@ public class TestyPage {
     public void nacisnijPierwszyZakonczonyTestWZakladceTesty(){
         wait.waitForVisibility(hashtagPrzyIDTestow);
         pozycjeZakonczonychTestow.getFirst().click();
+    }
+
+    public boolean zweryfikujCzyNapisWynikowNaStroneIstnieje(){
+        boolean status = false;
+
+        if(liczbaWynikowNaStrone.isDisplayed()){
+            status = true;
+
+            System.out.println("Na stronie testy jest lista 'Wynikow na strone'.");
+        }else{
+            System.out.println("Lista 'Wynikow na strone' nie  znajduje sie w zakladce testy.");
+        }
+
+        return status;
+
     }
 
 

@@ -2,11 +2,10 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.LoginPage;
-import pages.MainPage;
+import pages.seleniumShop.LoginPage;
 import pages.SzczegolyKontaPage;
+import pages.seleniumShop.MainPage;
 
 
 public class SzczegolyKontaTest extends TestBase  {

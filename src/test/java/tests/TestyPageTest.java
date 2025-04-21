@@ -45,4 +45,15 @@ public class TestyPageTest extends TestBase {
 
         Assert.assertEquals(testyPage.zwrocPoprawnyTytulZakladkiTesty(), testyPage.zwrocAktualnyTytulZakladkiTesty());
     }
+
+    @Test
+    public void weryfikacjaCzyListaWynikowNaStroneJestWZakldaceTesty(){
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiTesty();
+
+        Assert.assertTrue(testyPage.zweryfikujCzyNapisWynikowNaStroneIstnieje());
+
+    }
 }

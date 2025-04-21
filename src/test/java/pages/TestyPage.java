@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TestyPage {
@@ -35,6 +37,9 @@ public class TestyPage {
     int niezaznaczoneCheckboxy = 0;
     int zaznaczoneCheckboxy = 0;
 
+    List<String> oczekiwaneNazwyWTabeli = Arrays.asList("Id", "Kurs", "Test", "Imię i nazwisko", "Punkty", "Wynik", "Data wypełnienia", "Więcej");
+
+
     @FindBy(xpath = "//td[contains(@class, 'type-id')]/a")
     private List<WebElement> pozycjeZakonczonychTestow;
 
@@ -53,8 +58,29 @@ public class TestyPage {
     @FindBy(css = "input[type='checkbox']")
     private List<WebElement> listaCheckboxowWTypachDanych;
 
+    @FindBy(xpath = "//div[contains(text(), 'Kurs')]")
+    private WebElement kolumnaKursWTabeli;
 
+    @FindBy(xpath = "//div[contains(text(), 'Test')]")
+    private WebElement kolumnaTestWTabeli;
 
+    @FindBy(xpath = "//div[contains(text(), 'Imię i nazwisko')]")
+    private WebElement kolumnaImieINazwiskoWTabeli;
+
+    @FindBy(xpath = "//div[contains(text(), 'Punkty')]")
+    private WebElement kolumnaPunktyWTabeli;
+
+    @FindBy(xpath = "//div[contains(text(), 'Wynik')]")
+    private WebElement kolumnaWynikWTabeli;
+
+    @FindBy(xpath = "//div[contains(text(), 'Data wypełnienia')]")
+    private WebElement kolumnaDataWypelnieniaWTabeli;
+
+    @FindBy(xpath = "//th[contains(text(), 'Więcej')]")
+    private WebElement kolumnaWiecejWTabeli;
+
+    @FindBy(xpath = "//div[contains(text(), 'Id')]")
+    private WebElement kolumnaIdWTabeli;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
@@ -171,6 +197,17 @@ public class TestyPage {
 
         return status;
 
+    }
+
+    public boolean zweryfikujCzyTabelaWZakladceTestyPosiadaPoprawneKolumny(){
+        boolean status = false;
+
+        if(kolumnaDataWypelnieniaWTabeli.isDisplayed() && kolumnaWiecejWTabeli.isDisplayed() && kolumnaWynikWTabeli.isDisplayed() && kolumnaPunktyWTabeli.isDisplayed() && kolumnaImieINazwiskoWTabeli.isDisplayed() && kolumnaKursWTabeli.isDisplayed() && kolumnaTestWTabeli.isDisplayed() && kolumnaIdWTabeli.isDisplayed()){
+            status = true;
+            System.out.println("Tabela w zakladce testy posiada wszystkie kolumny.");
+        }
+
+        return status;
     }
 
 

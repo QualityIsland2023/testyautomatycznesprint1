@@ -1,14 +1,13 @@
-package pages;
+ package pages.seleniumShop;
 
 import config.PropertiesReader;
 import helpers.Waits;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+ public class AdresyPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
     //przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
@@ -20,7 +19,7 @@ public class LoginPage {
     private Waits wait;
 
     //konstrukotor, który tworzy nową instancję strony logowania
-    public LoginPage(WebDriver driver){
+    public AdresyPage(WebDriver driver){
         this.driver = driver;
         this.wait = new Waits(driver);
         PageFactory.initElements(driver, this);
@@ -30,18 +29,20 @@ public class LoginPage {
 
 
     /************************Repozytorium webelementów START **********************************************/
+    @FindBy(xpath = "//*[contains(text(),'Adres do wysyłki')]/following-sibling::a" )
+            private WebElement edytujAdresWysylki;
 
-    @FindBy(xpath = "//a[contains(text(),'Moje konto')]")
-    private WebElement mojeKontoMenu;
+    @FindBy(id ="shipping_address_1")
+            private WebElement ulicaInput;
 
-    @FindBy(id = "username")
-    private WebElement loginInput;
+    @FindBy(name ="save_address")
+            private WebElement zapiszAdresButton;
 
-    @FindBy(id = "password")
-    private WebElement hasloInput;
+    /***************************Repozytorium webelementów KONIEC ******************************************/
 
-    @FindBy(name = "login")
-    private WebElement zalogujSieButton;
+
+
+    /***************************Repozytorium webelementów KONIEC ******************************************/
 
 
 
@@ -50,39 +51,31 @@ public class LoginPage {
 
     /****************************Operacje na webelementach START **********************************************/
 
-        public void przejscieDoEkranuLogowania(){
-
-            mojeKontoMenu.click();
-
-        }
-
-
-        public void wpiszLoginDoPolaLogin(){
-            System.out.println("Login: " + login);
-            loginInput.sendKeys(login);
-        }
-
-
-        public void wpiszHasloDoPolaHaslo(){
-            System.out.println("Haslo: " + haslo);
-            hasloInput.sendKeys(haslo);
-        }
-
-
-        public void nacisnijPrzyciskZalogujSie() {
-            System.out.println("Nacisnięto przycisk Zaloguj się");
-            zalogujSieButton.click();
-        }
-
-        public boolean sprawdzCzyTekstWZrodleStronyIstnieje(){
-         boolean status = false;
-         if(wait.waitForTextInPageSource("Witaj")){
-            status = true;
-         }
-            System.out.println("Szukany tekst: " + "Witaj");
-         return status;
-
+    public void otworzEdycjeAdresuWysylki(){
+        edytujAdresWysylki.click();
     }
+
+    public void edytujUlicaAdresuWysylki(){
+
+        ulicaInput.clear();
+        ulicaInput.sendKeys("Sloneczka 49");
+        zapiszAdresButton.click();
+    }
+//
+//    public boolean sprawdzCzyKomunikatJestWidoczny(){
+//        boolean status = false;
+//
+//        if(wait.waitForTextToBePresent(driver.getPageSource().contains("Adres został zmieniony."))){
+//            status = true;
+//        }
+//
+//        return status;
+//
+//    }
+
+
+
+
     /**********************************Operacje na webelementach KONIEC ******************************************/
 
 }

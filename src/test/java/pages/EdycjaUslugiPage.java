@@ -1,12 +1,9 @@
 package pages;
-import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class EdycjaUslugiPage {
+    public class EdycjaUslugiPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
 

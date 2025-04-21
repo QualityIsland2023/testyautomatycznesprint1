@@ -34,33 +34,16 @@ import java.util.Map;
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) adres URL strony "Ksiegowe"
+    // Stałe zawierające poprawne wartości do weryfikacji strony
     private String poprawnyUrlKsiegowe = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-settings&autofocus=accounting";
-
-    // Oczekiwany (poprawny) tytuł strony "Ksiegowe"
     private String poprawnyTytulKsiegowe = "Ustawienia ‹ Platforma kursów online — WordPress";
 
-     @FindBy(xpath ="//span[contains(text(),'Waluta')]")
-     private WebElement sekcjaWaluta;
-
-     @FindBy(xpath ="//span[contains(text(),'Fakturowanie')]")
-     private WebElement sekcjaFakturowanie;
-
-     @FindBy(xpath ="//span[contains(text(),'API GUS')]")
-     private WebElement sekcjaAPIGUS;
-
-
-
-
-
-
-
-
+     // Sekcje dostępne w zakładce "Analityka i skrypty"
+     @FindBy(xpath ="//span[contains(text(),'Waluta')]") private WebElement sekcjaWaluta;
+     @FindBy(xpath ="//span[contains(text(),'Fakturowanie')]") private WebElement sekcjaFakturowanie;
+     @FindBy(xpath ="//span[contains(text(),'API GUS')]") private WebElement sekcjaAPIGUS;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
-
-
-
 
 
 
@@ -91,6 +74,7 @@ import java.util.Map;
          return driver.getTitle();
      }
 
+     // Sprawdza, czy wszystkie sekcje w zakładce "Ksiegowe" są widoczne
      public boolean czyZakladkaKsiegowePosiadaWlasciweSekcje() {
          Map<String, WebElement> sekcje = new LinkedHashMap<>();
          sekcje.put("Waluta", sekcjaWaluta);

@@ -34,38 +34,17 @@ import java.util.Map;
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) adres URL strony "WlaczModuly"
+    // Stałe zawierające poprawne wartości do weryfikacji strony
     private String poprawnyUrlWlaczModuly = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-settings&autofocus=modules";
-
-    // Oczekiwany (poprawny) tytuł strony "WlaczModuly"
     private String poprawnyTytulWlaczModuly = "Ustawienia ‹ Platforma kursów online — WordPress";
 
-     @FindBy(xpath ="//span[contains(text(),'Typy produktów')]")
-     private WebElement sekcjaTypyProduktow;
-
-     @FindBy(xpath ="//span[contains(text(),'Marketing i sprzedaż')]")
-     private WebElement sekcjaMarketingSprzedaz;
-
-     @FindBy(xpath ="//span[contains(text(),'Komunikacja')]")
-     private WebElement sekcjaKomunikacja;
-
-     @FindBy(xpath ="//span[contains(text(),'Pliki')]")
-     private WebElement sekcjaPliki;
-
-
-
-
-
-
-
-
+     // Sekcje dostępne w zakładce "Wlacz moduly"
+     @FindBy(xpath ="//span[contains(text(),'Typy produktów')]") private WebElement sekcjaTypyProduktow;
+     @FindBy(xpath ="//span[contains(text(),'Marketing i sprzedaż')]") private WebElement sekcjaMarketingSprzedaz;
+     @FindBy(xpath ="//span[contains(text(),'Komunikacja')]") private WebElement sekcjaKomunikacja;
+     @FindBy(xpath ="//span[contains(text(),'Pliki')]") private WebElement sekcjaPliki;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
-
-
-
-
-
 
     /****************************Operacje na webelementach START **********************************************/
 
@@ -94,6 +73,7 @@ import java.util.Map;
          return driver.getTitle();
      }
 
+     // Sprawdza, czy wszystkie sekcje w zakładce "Wlacz moduly" są widoczne
      public boolean czyZakladkaWlaczModulyPosiadaWlasciweSekcje() {
          Map<String, WebElement> sekcje = new LinkedHashMap<>();
          sekcje.put("Typy produktów", sekcjaTypyProduktow);

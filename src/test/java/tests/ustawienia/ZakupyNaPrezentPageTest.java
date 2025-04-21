@@ -53,6 +53,7 @@ public class ZakupyNaPrezentPageTest extends TestBase {
         Assert.assertEquals(zakupyNaPrezentPage.getAktualnyTytulZakupyNaPrezent(), zakupyNaPrezentPage.getPoprawnyTytulZakupyNaPrezent(),  "Tytul strony Zakupy Na Prezent nie jest poprawny");
     }
 
+    // Test weryfikujący poprawność widocznych sekcji w zakładce "Zakupy na prezent"
     @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce zakupy na prezent")
     public void zweryfikujPoprawnoscSekcjiZakupyNaPrezent() {
         loginPageNew.wykonajLogowanie();

@@ -23,15 +23,15 @@ public class KsiegowePageTest extends TestBase {
 
     @BeforeMethod
     public void setUpKsiegowePage(){
-        //inicjalizacja strony ksiegowe , linijka techniczna, konfiguracyjna
+        // Metoda uruchamiana przed każdym testem
+        // Inicjalizacja obiektów stron potrzebnych do wykonania testów
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
         ustawieniaPage = new UstawieniaPage(driver);
         ksiegowePage = new KsiegowePage(driver);
     }
 
-
-
+    // Test weryfikujący, czy adres URL strony "Ksiegowe" jest poprawny
     @Test(priority = 110, enabled = true, description = "Weryfikacja url strony ksiegowe")
     public void zweryfikujPoprawnyUrlKsiegowe() {
         loginPageNew.wykonajLogowanie();
@@ -40,6 +40,7 @@ public class KsiegowePageTest extends TestBase {
         Assert.assertEquals(ksiegowePage.getAktualnyUrlKsiegowe(), ksiegowePage.getPoprawnyUrlKsiegowe(),  "Url strony ksiegowe nie jest poprawny");
     }
 
+    // Test weryfikujący, czy tytuł strony "Ksiegowe" jest poprawny
     @Test(priority = 120, enabled = true, description = "Weryfikacja tytulu strony ksiegowe")
     public void zweryfikujPoprawnyTytulKsiegowe() {
         loginPageNew.wykonajLogowanie();
@@ -48,6 +49,7 @@ public class KsiegowePageTest extends TestBase {
         Assert.assertEquals(ksiegowePage.getAktualnyTytulKsiegowe(), ksiegowePage.getPoprawnyTytulKsiegowe(),  "Tytul strony ksiegowe nie jest poprawny");
     }
 
+    // Test weryfikujący poprawność widocznych sekcji w zakładce "Ksiegowe"
     @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce ksiegowe")
     public void zweryfikujPoprawnoscSekcjiZakladkaKsiegowe() {
         loginPageNew.wykonajLogowanie();

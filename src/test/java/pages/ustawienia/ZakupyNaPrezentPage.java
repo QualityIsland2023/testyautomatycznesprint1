@@ -34,32 +34,15 @@ import java.util.Map;
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) adres URL strony "Zakupy Na Prezent"
+    // Stałe zawierające poprawne wartości do weryfikacji strony
     private String poprawnyUrlZakupyNaPrezent = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-settings&autofocus=gift";
-
-    // Oczekiwany (poprawny) tytuł strony "Zakupy Na Prezent"
     private String poprawnyTytulZakupyNaPrezent = "Ustawienia ‹ Platforma kursów online — WordPress";
 
-     @FindBy(xpath ="//span[contains(text(),'Zakupy na prezent')]")
-     private WebElement sekcjaZakupyNaPrezent;
-
-     @FindBy(xpath ="//span[contains(text(),'Voucher jako PDF')]")
-     private WebElement sekcjaVoucherJakoPDF;
-
-
-
-
-
-
-
-
+     // Sekcje dostępne w zakładce "Zakupy na prezent"
+     @FindBy(xpath ="//span[contains(text(),'Zakupy na prezent')]") private WebElement sekcjaZakupyNaPrezent;
+     @FindBy(xpath ="//span[contains(text(),'Voucher jako PDF')]") private WebElement sekcjaVoucherJakoPDF;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
-
-
-
-
-
 
     /****************************Operacje na webelementach START **********************************************/
 
@@ -88,6 +71,7 @@ import java.util.Map;
          return driver.getTitle();
      }
 
+     // Sprawdza, czy wszystkie sekcje w zakładce "Zakupy na prezent" są widoczne
      public boolean czyZakladkaZakupyNaPrezentPosiadaWlasciweSekcje() {
          Map<String, WebElement> sekcje = new LinkedHashMap<>();
          sekcje.put("Zakupy na prezent", sekcjaZakupyNaPrezent);

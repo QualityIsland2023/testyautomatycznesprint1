@@ -34,43 +34,19 @@ import java.util.Map;
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) adres URL strony "Wiadomosci"
+    // Stałe zawierające poprawne wartości do weryfikacji strony
     private String poprawnyUrlWiadomosci = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-settings&autofocus=messages";
-
-    // Oczekiwany (poprawny) tytuł strony "Wiadomosci"
     private String poprawnyTytulWiadomosci = "Ustawienia ‹ Platforma kursów online — WordPress";
 
-     @FindBy(xpath ="//span[contains(text(),'Nadawca')]")
-     private WebElement sekcjaNadawca;
-
-     @FindBy(xpath ="//span[contains(text(),' Wiadomość wysyłana po zakupie')]")
-     private WebElement sekcjaWiadomoscWysylanaPoZakupie;
-
-     @FindBy(xpath ="//span[contains(text(),' Wiadomość wysyłana po założeniu konta')]")
-     private WebElement sekcjaWiadomoscWysylanaPoZalozeniuKonta;
-
-     @FindBy(xpath ="//span[contains(text(),'Kody rabatowe')]")
-     private WebElement sekcjaKodyRabatowe;
-
-     @FindBy(xpath ="//span[contains(text(),'Raporty')]")
-     private WebElement sekcjaRaporty;
-
-     @FindBy(xpath ="//span[contains(text(),'Przypomnienia')]")
-     private WebElement sekcjaPrzypomnienia;
-
-
-
-
-
-
-
-
+     // Sekcje dostępne w zakładce "Wiadomosci"
+     @FindBy(xpath ="//span[contains(text(),'Nadawca')]") private WebElement sekcjaNadawca;
+     @FindBy(xpath ="//span[contains(text(),' Wiadomość wysyłana po zakupie')]") private WebElement sekcjaWiadomoscWysylanaPoZakupie;
+     @FindBy(xpath ="//span[contains(text(),' Wiadomość wysyłana po założeniu konta')]") private WebElement sekcjaWiadomoscWysylanaPoZalozeniuKonta;
+     @FindBy(xpath ="//span[contains(text(),'Kody rabatowe')]") private WebElement sekcjaKodyRabatowe;
+     @FindBy(xpath ="//span[contains(text(),'Raporty')]") private WebElement sekcjaRaporty;
+     @FindBy(xpath ="//span[contains(text(),'Przypomnienia')]") private WebElement sekcjaPrzypomnienia;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
-
-
-
-
 
 
     /****************************Operacje na webelementach START **********************************************/
@@ -100,6 +76,7 @@ import java.util.Map;
          return driver.getTitle();
      }
 
+     // Sprawdza, czy wszystkie sekcje w zakładce "Wiadomosci" są widoczne
      public boolean czyZakladkaWiadomosciPosiadaWlasciweSekcje() {
          Map<String, WebElement> sekcje = new LinkedHashMap<>();
          sekcje.put("Nadawca", sekcjaNadawca);

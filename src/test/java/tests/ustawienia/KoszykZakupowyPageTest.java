@@ -55,6 +55,7 @@ public class KoszykZakupowyPageTest extends TestBase {
         Assert.assertEquals(koszykZakupowyPage.getAktualnyTytulKoszykZakupowy(), koszykZakupowyPage.getPoprawnyTytulKoszykZakupowy(),  "Tytul strony koszyk Zakupowy nie jest poprawny");
     }
 
+    // Test weryfikujący poprawność widocznych sekcji w zakładce "Koszyk zakupowy"
     @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce koszyk zakupowy")
     public void zweryfikujPoprawnoscSekcjiKoszykZakupowy() {
         loginPageNew.wykonajLogowanie();

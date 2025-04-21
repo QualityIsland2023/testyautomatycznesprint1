@@ -34,44 +34,19 @@ import java.util.Map;
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) adres URL strony "Koszyk Zakupowy"
+    // Stałe zawierające poprawne wartości do weryfikacji strony
     private String poprawnyUrlKoszykZakupowy = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-settings&autofocus=cart";
-
-    // Oczekiwany (poprawny) tytuł strony "Koszyk Zakupowy"
     private String poprawnyTytulKoszykZakupowy = "Ustawienia ‹ Platforma kursów online — WordPress";
 
-     @FindBy(xpath ="//span[contains(text(),'Widok koszyka')]")
-     private WebElement sekcjaWidokKoszyka;
-
-     @FindBy(xpath ="//span[contains(text(),'Dane w formularzu')]")
-     private WebElement sekcjaDaneFormularz;
-
-     @FindBy(xpath ="//span[contains(text(),'Dodatkowe checkboxy')]")
-     private WebElement sekcjaDodatkoweCheckboxy;
-
-     @FindBy(xpath ="//span[contains(text(),'Regulamin')]")
-     private WebElement sekcjaRegulamin;
-
-     @FindBy(xpath ="//span[contains(text(),'Dodatkowe ustawienia')]")
-     private WebElement sekcjaDodatkoweUstawienia;
-
-     @FindBy(xpath ="//span[contains(text(),'Sidebar | stopka (koszyk ofertowy)')]")
-     private WebElement sekcjaSidebarStopka;
-
-
-
-
-
-
-
-
-
+     // Sekcje dostępne w zakładce "Koszyk zakupowy"
+     @FindBy(xpath ="//span[contains(text(),'Widok koszyka')]") private WebElement sekcjaWidokKoszyka;
+     @FindBy(xpath ="//span[contains(text(),'Dane w formularzu')]") private WebElement sekcjaDaneFormularz;
+     @FindBy(xpath ="//span[contains(text(),'Dodatkowe checkboxy')]") private WebElement sekcjaDodatkoweCheckboxy;
+     @FindBy(xpath ="//span[contains(text(),'Regulamin')]") private WebElement sekcjaRegulamin;
+     @FindBy(xpath ="//span[contains(text(),'Dodatkowe ustawienia')]") private WebElement sekcjaDodatkoweUstawienia;
+     @FindBy(xpath ="//span[contains(text(),'Sidebar | stopka (koszyk ofertowy)')]") private WebElement sekcjaSidebarStopka;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
-
-
-
-
 
 
     /****************************Operacje na webelementach START **********************************************/
@@ -101,6 +76,7 @@ import java.util.Map;
          return driver.getTitle();
      }
 
+     // Sprawdza, czy wszystkie sekcje w zakładce "Koszyk zakupowy" są widoczne
      public boolean czyZakladkaKoszykZakupowyPosiadaWlasciweSekcje() {
          Map<String, WebElement> sekcje = new LinkedHashMap<>();
          sekcje.put("Widok koszyka", sekcjaWidokKoszyka);

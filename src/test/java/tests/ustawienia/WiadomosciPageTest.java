@@ -53,6 +53,7 @@ public class WiadomosciPageTest extends TestBase {
         Assert.assertEquals(wiadomosciPage.getAktualnyTytulWiadomosci(), wiadomosciPage.getPoprawnyTytulWiadomosci(),  "Tytul strony Wiadomosci nie jest poprawny");
     }
 
+    // Test weryfikujący poprawność widocznych sekcji w zakładce "Wiadomosci"
     @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce wiadomosci")
     public void zweryfikujPoprawnoscSekcjiWiadomosci() {
         loginPageNew.wykonajLogowanie();

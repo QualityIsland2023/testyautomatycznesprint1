@@ -31,25 +31,12 @@ import org.openqa.selenium.support.PageFactory;
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) adres URL strony "Szablony"
+    // Stałe zawierające poprawne wartości do weryfikacji strony
     private String poprawnyUrlSzablony = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-templates";
-
-     // Oczekiwany (poprawny) tytuł strony "Szablony"
     private String poprawnyTytulSzablony = "Szablony ‹ Platforma kursów online — WordPress";
 
 
-
-
-
-
-
-
-
     /***************************Repozytorium webelementów KONIEC ******************************************/
-
-
-
-
 
 
     /****************************Operacje na webelementach START **********************************************/

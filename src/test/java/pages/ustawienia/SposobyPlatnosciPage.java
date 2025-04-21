@@ -35,37 +35,17 @@ import java.util.Map;
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) adres URL strony "Sposoby Platnosci"
+    // Stałe zawierające poprawne wartości do weryfikacji strony
     private String poprawnyUrlSposobyPlatnosci = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-settings&autofocus=payments";
-
-     // Oczekiwany (poprawny) tytuł strony "Sposoby Platnosci"
     private String poprawnyTytulSposobyPlatnosci = "Ustawienia ‹ Platforma kursów online — WordPress";
 
-     @FindBy(xpath ="//span[contains(text(),'Konfiguracja i testy')]")
-     private WebElement sekcjaKonfiguracjaTesty;
-
-     @FindBy(xpath ="//span[contains(text(),'Płatności elektroniczne bankowe oraz cykliczne')]")
-     private WebElement sekcjaPlatnosciBankoweCykliczne;
-
-     @FindBy(xpath ="//span[contains(text(),'Płatności elektroniczne bankowe')]")
-     private WebElement sekcjaPlatnosciElektroniczneBankowe;
-
-     @FindBy(xpath ="//span[contains(text(),'Pozostałe typy płatności')]")
-     private WebElement sekcjaPozostaleTypyPlatnosci;
-
-
-
-
-
-
-
-
+     // Sekcje dostępne w zakładce "Sposoby platnosci"
+     @FindBy(xpath ="//span[contains(text(),'Konfiguracja i testy')]") private WebElement sekcjaKonfiguracjaTesty;
+     @FindBy(xpath ="//span[contains(text(),'Płatności elektroniczne bankowe oraz cykliczne')]") private WebElement sekcjaPlatnosciBankoweCykliczne;
+     @FindBy(xpath ="//span[contains(text(),'Płatności elektroniczne bankowe')]") private WebElement sekcjaPlatnosciElektroniczneBankowe;
+     @FindBy(xpath ="//span[contains(text(),'Pozostałe typy płatności')]") private WebElement sekcjaPozostaleTypyPlatnosci;
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
-
-
-
-
 
 
     /****************************Operacje na webelementach START **********************************************/
@@ -95,6 +75,7 @@ import java.util.Map;
          return driver.getTitle();
      }
 
+     // Sprawdza, czy wszystkie sekcje w zakładce "Sposoby platnosci" są widoczne
      public boolean czyZakladkaSposobyPlatnosciPosiadaWlasciweSekcje() {
          Map<String, WebElement> sekcje = new LinkedHashMap<>();
          sekcje.put("Konfiguracja i testy", sekcjaKonfiguracjaTesty);
@@ -124,18 +105,6 @@ import java.util.Map;
 
          return wszystkieWidoczne;
      }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
      /**********************************Operacje na webelementach KONIEC ******************************************/

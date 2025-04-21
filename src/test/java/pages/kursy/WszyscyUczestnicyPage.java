@@ -16,7 +16,7 @@ import org.openqa.selenium.support.PageFactory;
     private WebDriver driver;
     private Waits wait;
 
-     //konstrukotor tworzący nową instancję strony
+     //konstruktor tworzący nową instancję strony
      //inicjalizacja drivera oraz obiektów klasy Waits
      //inicjalizacja wszystkich elementów strony za pomocą PageFactory
     public WszyscyUczestnicyPage(WebDriver driver){
@@ -32,6 +32,7 @@ import org.openqa.selenium.support.PageFactory;
 
     //oczekiwany (poprawny) adres URL strony
     String poprawnyURLKursyWszyscyUczestnicy = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-students";
+
      //oczekiwany (poprawny) tytuł strony
     String poprawnyTytulStronyKursyWszyscyUczestnicy  ="Wszyscy uczestnicy ‹ Platforma kursów online — WordPress";
 

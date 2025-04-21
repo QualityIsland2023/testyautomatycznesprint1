@@ -53,6 +53,7 @@ public class ZaawansowanePageTest extends TestBase {
         Assert.assertEquals(zaawansowanePage.getAktualnyTytulZaawansowane(), zaawansowanePage.getPoprawnyTytulZaawansowane(),  "Tytul strony Zaawansowane nie jest poprawny");
     }
 
+    // Test weryfikujący poprawność widocznych sekcji w zakładce "Zaawamsowane"
     @Test(priority = 120, enabled = true, description = "Weryfikacja poprawnosci sekcji w zakladce zaawansowane")
     public void zweryfikujPoprawnoscSekcjiZaawansowane() {
         loginPageNew.wykonajLogowanie();

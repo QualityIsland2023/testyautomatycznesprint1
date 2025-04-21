@@ -35,7 +35,7 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
 
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
-        sprzedazZamowieniaPage.przejdzDoStronyUtworzPlatnosc();
+        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
 
         Assert.assertEquals(sprzedazUtworzPlatnoscPage.zwrocAktualnyTytulStronyUtworzPlatnosc(),
                 sprzedazUtworzPlatnoscPage.zwrocPoprawnyTytulStronyUtworzPlatnosc(),
@@ -47,12 +47,23 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
 
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
-        sprzedazZamowieniaPage.przejdzDoStronyUtworzPlatnosc();
+        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
 
         Assert.assertEquals(sprzedazUtworzPlatnoscPage.zwrocAktualnyUrlStronyUtworzPlatnosc(),
                 sprzedazUtworzPlatnoscPage.zwrocPoprawnyUrlStronyUtworzPlatnosc(),
                 "Adres url strony UTWÓRZ PŁATNOŚĆ nie jest poprawny");
     }
+
+    @Test(priority = 30, enabled = true, description = "Weryfikacja, czy po kliknięciu przycisku DODAJ ZAMÓWIENIE pojawia się ekran UTWÓRZ NOWĄ PŁATNOŚĆ")
+    public void weryfikacjaWyswietleniaEkranuUtworzNowaPlatnosc(){
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijSprzedazZamowieniaMenu();
+        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+
+        Assert.assertTrue(sprzedazUtworzPlatnoscPage.zwrocSekcjeTytulowaUtworzNowaPlatnosc().isDisplayed(),
+                "Nie wyświetla się ekran UTWÓRZ NOWĄ PŁATNOŚĆ po kliknięciu przycisku DODAJ ZAMÓWIENIE");
+    }
+
 
 
 

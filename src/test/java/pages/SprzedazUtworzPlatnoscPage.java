@@ -3,6 +3,8 @@ package pages;
 import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class SprzedazUtworzPlatnoscPage {
@@ -34,7 +36,9 @@ public class SprzedazUtworzPlatnoscPage {
     // Oczekiwany (poprawny) adres URL strony "Utwórz płatność"
     String poprawnyURLStronyUtworzPlatnosc = "https://mmrmqpr585.publigo.onl/wp-admin/options.php?page=edd-manual-purchase";
 
-
+    // Sekcja tytułowa na stronie "Utwórz płatność"
+    @FindBy(xpath = "//*[contains(text(),'Utwórz nową płatność')]")
+    private WebElement sekcjaTytulowaUtworzNowaPlatnosc;
 
 
 
@@ -67,6 +71,12 @@ public class SprzedazUtworzPlatnoscPage {
     public String zwrocPoprawnyUrlStronyUtworzPlatnosc() {
         System.out.println("Poprawny URL strony UTWÓRZ PŁATNOŚĆ: " + poprawnyURLStronyUtworzPlatnosc);
         return poprawnyURLStronyUtworzPlatnosc;
+    }
+
+    // Zwraca sekcję tytułową na stronie "Utwórz płatność" i wypisuje ją w konsoli
+    public WebElement zwrocSekcjeTytulowaUtworzNowaPlatnosc(){
+        System.out.println("Sekcja tytułowa na stronie UTWÓRZ PŁATNOŚĆ: " + sekcjaTytulowaUtworzNowaPlatnosc.getText());
+        return sekcjaTytulowaUtworzNowaPlatnosc;
     }
 
 

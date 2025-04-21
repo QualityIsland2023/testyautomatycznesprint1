@@ -90,7 +90,7 @@ public class SprzedazZamowieniaPage {
     }
 
     // Przechodzi do strony "Utwórz Płatność" poprzez kliknięcie przycisku "Dodaj zamówienie"
-    public void przejdzDoStronyUtworzPlatnosc(){
+    public void kliknijDodajZamowienieButton(){
 
         wait.waitForVisibility(dodajZamowienieButton).click();
     }

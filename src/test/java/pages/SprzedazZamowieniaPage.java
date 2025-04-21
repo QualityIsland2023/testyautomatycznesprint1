@@ -95,16 +95,42 @@ public class SprzedazZamowieniaPage {
         wait.waitForVisibility(dodajZamowienieButton).click();
     }
 
-    // Zwraca przycisk "Dodaj zamówienie" i wypisuje go w konsoli
-    public WebElement zwrocDodajZamowienieButton(){
-        System.out.println("Widać przycisk: " + dodajZamowienieButton.getText());
-        return wait.waitForVisibility(dodajZamowienieButton);
+    // Sprawdza, czy przycisk "Dodaj zamówienie" jest widoczny i wypisuje go w konsoli
+    public boolean zweryfikujCzyPrzyciskDodajZamowienieIstnieje(){
+        boolean status = false;
+
+        try {
+            boolean przyciskWidoczny = dodajZamowienieButton.isDisplayed();
+
+            if (przyciskWidoczny) {
+                status = true;
+                System.out.println("Widać przycisk: " + dodajZamowienieButton.getText());
+            }
+
+        } catch (Exception e) {
+            System.out.println("Nie widać przycisku DODAJ ZAMÓWIENIE");
+        }
+
+        return status;
     }
 
-    // Zwraca przycisk "Typy danych" i wypisuje go w konsoli
-    public WebElement zwrocTypyDanychButton(){
-        System.out.println("Widać przycisk: " + typyDanychButton.getText());
-        return wait.waitForVisibility(typyDanychButton);
+    // Sprawdza, czy przycisk "Typy danych" jest widoczny i wypisuje go w konsoli
+    public boolean zweryfikujCzyPrzyciskTypyDanychIstnieje(){
+        boolean status = false;
+
+        try {
+            boolean przyciskWidoczny = typyDanychButton.isDisplayed();
+
+            if (przyciskWidoczny) {
+                status = true;
+                System.out.println("Widać przycisk: " + typyDanychButton.getText());
+            }
+
+        } catch (Exception e) {
+            System.out.println("Nie widać przycisku TYPY DANYCH");
+        }
+
+        return status;
     }
 
     // Klika przycisk "Typy danych" i wypisuje go w konsoli
@@ -125,10 +151,25 @@ public class SprzedazZamowieniaPage {
         return poprawnaInformacjaWSekcjiTypyDanych;
     }
 
-    // Zwraca informację w sekcji "Typy danych" i wypisuje ją w konsoli
-    public WebElement zwrocInformacjeWSekcjiTypyDanych(){
-        System.out.println("Widać informację: " + informacjaWSekcjiTypyDanych.getText());
-        return wait.waitForVisibility(informacjaWSekcjiTypyDanych);
+    // Zwraca informację w sekcji "Typy danych" i wypisuje ją w konsoli.
+    // Oczekiwany tekst: "Wybierz, które kolumny mają być widoczne w tabeli:"
+    public boolean zweryfikujCzyInformacjaWSekcjiTypyDanychIstnieje(){
+        boolean status = false;
+
+        try {
+            boolean przyciskWidoczny = informacjaWSekcjiTypyDanych.isDisplayed();
+
+            if (przyciskWidoczny) {
+                status = true;
+                System.out.println("Widać informację w sekcji TYPY DANYCH: " + informacjaWSekcjiTypyDanych.getText());
+            }
+
+        } catch (Exception e) {
+            System.out.println("Nie widać informacji w sekcji TYPY DANYCH. " +
+                            "Oczekiwany tekst: " + poprawnaInformacjaWSekcjiTypyDanych);
+        }
+
+        return status;
     }
 
 

@@ -55,8 +55,8 @@ public class SprzedazZamowieniaPageTest extends TestBase {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
 
-        Assert.assertTrue(sprzedazZamowieniaPage.zwrocDodajZamowienieButton().isDisplayed(),
-                "Przycisk 'Dodaj zamówienie' nie jest widoczny");
+        Assert.assertTrue(sprzedazZamowieniaPage.zweryfikujCzyPrzyciskDodajZamowienieIstnieje(),
+                "Przycisk DODAJ ZAMÓWIENIE nie jest widoczny");
     }
 
     @Test(priority = 40, enabled = true, description = "Weryfikacja widoczności przycisku TYPY DANYCH")
@@ -65,8 +65,8 @@ public class SprzedazZamowieniaPageTest extends TestBase {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
 
-        Assert.assertTrue(sprzedazZamowieniaPage.zwrocTypyDanychButton().isDisplayed(),
-                "Przycisk 'Typy danych' nie jest widoczny");
+        Assert.assertTrue(sprzedazZamowieniaPage.zweryfikujCzyPrzyciskTypyDanychIstnieje(),
+                "Przycisk TYPY DANYCH nie jest widoczny");
     }
 
     @Test(priority = 50, enabled = true, description = "Weryfikacja poprawnego tekstu informacji w sekcji TYPY DANYCH")
@@ -78,7 +78,7 @@ public class SprzedazZamowieniaPageTest extends TestBase {
 
         Assert.assertEquals(sprzedazZamowieniaPage.zwrocAktualnyTekstInformacjiWSekcjiTypyDanych(),
                 sprzedazZamowieniaPage.zwrocPoprawnyTekstInformacjiWSekcjiTypyDanych(),
-                "Informacja w sekcji 'Typy danych' nie jest poprawna");
+                "Informacja w sekcji TYPY DANYCH nie jest poprawna");
     }
 
     @Test(priority = 60, enabled = true, description = "Weryfikacja widoczności informacji w sekcji TYPY DANYCH")
@@ -88,8 +88,8 @@ public class SprzedazZamowieniaPageTest extends TestBase {
         panelPage.kliknijSprzedazZamowieniaMenu();
         sprzedazZamowieniaPage.kliknijTypyDanychButton();
 
-        Assert.assertTrue(sprzedazZamowieniaPage.zwrocInformacjeWSekcjiTypyDanych().isDisplayed(),
-                "Informacja w sekcji 'Typy danych' nie jest widoczna");
+        Assert.assertTrue(sprzedazZamowieniaPage.zweryfikujCzyInformacjaWSekcjiTypyDanychIstnieje(),
+                "Informacja w sekcji TYPY DANYCH nie jest widoczna");
     }
 
 

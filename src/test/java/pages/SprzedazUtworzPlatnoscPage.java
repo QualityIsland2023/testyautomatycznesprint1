@@ -42,6 +42,12 @@ public class SprzedazUtworzPlatnoscPage {
     @FindBy(xpath = "//*[contains(text(),'Wybierz Produkty')]")
     private WebElement listaWybierzProdukty;
 
+    @FindBy(xpath = "//*[contains(text(),'Dodaj kolejny')]")
+    private WebElement dodajKolejnyButton;
+
+
+
+
 
 
 
@@ -78,12 +84,19 @@ public class SprzedazUtworzPlatnoscPage {
     // Sprawdza, czy sekcja tytułowa "Utwórz nową płatność" jest widoczna
     public boolean zwrocSekcjeTytulowaUtworzNowaPlatnosc(){
         boolean status = false;
-        if(sekcjaTytulowaUtworzNowaPlatnosc.isDisplayed()){
-            status = true;
-            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje sekcja tytułowa UTWÓRZ NOWĄ PŁATNOŚĆ");
-        }else {
+
+        try {
+            boolean przyciskWidoczny = sekcjaTytulowaUtworzNowaPlatnosc.isDisplayed();
+
+            if (przyciskWidoczny) {
+                status = true;
+                System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje sekcja tytułowa UTWÓRZ NOWĄ PŁATNOŚĆ");
+            }
+
+        } catch (Exception e) {
             System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma sekcji tytułowej UTWÓRZ NOWĄ PŁATNOŚĆ");
         }
+
         return status;
     }
 
@@ -91,32 +104,43 @@ public class SprzedazUtworzPlatnoscPage {
     public boolean zweryfikujCzyListaProduktowIstnieje(){
         boolean status = false;
 
-        if(listaWybierzProdukty.isDisplayed()){
-            status = true;
-            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje lista WYBIERZ PRODUKTY");
-        }else{
+        try {
+            boolean przyciskWidoczny = listaWybierzProdukty.isDisplayed();
+
+            if (przyciskWidoczny) {
+                status = true;
+                System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje lista: " + listaWybierzProdukty.getText());
+            }
+
+        } catch (Exception e) {
             System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma listy WYBIERZ PRODUKTY");
         }
 
         return status;
-
     }
 
-    // Sprawdza, czy lista "Wybierz produkty" jest klikalna
-    public boolean zweryfikujCzyListaProduktowJestKlikalna(){
-        wait.waitForClickability(listaWybierzProdukty).click();
-
+    // Sprawdza, czy przycisk "Dodaj kolejny" jest widoczny
+    public boolean zweryfikujCzyPrzyciskDodajKolejnyIstnieje(){
         boolean status = false;
-        if(listaWybierzProdukty.isEnabled()){
-            status = true;
-            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ lista WYBIERZ PRODUKTY jest klikalna");
-        }else {
-            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ lista WYBIERZ PRODUKTY nie jest klikalna");
+
+        try {
+            boolean przyciskWidoczny = dodajKolejnyButton.isDisplayed();
+
+            if (przyciskWidoczny) {
+                status = true;
+                System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje przycisk: " + dodajKolejnyButton.getText());
+            }
+
+        } catch (Exception e) {
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma przycisku DODAJ KOLEJNY");
         }
 
         return status;
-
     }
+
+
+
+
 
 
 

@@ -104,7 +104,7 @@ public class SprzedazZamowieniaPageTest extends TestBase {
     }
 
     @Test(priority = 80, enabled = true, description = "Weryfikacja nazw checkboxów w polu TYPY DANYCH")
-    public void weryfikacjaNazwPozycjiWFormularzuUtworzNowaPlatnosc() {
+    public void weryfikacjaNazwCheckboxowTypyDanych() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
         sprzedazZamowieniaPage.kliknijTypyDanychButton();

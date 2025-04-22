@@ -103,6 +103,16 @@ public class SprzedazZamowieniaPageTest extends TestBase {
                 "Niepoprawna liczba checkboxów w polu TYPY DANYCH");
     }
 
+    @Test(priority = 80, enabled = true, description = "Weryfikacja nazw checkboxów w polu TYPY DANYCH")
+    public void weryfikacjaNazwPozycjiWFormularzuUtworzNowaPlatnosc() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijSprzedazZamowieniaMenu();
+        sprzedazZamowieniaPage.kliknijTypyDanychButton();
+
+        Assert.assertTrue(sprzedazZamowieniaPage.zweryfikujNazwyCheckboxowTypyDanych(),
+                "Nazwy checkboxów w polu TYPY DANYCH są niewidoczne lub mają nieprawidłowe nazwy");
+    }
+
 
 
 

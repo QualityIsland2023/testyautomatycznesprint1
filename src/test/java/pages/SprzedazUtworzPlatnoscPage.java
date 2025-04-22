@@ -61,11 +61,12 @@ public class SprzedazUtworzPlatnoscPage {
     @FindBy(xpath = "//*[contains(text(),'Dodaj kolejny')]")
     private WebElement dodajKolejnyButton;
 
+    @FindBy(xpath = "//*[contains(@id,'submit')]")
+    private WebElement utworzPlatnoscButton;
+
     @FindBy(xpath = "//input[contains(@id,'edd-mp-receipt')]")
     private WebElement checkboxWyslijPotwierdzenieZakupu;
 
-    @FindBy(xpath = "//*[contains(@id,'submit')]")
-    private WebElement utworzPlatnoscButton;
 
 
     // Pola formularza:

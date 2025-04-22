@@ -74,7 +74,17 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
                 "Lista WYBIERZ PRODUKTY nie jest widoczna");
     }
 
-    @Test(priority = 50, enabled = true, description = "Weryfikacja, czy przycisk DODAJ KOLEJNY jest widoczny")
+    @Test(priority = 50, enabled = true, description = "Weryfikacja, czy lista dla 'Status płatności' jest widoczna")
+    public void weryfikacjaWidocznosciListyDlaStatusPlatnosci() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijSprzedazZamowieniaMenu();
+        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+
+        Assert.assertTrue(sprzedazUtworzPlatnoscPage.zweryfikujCzyListaDlaStatusPlatnosciIstnieje(),
+                "Lista dla 'Status płatności' nie jest widoczna");
+    }
+
+    @Test(priority = 60, enabled = true, description = "Weryfikacja, czy przycisk DODAJ KOLEJNY jest widoczny")
     public void weryfikacjaWidocznosciPrzyciskuDodajKolejny() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
@@ -84,7 +94,7 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
                 "Przycisk DODAJ KOLEJNY nie jest widoczny");
     }
 
-    @Test(priority = 60, enabled = true, description = "Weryfikacja liczby pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ")
+    @Test(priority = 70, enabled = true, description = "Weryfikacja liczby pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ")
     public void weryfikacjaLiczbyPozycjiWFormularzuUtworzNowaPlatnosc() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
@@ -95,7 +105,7 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
                 "Niepoprawna liczba pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ");
     }
 
-    @Test(priority = 70, enabled = true, description = "Weryfikacja nazw pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ")
+    @Test(priority = 80, enabled = true, description = "Weryfikacja nazw pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ")
     public void weryfikacjaNazwPozycjiWFormularzuUtworzNowaPlatnosc() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();

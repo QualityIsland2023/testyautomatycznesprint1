@@ -2,11 +2,14 @@ package pages;
 
 import config.PropertiesReader;
 import helpers.Waits;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.xml.sax.Locator;
 
+import java.nio.channels.Selector;
 import java.util.*;
 
 public class SprzedazUtworzPlatnoscPage {
@@ -45,13 +48,19 @@ public class SprzedazUtworzPlatnoscPage {
     @FindBy(xpath = "//*[contains(text(),'Utwórz nową płatność')]")
     private WebElement sekcjaTytulowaUtworzNowaPlatnosc;
 
+
     // Listy rozwijalne:
-    @FindBy(xpath = "//*[contains(text(),'Wybierz Produkty')]")
+    @FindBy(xpath = "//select[contains(@class,'edd-mp-download-select')]")
     private WebElement listaWybierzProdukty;
+
+    @FindBy(xpath = "//select[contains(@class,'edd-select')]")
+    private WebElement listaStatusPlatnosci;
+
 
     // Przyciski:
     @FindBy(xpath = "//*[contains(text(),'Dodaj kolejny')]")
     private WebElement dodajKolejnyButton;
+
 
     // Pola formularza:
     @FindBy(xpath = "//*[contains(@class, 'form-field')]")
@@ -161,6 +170,25 @@ public class SprzedazUtworzPlatnoscPage {
         return status;
     }
 
+    // Sprawdza, czy lista dla "Status płatności" jest widoczna
+    public boolean zweryfikujCzyListaDlaStatusPlatnosciIstnieje(){
+        boolean status = false;
+
+        try {
+            boolean przyciskWidoczny = wait.waitForVisibility(listaStatusPlatnosci).isDisplayed();
+
+            if (przyciskWidoczny) {
+                status = true;
+                System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje lista dla 'Status płatności'");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma listy dla 'Status płatności'");
+        }
+
+        return status;
+    }
+
     // Sprawdza, czy przycisk "Dodaj kolejny" jest widoczny
     public boolean zweryfikujCzyPrzyciskDodajKolejnyIstnieje(){
         boolean status = false;
@@ -230,7 +258,6 @@ public class SprzedazUtworzPlatnoscPage {
                     System.out.println("Pozycje formularza są widoczne i mają zgodne nazwy : " + oczekiwanaNazwaPozycji);
                 }
 
-
             } catch (Exception e) {
                 System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma pozycji: " + oczekiwanaNazwaPozycji);
                 e.printStackTrace();
@@ -239,9 +266,9 @@ public class SprzedazUtworzPlatnoscPage {
         }
 
         return status;
-
-
     }
+
+
 
 
 

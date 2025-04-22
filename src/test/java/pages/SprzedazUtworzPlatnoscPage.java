@@ -64,6 +64,9 @@ public class SprzedazUtworzPlatnoscPage {
     @FindBy(xpath = "//input[contains(@id,'edd-mp-receipt')]")
     private WebElement checkboxWyslijPotwierdzenieZakupu;
 
+    @FindBy(xpath = "//*[contains(@id,'submit')]")
+    private WebElement utworzPlatnoscButton;
+
 
     // Pola formularza:
     @FindBy(xpath = "//*[contains(@class, 'form-field')]")
@@ -140,9 +143,9 @@ public class SprzedazUtworzPlatnoscPage {
         boolean status = false;
 
         try {
-            boolean przyciskWidoczny = sekcjaTytulowaUtworzNowaPlatnosc.isDisplayed();
+            boolean sekcjaWidoczna = sekcjaTytulowaUtworzNowaPlatnosc.isDisplayed();
 
-            if (przyciskWidoczny) {
+            if (sekcjaWidoczna) {
                 status = true;
                 System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje sekcja tytułowa UTWÓRZ NOWĄ PŁATNOŚĆ");
             }
@@ -159,9 +162,9 @@ public class SprzedazUtworzPlatnoscPage {
         boolean status = false;
 
         try {
-            boolean przyciskWidoczny = listaWybierzProdukty.isDisplayed();
+            boolean listaWidoczna = listaWybierzProdukty.isDisplayed();
 
-            if (przyciskWidoczny) {
+            if (listaWidoczna) {
                 status = true;
                 System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje lista: " + listaWybierzProdukty.getText());
             }
@@ -178,9 +181,9 @@ public class SprzedazUtworzPlatnoscPage {
         boolean status = false;
 
         try {
-            boolean przyciskWidoczny = wait.waitForVisibility(listaStatusPlatnosci).isDisplayed();
+            boolean listaWidoczna = wait.waitForVisibility(listaStatusPlatnosci).isDisplayed();
 
-            if (przyciskWidoczny) {
+            if (listaWidoczna) {
                 status = true;
                 System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje lista dla 'Status płatności'");
             }
@@ -202,6 +205,25 @@ public class SprzedazUtworzPlatnoscPage {
             if (przyciskWidoczny) {
                 status = true;
                 System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje przycisk: " + dodajKolejnyButton.getText());
+            }
+
+        } catch (Exception e) {
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma przycisku DODAJ KOLEJNY");
+        }
+
+        return status;
+    }
+
+    // Sprawdza, czy przycisk "Utwórz płatność" jest widoczny
+    public boolean zweryfikujCzyPrzyciskUtworzPlatnoscIstnieje(){
+        boolean status = false;
+
+        try {
+            boolean przyciskWidoczny = wait.waitForVisibility(utworzPlatnoscButton).isDisplayed();
+
+            if (przyciskWidoczny) {
+                status = true;
+                System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje przycisk: " + utworzPlatnoscButton.getAccessibleName());
             }
 
         } catch (Exception e) {

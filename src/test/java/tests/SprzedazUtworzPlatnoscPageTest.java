@@ -94,6 +94,17 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
                 "Przycisk DODAJ KOLEJNY nie jest widoczny");
     }
 
+    @Test(priority = 60, enabled = true, description = "Weryfikacja, czy przycisk UTWÓRZ PŁATNOŚĆ jest widoczny")
+    public void weryfikacjaWidocznosciPrzyciskuUtworzPlatnosc() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijSprzedazZamowieniaMenu();
+        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+
+        Assert.assertTrue(sprzedazUtworzPlatnoscPage.zweryfikujCzyPrzyciskUtworzPlatnoscIstnieje(),
+                "Przycisk UTWÓRZ PŁATNOŚĆ nie jest widoczny");
+    }
+
+
     @Test(priority = 70, enabled = true, description = "Weryfikacja liczby pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ")
     public void weryfikacjaLiczbyPozycjiWFormularzuUtworzNowaPlatnosc() {
         loginPageNew.wykonajLogowanie();

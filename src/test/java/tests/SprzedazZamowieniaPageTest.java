@@ -92,6 +92,16 @@ public class SprzedazZamowieniaPageTest extends TestBase {
                 "Informacja w sekcji TYPY DANYCH nie jest widoczna");
     }
 
+    @Test(priority = 70, enabled = true, description = "Weryfikacja liczby checkboxów w polu TYPY DANYCH")
+    public void weryfikacjaLiczbyCheckboxowTypyDanych() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijSprzedazZamowieniaMenu();
+        sprzedazZamowieniaPage.kliknijTypyDanychButton();
+
+        Assert.assertEquals(sprzedazZamowieniaPage.zwrocAktualnaLiczbeCheckboxowTypyDanych(),
+                sprzedazZamowieniaPage.zwrocPoprawnaLiczbeCheckboxowTypyDanych(),
+                "Niepoprawna liczba checkboxów w polu TYPY DANYCH");
+    }
 
 
 

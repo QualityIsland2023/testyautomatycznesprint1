@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class SprzedazZamowieniaPage {
 
     //************************ Sekcja techniczno konfiguracyjna START **********************************************/
@@ -39,6 +41,8 @@ public class SprzedazZamowieniaPage {
     // Oczekiwana (poprawna) informacja w sekcji po kliknięciu przycisku "Typy danych"
     String poprawnaInformacjaWSekcjiTypyDanych = "Wybierz, które kolumny mają być widoczne w tabeli:";
 
+    int prawidlowaLiczbaChecboxowTypyDanych = 17;
+
     @FindBy(xpath = "//*[contains(text(),'Dodaj zamówienie')]")
     private WebElement dodajZamowienieButton;
 
@@ -47,6 +51,9 @@ public class SprzedazZamowieniaPage {
 
     @FindBy(className = "dynamic-table__column-visibility-checkboxes__hint")
     private WebElement informacjaWSekcjiTypyDanych;
+
+    @FindBy(xpath = "//*[contains(@class,'checkbox-replacement')]")
+    private List<WebElement> wszytkieCheckboxyTypyDanych;
 
 //    Xpath zamienny/alternatywny po poprawie błędu interpunkcyjnego w tekście informacji w sekcji "Typy danych"
 //    @FindBy(xpath = "//*[contains(text(),'Wybierz, które kolumny mają być widoczne w tabeli')]")
@@ -170,6 +177,18 @@ public class SprzedazZamowieniaPage {
         }
 
         return status;
+    }
+
+    // Zwraca aktualną liczbę checkboxów w polu "Typy danych"
+    public int zwrocAktualnaLiczbeCheckboxowTypyDanych(){
+        System.out.println("Aktualna liczba checkboxów w polu TYPY DANYCH: " + wszytkieCheckboxyTypyDanych.size());
+        return wszytkieCheckboxyTypyDanych.size();
+    }
+
+    // Zwraca oczekiwaną (poprawną) liczbę checkboxów w polu "Typy danych"
+    public int zwrocPoprawnaLiczbeCheckboxowTypyDanych(){
+        System.out.println("Oczekiwana checkboxów w polu TYPY DANYCH: " + prawidlowaLiczbaChecboxowTypyDanych);
+        return prawidlowaLiczbaChecboxowTypyDanych;
     }
 
 

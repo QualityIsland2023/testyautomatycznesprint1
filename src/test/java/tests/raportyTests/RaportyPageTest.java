@@ -1,6 +1,5 @@
 package tests.raportyTests;
 
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -29,7 +28,6 @@ public class RaportyPageTest extends TestBase {
 
     }
     // Test weryfikujący, czy adres URL strony 'Raporty' jest poprawny
-    @Test(priority = 10, enabled = true, description = "Weryfikacja poprawnego adresu strony 'Raporty'")
     public void weryfikacjaPoprawnegoAdresuStronyRaporty(){
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
@@ -39,7 +37,6 @@ public class RaportyPageTest extends TestBase {
         Assert.assertEquals(raportyPage.zwrocUrlAktualnejStrony(), raportyPage.zwrocPoprawnyUrlRaportow(), "Adres url nie jest poprawny");
     }
     // Test weryfikujący, czy tytuł strony 'Raporty' jest poprawny
-    @Test(priority = 20, enabled = true, description = "Weryfikacja poprawnego tytułu strony 'Raporty'")
     public void weryfikacjaTytuluStronyRaporty(){
         loginPageNew.wpiszHasloDoPolaHaslo();
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();

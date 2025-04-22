@@ -94,7 +94,7 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
                 "Przycisk DODAJ KOLEJNY nie jest widoczny");
     }
 
-    @Test(priority = 60, enabled = true, description = "Weryfikacja, czy przycisk UTWÓRZ PŁATNOŚĆ jest widoczny")
+    @Test(priority = 70, enabled = true, description = "Weryfikacja, czy przycisk UTWÓRZ PŁATNOŚĆ jest widoczny")
     public void weryfikacjaWidocznosciPrzyciskuUtworzPlatnosc() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
@@ -105,7 +105,7 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
     }
 
 
-    @Test(priority = 70, enabled = true, description = "Weryfikacja liczby pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ")
+    @Test(priority = 80, enabled = true, description = "Weryfikacja liczby pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ")
     public void weryfikacjaLiczbyPozycjiWFormularzuUtworzNowaPlatnosc() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
@@ -116,7 +116,7 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
                 "Niepoprawna liczba pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ");
     }
 
-    @Test(priority = 80, enabled = true, description = "Weryfikacja nazw pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ")
+    @Test(priority = 90, enabled = true, description = "Weryfikacja nazw pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ")
     public void weryfikacjaNazwPozycjiWFormularzuUtworzNowaPlatnosc() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
@@ -126,7 +126,7 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
                 "Pozycje w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ są niewidoczne lub mają nieprawidłowe nazwy");
     }
 
-    @Test(priority = 90, enabled = true, description = "Weryfikacja, czy checkbox 'Wyślij potwierdzenie zakupu' jest widoczny i zaznaczony")
+    @Test(priority = 100, enabled = true, description = "Weryfikacja, czy checkbox 'Wyślij potwierdzenie zakupu' jest widoczny i zaznaczony")
     public void weryfikacjaWidocznosciCheckboxWyślijPotwierdzenieZakupu() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();

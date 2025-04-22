@@ -324,6 +324,8 @@ public class SprzedazUtworzPlatnoscPage {
 
 
 
+
+
     //**********************************Operacje na webelementach KONIEC ******************************************/
 
 }

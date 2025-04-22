@@ -2,7 +2,11 @@ package pages;
 import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class NarzedziaPage {
 
@@ -28,6 +32,34 @@ public class NarzedziaPage {
 
     String poprawnyURLZakladkiNarzedzia = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-tools";
     String poprawnyTytulZakladkiNarzedzia = "Narzędzia ‹ Platforma kursów online — WordPress";
+    int prawidlowaLiczbaZakladekMenuBoczne = 3;
+    int prawidlowaLiczbaCkeckboxowNaStronie = 3;
+
+    @FindBy(xpath = "//ul[contains(@class, 'settings-nav-tab')]/li")
+    private List<WebElement> zakladkiMenuBoczne;
+
+    @FindBy(xpath = "//*[contains(@id, 'wp-idea-import_students-tab-link')]")
+    private WebElement zakladkaImportKursantow;
+
+    @FindBy(xpath = "//*[contains(@id, 'wp-idea-banned_emails-tab-link')]")
+    private WebElement zakladkaZablokowaneAdresyEmail;
+
+    @FindBy(xpath = "//*[contains(@id, 'wp-idea-api-tab-link')]")
+    private WebElement zakladkaKluczAPI;
+
+    @FindBy(xpath = "//input[contains(@type, 'checkbox')]")
+    private List<WebElement> ckeckboxyNaStronie;
+
+    @FindBy(xpath = "//input[contains(@name, 'access')]")
+    private WebElement checkboxWyslijEmailZDanymiDostepowymi;
+
+    @FindBy(xpath = "//input[contains(@name, 'notification')]")
+    private WebElement checkboxWyslijPotwierdzenieZamowienia;
+
+    @FindBy(xpath = "//input[contains(@name, 'mailing')]")
+    private WebElement checkboxZapiszNaListeMailingowa;
+
+
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 

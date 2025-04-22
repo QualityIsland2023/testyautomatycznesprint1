@@ -61,6 +61,9 @@ public class SprzedazUtworzPlatnoscPage {
     @FindBy(xpath = "//*[contains(text(),'Dodaj kolejny')]")
     private WebElement dodajKolejnyButton;
 
+    @FindBy(xpath = "//input[contains(@id,'edd-mp-receipt')]")
+    private WebElement checkboxWyslijPotwierdzenieZakupu;
+
 
     // Pola formularza:
     @FindBy(xpath = "//*[contains(@class, 'form-field')]")
@@ -266,6 +269,37 @@ public class SprzedazUtworzPlatnoscPage {
         }
 
         return status;
+    }
+
+    // Sprawdza, czy checkbox "Wyślij potwierdzenie zakupu" jest widoczny i zaznaczony
+    public boolean zweryfikujCzyCheckboxWyslijPotwierdzenieZakupuIstniejeIJestZaznaczony() {
+        boolean status = true;
+
+        try {
+            WebElement obecnyElement = wait.waitForVisibility(checkboxWyslijPotwierdzenieZakupu);
+            boolean checkboxWidoczny = obecnyElement.isDisplayed();
+            boolean checkboxZaznaczony = obecnyElement.isSelected();
+
+            if (!checkboxWidoczny || !checkboxZaznaczony) {
+                if (!checkboxWidoczny) {
+                    System.out.println("Checkbox 'Wyślij potwierdzenie zakupu' nie jest widoczny");
+                }
+                if (!checkboxZaznaczony) {
+                    System.out.println("Checkbox 'Wyślij potwierdzenie zakupu' nie jest zaznaczony");
+                }
+                status = false;
+            } else {
+                System.out.println("Checkbox 'Wyślij potwierdzenie zakupu' jest widoczny i zaznaczony");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma checkboxa 'Wyślij potwierdzenie zakupu'");
+            e.printStackTrace();
+            status = false;
+        }
+
+        return status;
+
     }
 
 

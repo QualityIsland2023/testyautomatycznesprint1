@@ -115,6 +115,16 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
                 "Pozycje w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ są niewidoczne lub mają nieprawidłowe nazwy");
     }
 
+    @Test(priority = 90, enabled = true, description = "Weryfikacja, czy checkbox 'Wyślij potwierdzenie zakupu' jest widoczny i zaznaczony")
+    public void weryfikacjaWidocznosciCheckboxWyślijPotwierdzenieZakupu() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.kliknijSprzedazZamowieniaMenu();
+        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+
+        Assert.assertTrue(sprzedazUtworzPlatnoscPage.zweryfikujCzyCheckboxWyslijPotwierdzenieZakupuIstniejeIJestZaznaczony(),
+                "Checkbox 'Wyślij potwierdzenie zakupu' nie jest widoczny lub nie jest zaznaczony");
+    }
+
 
 
 

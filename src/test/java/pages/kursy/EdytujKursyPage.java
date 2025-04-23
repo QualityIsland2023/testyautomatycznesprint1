@@ -118,8 +118,8 @@ import java.util.concurrent.ThreadLocalRandom;
      @FindBy(xpath = "//a[contains(text(), 'Generator linków')]")
      private WebElement generatorLinkowZakladka;
 
-     @FindBy(xpath = "//span[contains(text(), 'Kopiuj')]")
-     private List<WebElement> kopiujLinkZakupowy;
+     @FindBy(xpath = "//input[contains(@class, 'bpmj-eddcm-add-to-cart-link') and @data-price-id = '1']")
+     private WebElement linkZakupowyInput;
 
 
      /***************************Repozytorium Webelementów KONIEC ******************************************/
@@ -296,8 +296,13 @@ import java.util.concurrent.ThreadLocalRandom;
         wait.waitForClickability(generatorLinkowZakladka).click();
      }
 
-     public void pobierzLinkZPolaLinkZakupowy(){
+     public String pobierzLinkZPolaLinkZakupowy(){
+        return linkZakupowyInput.getAttribute("value");
+     }
 
+     public void przejdzDoLinkuZPolaLinkZakupowy(){
+        String link = pobierzLinkZPolaLinkZakupowy();
+        driver.get(link);
      }
 
 

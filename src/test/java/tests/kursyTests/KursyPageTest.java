@@ -140,6 +140,8 @@ public class KursyPageTest extends TestBase {
         edytujKursyPage.utworzCzteryWariantyDoTestu();
         edytujKursyPage.przewinStroneDoZakladkiGeneratorLinkow();
         edytujKursyPage.przejdzDoZakladkiGeneratorLinkow();
+        edytujKursyPage.pobierzLinkZPolaLinkZakupowy();
+        edytujKursyPage.przejdzDoLinkuZPolaLinkZakupowy();
 
 
     }

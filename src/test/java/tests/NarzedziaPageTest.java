@@ -59,6 +59,15 @@ public class NarzedziaPageTest extends TestBase {
                 "Niepoprawna liczba zakładek w menu bocznym strony NARZĘDZIA");
     }
 
+    @Test(priority = 40, enabled = true, description = "Weryfikacja nazw zakładek w menu bocznym strony NARZĘDZIA")
+    public void weryfikacjaNazwPozycjiWFormularzuUtworzNowaPlatnosc() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiNarzedzia();
+
+        Assert.assertTrue(narzedziaPage.zweryfikujNazwyZakladekMenuBoczneNarzedzia(),
+                "Zakładki w menu bocznym strony NARZĘDZIA są niewidoczne lub mają nieprawidłowe nazwy");
+    }
+
 
 
 

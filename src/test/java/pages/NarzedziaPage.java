@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class NarzedziaPage {
 
@@ -96,6 +98,50 @@ public class NarzedziaPage {
     public int zwrocPoprawnaLiczbeZakladekMenuBoczneNarzedzia(){
         System.out.println("Oczekiwana liczba zakładek w menu bocznym strony NARZĘDZIA: " + prawidlowaLiczbaZakladekMenuBoczne);
         return prawidlowaLiczbaZakladekMenuBoczne;
+    }
+
+    // Sprawdza, czy aktualne nazwy zakładek w menu bocznym strony "Narzędzia" są takie same, jak oczekiwane
+    public boolean zweryfikujNazwyZakladekMenuBoczneNarzedzia() {
+        Map<String, WebElement> nazwyPozycji = new HashMap<>();
+        nazwyPozycji.put("Import kursantów", zakladkaImportKursantow);
+        nazwyPozycji.put("Zablokowane adresy email", zakladkaZablokowaneAdresyEmail);
+        nazwyPozycji.put("Klucz API", zakladkaKluczAPI);
+
+
+        boolean status = true;
+
+        for (Map.Entry<String, WebElement> entry : nazwyPozycji.entrySet()) {
+            String oczekiwanaNazwaPozycji = entry.getKey();
+            WebElement aktualnaNazwaPozycji = entry.getValue();
+
+            try {
+                WebElement obecnyElement = wait.waitForVisibility(aktualnaNazwaPozycji);
+
+                boolean nazwaWidoczna = obecnyElement.isDisplayed();
+                boolean nazwaZgodna = obecnyElement.getText().trim().equals(oczekiwanaNazwaPozycji);
+
+                if (!nazwaWidoczna || !nazwaZgodna) {
+                    if (!nazwaWidoczna) {
+                        System.out.println("Zakładka w menu bocznym strony NARZĘDZIA nie jest widoczna: " + oczekiwanaNazwaPozycji);
+                    }
+                    if (!nazwaZgodna) {
+                        System.out.println("Nazwa zakładki w menu bocznym strony NARZĘDZIA jest niezgodna. "
+                                + "Oczekiwano: '" + oczekiwanaNazwaPozycji + "' "
+                                + "Znaleziono: '" + obecnyElement.getText().trim() + "' ");
+                    }
+                    status = false;
+                } else {
+                    System.out.println("Zakładki w menu bocznym strony NARZĘDZIA są widoczne i mają zgodne nazwy: " + oczekiwanaNazwaPozycji);
+                }
+
+            } catch (Exception e) {
+                System.out.println("Na stronie NARZĘDZIA nie ma zakładki: " + oczekiwanaNazwaPozycji);
+                e.printStackTrace();
+                status = false;
+            }
+        }
+
+        return status;
     }
 
     /**********************************Operacje na webelementach KONIEC ******************************************/

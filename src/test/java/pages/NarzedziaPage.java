@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class NarzedziaPage {
 
@@ -84,6 +86,74 @@ public class NarzedziaPage {
     public String zwrocPoprawnyTytulZakladkiNarzedzia(){
         System.out.println("Poprawny tytul strony to: " + poprawnyTytulZakladkiNarzedzia);
         return poprawnyTytulZakladkiNarzedzia;
+    }
+
+    // Zwraca aktualną liczbę zakładek w menu bocznym strony "Narzędzia"
+    public int zwrocAktualnaLiczbeZakladekMenuBoczneNarzedzia(){
+        System.out.println("Altualna liczba zakładek w menu bocznym strony NARZĘDZIA: " + zakladkiMenuBoczne.size());
+        return zakladkiMenuBoczne.size();
+    }
+
+    // Zwraca oczekiwaną (poprawną) liczbę zakładek w menu bocznym strony "Narzędzia"
+    public int zwrocPoprawnaLiczbeZakladekMenuBoczneNarzedzia(){
+        System.out.println("Oczekiwana liczba zakładek w menu bocznym strony NARZĘDZIA: " + prawidlowaLiczbaZakladekMenuBoczne);
+        return prawidlowaLiczbaZakladekMenuBoczne;
+    }
+
+    // Zwraca aktualną liczbę checkboxów na stronie "Narzędzia"
+    public int zwrocAktualnaLiczbeCheckboxowNarzedzia(){
+        System.out.println("Altualna liczba checkboxów na stronie NARZĘDZIA: " + ckeckboxyNaStronie.size());
+        return ckeckboxyNaStronie.size();
+    }
+
+    // Zwraca oczekiwaną (poprawną) liczbę checkboxów na stronie "Narzędzia"
+    public int zwrocPoprawnaLiczbeCheckboxowNarzedzia(){
+        System.out.println("Oczekiwana liczba checkboxów na stronie NARZĘDZIA: " + prawidlowaLiczbaCkeckboxowNaStronie);
+        return prawidlowaLiczbaCkeckboxowNaStronie;
+    }
+
+    // Sprawdza, czy aktualne nazwy zakładek w menu bocznym strony "Narzędzia" są takie same, jak oczekiwane
+    public boolean zweryfikujNazwyZakladekMenuBoczneNarzedzia() {
+        Map<String, WebElement> nazwyPozycji = new HashMap<>();
+        nazwyPozycji.put("Import kursantów", zakladkaImportKursantow);
+        nazwyPozycji.put("Zablokowane adresy email", zakladkaZablokowaneAdresyEmail);
+        nazwyPozycji.put("Klucz API", zakladkaKluczAPI);
+
+
+        boolean status = true;
+
+        for (Map.Entry<String, WebElement> entry : nazwyPozycji.entrySet()) {
+            String oczekiwanaNazwaPozycji = entry.getKey();
+            WebElement aktualnaNazwaPozycji = entry.getValue();
+
+            try {
+                WebElement obecnyElement = wait.waitForVisibility(aktualnaNazwaPozycji);
+
+                boolean nazwaWidoczna = obecnyElement.isDisplayed();
+                boolean nazwaZgodna = obecnyElement.getText().trim().equals(oczekiwanaNazwaPozycji);
+
+                if (!nazwaWidoczna || !nazwaZgodna) {
+                    if (!nazwaWidoczna) {
+                        System.out.println("Zakładka w menu bocznym strony NARZĘDZIA nie jest widoczna: " + oczekiwanaNazwaPozycji);
+                    }
+                    if (!nazwaZgodna) {
+                        System.out.println("Nazwa zakładki w menu bocznym strony NARZĘDZIA jest niezgodna. "
+                                + "Oczekiwano: '" + oczekiwanaNazwaPozycji + "' "
+                                + "Znaleziono: '" + obecnyElement.getText().trim() + "' ");
+                    }
+                    status = false;
+                } else {
+                    System.out.println("Zakładki w menu bocznym strony NARZĘDZIA są widoczne i mają zgodne nazwy: " + oczekiwanaNazwaPozycji);
+                }
+
+            } catch (Exception e) {
+                System.out.println("Na stronie NARZĘDZIA nie ma zakładki: " + oczekiwanaNazwaPozycji);
+                e.printStackTrace();
+                status = false;
+            }
+        }
+
+        return status;
     }
 
     /**********************************Operacje na webelementach KONIEC ******************************************/

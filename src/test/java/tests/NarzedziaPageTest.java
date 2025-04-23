@@ -49,5 +49,40 @@ public class NarzedziaPageTest extends TestBase {
         Assert.assertEquals(narzedziaPage.zwrocAktualnyTytulZakladkiNarzedzia(), narzedziaPage.zwrocPoprawnyTytulZakladkiNarzedzia());
     }
 
+    @Test(priority = 30, enabled = true, description = "Weryfikacja liczby zakładek w menu bocznym strony NARZĘDZIA")
+    public void weryfikacjaLiczbyZakladekMenuBoczneNarzedzia() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiNarzedzia();
+
+        Assert.assertEquals(narzedziaPage.zwrocAktualnaLiczbeZakladekMenuBoczneNarzedzia(),
+                narzedziaPage.zwrocPoprawnaLiczbeZakladekMenuBoczneNarzedzia(),
+                "Niepoprawna liczba zakładek w menu bocznym strony NARZĘDZIA");
+    }
+
+    @Test(priority = 40, enabled = true, description = "Weryfikacja nazw zakładek w menu bocznym strony NARZĘDZIA")
+    public void weryfikacjaNazwPozycjiWFormularzuUtworzNowaPlatnosc() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiNarzedzia();
+
+        Assert.assertTrue(narzedziaPage.zweryfikujNazwyZakladekMenuBoczneNarzedzia(),
+                "Zakładki w menu bocznym strony NARZĘDZIA są niewidoczne lub mają nieprawidłowe nazwy");
+    }
+
+    @Test(priority = 30, enabled = true, description = "Weryfikacja liczby checkboxów na stronie NARZĘDZIA")
+    public void weryfikacjaLiczbyCheckboxowNarzedzia() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiNarzedzia();
+
+        Assert.assertEquals(narzedziaPage.zwrocAktualnaLiczbeCheckboxowNarzedzia(),
+                narzedziaPage.zwrocPoprawnaLiczbeCheckboxowNarzedzia(),
+                "Niepoprawna liczba checkboxów na stronie NARZĘDZIA");
+    }
+
+
+
+
+
+
+
 
 }

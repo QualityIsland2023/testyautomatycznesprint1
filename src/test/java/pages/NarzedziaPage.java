@@ -86,6 +86,18 @@ public class NarzedziaPage {
         return poprawnyTytulZakladkiNarzedzia;
     }
 
+    // Zwraca aktualną liczbę zakładek w menu bocznym strony "Narzędzia"
+    public int zwrocAktualnaLiczbeZakladekMenuBoczneNarzedzia(){
+        System.out.println("Altualna Liczba zakładek w menu bocznym strony NARZĘDZIA: " + zakladkiMenuBoczne.size());
+        return zakladkiMenuBoczne.size();
+    }
+
+    // Zwraca oczekiwaną (poprawną) liczbę zakładek w menu bocznym strony "Narzędzia"
+    public int zwrocPoprawnaLiczbeZakladekMenuBoczneNarzedzia(){
+        System.out.println("Oczekiwana liczba zakładek w menu bocznym strony NARZĘDZIA: " + prawidlowaLiczbaZakladekMenuBoczne);
+        return prawidlowaLiczbaZakladekMenuBoczne;
+    }
+
     /**********************************Operacje na webelementach KONIEC ******************************************/
 
 

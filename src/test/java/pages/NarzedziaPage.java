@@ -90,7 +90,7 @@ public class NarzedziaPage {
 
     // Zwraca aktualną liczbę zakładek w menu bocznym strony "Narzędzia"
     public int zwrocAktualnaLiczbeZakladekMenuBoczneNarzedzia(){
-        System.out.println("Altualna Liczba zakładek w menu bocznym strony NARZĘDZIA: " + zakladkiMenuBoczne.size());
+        System.out.println("Altualna liczba zakładek w menu bocznym strony NARZĘDZIA: " + zakladkiMenuBoczne.size());
         return zakladkiMenuBoczne.size();
     }
 
@@ -98,6 +98,18 @@ public class NarzedziaPage {
     public int zwrocPoprawnaLiczbeZakladekMenuBoczneNarzedzia(){
         System.out.println("Oczekiwana liczba zakładek w menu bocznym strony NARZĘDZIA: " + prawidlowaLiczbaZakladekMenuBoczne);
         return prawidlowaLiczbaZakladekMenuBoczne;
+    }
+
+    // Zwraca aktualną liczbę checkboxów na stronie "Narzędzia"
+    public int zwrocAktualnaLiczbeCheckboxowNarzedzia(){
+        System.out.println("Altualna liczba checkboxów na stronie NARZĘDZIA: " + ckeckboxyNaStronie.size());
+        return ckeckboxyNaStronie.size();
+    }
+
+    // Zwraca oczekiwaną (poprawną) liczbę checkboxów na stronie "Narzędzia"
+    public int zwrocPoprawnaLiczbeCheckboxowNarzedzia(){
+        System.out.println("Oczekiwana liczba checkboxów na stronie NARZĘDZIA: " + prawidlowaLiczbaCkeckboxowNaStronie);
+        return prawidlowaLiczbaCkeckboxowNaStronie;
     }
 
     // Sprawdza, czy aktualne nazwy zakładek w menu bocznym strony "Narzędzia" są takie same, jak oczekiwane

@@ -68,6 +68,16 @@ public class NarzedziaPageTest extends TestBase {
                 "Zakładki w menu bocznym strony NARZĘDZIA są niewidoczne lub mają nieprawidłowe nazwy");
     }
 
+    @Test(priority = 30, enabled = true, description = "Weryfikacja liczby checkboxów na stronie NARZĘDZIA")
+    public void weryfikacjaLiczbyCheckboxowNarzedzia() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiNarzedzia();
+
+        Assert.assertEquals(narzedziaPage.zwrocAktualnaLiczbeCheckboxowNarzedzia(),
+                narzedziaPage.zwrocPoprawnaLiczbeCheckboxowNarzedzia(),
+                "Niepoprawna liczba checkboxów na stronie NARZĘDZIA");
+    }
+
 
 
 

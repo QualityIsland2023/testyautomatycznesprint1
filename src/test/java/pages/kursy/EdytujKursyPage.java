@@ -49,7 +49,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
     int losowaLiczba = ThreadLocalRandom.current().nextInt(2,10);
 
-
      @FindBy(xpath = "//h1[contains(text(),'Edycja kursu:')]")
      private WebElement edycjaKursu;
 
@@ -83,9 +82,6 @@ import java.util.concurrent.ThreadLocalRandom;
      @FindBy(xpath = "//span[contains(text(), 'Nazwa i opis')]")
      private WebElement sekcjaNazwaIOpis;
 
-     @FindBy(xpath = "//span[contains(text(), 'Sprzedaż')]")
-     private WebElement sekcjaSprzedaz;
-
      @FindBy(xpath = "//button[contains(text(), 'Dodaj wariant')]")
      private WebElement dodajWariantButton;
 
@@ -117,16 +113,13 @@ import java.util.concurrent.ThreadLocalRandom;
      private WebElement czasDostepuJednostkaInput;
 
      @FindBy(xpath = "//button[contains(text(),'Zapisz')]")
-     private List<WebElement> zapiszWariantButton;
+     private WebElement zapiszWariantButton;
 
      @FindBy(xpath = "//a[contains(text(), 'Generator linków')]")
      private WebElement generatorLinkowZakladka;
 
      @FindBy(xpath = "//input[contains(@class, 'bpmj-eddcm-add-to-cart-link') and @data-price-id = '1']")
      private WebElement linkZakupowyInput;
-
-     @FindBy(xpath = "//input[@id='sales_disabled']/following-sibling::span[@class='slider']")
-     private WebElement wlaczSprzedazToggle;
 
 
      /***************************Repozytorium Webelementów KONIEC ******************************************/
@@ -249,27 +242,17 @@ import java.util.concurrent.ThreadLocalRandom;
          return List.of("Nazwa i opis", "Umiejscowienie", "Warianty", "Graficzne", "Widok", "Certyfikacja", "Brak autoryzacji", "Sprzedaż");
      }
 
-     public void przewinStroneDoSekcjiSprzedaz(){
-         wait.waitForVisibility(sekcjaNazwaIOpis);
-         ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)]", sekcjaSprzedaz);
-     }
-
-     public void wlaczSprzedazWSekcjiSprzedaz(){
-         wait.waitForVisibility(wlaczSprzedazToggle).click();
-     }
-
      public void przewinStroneDoSekcjiWarianty(){
+        wait.waitForVisibility(sekcjaNazwaIOpis);
          ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];", sekcjaWarianty);
 
      }
 
+
+
      public void utworzCzteryWariantyDoTestu(){
 
-         for(int i =1; i<=4; i++) {
-             driver.navigate().refresh();
-             wait.waitForVisibility(sekcjaNazwaIOpis);
-             ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];", sekcjaWarianty);
-
+        for(int i =1; i<=4; i++) {
             wait.waitForClickability(dodajWariantButton).click();
 
             wait.waitForVisibility(nazwaWariantuInput).clear();
@@ -292,23 +275,18 @@ import java.util.concurrent.ThreadLocalRandom;
             dataStartuWariantuInput.clear();
             dataStartuWariantuInput.sendKeys("01/07/2025");
 
-            wait.waitForVisibility(godzinaStartuWariantuInput);
             select = new Select(godzinaStartuWariantuInput);
             select.selectByIndex(7);
 
             czasDostepuLiczbaInput.clear();
             czasDostepuLiczbaInput.sendKeys("12");
 
-            wait.waitForVisibility(czasDostepuJednostkaInput);
             select = new Select(czasDostepuJednostkaInput);
             select.selectByVisibleText("Miesiące");
 
-            zapiszWariantButton.get(35).click();
-
+            zapiszWariantButton.click();
         }
      }
-
-
 
      public void przewinStroneDoZakladkiGeneratorLinkow(){
          ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];",generatorLinkowZakladka);
@@ -319,12 +297,11 @@ import java.util.concurrent.ThreadLocalRandom;
      }
 
      public String pobierzLinkZPolaLinkZakupowy(){
-        wait.waitForVisibility(linkZakupowyInput);
         return linkZakupowyInput.getAttribute("value");
      }
 
      public void przejdzDoLinkuZPolaLinkZakupowy(){
-         String link = pobierzLinkZPolaLinkZakupowy();
+        String link = pobierzLinkZPolaLinkZakupowy();
         driver.get(link);
      }
 

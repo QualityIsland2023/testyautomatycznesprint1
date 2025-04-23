@@ -1,4 +1,4 @@
-package pages;
+package pages.uslugi;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

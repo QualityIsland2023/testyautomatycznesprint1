@@ -1,12 +1,13 @@
-package tests;
+package tests.uslugiTests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.EdycjaUslugiPage;
+import pages.uslugi.EdycjaUslugiPage;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.UslugiPage;
+import pages.uslugi.UslugiPage;
+import tests.TestBase;
 
 public class EdycjaUslugiPageTest extends TestBase {
 

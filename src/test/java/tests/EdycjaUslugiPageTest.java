@@ -41,12 +41,44 @@ public class EdycjaUslugiPageTest extends TestBase {
 
     @Test(priority = 20, enabled = true, description = "Weryfikacja czy strona Edycja usługi posiada prawidłowy tytuł.")
     public void weryfikacjaTytuluStronyEdycjaUslugi() {
-        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
-        loginPageNew.wpiszHasloDoPolaHaslo();
-        loginPageNew.nacisnijPrzyciskZalogujSie();
+        loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkiUslugi();
-        uslugiPage.przejdzDoStronyEdycjaUslugi();
+        uslugiPage.przejdzDoPierwszejUslugiZListy();
 
-        Assert.assertEquals(edycjaUslugiPage.zwrocAktualnyTytulStronyEdycjaUslugi(), edycjaUslugiPage.zwrocPoprawnyTytulStronyEdycjaUslugi());
+        Assert.assertEquals(edycjaUslugiPage.zwrocAktualnyTytulStronyEdycjaUslugi(), edycjaUslugiPage.zwrocPoprawnyTytulStronyEdycjaUslugi(), "Tytul strony 'Edycja usługi' nie jest poprawny.");
     }
+
+    @Test(priority = 30, enabled = true, description = "Weryfikacja czy na stronie Edycja usługi istnieja sekcje 'Podstawowe' i 'Generator linkow'.")
+    public void weryfikacjaCzyIstniejaPozycjePodstawoweIGeneratorLinkow() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiUslugi();
+        uslugiPage.poczekajNaTabeleUslug();
+        uslugiPage.przejdzDoPierwszejUslugiZListy();
+        edycjaUslugiPage.poczekajNaUstawienia();
+
+        Assert.assertTrue(edycjaUslugiPage.zweryfikujCzyWMenuBocznymIstniejaPodstawoweIGeneratorLinkow(), "Sekcje 'Podstawowe' i/lub 'Generator linkow' nie istnieja.");
+    }
+
+    @Test(priority = 40, enabled = true, description = "Weryfikacja czy na stronie Edycja usługi istnieje przycisk 'Zobacz usługę'.")
+    public void weryfikacjaCzyIstniejaPrzyciskZobaczUsluge() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiUslugi();
+        uslugiPage.poczekajNaTabeleUslug();
+        uslugiPage.przejdzDoPierwszejUslugiZListy();
+
+        Assert.assertTrue(edycjaUslugiPage.zweryfikujCzyIstniejeZobaczUslugeButton(), "Przycisk 'Zobacz usługę' nie istnieje.");
+    }
+
+    @Test(priority = 50, enabled = true, description = "Weryfikacja czy na stronie Edycja usługi istnieja wszystkie sekcje ustawień.")
+    public void wyeryfikacjaCzyIstniejaSekcjeUstawien() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiUslugi();
+        uslugiPage.poczekajNaTabeleUslug();
+        uslugiPage.przejdzDoPierwszejUslugiZListy();
+        edycjaUslugiPage.poczekajNaUstawienia();
+
+        Assert.assertEquals(edycjaUslugiPage.zwrocAktualneSekcje(), edycjaUslugiPage.zwrocPoprawneSekcje(), "Nie wszystkie sekcje ustawien istnieja.");
+    }
+
+
 }

@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class UslugiPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
@@ -29,19 +31,33 @@ public class UslugiPage {
     String poprawnyTytulZakladkiUslugi = "Usługi ‹ Platforma kursów online — WordPress";
 
     @FindBy(xpath = "//button[text()='Utwórz nową usługę']")
-    WebElement utworzNowaUslugeButton;
+    private WebElement utworzNowaUslugeButton;
+
+    @FindBy(xpath = "//button[text()='Typy danych']")
+    private WebElement typyDanychButton;
+
+    @FindBy(xpath = "//h2[contains(text(), 'Utwórz nową usługę')]")
+    private WebElement utworzNowaUslugeOkno;
 
     @FindBy(id = "name")
-    WebElement nazwaUslugiInput;
+    private WebElement nazwaUslugiInput;
 
     @FindBy(id = "price")
-    WebElement cenaInput;
+    private WebElement cenaInput;
 
     @FindBy(xpath = "//button[text()='Utwórz i edytuj']")
-    WebElement utworzIEdytujButton;
+    private WebElement utworzIEdytujButton;
 
     @FindBy(xpath = "//button[text()='Anuluj']")
-    WebElement anulujButton;
+    private WebElement anulujButton;
+
+    @FindBy(xpath = "//table[@class='dynamic-table loaded']")
+    private WebElement tabelaUslug;
+
+    @FindBy(xpath = "//td[@class='type-id']/a")
+    private List<WebElement> listaUslug;
+
+
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
@@ -68,8 +84,8 @@ public class UslugiPage {
         return poprawnyTytulZakladkiUslugi;
     }
 
-    public void nacisnijPrzyciskUtworzNowaUsluge() {
-        wait.waitForClickability(utworzIEdytujButton).click();
+    public void kliknijPrzyciskUtworzNowaUsluge() {
+        wait.waitForClickability(utworzNowaUslugeButton).click();
     }
 
     public void wprowadzNazweUslugiDoPolaNazwaUslugi() {
@@ -80,18 +96,76 @@ public class UslugiPage {
         wait.waitForVisibility(cenaInput).sendKeys("123");
     }
 
-    public void nacisnijPrzyciskUtworzIEdytuj() {
+    public void kliknijPrzyciskUtworzIEdytuj() {
         wait.waitForClickability(utworzIEdytujButton).click();
     }
 
-    public void przejdzDoStronyEdycjaUslugi() {
-        nacisnijPrzyciskUtworzNowaUsluge();
-        wprowadzNazweUslugiDoPolaNazwaUslugi();
-        wprowadzCeneDoPolaCena();
-        nacisnijPrzyciskUtworzIEdytuj();
+    //    przejscie do strony 'Edycja uslugi' poprzez klikniecie w pierwsza od gory usluge w dynamicznej tabeli
+    //    pozwala przejsc do Edycji bez tworzenia nowej uslugi
+    public void przejdzDoPierwszejUslugiZListy() {
+        wait.waitForClickability(listaUslug.getFirst()).click();
     }
 
-    /**********************************Operacje na webelementach KONIEC ******************************************/
+    //oczekiwanie na okno dialogowe po kliknieciu przycisku 'Utwórz nową usługę'
+    public void poczekajNaOknoUtworzNowaUsluge() {
+        wait.waitForVisibility(utworzNowaUslugeOkno);
+    }
+
+    //oczekiwanie zaladowanie sie dynamicznej tabeli uslug
+    public void poczekajNaTabeleUslug() {
+        wait.waitForVisibility(tabelaUslug);
+    }
+
+    //metoda przechodząca przez proces tworzenia nowej uslugi o nazwie 'testtest' i cenie '123'
+    //moze byc uzyta by przejsc do strony 'Edycja uslugi'
+    public void utworzNowaUsluge() {
+        kliknijPrzyciskUtworzNowaUsluge();
+        poczekajNaOknoUtworzNowaUsluge();
+        wprowadzNazweUslugiDoPolaNazwaUslugi();
+        wprowadzCeneDoPolaCena();
+        kliknijPrzyciskUtworzIEdytuj();
+    }
+
+    public boolean zweryfikujCzyIstniejeUtworzNowaUslugeButton() {
+        boolean status = false;
+
+        if (utworzNowaUslugeButton.isDisplayed()) {
+            status = true;
+        }
+        return status;
+    }
+
+    public boolean zweryfikujCzyIstniejeTypyDanychButton() {
+        boolean status = false;
+
+        if (typyDanychButton.isDisplayed()) {
+            status = true;
+        }
+        return status;
+
+    }
+
+    public void kliknijTypyDanychButton() {
+        wait.waitForClickability(typyDanychButton).click();
+    }
+    //metoda weryfikujaca czy po kliknieciu przycisku 'Typy danych' pojawia się komunikat: "Wybierz które kolumny mają być widoczne w tabeli"
+    public boolean zweryfikujCzyIstniejeSekcjaWyboruKolumn() {
+        boolean status = false;
+
+        if (driver.getPageSource().contains("Wybierz które kolumny mają być widoczne w tabeli")) {
+            status = true;
+        }
+        return status;
+    }
+    //metoda weryfikujaca czy po kliknieciu 'Utworz nowa uslugę' w pojawiajacym się oknie dialogowym istnieja pola 'Nazwa uslugi' i 'Cena'
+    public boolean zweryfikujCzyIstniejaPolaNazwaUslugiICena() {
+        boolean status = false;
+
+        if (nazwaUslugiInput.isDisplayed() && cenaInput.isDisplayed()) {
+            status = true;
+        }
+        return status;
+    }
 
 
 }

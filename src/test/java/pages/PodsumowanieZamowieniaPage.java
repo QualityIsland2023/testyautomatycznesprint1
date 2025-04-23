@@ -44,8 +44,6 @@ public class PodsumowanieZamowieniaPage {
         if(wait.waitForVisibility(zamawiamIPlaceButton).isDisplayed()){
             status = true;
             System.out.println("Zamawiam i place przycisk istnieje.");
-        }else{
-            System.out.println("Zamawiam i place button nie istnieje.");
         }
         return status;
     }

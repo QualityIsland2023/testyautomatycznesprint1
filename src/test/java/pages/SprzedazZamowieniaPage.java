@@ -7,6 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class SprzedazZamowieniaPage {
 
     //************************ Sekcja techniczno konfiguracyjna START **********************************************/
@@ -39,6 +43,8 @@ public class SprzedazZamowieniaPage {
     // Oczekiwana (poprawna) informacja w sekcji po kliknięciu przycisku "Typy danych"
     String poprawnaInformacjaWSekcjiTypyDanych = "Wybierz, które kolumny mają być widoczne w tabeli:";
 
+    int prawidlowaLiczbaChecboxowTypyDanych = 17;
+
     @FindBy(xpath = "//*[contains(text(),'Dodaj zamówienie')]")
     private WebElement dodajZamowienieButton;
 
@@ -48,9 +54,66 @@ public class SprzedazZamowieniaPage {
     @FindBy(className = "dynamic-table__column-visibility-checkboxes__hint")
     private WebElement informacjaWSekcjiTypyDanych;
 
-//    Xpath zamienny/alternatywny po poprawie błędu interpunkcyjnego w tekście informacji w sekcji "Typy danych"
+    //    Xpath zamienny/alternatywny po poprawie błędu interpunkcyjnego w tekście informacji w sekcji "Typy danych"
 //    @FindBy(xpath = "//*[contains(text(),'Wybierz, które kolumny mają być widoczne w tabeli')]")
 //    private WebElement informacjaWSekcjiTypyDanych;
+
+    @FindBy(xpath = "//*[contains(@class,'checkbox-replacement')]")
+    private List<WebElement> wszytkieCheckboxyTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'ID')]")
+    private WebElement idTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Imię i nazwisko')]")
+    private WebElement imieINazwiskoTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Email')]")
+    private WebElement emailTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Numer telefonu')]")
+    private WebElement numerTelefonuTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Adres dostawy')]")
+    private WebElement adresDostawyTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Data')]")
+    private WebElement dataTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Kwota')]")
+    private WebElement kwotaTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Kod zniżkowy')]")
+    private WebElement kodZnizkowyTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Produkty')]")
+    private WebElement produktyTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Zwiększenie sprzedaży')]")
+    private WebElement zwiekszenieSprzedazyTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Status')]")
+    private WebElement statusTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Metoda płatności')]")
+    private WebElement metodaPlatnosciTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Płatności cykliczne')]")
+    private WebElement platnosciCykliczneTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Państwo')]")
+    private WebElement panstwoTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'NIP')]")
+    private WebElement nipTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Nazwa firmy')]")
+    private WebElement nazwaFirmyTypyDanych;
+
+    @FindBy(xpath = "//label[contains(text(),'Zaznaczone checkboxy')]")
+    private WebElement zaznaczoneCheckboxyTypyDanych;
+
+
+
 
 
 
@@ -172,6 +235,74 @@ public class SprzedazZamowieniaPage {
         return status;
     }
 
+    // Zwraca aktualną liczbę checkboxów w polu "Typy danych"
+    public int zwrocAktualnaLiczbeCheckboxowTypyDanych(){
+        System.out.println("Aktualna liczba checkboxów w polu TYPY DANYCH: " + wszytkieCheckboxyTypyDanych.size());
+        return wszytkieCheckboxyTypyDanych.size();
+    }
+
+    // Zwraca oczekiwaną (poprawną) liczbę checkboxów w polu "Typy danych"
+    public int zwrocPoprawnaLiczbeCheckboxowTypyDanych(){
+        System.out.println("Oczekiwana checkboxów w polu TYPY DANYCH: " + prawidlowaLiczbaChecboxowTypyDanych);
+        return prawidlowaLiczbaChecboxowTypyDanych;
+    }
+
+    // Sprawdza, czy aktualne nazwy checkboxów w polu "Typy danych" są takie same, jak oczekiwane
+    public boolean zweryfikujNazwyCheckboxowTypyDanych() {
+        Map<String, WebElement> nazwyPozycji = new HashMap<>();
+        nazwyPozycji.put("ID", idTypyDanych);
+        nazwyPozycji.put("Imię i nazwisko", imieINazwiskoTypyDanych);
+        nazwyPozycji.put("Email", emailTypyDanych);
+        nazwyPozycji.put("Numer telefonu", numerTelefonuTypyDanych);
+        nazwyPozycji.put("Adres dostawy", adresDostawyTypyDanych);
+        nazwyPozycji.put("Data", dataTypyDanych);
+        nazwyPozycji.put("Kwota", kwotaTypyDanych);
+        nazwyPozycji.put("Kod zniżkowy", kodZnizkowyTypyDanych);
+        nazwyPozycji.put("Produkty", produktyTypyDanych);
+        nazwyPozycji.put("Zwiększenie sprzedaży", zwiekszenieSprzedazyTypyDanych);
+        nazwyPozycji.put("Status", statusTypyDanych);
+        nazwyPozycji.put("Metoda płatności", metodaPlatnosciTypyDanych);
+        nazwyPozycji.put("Płatności cykliczne", platnosciCykliczneTypyDanych);
+        nazwyPozycji.put("Państwo", panstwoTypyDanych);
+        nazwyPozycji.put("NIP", nipTypyDanych);
+        nazwyPozycji.put("Nazwa firmy", nazwaFirmyTypyDanych);
+        nazwyPozycji.put("Zaznaczone checkboxy", zaznaczoneCheckboxyTypyDanych);
+
+        boolean status = true;
+
+        for (Map.Entry<String, WebElement> entry : nazwyPozycji.entrySet()) {
+            String oczekiwanaNazwaPozycji = entry.getKey();
+            WebElement aktualnaNazwaPozycji = entry.getValue();
+
+            try {
+                WebElement obecnyElement = wait.waitForVisibility(aktualnaNazwaPozycji);
+
+                boolean nazwaWidoczna = obecnyElement.isDisplayed();
+                boolean nazwaZgodna = obecnyElement.getText().trim().equals(oczekiwanaNazwaPozycji);
+
+                if (!nazwaWidoczna || !nazwaZgodna) {
+                    if (!nazwaWidoczna) {
+                        System.out.println("Nazwa checkboxa w polu TYPY DANYCH nie jest widoczna: " + oczekiwanaNazwaPozycji);
+                    }
+                    if (!nazwaZgodna) {
+                        System.out.println("Nazwa checkboxa w polu TYPY DANYCH jest niezgodna. "
+                                + "Oczekiwano: '" + oczekiwanaNazwaPozycji + "' "
+                                + "Znaleziono: '" + obecnyElement.getText().trim() + "' ");
+                    }
+                    status = false;
+                } else {
+                    System.out.println("Nazwy checkboxów w polu TYPY DANYCH są widoczne i mają zgodne nazwy : " + oczekiwanaNazwaPozycji);
+                }
+
+            } catch (Exception e) {
+                System.out.println("W polu TYPY DANYCH nie ma nazwy checkboxa: " + oczekiwanaNazwaPozycji);
+                e.printStackTrace();
+                status = false;
+            }
+        }
+
+        return status;
+    }
 
 
 

@@ -2,13 +2,16 @@
 
 import config.PropertiesReader;
 import helpers.Waits;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
  public class EdytujKursyPage {
 
@@ -44,6 +47,9 @@ import java.util.List;
     //oczekiwana liczba sekcji 'Podstawowe'
     int poprawnaIloscSekcjiPodstawowe = 8;
 
+    int losowaLiczba = ThreadLocalRandom.current().nextInt(2,10);
+
+
      @FindBy(xpath = "//h1[contains(text(),'Edycja kursu:')]")
      private WebElement edycjaKursu;
 
@@ -70,6 +76,58 @@ import java.util.List;
 
      @FindBy(xpath = "//div[@class='settings-content']/div/span")
      private List<WebElement> sekcjaPodstawoweEdycjaKursow;
+
+     @FindBy(xpath = "//span[contains(text(), 'Warianty')]")
+     private WebElement sekcjaWarianty;
+
+     @FindBy(xpath = "//span[contains(text(), 'Nazwa i opis')]")
+     private WebElement sekcjaNazwaIOpis;
+
+     @FindBy(xpath = "//span[contains(text(), 'Sprzedaż')]")
+     private WebElement sekcjaSprzedaz;
+
+     @FindBy(xpath = "//button[contains(text(), 'Dodaj wariant')]")
+     private WebElement dodajWariantButton;
+
+     @FindBy(id = "name_price_option")
+     private WebElement nazwaWariantuInput;
+
+     @FindBy(id = "price")
+     private WebElement cenaWariantuInput;
+
+     @FindBy(id = "bpmj_eddcm_purchase_limit_items_left")
+     private WebElement dostepnoscSztukInput;
+
+     @FindBy(id = "bpmj_eddcm_purchase_limit")
+     private WebElement dostepnoscSztukZInput;
+
+     @FindBy(id = "access_type")
+     private WebElement typDostepuDoKursuDropdownList;
+
+     @FindBy(id = "access_start_date")
+     private WebElement dataStartuWariantuInput;
+
+     @FindBy(id = "access_start_hour")
+     private WebElement godzinaStartuWariantuInput;
+
+     @FindBy(id = "access_time")
+     private WebElement czasDostepuLiczbaInput;
+
+     @FindBy(id = "access_time_unit")
+     private WebElement czasDostepuJednostkaInput;
+
+     @FindBy(xpath = "//button[contains(text(),'Zapisz')]")
+     private List<WebElement> zapiszWariantButton;
+
+     @FindBy(xpath = "//a[contains(text(), 'Generator linków')]")
+     private WebElement generatorLinkowZakladka;
+
+     @FindBy(xpath = "//input[contains(@class, 'bpmj-eddcm-add-to-cart-link') and @data-price-id = '1']")
+     private WebElement linkZakupowyInput;
+
+     @FindBy(xpath = "//input[@id='sales_disabled']/following-sibling::span[@class='slider']")
+     private WebElement wlaczSprzedazToggle;
+
 
      /***************************Repozytorium Webelementów KONIEC ******************************************/
 
@@ -190,6 +248,90 @@ import java.util.List;
          System.out.println("Aktualna lista sekcji zakładki 'Podstawowe' menu bocznego okna 'Edycja kursów': [Nazwa i opis, Umiejscowienie, Warianty, Graficzne, Widok, Certyfikacja, Brak autoryzacji, Sprzedaż]");
          return List.of("Nazwa i opis", "Umiejscowienie", "Warianty", "Graficzne", "Widok", "Certyfikacja", "Brak autoryzacji", "Sprzedaż");
      }
+
+     public void przewinStroneDoSekcjiSprzedaz(){
+         wait.waitForVisibility(sekcjaNazwaIOpis);
+         ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)]", sekcjaSprzedaz);
+     }
+
+     public void wlaczSprzedazWSekcjiSprzedaz(){
+         wait.waitForVisibility(wlaczSprzedazToggle).click();
+     }
+
+     public void przewinStroneDoSekcjiWarianty(){
+         ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];", sekcjaWarianty);
+
+     }
+
+     public void utworzCzteryWariantyDoTestu(){
+
+         for(int i =1; i<=4; i++) {
+             driver.navigate().refresh();
+             wait.waitForVisibility(sekcjaNazwaIOpis);
+             ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];", sekcjaWarianty);
+
+            wait.waitForClickability(dodajWariantButton).click();
+
+            wait.waitForVisibility(nazwaWariantuInput).clear();
+            nazwaWariantuInput.sendKeys("Wariant testu");
+
+            cenaWariantuInput.clear();
+            cenaWariantuInput.sendKeys("112");
+
+            ((JavascriptExecutor) driver).executeScript("[arguments[0].scrollIntoView(true)];", dostepnoscSztukInput);
+
+            wait.waitForVisibility(dostepnoscSztukInput).clear();
+            dostepnoscSztukInput.sendKeys(String.valueOf(losowaLiczba));
+
+            dostepnoscSztukZInput.clear();
+            dostepnoscSztukZInput.sendKeys("10");
+
+            Select select = new Select(typDostepuDoKursuDropdownList);
+            select.selectByVisibleText("Przez określony czas, od określonej daty");
+
+            dataStartuWariantuInput.clear();
+            dataStartuWariantuInput.sendKeys("01/07/2025");
+
+            wait.waitForVisibility(godzinaStartuWariantuInput);
+            select = new Select(godzinaStartuWariantuInput);
+            select.selectByIndex(7);
+
+            czasDostepuLiczbaInput.clear();
+            czasDostepuLiczbaInput.sendKeys("12");
+
+            wait.waitForVisibility(czasDostepuJednostkaInput);
+            select = new Select(czasDostepuJednostkaInput);
+            select.selectByVisibleText("Miesiące");
+
+            zapiszWariantButton.get(35).click();
+
+        }
+     }
+
+
+
+     public void przewinStroneDoZakladkiGeneratorLinkow(){
+         ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];",generatorLinkowZakladka);
+     }
+
+     public void przejdzDoZakladkiGeneratorLinkow(){
+        wait.waitForClickability(generatorLinkowZakladka).click();
+     }
+
+     public String pobierzLinkZPolaLinkZakupowy(){
+        wait.waitForVisibility(linkZakupowyInput);
+        return linkZakupowyInput.getAttribute("value");
+     }
+
+     public void przejdzDoLinkuZPolaLinkZakupowy(){
+         String link = pobierzLinkZPolaLinkZakupowy();
+        driver.get(link);
+     }
+
+
+
+
+
 
 
     /**********************************Operacje na Webelementach KONIEC ******************************************/

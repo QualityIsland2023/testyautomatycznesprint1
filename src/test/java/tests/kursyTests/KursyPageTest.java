@@ -4,6 +4,7 @@ package tests.kursyTests;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.kursy.EdytujKursyPage;
 import pages.kursy.KursyPage;
 import pages.LoginPageNew;
 import pages.PanelPage;
@@ -17,6 +18,7 @@ public class KursyPageTest extends TestBase {
     private LoginPageNew loginPageNew;
     private PanelPage panelPage;
     private KursyPage kursyPage;
+
 
     /*****************sekja techniczna KONIEC **********************************************/
 

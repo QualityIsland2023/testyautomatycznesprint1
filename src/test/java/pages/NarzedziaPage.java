@@ -160,13 +160,10 @@ public class NarzedziaPage {
     public boolean zweryfikujCzyCheckboxSaNieznaczoneNarzedzia() {
         boolean status = true;
 
-        int zaznaczoneCheckboxy = 0;
-
         for(WebElement checkbox : ckeckboxyNaStronie){
             if(checkbox.isSelected()){
-                zaznaczoneCheckboxy++;
-                System.out.println("BŁĄD! Checkbox domyślnie zaznaczony: " + checkbox.getAttribute("name"));
                 status = false;
+                System.out.println("BŁĄD! Checkbox domyślnie zaznaczony: " + checkbox.getAttribute("name"));
             }else{
                 System.out.println("Checkbox jest domyślnie niezaznaczony: " + checkbox.getAttribute("name"));
             }

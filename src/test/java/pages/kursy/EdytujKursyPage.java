@@ -1,4 +1,4 @@
- package pages.kursy;
+package pages.kursy;
 
 import config.PropertiesReader;
 import helpers.Waits;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
- public class EdytujKursyPage {
+public class EdytujKursyPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
 
@@ -21,13 +21,13 @@ import java.util.concurrent.ThreadLocalRandom;
     private static final String login =  PropertiesReader.read("login");
     private static final String haslo =  PropertiesReader.read("password");
 
-     //konstruktory przyjmujące przeglądarkę i obiekt klasy Waits
+    //konstruktory przyjmujące przeglądarkę i obiekt klasy Waits
     private WebDriver driver;
     private Waits wait;
 
-     //konstruktor tworzący nową instancję strony
-     //inicjalizacja drivera oraz obiektów klasy Waits
-     //inicjalizacja wszystkich elementów strony za pomocą PageFactory
+    //konstruktor tworzący nową instancję strony
+    //inicjalizacja drivera oraz obiektów klasy Waits
+    //inicjalizacja wszystkich elementów strony za pomocą PageFactory
     public EdytujKursyPage(WebDriver driver){
         this.driver = driver;
         this.wait = new Waits(driver);
@@ -50,86 +50,86 @@ import java.util.concurrent.ThreadLocalRandom;
     int losowaLiczba = ThreadLocalRandom.current().nextInt(2,10);
 
 
-     @FindBy(xpath = "//h1[contains(text(),'Edycja kursu:')]")
-     private WebElement edycjaKursu;
+    @FindBy(xpath = "//h1[contains(text(),'Edycja kursu:')]")
+    private WebElement edycjaKursu;
 
-     @FindBy(xpath = "//div[contains(text(), 'Kursy')]")
-     private WebElement zakladkaKursyMenuBoczne;
+    @FindBy(xpath = "//div[contains(text(), 'Kursy')]")
+    private WebElement zakladkaKursyMenuBoczne;
 
-     @FindBy(xpath = "//span[contains(@class,'set-ico')]")
-     private List<WebElement> menuBoczneEdycjaKursowIlosc;
+    @FindBy(xpath = "//span[contains(@class,'set-ico')]")
+    private List<WebElement> menuBoczneEdycjaKursowIlosc;
 
-     @FindBy(xpath = "//ul[contains(@class,'settings-nav-tab')]/li/a")
-     private List<WebElement> menuBoczneEdycjaKursow;
+    @FindBy(xpath = "//ul[contains(@class,'settings-nav-tab')]/li/a")
+    private List<WebElement> menuBoczneEdycjaKursow;
 
-     @FindBy(xpath = "//a[contains(@id,'general')]")
-     private WebElement zakladkaPodstawoweMenuBoczneEdycjaKursow;
+    @FindBy(xpath = "//a[contains(@id,'general')]")
+    private WebElement zakladkaPodstawoweMenuBoczneEdycjaKursow;
 
-     @FindBy(xpath = "//span[contains(text(),'Nazwa i opis')]")
-     private WebElement sekcjaNazwaIOpisZakladkiPodstawowe;
+    @FindBy(xpath = "//span[contains(text(),'Nazwa i opis')]")
+    private WebElement sekcjaNazwaIOpisZakladkiPodstawowe;
 
-     @FindBy(xpath = "//span[contains(@class,'fields-group__name')]")
-     private List<WebElement> sekcjaPodstawoweEdycjaKursowIlosc;
+    @FindBy(xpath = "//span[contains(@class,'fields-group__name')]")
+    private List<WebElement> sekcjaPodstawoweEdycjaKursowIlosc;
 
-     @FindBy(xpath = "//span[contains(text(),'Sprzedaż')]")
-     private WebElement sekcjaSprzedazZakladkiPodstawowe;
+    @FindBy(xpath = "//span[contains(text(),'Sprzedaż')]")
+    private WebElement sekcjaSprzedazZakladkiPodstawowe;
 
-     @FindBy(xpath = "//div[@class='settings-content']/div/span")
-     private List<WebElement> sekcjaPodstawoweEdycjaKursow;
+    @FindBy(xpath = "//div[@class='settings-content']/div/span")
+    private List<WebElement> sekcjaPodstawoweEdycjaKursow;
 
-     @FindBy(xpath = "//span[contains(text(), 'Warianty')]")
-     private WebElement sekcjaWarianty;
+    @FindBy(xpath = "//span[contains(text(), 'Warianty')]")
+    private WebElement sekcjaWarianty;
 
-     @FindBy(xpath = "//span[contains(text(), 'Nazwa i opis')]")
-     private WebElement sekcjaNazwaIOpis;
+    @FindBy(xpath = "//span[contains(text(), 'Nazwa i opis')]")
+    private WebElement sekcjaNazwaIOpis;
 
-     @FindBy(xpath = "//span[contains(text(), 'Sprzedaż')]")
-     private WebElement sekcjaSprzedaz;
+    @FindBy(xpath = "//span[contains(text(), 'Sprzedaż')]")
+    private WebElement sekcjaSprzedaz;
 
-     @FindBy(xpath = "//button[contains(text(), 'Dodaj wariant')]")
-     private WebElement dodajWariantButton;
+    @FindBy(xpath = "//button[contains(text(), 'Dodaj wariant')]")
+    private WebElement dodajWariantButton;
 
-     @FindBy(id = "name_price_option")
-     private WebElement nazwaWariantuInput;
+    @FindBy(id = "name_price_option")
+    private WebElement nazwaWariantuInput;
 
-     @FindBy(id = "price")
-     private WebElement cenaWariantuInput;
+    @FindBy(id = "price")
+    private WebElement cenaWariantuInput;
 
-     @FindBy(id = "bpmj_eddcm_purchase_limit_items_left")
-     private WebElement dostepnoscSztukInput;
+    @FindBy(id = "bpmj_eddcm_purchase_limit_items_left")
+    private WebElement dostepnoscSztukInput;
 
-     @FindBy(id = "bpmj_eddcm_purchase_limit")
-     private WebElement dostepnoscSztukZInput;
+    @FindBy(id = "bpmj_eddcm_purchase_limit")
+    private WebElement dostepnoscSztukZInput;
 
-     @FindBy(id = "access_type")
-     private WebElement typDostepuDoKursuDropdownList;
+    @FindBy(id = "access_type")
+    private WebElement typDostepuDoKursuDropdownList;
 
-     @FindBy(id = "access_start_date")
-     private WebElement dataStartuWariantuInput;
+    @FindBy(id = "access_start_date")
+    private WebElement dataStartuWariantuInput;
 
-     @FindBy(id = "access_start_hour")
-     private WebElement godzinaStartuWariantuInput;
+    @FindBy(id = "access_start_hour")
+    private WebElement godzinaStartuWariantuInput;
 
-     @FindBy(id = "access_time")
-     private WebElement czasDostepuLiczbaInput;
+    @FindBy(id = "access_time")
+    private WebElement czasDostepuLiczbaInput;
 
-     @FindBy(id = "access_time_unit")
-     private WebElement czasDostepuJednostkaInput;
+    @FindBy(id = "access_time_unit")
+    private WebElement czasDostepuJednostkaInput;
 
-     @FindBy(xpath = "//button[contains(text(),'Zapisz')]")
-     private List<WebElement> zapiszWariantButton;
+    @FindBy(xpath = "//button[contains(text(),'Zapisz')]")
+    private List<WebElement> zapiszWariantButton;
 
-     @FindBy(xpath = "//a[contains(text(), 'Generator linków')]")
-     private WebElement generatorLinkowZakladka;
+    @FindBy(xpath = "//a[contains(text(), 'Generator linków')]")
+    private WebElement generatorLinkowZakladka;
 
-     @FindBy(xpath = "//input[contains(@class, 'bpmj-eddcm-add-to-cart-link') and @data-price-id = '1']")
-     private WebElement linkZakupowyInput;
+    @FindBy(xpath = "//input[contains(@class, 'bpmj-eddcm-add-to-cart-link') and @data-price-id = '1']")
+    private WebElement linkZakupowyInput;
 
-     @FindBy(xpath = "//input[@id='sales_disabled']/following-sibling::span[@class='slider']")
-     private WebElement wlaczSprzedazToggle;
+    @FindBy(xpath = "//input[@id='sales_disabled']/following-sibling::span[@class='slider']")
+    private WebElement wlaczSprzedazToggle;
 
 
-     /***************************Repozytorium Webelementów KONIEC ******************************************/
+    /***************************Repozytorium Webelementów KONIEC ******************************************/
 
 
     /****************************Operacje na Webelementach START **********************************************/
@@ -139,136 +139,136 @@ import java.util.concurrent.ThreadLocalRandom;
         wait.waitForVisibility(edycjaKursu);
     }
 
-     //zwrócenie aktualnego url strony
-     public Boolean zwrocUrlAktualnejStrony(){
-         System.out.println("Adres strony 'Edycja kursu' jest poprawny, status: " + driver.getCurrentUrl().contains("//mmrmqpr585.publigo.onl/" ));
-         return driver.getCurrentUrl().contains("//mmrmqpr585.publigo.onl/");
-     }
+    //zwrócenie aktualnego url strony
+    public Boolean zwrocUrlAktualnejStrony(){
+        System.out.println("Adres strony 'Edycja kursu' jest poprawny, status: " + driver.getCurrentUrl().contains("//mmrmqpr585.publigo.onl/" ));
+        return driver.getCurrentUrl().contains("//mmrmqpr585.publigo.onl/");
+    }
 
-     //zwrócenie poprawnego tytułu strony 'Edycja kursu' i wypisanie go w konsoli
+    //zwrócenie poprawnego tytułu strony 'Edycja kursu' i wypisanie go w konsoli
     public String zwrocPoprawnyTytulStronyEdytujKursy(){
         System.out.println("Poprawny tytuł strony 'Edycja kursu': " + poprawnyTytulStronyEdytujKursy);
         return poprawnyTytulStronyEdytujKursy;
     }
 
-     //zwrócenie aktualnego tytułu strony i wypisanie go w konsoli
-     public String zwroctTytulAktualnejStrony(){
-         System.out.println("Aktualny tytuł strony: " + driver.getTitle());
-         return driver.getTitle();
-     }
+    //zwrócenie aktualnego tytułu strony i wypisanie go w konsoli
+    public String zwroctTytulAktualnejStrony(){
+        System.out.println("Aktualny tytuł strony: " + driver.getTitle());
+        return driver.getTitle();
+    }
 
-     //sprawdzenie widoczności sekcji 'Edycja kursu:'
-     public Boolean pobranieTekstuOknaEdycjaKursu(){
-         boolean status = false;
-         if(wait.waitForTextInPageSource("Edycja kursu:")){
-             status = true;
-             System.out.println("Okno 'Edycja kursu' jest widoczne.");
-         }
-         return status;
-     }
+    //sprawdzenie widoczności sekcji 'Edycja kursu:'
+    public Boolean pobranieTekstuOknaEdycjaKursu(){
+        boolean status = false;
+        if(wait.waitForTextInPageSource("Edycja kursu:")){
+            status = true;
+            System.out.println("Okno 'Edycja kursu' jest widoczne.");
+        }
+        return status;
+    }
 
     //zwrócenie aktualnej liczby pozycji menu bocznego okna 'Edycja Kursów'
-     public int zworcLiczbePozycjiWMenuBocznymOknaEdycjaKursow(){
-         System.out.println("Aktualna liczba pozycji menu bocznego okna 'Edycja kursów': " + menuBoczneEdycjaKursowIlosc.size());
-         return menuBoczneEdycjaKursowIlosc.size();
-     }
+    public int zworcLiczbePozycjiWMenuBocznymOknaEdycjaKursow(){
+        System.out.println("Aktualna liczba pozycji menu bocznego okna 'Edycja kursów': " + menuBoczneEdycjaKursowIlosc.size());
+        return menuBoczneEdycjaKursowIlosc.size();
+    }
 
-     //zwrócenie poprawnej liczby pozycji menu bocznego okna 'Edycja Kursów'
-     public int zwrocPoprawnaLiczbePozycjiWMenuBocznymOknaEdycjaKursow(){
-         System.out.println("Poprawna liczba pozycji menu bocznego okna 'Edycja kursów': " + poprawnaIloscPozycjiWMenuBoczymOknaEdycjaKursow);
-         return poprawnaIloscPozycjiWMenuBoczymOknaEdycjaKursow;
-     }
+    //zwrócenie poprawnej liczby pozycji menu bocznego okna 'Edycja Kursów'
+    public int zwrocPoprawnaLiczbePozycjiWMenuBocznymOknaEdycjaKursow(){
+        System.out.println("Poprawna liczba pozycji menu bocznego okna 'Edycja kursów': " + poprawnaIloscPozycjiWMenuBoczymOknaEdycjaKursow);
+        return poprawnaIloscPozycjiWMenuBoczymOknaEdycjaKursow;
+    }
 
-     //sprawdzenie, czy w oknie Edycja kursu' w menu bocznym są 3 pozycje: 'Podstawowe', 'Struktura', 'Generator linków'.
-     public List<String> zwrocNazwyPozycjiMenuBocznymOknaEdycjaKursow(){
-         wait.waitForVisibility(menuBoczneEdycjaKursow.get(0));
+    //sprawdzenie, czy w oknie Edycja kursu' w menu bocznym są 3 pozycje: 'Podstawowe', 'Struktura', 'Generator linków'.
+    public List<String> zwrocNazwyPozycjiMenuBocznymOknaEdycjaKursow(){
+        wait.waitForVisibility(menuBoczneEdycjaKursow.get(0));
 
-         List<String> menuNazwa = new ArrayList<>();
+        List<String> menuNazwa = new ArrayList<>();
 
-         for(WebElement element: menuBoczneEdycjaKursow){
-             menuNazwa.add(element.getText().trim());
-         }
-         System.out.println("Aktualna lista pozycji menu bocznego okna 'Edycja kursów': " + menuNazwa);
+        for(WebElement element: menuBoczneEdycjaKursow){
+            menuNazwa.add(element.getText().trim());
+        }
+        System.out.println("Aktualna lista pozycji menu bocznego okna 'Edycja kursów': " + menuNazwa);
 
-         return menuNazwa;
-     }
+        return menuNazwa;
+    }
 
-     //zwrócenie oczekiwanych elementów listy menu bocznego okna 'Edycja Kursów'
-     public List<String> zwrocPoprawneNazywyPozycjiOknaEdycjaKursow() {
-         System.out.println("Poprawna lista pozycji menu bocznego okna 'Edycja kursów': [Podstawowe, Struktura, Generator linków]");
-         return List.of("Podstawowe", "Struktura", "Generator linków");
-     }
+    //zwrócenie oczekiwanych elementów listy menu bocznego okna 'Edycja Kursów'
+    public List<String> zwrocPoprawneNazywyPozycjiOknaEdycjaKursow() {
+        System.out.println("Poprawna lista pozycji menu bocznego okna 'Edycja kursów': [Podstawowe, Struktura, Generator linków]");
+        return List.of("Podstawowe", "Struktura", "Generator linków");
+    }
 
-     //oczekiwanie na zakładkę 'Podstawowe'
-     public void poczekajNaZakladkePodstawoweWMenuBocznymOknaEdycjaKursow(){
-         wait.waitForClickability(zakladkaPodstawoweMenuBoczneEdycjaKursow);
-     }
+    //oczekiwanie na zakładkę 'Podstawowe'
+    public void poczekajNaZakladkePodstawoweWMenuBocznymOknaEdycjaKursow(){
+        wait.waitForClickability(zakladkaPodstawoweMenuBoczneEdycjaKursow);
+    }
 
     //kliknięcie w zakładkę 'Podstawowe'
     public void kliknijZakladkePodstawoweWMenuBocznymOknaEdycjaKursow(){
         wait.waitForClickability(zakladkaPodstawoweMenuBoczneEdycjaKursow).click();
     }
 
-     //oczekiwanie na pojawienie się sekcji 'Nazwa i opis' w zakładce 'Podstawowe'
-     public void poczekajNaSekcjeNazwaIOpis() {
-         wait.waitForVisibility(sekcjaNazwaIOpisZakladkiPodstawowe);
-     }
+    //oczekiwanie na pojawienie się sekcji 'Nazwa i opis' w zakładce 'Podstawowe'
+    public void poczekajNaSekcjeNazwaIOpis() {
+        wait.waitForVisibility(sekcjaNazwaIOpisZakladkiPodstawowe);
+    }
 
-     //oczekiwanie na pojawienie się sekcji 'Sprzedaż' w zakładce 'Podstawowe'
-     public void poczekajNaSekcjeSprzedaz() {
-         wait.waitForVisibility(sekcjaSprzedazZakladkiPodstawowe);
-     }
+    //oczekiwanie na pojawienie się sekcji 'Sprzedaż' w zakładce 'Podstawowe'
+    public void poczekajNaSekcjeSprzedaz() {
+        wait.waitForVisibility(sekcjaSprzedazZakladkiPodstawowe);
+    }
 
-     //zwrócenie aktualnej liczby sekcji 'Podstawowe' menu bocznego okna 'Edycja Kursów'
-     public int zworcLiczbeSekcjiPodstawoweWMenuBocznymOknaEdycjaKursow(){
-         System.out.println("Aktualna liczba sekcji 'Podstawowe' menu bocznego okna 'Edycja Kursów': " + sekcjaPodstawoweEdycjaKursowIlosc.size());
-         return sekcjaPodstawoweEdycjaKursowIlosc.size();
-     }
-     //zwrócenie poprawnej liczby sekcji 'Podstawowe' menu bocznego okna 'Edycja Kursów'
-     public int zwrocPoprawnaLiczbeSekcjiPodstawoweWMenuBocznymOknaEdycjaKursow(){
-         System.out.println("Poprawna liczba sekcji 'Podstawowe' menu bocznego okna 'Edycja Kursów': " + poprawnaIloscSekcjiPodstawowe);
-         return poprawnaIloscSekcjiPodstawowe;
-     }
+    //zwrócenie aktualnej liczby sekcji 'Podstawowe' menu bocznego okna 'Edycja Kursów'
+    public int zworcLiczbeSekcjiPodstawoweWMenuBocznymOknaEdycjaKursow(){
+        System.out.println("Aktualna liczba sekcji 'Podstawowe' menu bocznego okna 'Edycja Kursów': " + sekcjaPodstawoweEdycjaKursowIlosc.size());
+        return sekcjaPodstawoweEdycjaKursowIlosc.size();
+    }
+    //zwrócenie poprawnej liczby sekcji 'Podstawowe' menu bocznego okna 'Edycja Kursów'
+    public int zwrocPoprawnaLiczbeSekcjiPodstawoweWMenuBocznymOknaEdycjaKursow(){
+        System.out.println("Poprawna liczba sekcji 'Podstawowe' menu bocznego okna 'Edycja Kursów': " + poprawnaIloscSekcjiPodstawowe);
+        return poprawnaIloscSekcjiPodstawowe;
+    }
 
-     //sprawdzenie, czy w oknie "Edycja kursu' w zakładce 'Podstawowe znajdują się odpowiednie sekcje
-     public List<String> zwrocNazwySekcjiZakladkiPodstawoweWMenuBocznymOknaEdycjaKursow(){
-         wait.waitForVisibility(sekcjaPodstawoweEdycjaKursow.get(0));
+    //sprawdzenie, czy w oknie "Edycja kursu' w zakładce 'Podstawowe znajdują się odpowiednie sekcje
+    public List<String> zwrocNazwySekcjiZakladkiPodstawoweWMenuBocznymOknaEdycjaKursow(){
+        wait.waitForVisibility(sekcjaPodstawoweEdycjaKursow.get(0));
 
-         List<String> menuNazwaSekcji = new ArrayList<>();
+        List<String> menuNazwaSekcji = new ArrayList<>();
 
-         for(WebElement element: sekcjaPodstawoweEdycjaKursow){
-             menuNazwaSekcji.add(element.getText().trim());
-         }
-         System.out.println("Aktualna lista sekcji zakładki 'Podstawowe' menu bocznego okna 'Edycja kursów': " + menuNazwaSekcji);
-         return menuNazwaSekcji;
-     }
+        for(WebElement element: sekcjaPodstawoweEdycjaKursow){
+            menuNazwaSekcji.add(element.getText().trim());
+        }
+        System.out.println("Aktualna lista sekcji zakładki 'Podstawowe' menu bocznego okna 'Edycja kursów': " + menuNazwaSekcji);
+        return menuNazwaSekcji;
+    }
 
-     //zwrócenie oczekiwanych elementów listy sekcji zakładki 'Podstawowe' menu bocznego okna 'Edycja Kursów'
-     public List<String> zwrocPoprawneNazywySekcjiZakladkiPodstawoweWMenuBocznymOknaEdycjaKursow() {
-         System.out.println("Aktualna lista sekcji zakładki 'Podstawowe' menu bocznego okna 'Edycja kursów': [Nazwa i opis, Umiejscowienie, Warianty, Graficzne, Widok, Certyfikacja, Brak autoryzacji, Sprzedaż]");
-         return List.of("Nazwa i opis", "Umiejscowienie", "Warianty", "Graficzne", "Widok", "Certyfikacja", "Brak autoryzacji", "Sprzedaż");
-     }
+    //zwrócenie oczekiwanych elementów listy sekcji zakładki 'Podstawowe' menu bocznego okna 'Edycja Kursów'
+    public List<String> zwrocPoprawneNazywySekcjiZakladkiPodstawoweWMenuBocznymOknaEdycjaKursow() {
+        System.out.println("Aktualna lista sekcji zakładki 'Podstawowe' menu bocznego okna 'Edycja kursów': [Nazwa i opis, Umiejscowienie, Warianty, Graficzne, Widok, Certyfikacja, Brak autoryzacji, Sprzedaż]");
+        return List.of("Nazwa i opis", "Umiejscowienie", "Warianty", "Graficzne", "Widok", "Certyfikacja", "Brak autoryzacji", "Sprzedaż");
+    }
 
-     public void przewinStroneDoSekcjiSprzedaz(){
-         wait.waitForVisibility(sekcjaNazwaIOpis);
-         ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)]", sekcjaSprzedaz);
-     }
+    public void przewinStroneDoSekcjiSprzedaz(){
+        wait.waitForVisibility(sekcjaNazwaIOpis);
+        ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)]", sekcjaSprzedaz);
+    }
 
-     public void wlaczSprzedazWSekcjiSprzedaz(){
-         wait.waitForVisibility(wlaczSprzedazToggle).click();
-     }
+    public void wlaczSprzedazWSekcjiSprzedaz(){
+        wait.waitForVisibility(wlaczSprzedazToggle).click();
+    }
 
-     public void przewinStroneDoSekcjiWarianty(){
-         ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];", sekcjaWarianty);
+    public void przewinStroneDoSekcjiWarianty(){
+        ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];", sekcjaWarianty);
 
-     }
+    }
 
-     public void utworzCzteryWariantyDoTestu(){
+    public void utworzCzteryWariantyDoTestu(){
 
-         for(int i =1; i<=4; i++) {
-             driver.navigate().refresh();
-             wait.waitForVisibility(sekcjaNazwaIOpis);
-             ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];", sekcjaWarianty);
+        for(int i =1; i<=4; i++) {
+            driver.navigate().refresh();
+            wait.waitForVisibility(sekcjaNazwaIOpis);
+            ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];", sekcjaWarianty);
 
             wait.waitForClickability(dodajWariantButton).click();
 
@@ -306,29 +306,26 @@ import java.util.concurrent.ThreadLocalRandom;
             zapiszWariantButton.get(35).click();
 
         }
-     }
+    }
 
 
+    public void przewinStroneDoZakladkiGeneratorLinkow(){
+        ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];",generatorLinkowZakladka);
+    }
 
-     public void przewinStroneDoZakladkiGeneratorLinkow(){
-         ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];",generatorLinkowZakladka);
-     }
-
-     public void przejdzDoZakladkiGeneratorLinkow(){
+    public void przejdzDoZakladkiGeneratorLinkow(){
         wait.waitForClickability(generatorLinkowZakladka).click();
-     }
+    }
 
-     public String pobierzLinkZPolaLinkZakupowy(){
+    public String pobierzLinkZPolaLinkZakupowy(){
         wait.waitForVisibility(linkZakupowyInput);
         return linkZakupowyInput.getAttribute("value");
-     }
+    }
 
-     public void przejdzDoLinkuZPolaLinkZakupowy(){
-         String link = pobierzLinkZPolaLinkZakupowy();
+    public void przejdzDoLinkuZPolaLinkZakupowy(){
+        String link = pobierzLinkZPolaLinkZakupowy();
         driver.get(link);
-     }
-
-
+    }
 
 
 

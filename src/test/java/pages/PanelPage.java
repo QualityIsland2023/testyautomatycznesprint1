@@ -82,6 +82,9 @@ public class PanelPage {
     @FindBy(xpath = "//div[contains(text(), 'Kursy')]")
     private WebElement zakladkaKursyMenuBoczne;
 
+    @FindBy(xpath = "//div[contains(text(), 'Pakiety')]")
+    private WebElement zakladkaPakietyMenuBoczne;
+
    //***************************Repozytorium webelementów KONIEC ******************************************/
 
 
@@ -180,6 +183,11 @@ public class PanelPage {
             actions.moveToElement(sprzedazMenuLista).perform();
             wait.waitForVisibility(historiaCenMenuLista).click();
         }
+
+        public void przejdzDoZakladkiPakiety(){
+            wait.waitForClickability(zakladkaPakietyMenuBoczne).click();
+    }
+
 
 
 

@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class Waits {
 
@@ -34,6 +35,9 @@ public class Waits {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
+    public List<WebElement> waitForElementsPresent(By locator) {
+        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+    }
 
     public boolean waitForTextToBePresent(WebElement element, String text){
         return wait.until(ExpectedConditions.textToBePresentInElement(element, text));
@@ -42,6 +46,5 @@ public class Waits {
     public boolean waitForTextInPageSource(String text){
         return wait.until(driver -> driver.getPageSource().contains(text));
     }
-
 
 }

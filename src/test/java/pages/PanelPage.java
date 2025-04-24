@@ -58,6 +58,9 @@ public class PanelPage {
     @FindBy(xpath = "//div[contains(text(), 'Komentarze')]")
     private WebElement zakladkaKomentarze;
 
+    @FindBy(xpath = "//div[contains(text(), 'Produkty cyfrowe')]")
+    private WebElement zakladkaProduktyCyfrowe;
+
     @FindBy(xpath ="//div[contains(text(),'Sprzedaż')]" )
     private WebElement sprzedazMenuLista;
 
@@ -143,6 +146,10 @@ public class PanelPage {
 
         public void przejdzDoZakladkiKomentarze() {
             zakladkaKomentarze.click();
+        }
+
+        public void przejdzDoZakladkiProduktyCyfrowe() {
+            zakladkaProduktyCyfrowe.click();
         }
 
         public void przejdzDoZakladkiLogi(){

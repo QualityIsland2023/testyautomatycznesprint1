@@ -47,9 +47,6 @@ public class EdytujKursyPage {
     //oczekiwana liczba sekcji 'Podstawowe'
     int poprawnaIloscSekcjiPodstawowe = 8;
 
-    int losowaLiczba = ThreadLocalRandom.current().nextInt(2,10);
-
-
     @FindBy(xpath = "//h1[contains(text(),'Edycja kursu:')]")
     private WebElement edycjaKursu;
 
@@ -263,47 +260,81 @@ public class EdytujKursyPage {
 
     }
 
+    public void odswiezStroneIPrzejdzDoSekcjiWarianty(){
+        driver.navigate().refresh();
+        wait.waitForVisibility(sekcjaNazwaIOpis);
+        ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];", sekcjaWarianty);
+    }
+
+    public void nacisnijPrzyciskDodajWariant(){
+        wait.waitForClickability(dodajWariantButton).click();
+    }
+
+    public void wpiszNazweTestu(){
+        int losowaLiczba = ThreadLocalRandom.current().nextInt(2,10);
+        wait.waitForVisibility(nazwaWariantuInput).clear();
+        nazwaWariantuInput.sendKeys("Wariant testu" + losowaLiczba);
+    }
+
+    public void wpiszCeneTestu(){
+        cenaWariantuInput.clear();
+        cenaWariantuInput.sendKeys("112");
+    }
+
+    public void uzupelnijSekcjeDostepnoscSztuk(){
+        ((JavascriptExecutor) driver).executeScript("[arguments[0].scrollIntoView(true)];", dostepnoscSztukInput);
+
+        wait.waitForVisibility(dostepnoscSztukInput).clear();
+        int losowaLiczba = ThreadLocalRandom.current().nextInt(2,10);
+        dostepnoscSztukInput.sendKeys(String.valueOf(losowaLiczba));
+
+        dostepnoscSztukZInput.clear();
+        dostepnoscSztukZInput.sendKeys("10");
+    }
+
+    public void wybierzOpcjeZDropDownListyTypuDostepuDoKursu(){
+        Select select = new Select(typDostepuDoKursuDropdownList);
+        select.selectByVisibleText("Przez określony czas, od określonej daty");
+    }
+
+    public void uzupelnijDateIGodzineStartu(){
+        dataStartuWariantuInput.clear();
+        dataStartuWariantuInput.sendKeys("01/07/2025");
+
+        wait.waitForVisibility(godzinaStartuWariantuInput);
+        Select select = new Select(godzinaStartuWariantuInput);
+        select.selectByIndex(7);
+    }
+
+    public void uzupelnijPoleCzasDostepu(){
+        czasDostepuLiczbaInput.clear();
+        czasDostepuLiczbaInput.sendKeys("12");
+
+        wait.waitForVisibility(czasDostepuJednostkaInput);
+        Select select = new Select(czasDostepuJednostkaInput);
+        select.selectByVisibleText("Miesiące");
+    }
+
     public void utworzCzteryWariantyDoTestu(){
 
         for(int i =1; i<=4; i++) {
-            driver.navigate().refresh();
-            wait.waitForVisibility(sekcjaNazwaIOpis);
-            ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];", sekcjaWarianty);
+            odswiezStroneIPrzejdzDoSekcjiWarianty();
 
-            wait.waitForClickability(dodajWariantButton).click();
+            nacisnijPrzyciskDodajWariant();
 
-            wait.waitForVisibility(nazwaWariantuInput).clear();
-            nazwaWariantuInput.sendKeys("Wariant testu");
+            wpiszNazweTestu();
 
-            cenaWariantuInput.clear();
-            cenaWariantuInput.sendKeys("112");
+            wpiszCeneTestu();
 
-            ((JavascriptExecutor) driver).executeScript("[arguments[0].scrollIntoView(true)];", dostepnoscSztukInput);
+            uzupelnijSekcjeDostepnoscSztuk();
 
-            wait.waitForVisibility(dostepnoscSztukInput).clear();
-            dostepnoscSztukInput.sendKeys(String.valueOf(losowaLiczba));
+            wybierzOpcjeZDropDownListyTypuDostepuDoKursu();
 
-            dostepnoscSztukZInput.clear();
-            dostepnoscSztukZInput.sendKeys("10");
+            uzupelnijDateIGodzineStartu();
 
-            Select select = new Select(typDostepuDoKursuDropdownList);
-            select.selectByVisibleText("Przez określony czas, od określonej daty");
+            uzupelnijPoleCzasDostepu();
 
-            dataStartuWariantuInput.clear();
-            dataStartuWariantuInput.sendKeys("01/07/2025");
-
-            wait.waitForVisibility(godzinaStartuWariantuInput);
-            select = new Select(godzinaStartuWariantuInput);
-            select.selectByIndex(7);
-
-            czasDostepuLiczbaInput.clear();
-            czasDostepuLiczbaInput.sendKeys("12");
-
-            wait.waitForVisibility(czasDostepuJednostkaInput);
-            select = new Select(czasDostepuJednostkaInput);
-            select.selectByVisibleText("Miesiące");
-
-            zapiszWariantButton.get(35).click();
+            zapiszWariantButton.get(35).click(); //Tymczasowe
 
         }
     }

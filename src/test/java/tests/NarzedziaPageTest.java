@@ -78,12 +78,21 @@ public class NarzedziaPageTest extends TestBase {
                 "Niepoprawna liczba checkboxów na stronie NARZĘDZIA");
     }
 
-    @Test(priority = 60, enabled = true, description = "Weryfikacja, czy wszystkie checkboxy są domyślnie niezaznaczone")
-    public void weryfikacjaCheckboxyDomyslnieNiezaznaczneNaredzia() {
+    @Test(priority = 60, enabled = true, description = "Weryfikacja, czy wszystkie checkboxy są domyślnie niezaznaczone na stronie NARZĘDZIA")
+    public void weryfikacjaCheckboxyDomyslnieNiezaznaczneNarzedzia() {
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkiNarzedzia();
 
         Assert.assertTrue(narzedziaPage.zweryfikujCzyCheckboxSaNieznaczoneNarzedzia(),
+                "Checkboxy na stronie NARZĘDZIA są zaznaczone");
+    }
+
+    @Test(priority = 70, enabled = true, description = "Weryfikacja, czy wszystkie checkboxy są widoczne na stronie NARZĘDZIA")
+    public void weryfikacjaWidocznosciCheckboxowNarzedzia() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiNarzedzia();
+
+        Assert.assertTrue(narzedziaPage.zweryfikujCzyCheckboxSaWidoczneNarzedzia(),
                 "Checkboxy na stronie NARZĘDZIA są zaznaczone");
     }
 

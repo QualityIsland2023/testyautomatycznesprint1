@@ -175,6 +175,23 @@ public class NarzedziaPage {
         return status;
     }
 
+    // Sprawdza, czy wszystkie 3 checkboxy są widoczne
+    public boolean zweryfikujCzyCheckboxSaWidoczneNarzedzia() {
+        boolean status = true;
+
+        for(WebElement checkbox : ckeckboxyNaStronie){
+            if(checkbox.isDisplayed()){
+                System.out.println("Checkbox widoczny na stronie NARZĘDZIA: " + checkbox.getAttribute("name"));
+            }else{
+                status = false;
+                System.out.println("BŁĄD! Nie widać checkboxa na stronie NARZĘDZIA: " + checkbox.getAttribute("name"));
+
+            }
+        }
+
+        return status;
+    }
+
     /**********************************Operacje na webelementach KONIEC ******************************************/
 
 

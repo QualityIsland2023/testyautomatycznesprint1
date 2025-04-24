@@ -36,6 +36,21 @@ public class PakietyPage {
     //oczekiwany (poprawny) tytuł strony
     String poprawnyTytulStronyPakiety = "Pakiety ‹ Platforma kursów online — WordPress";
 
+    @FindBy(xpath = "//button[contains(text(), 'Dodaj pakiet')]")
+    private WebElement utworzNowyPakietButton;
+
+    @FindBy(xpath = "//h2[contains(text(), 'Utwórz nowy pakiet')]")
+    private WebElement utworzNowyPakiet;
+
+    @FindBy(xpath = "//input[contains(@name, 'name')]")
+    private WebElement nazwaPakietuInput;
+
+    @FindBy(xpath = "//input[contains(@name, 'price')]")
+    private WebElement cenaPakietuInput;
+
+    @FindBy(xpath = "//button[contains(@id, 'save-bundles_popup_editor')]")
+    private WebElement utworzIEdytujButton;
+
 
     /*************************** Repozytorium Webelementów KONIEC ******************************************/
 
@@ -64,6 +79,34 @@ public class PakietyPage {
     public String zwroctTytulAktualnejStrony() {
         System.out.println("Aktualny tytuł strony: " + driver.getTitle());
         return driver.getTitle();
+    }
+
+    //kliknięcie przycisku 'Dodaj pakiet'
+    public void przejdzDoDodaniaNowegoPakietu() {
+        wait.waitForClickability(utworzNowyPakietButton).click();
+    }
+
+    //oczekiwanie na pojawienie się okna 'Utwórz nowy pakiet'
+    public void poczekajNaOknoUtworzNowyPakiet() {
+        wait.waitForVisibility(utworzNowyPakiet);
+    }
+
+    //wpisanie nazwy pakietu
+    public void wpiszNazwePakietu() {
+        wait.waitForVisibility(nazwaPakietuInput).clear();
+        wait.waitForVisibility(nazwaPakietuInput).sendKeys("Test pakiet");
+    }
+
+    //wpisanie ceny pakietu
+    public void wpiszCenePakietu() {
+        wait.waitForClickability(cenaPakietuInput).clear();
+        wait.waitForVisibility(cenaPakietuInput).sendKeys("1599");
+    }
+
+    //kliknięcie przcisku 'Utwórz i edytuj'
+    public void nacisnijPrzyciskUtworzIEdytuj() {
+        wait.waitForClickability(utworzIEdytujButton).click();
+
     }
 
 

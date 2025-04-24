@@ -112,7 +112,7 @@ public class NarzedziaPage {
         return prawidlowaLiczbaCkeckboxowNaStronie;
     }
 
-    // Sprawdza, czy aktualne nazwy zakładek w menu bocznym strony "Narzędzia" są takie same, jak oczekiwane
+    // Sprawdza, czy aktualne nazwy zakładek w menu bocznym strony "Narzędzia" są widoczne i takie same, jak oczekiwane
     public boolean zweryfikujNazwyZakladekMenuBoczneNarzedzia() {
         Map<String, WebElement> nazwyPozycji = new HashMap<>();
         nazwyPozycji.put("Import kursantów", zakladkaImportKursantow);
@@ -150,6 +150,39 @@ public class NarzedziaPage {
                 System.out.println("Na stronie NARZĘDZIA nie ma zakładki: " + oczekiwanaNazwaPozycji);
                 e.printStackTrace();
                 status = false;
+            }
+        }
+
+        return status;
+    }
+
+    // Sprawdza, czy wszystkie 3 checkboxy są domyślnie niezaznaczone:
+    public boolean zweryfikujCzyCheckboxSaNieznaczoneNarzedzia() {
+        boolean status = true;
+
+        for(WebElement checkbox : ckeckboxyNaStronie){
+            if(checkbox.isSelected()){
+                status = false;
+                System.out.println("BŁĄD! Checkbox domyślnie zaznaczony: " + checkbox.getAttribute("name"));
+            }else{
+                System.out.println("Checkbox jest domyślnie niezaznaczony: " + checkbox.getAttribute("name"));
+            }
+        }
+
+        return status;
+    }
+
+    // Sprawdza, czy wszystkie 3 checkboxy są widoczne
+    public boolean zweryfikujCzyCheckboxSaWidoczneNarzedzia() {
+        boolean status = true;
+
+        for(WebElement checkbox : ckeckboxyNaStronie){
+            if(checkbox.isDisplayed()){
+                System.out.println("Checkbox widoczny na stronie NARZĘDZIA: " + checkbox.getAttribute("name"));
+            }else{
+                status = false;
+                System.out.println("BŁĄD! Nie widać checkboxa na stronie NARZĘDZIA: " + checkbox.getAttribute("name"));
+
             }
         }
 

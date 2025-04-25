@@ -5,7 +5,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
+import pages.SprzedazUtworzPlatnoscPage;
 import pages.SprzedazZamowieniaPage;
+import pages.produktyCyfrowe.EdytujProduktCyfrowyPage;
+import pages.produktyCyfrowe.ProduktyCyfrowePage;
+
+import java.util.Random;
 
 
 public class SprzedazZamowieniaPageTest extends TestBase {
@@ -16,6 +21,10 @@ public class SprzedazZamowieniaPageTest extends TestBase {
     private PanelPage panelPage;
     private SprzedazZamowieniaPage sprzedazZamowieniaPage;
 
+    private SprzedazUtworzPlatnoscPage sprzedazUtworzPlatnoscPage;
+    private ProduktyCyfrowePage produktyCyfrowePage;
+    private EdytujProduktCyfrowyPage edytujProduktCyfrowyPage;
+
 
     //***************** Sekcja techniczna KONIEC **********************************************/
 
@@ -25,6 +34,9 @@ public class SprzedazZamowieniaPageTest extends TestBase {
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
         sprzedazZamowieniaPage = new SprzedazZamowieniaPage(driver);
+        sprzedazUtworzPlatnoscPage = new SprzedazUtworzPlatnoscPage(driver);
+        produktyCyfrowePage = new ProduktyCyfrowePage(driver);
+        edytujProduktCyfrowyPage = new EdytujProduktCyfrowyPage(driver);
     }
 
     // Metoda wewnętrzna - wykonuje wszystkie kroki począwszy od panelu logowania przenosząc nas do strony "Zamówienia"
@@ -114,16 +126,36 @@ public class SprzedazZamowieniaPageTest extends TestBase {
     // Sprawdza czy na liście zamówień jest widoczne zamówienie ze statusem "Błędne" oraz datą "01.03.2025"
     @Test(priority = 90, enabled = true, description = "Weryfikacja zamówienia 'Błędne' z datą wstecz")
     public void weryfikacja() {
-        przejdzDoZakladkiZamowienia();
+        // Tworzymy random ID do nazwy testu ze względu na problem z sortowaniem po nazwie
+        // Błąd na stronie nie wykrywa za drugim razem tej samej nazwy i błędnie nie zwraca oczekiwanego wyniku wyszukiwania
+        Random random = new Random();
+        int losoweID = random.nextInt(1,10000);
+        String nazwaProduktu = Integer.toString(losoweID);
+        String email = "zawartkawoj@gmail.com";
 
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiProduktyCyfrowe();
 
+        // Tworzy nowy produkt cyfrowy
+        produktyCyfrowePage.utworzNowyProduktCyfrowy(nazwaProduktu, 0);
 
-        Assert.assertTrue(sprzedazZamowieniaPage.zweryfikujNazwyCheckboxowTypyDanych(),
+        // Linijka sprawia, że czekamy aż załaduje się strona zanim przejdziemy do URL poniżej
+        edytujProduktCyfrowyPage.getEdycjaProduktuCyfrowegoNaglowek();
+
+        // Przechodzi do tworzenia nowej płatności
+        driver.get("https://mmrmqpr585.publigo.onl/wp-admin/options.php?page=edd-manual-purchase");
+
+        // Tworzy nową płatność
+        sprzedazUtworzPlatnoscPage.stworzNowaPlatnosc(nazwaProduktu, email, "Błędne", "03/01/2025");
+
+        // Przechodzi do zamówień
+        driver.get("https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-payment-history");
+
+        // Filtruje wyniki po nazwie produktu
+        sprzedazZamowieniaPage.przeflitrujWynikPoNazwieProduktu(nazwaProduktu);
+
+        Assert.assertTrue(sprzedazZamowieniaPage.getPierwszeZamowienieZListy().isDisplayed(),
                 "Stworzone zamówienie nie jest widoczne na liście zamówień");
     }
-
-
-
-
 
 }

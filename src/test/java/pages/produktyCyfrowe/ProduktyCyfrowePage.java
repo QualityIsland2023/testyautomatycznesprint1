@@ -93,6 +93,7 @@ public class ProduktyCyfrowePage {
 
     // Wykonuje cały proces utworzenia nowego produktu cyfrowego
     public void utworzNowyProduktCyfrowy(String nazwa, float cena) {
+        kliknijUtworzNowyProduktButton();
         wypelnijPoleNazwaProduktuCyfrowego(nazwa);
         wypelnijPoleCena(cena);
         getUtworzIEdytujButton().click();

@@ -134,7 +134,6 @@ public class ProduktyCyfroweTest extends TestBase {
     public void weryfikacjaCzyPoStworzeniuProduktuPrzechodzimyDoJegoEdycjiTest() {
         przejdzDoZakladkiProduktyCyfrowe();
 
-        produktyCyfrowePage.kliknijUtworzNowyProduktButton();
         produktyCyfrowePage.utworzNowyProduktCyfrowy("Produkt testowy247", 247);
 
         Assert.assertTrue(edytujProduktCyfrowyPage.getEdycjaProduktuCyfrowegoNaglowek().isDisplayed(),

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.xml.sax.Locator;
 
 import java.nio.channels.Selector;
@@ -79,6 +80,9 @@ public class SprzedazUtworzPlatnoscPage {
     @FindBy(xpath = "//label[contains(text(),'Email lub ID kupującego')]")
     private WebElement pozycjaEmailLubIDKupujacego;
 
+    @FindBy(xpath = "//input[@id='edd-mp-user']")
+    private WebElement poleWpiszAdresEmail;
+
     @FindBy(xpath = "//label[contains(text(),'Imię')]")
     private WebElement pozycjaImie;
 
@@ -96,6 +100,9 @@ public class SprzedazUtworzPlatnoscPage {
 
     @FindBy(xpath = "//label[contains(text(),'Data')]")
     private WebElement pozycjaData;
+
+    @FindBy(xpath = "//input[@id='edd-mp-date']")
+    private WebElement poleData;
 
 
 
@@ -322,33 +329,23 @@ public class SprzedazUtworzPlatnoscPage {
         }
 
         return status;
-
     }
 
 
+    public void stworzNowaPlatnosc(String produkt, String email, String status, String data) {
+
+        //Przekształca listę produktów oraz status płatności z WebElement na Select dla łatwiejszego wyboru
+        Select listaProdukt = new Select(listaWybierzProdukty);
+        Select statusPlatnosci = new Select(listaStatusPlatnosci);
+
+        listaProdukt.selectByVisibleText(produkt);
+        poleWpiszAdresEmail.sendKeys(email);
+        statusPlatnosci.selectByVisibleText(status);
+        //Datę podajemy w formacie MM/DD/RRRR
+        poleData.sendKeys(data);
+        utworzPlatnoscButton.click();
+    }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //**********************************Operacje na webelementach KONIEC ******************************************/
-
+//**********************************Operacje na webelementach KONIEC ******************************************/
 }

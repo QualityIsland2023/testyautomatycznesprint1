@@ -23,20 +23,28 @@ public class Waits {
     /*****************sekja techniczna KONIEC **********************************************/
 
 
-    public WebElement waitForVisibility(WebElement element){
+    public WebElement waitForVisibility(WebElement element) {
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public WebElement waitForClickability(WebElement element){
+    public WebElement waitForClickability(WebElement element) {
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public WebElement waitForPresent(By locator){
+    public WebElement waitForPresent(By locator) {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     public List<WebElement> waitForElementsPresent(By locator) {
         return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+    }
+
+    public boolean waitForInvisibility(WebElement element) {
+        return wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+
+    public boolean waitForInvisibility(By locator) {
+        return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
     public boolean waitForTextToBePresent(WebElement element, String text){

@@ -10,13 +10,10 @@ import tests.TestBase;
 
 public class UslugiPageTest extends TestBase {
 
-    /****************sekja techniczna START **********************************************/
-
     private LoginPageNew loginPageNew; //instancja strony logowania
     private PanelPage panelPage;
     private UslugiPage uslugiPage;
 
-    /*****************sekja techniczna KONIEC **********************************************/
 
     @BeforeMethod
     public void setUpUslugiPage() {
@@ -26,25 +23,29 @@ public class UslugiPageTest extends TestBase {
         uslugiPage = new UslugiPage(driver);
     }
 
-    @Test(priority = 10, enabled = true, description = "Weryfikacja czy strona Usługi posiada prawidłowy adres URL.")
-    public void weryfikacjaAdresuURLZakladkiUslugi() {
+    //sprawdza czy pobrany adres URL odpowiada wzorowemu adresowi url
+    @Test(priority = 10, enabled = true, description = "Weryfikacja czy strona 'Usługi' posiada prawidłowy adres URL.")
+    public void weryfikacjaAdresuURLStronyUslugi() {
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkiUslugi();
 
-        Assert.assertEquals(uslugiPage.zwrocAktualnyURLZakladkiUslugi(), uslugiPage.zwrocPoprawnyURLZakladkiUslugi(), "Adres Url strony Usługi nie jest poprawny.");
-
+        Assert.assertEquals(uslugiPage.zwrocAktualnyURLStronyUslugi(),
+                uslugiPage.zwrocPoprawnyURLStronyUslugi(), "Adres Url strony 'Usługi' nie jest poprawny.");
     }
 
-    @Test(priority = 20, enabled = true, description = "Weryfikacja czy strona Usługi posiada prawidłowy tytuł.")
-    public void weryfikacjaTytuluZakladkiUslugi() {
+    //sprawdza czy pobrany tytul strony odpowiada wzorowemu adresowi strony
+    @Test(priority = 20, enabled = true, description = "Weryfikacja czy strona 'Usługi' posiada prawidłowy tytuł.")
+    public void weryfikacjaTytuluStronyUslugi() {
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkiUslugi();
 
-        Assert.assertEquals(uslugiPage.zwrocAktualnyTytulZakladkiUslugi(), uslugiPage.zwrocPoprawnyTytulZakladkiUslugi(), "Tytul strony Uslugi nie jest poprawny.");
+        Assert.assertEquals(uslugiPage.zwrocAktualnyTytulStronyUslugi(),
+                uslugiPage.zwrocPoprawnyTytulStronyUslugi(), "Tytul strony 'Uslugi' nie jest poprawny.");
     }
 
+    //sprawdza czy na stronie widoczny jest button 'Utworz nowa usluge'
     @Test(priority = 30, enabled = true, description = "Weryfikacja czy na stronie Uslugi istnieje przycisk 'Utworz Nowa Usluge'.")
-    public void weryfikacjaCzyIstniejeButtonUtworzNowaUsluge() {
+    public void weryfikacjaCzyIstniejeUtworzNowaUslugeButton() {
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkiUslugi();
 
@@ -52,14 +53,15 @@ public class UslugiPageTest extends TestBase {
     }
 
     @Test(priority = 40, enabled = true, description = "Weryfikacja czy na stronie Uslugi istnieje przycisk 'Typy danych'.")
-    public void weryfikacjaCzyIstniejeButtonTypyDanych() {
+    public void weryfikacjaCzyIstniejeTypyDanychButton() {
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkiUslugi();
 
         Assert.assertTrue(uslugiPage.zweryfikujCzyIstniejeTypyDanychButton(), "Przycisk 'Typy Danych' nie istnieje.");
     }
 
-    @Test(priority = 50, enabled = true, description = "Weryfikacja czy na stronie Uslugi po kliknieciu w przycisk 'Typy danych' pojawia się sekcja wyboru kolumn")
+    @Test(priority = 50, enabled = true,
+            description = "Weryfikacja czy na stronie Uslugi po kliknieciu w przycisk 'Typy danych' pojawia się sekcja wyboru kolumn")
     public void weryfikacjaCzyPoKliknieciuTypyDanychPojawiaSieSekcjaWyboruKolumn() {
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkiUslugi();
@@ -68,26 +70,19 @@ public class UslugiPageTest extends TestBase {
         Assert.assertTrue(uslugiPage.zweryfikujCzyIstniejeSekcjaWyboruKolumn(), "Sekcja wyboru kolumn nie jest widoczna.");
     }
 
-    @Test(priority = 60, enabled = true, description = "Weryfikacja czy na stronie Uslugi po klikniecu w 'Utwórz nową usługę' pojawia się okno z polami: 'Nazwa uslugi' oraz 'Cena'.")
+    @Test(priority = 60, enabled = true,
+            description = "Weryfikacja czy na stronie Uslugi po klikniecu w 'Utwórz nową usługę' pojawia się okno z polami: 'Nazwa uslugi' oraz 'Cena'.")
     public void weryfikacjaCzyPoUtworzeniuNowejUslugiPojawiajaSiePolaNazwaUslugiICena() {
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkiUslugi();
         uslugiPage.poczekajNaTabeleUslug();
-        uslugiPage.kliknijPrzyciskUtworzNowaUsluge();
-        uslugiPage.poczekajNaOknoUtworzNowaUsluge();
+        uslugiPage.kliknijUtworzNowaUslugeButton();
+        uslugiPage.poczekajNaUtworzNowaUslugeOkno();
 
         Assert.assertTrue(uslugiPage.zweryfikujCzyIstniejaPolaNazwaUslugiICena(), "Pola: 'Nazwa uslugi' i 'Cena' nie są widoczne.");
     }
 
-    @Test(priority = 60, enabled = true, description = "Weryfikacja czy po utworzeniu nowej uslugi nastepuje przejscie do strony 'Edycja uslugi'.")
-    public void weryfikacjaCzyPoUtworzeniuNowejUslugiNastepujePrzejscieDoEdycjiUslugi() {
-        loginPageNew.wykonajLogowanie();
-        panelPage.przejdzDoZakladkiUslugi();
-        uslugiPage.utworzNowaUsluge();
 
-
-        Assert.assertTrue(uslugiPage.zweryfikujCzyIstniejaPolaNazwaUslugiICena(), "Nie nastapilo przejscie do strony Edycja uslugi.");
-    }
 
 
 

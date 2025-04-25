@@ -88,6 +88,9 @@ public class PanelPage {
     @FindBy(xpath = "//div[contains(text(), 'Pakiety')]")
     private WebElement zakladkaPakietyMenuBoczne;
 
+    @FindBy(xpath = "//div[contains(text(), 'Użytkownicy')]")
+    private WebElement zakladkaUzytkownicyMenuBoczne;
+
    //***************************Repozytorium webelementów KONIEC ******************************************/
 
 
@@ -134,6 +137,10 @@ public class PanelPage {
 
         public void kliknijPrzyciskUstawienia() {
         wait.waitForClickability(zakladkaUstawienia).click();
+        }
+
+        public void przejdzDoZakladkaUzytkownicyMenuBoczne() {
+        wait.waitForClickability(zakladkaUzytkownicyMenuBoczne).click();
         }
 
         public void przejdzDoZakladkiPowiadomienia(){

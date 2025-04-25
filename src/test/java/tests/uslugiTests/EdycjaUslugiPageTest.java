@@ -25,6 +25,13 @@ public class EdycjaUslugiPageTest extends TestBase {
         edycjaUslugiPage = new EdycjaUslugiPage(driver);
     }
 
+    //metoda pomocnicza, ktora loguje, odsyla do strony 'Uslugi' i czeka na zaladowanie tabeli uslug
+    private void logowanieIPrzejscieDoStronyUslugi() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiUslugi();
+        uslugiPage.poczekajNaTabeleUslug();
+    }
+
 //    @Test(priority = 10, enabled = true, description = "Weryfikacja czy strona Edycja usługi posiada prawidłowy adres URL.")
 //    public void weryfikacjaAdresuURLStronyEdycjaUslugi() {
 //      loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
@@ -37,22 +44,24 @@ public class EdycjaUslugiPageTest extends TestBase {
 //}
 
 
+    //test po przejsciu do edycji uslugi poprzez wybranie pierwszej uslugi z listy
+    //weryfikuje czy pobrany tytul strony 'Edycja uslugi' odpowiada tytulowi wzorowemu
     @Test(priority = 20, enabled = true,
             description = "Weryfikacja czy strona 'Edycja usługi' posiada prawidłowy tytuł.")
     public void weryfikacjaTytuluStronyEdycjaUslugi() {
-        loginPageNew.wykonajLogowanie();
-        panelPage.przejdzDoZakladkiUslugi();
+        logowanieIPrzejscieDoStronyUslugi();
         uslugiPage.przejdzDoPierwszejUslugiZListy();
 
         Assert.assertEquals(edycjaUslugiPage.zwrocAktualnyTytulStronyEdycjaUslugi(),
                 edycjaUslugiPage.zwrocPoprawnyTytulStronyEdycjaUslugi(), "Tytul strony 'Edycja usługi' nie jest poprawny.");
     }
 
+    //test weryfikuje czy po procesie utworzenia nowej uslugi nastepuje przekierowanie do strony 'Edycja uslugi' poprzez
+    //znalezienie na stronie tekstu 'Edycja usługi:'
     @Test(priority = 30, enabled = true,
             description = "Weryfikacja czy po utworzeniu nowej uslugi nastepuje przejscie do strony 'Edycja uslugi'.")
     public void weryfikacjaCzyPoUtworzeniuNowejUslugiNastepujePrzejscieDoEdycjiUslugi() {
-        loginPageNew.wykonajLogowanie();
-        panelPage.przejdzDoZakladkiUslugi();
+        logowanieIPrzejscieDoStronyUslugi();
         uslugiPage.utworzNowaUsluge();
         edycjaUslugiPage.poczekajNaUstawienia();
 
@@ -60,36 +69,35 @@ public class EdycjaUslugiPageTest extends TestBase {
                 "Po utworzeniu uslugi nie nastąpiło przejscie do strony 'Edycja usługi'.");
     }
 
+    //test weryfikuje obecnosc zakladek 'Podstawowe' i 'Generator linkow' po przejsciu na strone edycji uslugi
+    //poprzez klikniecie w pierwsza usluge w tabeli uslug
     @Test(priority = 40, enabled = true,
-            description = "Weryfikacja czy na stronie Edycja usługi istnieja sekcje 'Podstawowe' i 'Generator linkow'.")
-    public void weryfikacjaCzyIstniejaPozycjePodstawoweIGeneratorLinkow() {
-        loginPageNew.wykonajLogowanie();
-        panelPage.przejdzDoZakladkiUslugi();
-        uslugiPage.poczekajNaTabeleUslug();
+            description = "Weryfikacja czy na stronie Edycja usługi istnieja zakladki 'Podstawowe' i 'Generator linkow'.")
+    public void weryfikacjaCzyIstniejaZakladkiPodstawoweIGeneratorLinkow() {
+        logowanieIPrzejscieDoStronyUslugi();
         uslugiPage.przejdzDoPierwszejUslugiZListy();
         edycjaUslugiPage.poczekajNaUstawienia();
 
         Assert.assertTrue(edycjaUslugiPage.zweryfikujCzyWMenuBocznymIstniejaPodstawoweIGeneratorLinkow(),
                 "Sekcje 'Podstawowe' i/lub 'Generator linkow' nie istnieja.");
     }
-
+    //test weryfikuje obecnosc przycisku 'Zobacz usługę' po przejsciu na strone edycji uslugi
+    //poprzez klikniecie w pierwsza usluge w tabeli uslug
     @Test(priority = 50, enabled = true,
-            description = "Weryfikacja czy na stronie Edycja usługi istnieje przycisk 'Zobacz usługę'.")
+            description = "Weryfikacja czy na stronie 'Edycja usługi' istnieje przycisk 'Zobacz usługę'.")
     public void weryfikacjaCzyIstniejaPrzyciskZobaczUsluge() {
-        loginPageNew.wykonajLogowanie();
-        panelPage.przejdzDoZakladkiUslugi();
-        uslugiPage.poczekajNaTabeleUslug();
+        logowanieIPrzejscieDoStronyUslugi();
         uslugiPage.przejdzDoPierwszejUslugiZListy();
 
         Assert.assertTrue(edycjaUslugiPage.zweryfikujCzyIstniejeZobaczUslugeButton(), "Przycisk 'Zobacz usługę' nie istnieje.");
     }
 
+    //test weryfikuje obecnosc wszystkich 6 sekcji ustawien przez zebranie WebElementow do listy i wyrzuceniu ich tekstow do nowej listy
+    //nastepnie nowo utworzona liste porownuje z lista wzorowa
     @Test(priority = 60, enabled = true,
             description = "Weryfikacja czy na stronie Edycja usługi istnieja wszystkie sekcje ustawień.")
-    public void wyeryfikacjaCzyIstniejaSekcjeUstawien() {
-        loginPageNew.wykonajLogowanie();
-        panelPage.przejdzDoZakladkiUslugi();
-        uslugiPage.poczekajNaTabeleUslug();
+    public void weryfikacjaCzyIstniejaSekcjeUstawien() {
+        logowanieIPrzejscieDoStronyUslugi();
         uslugiPage.przejdzDoPierwszejUslugiZListy();
         edycjaUslugiPage.poczekajNaUstawienia();
 
@@ -105,8 +113,7 @@ public class EdycjaUslugiPageTest extends TestBase {
     @Test(priority = 70, enabled = true,
             description = "Weryfikacja czy po stworzeniu usługi z konkretnymi danymi wejsciowymi na stronie 'Zamowienia' pojawia sie przycisk 'Zamawiam i płacę'.")
     public void weryfikacjaCzyIstniejePrzyciskZamawiamIPlace() {
-        loginPageNew.wykonajLogowanie();
-        panelPage.przejdzDoZakladkiUslugi();
+        logowanieIPrzejscieDoStronyUslugi();
         uslugiPage.utworzNowaUslugeZadanie();
         edycjaUslugiPage.poczekajNaUstawienia();
         edycjaUslugiPage.ustawLiczbeSztukDoZakupu();

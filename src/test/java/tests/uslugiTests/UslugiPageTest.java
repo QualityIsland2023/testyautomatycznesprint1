@@ -23,59 +23,62 @@ public class UslugiPageTest extends TestBase {
         uslugiPage = new UslugiPage(driver);
     }
 
-    //sprawdza czy pobrany adres URL odpowiada wzorowemu adresowi url
-    @Test(priority = 10, enabled = true, description = "Weryfikacja czy strona 'Usługi' posiada prawidłowy adres URL.")
-    public void weryfikacjaAdresuURLStronyUslugi() {
+    //metoda pomocnicza, ktora loguje, odsyla do strony 'Uslugi' i czeka na zaladowanie tabeli uslug
+    private void logowanieIPrzejscieDoStronyUslugi() {
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkiUslugi();
+        uslugiPage.poczekajNaTabeleUslug();
+    }
+
+    //test sprawdza czy pobrany adres URL odpowiada wzorowemu adresowi url
+    @Test(priority = 10, enabled = true, description = "Weryfikacja czy strona 'Usługi' posiada prawidłowy adres URL.")
+    public void weryfikacjaAdresuURLStronyUslugi() {
+        logowanieIPrzejscieDoStronyUslugi();
 
         Assert.assertEquals(uslugiPage.zwrocAktualnyURLStronyUslugi(),
                 uslugiPage.zwrocPoprawnyURLStronyUslugi(), "Adres Url strony 'Usługi' nie jest poprawny.");
     }
 
-    //sprawdza czy pobrany tytul strony odpowiada wzorowemu adresowi strony
+    //test sprawdza czy pobrany tytul strony odpowiada wzorowemu adresowi strony
     @Test(priority = 20, enabled = true, description = "Weryfikacja czy strona 'Usługi' posiada prawidłowy tytuł.")
     public void weryfikacjaTytuluStronyUslugi() {
-        loginPageNew.wykonajLogowanie();
-        panelPage.przejdzDoZakladkiUslugi();
+        logowanieIPrzejscieDoStronyUslugi();
 
         Assert.assertEquals(uslugiPage.zwrocAktualnyTytulStronyUslugi(),
                 uslugiPage.zwrocPoprawnyTytulStronyUslugi(), "Tytul strony 'Uslugi' nie jest poprawny.");
     }
 
-    //sprawdza czy na stronie widoczny jest button 'Utworz nowa usluge'
+    //test weryfikuje czy na stronie 'Uslugi' widoczny jest button 'Utworz nowa usluge'
     @Test(priority = 30, enabled = true, description = "Weryfikacja czy na stronie Uslugi istnieje przycisk 'Utworz Nowa Usluge'.")
     public void weryfikacjaCzyIstniejeUtworzNowaUslugeButton() {
-        loginPageNew.wykonajLogowanie();
-        panelPage.przejdzDoZakladkiUslugi();
+        logowanieIPrzejscieDoStronyUslugi();
 
         Assert.assertTrue(uslugiPage.zweryfikujCzyIstniejeUtworzNowaUslugeButton(), "Przycisk 'Utworz Nowa Usluge' nie istnieje.");
     }
 
+    //test weryfikuje czy na stronie 'Uslugi' widoczny jest button 'Typy danych'
     @Test(priority = 40, enabled = true, description = "Weryfikacja czy na stronie Uslugi istnieje przycisk 'Typy danych'.")
     public void weryfikacjaCzyIstniejeTypyDanychButton() {
-        loginPageNew.wykonajLogowanie();
-        panelPage.przejdzDoZakladkiUslugi();
+        logowanieIPrzejscieDoStronyUslugi();
 
         Assert.assertTrue(uslugiPage.zweryfikujCzyIstniejeTypyDanychButton(), "Przycisk 'Typy Danych' nie istnieje.");
     }
 
+    //test weryfikuje czy po kliknieciu buttonu 'Typy danych' pojawiaja sie sekcja z checkboxami do wyboru kolumn
     @Test(priority = 50, enabled = true,
             description = "Weryfikacja czy na stronie Uslugi po kliknieciu w przycisk 'Typy danych' pojawia się sekcja wyboru kolumn")
     public void weryfikacjaCzyPoKliknieciuTypyDanychPojawiaSieSekcjaWyboruKolumn() {
-        loginPageNew.wykonajLogowanie();
-        panelPage.przejdzDoZakladkiUslugi();
+        logowanieIPrzejscieDoStronyUslugi();
         uslugiPage.kliknijTypyDanychButton();
 
         Assert.assertTrue(uslugiPage.zweryfikujCzyIstniejeSekcjaWyboruKolumn(), "Sekcja wyboru kolumn nie jest widoczna.");
     }
 
+    //test weryfikuje czy w oknie, pojawiajacym sie po kliknieciu buttonu 'Utwórz nową usługę', widnieja zarowno pole 'Nazwa uslugi' jak i 'Cena'
     @Test(priority = 60, enabled = true,
             description = "Weryfikacja czy na stronie Uslugi po klikniecu w 'Utwórz nową usługę' pojawia się okno z polami: 'Nazwa uslugi' oraz 'Cena'.")
-    public void weryfikacjaCzyPoUtworzeniuNowejUslugiPojawiajaSiePolaNazwaUslugiICena() {
-        loginPageNew.wykonajLogowanie();
-        panelPage.przejdzDoZakladkiUslugi();
-        uslugiPage.poczekajNaTabeleUslug();
+    public void weryfikacjaCzyPoKliknieciuUtworzNowaUslugePojawiaSiePoleNazwaUslugiICena() {
+        logowanieIPrzejscieDoStronyUslugi();
         uslugiPage.kliknijUtworzNowaUslugeButton();
         uslugiPage.poczekajNaUtworzNowaUslugeOkno();
 

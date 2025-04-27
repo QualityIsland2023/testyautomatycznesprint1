@@ -33,6 +33,7 @@ public class KursyPage {
 
     //oczekiwany (poprawny) adres URL strony
     String poprawnyURLKursow = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-courses";
+
     //oczekiwany (poprawny) tytuł strony
     String poprawnyTytulStronyKursy = "Kursy ‹ Platforma kursów online — WordPress";
 
@@ -180,7 +181,7 @@ public class KursyPage {
         return status;
     }
 
-
+    //sprawdzenie i wypisanie do konsoli wyświetlenia i aktywności pól 'Nazwa kursu' i 'Cena'
     public void sprawdzPolaNazwaKursuICena() {
         if (!nazwaKursuInput.isDisplayed()) {
             System.out.println("Pole 'Nazwa kursu' NIE jest WYŚWIETLONE.");
@@ -196,8 +197,8 @@ public class KursyPage {
         }
     }
 
-    //metoda sprawdzajaca, czy pola 'Nazwa kursu' i 'Cena' są wyświetlone i aktywne
-    public Boolean sprawdzCzyPoleNazwaKursuICenaIstnieje() {
+    //metoda sprawdzajaca, czy pola 'Nazwa kursu' i 'Cena' są wyświetlone i aktywne do assercji
+    public boolean sprawdzCzyPoleNazwaKursuICenaIstnieje() {
         boolean status = false;
 
         if (wait.waitForVisibility(nazwaKursuInput).isDisplayed() &&
@@ -210,7 +211,7 @@ public class KursyPage {
         return status;
     }
 
-    //metoda wypisukąca, gdy przycisk 'Utwórz i edytuj' nie jest widoczny i/lub aktywny
+    //metoda wypisukąca do konsoli, gdy przycisk 'Utwórz i edytuj' nie jest widoczny i/lub aktywny
     public void sprawdzPrzyciskUtworzIEdytuj() {
         if (!utworzIEdytujButton.isDisplayed()) {
             System.out.println("Przycisk 'Utwórz i edytuj' NIE jest WYŚWIETLONY.");
@@ -220,8 +221,8 @@ public class KursyPage {
         }
     }
 
-    //metoda sprawdzajaca, czy w oknie 'Utwórz nowy kurs' znajduje się przycisk 'Utwórz i edytuj'
-    public Boolean sprawdzCzyPrzyciskUtworzIEdytujIstnieje () {
+    //metoda sprawdzajaca, czy w oknie 'Utwórz nowy kurs' znajduje się przycisk 'Utwórz i edytuj' do assercji
+    public boolean sprawdzCzyPrzyciskUtworzIEdytujIstnieje () {
         boolean status = false;
 
         if (wait.waitForVisibility(utworzIEdytujButton).isDisplayed() &&

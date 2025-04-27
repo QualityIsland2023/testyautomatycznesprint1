@@ -36,7 +36,7 @@ public class EdytujUzytkownikaPageTest extends TestBase {
 
 
     // Test sprawdzający cały proces zmiany hasla uzytkownika testowego – od logowania po finalną weryfikację
-    @Test(priority = 110, enabled = true, description = "Weryfikacja poprawnosci procesu tworzenia produktu cyfrowego")
+    @Test(priority = 110, enabled = true, description = "Weryfikacja poprawnosci procesu zmiany hasla uzytkownika testowego")
     public void zweryfikujProcesZmianyHAslaUzytkownikaTestowego() {
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkaUzytkownicyMenuBoczne();

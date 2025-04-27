@@ -82,23 +82,31 @@ import java.util.List;
         emailUzytkowkikaInput.sendKeys(nowyUzytkownikEmail);
     }
 
+    // Wprowadza imię i nazwisko użytkownika do pól formularza
     public void wprowadzImieINazwiskoUzytkownika(){
         wait.waitForVisibility(imieUzytkowkikaInput).clear();
         imieUzytkowkikaInput.sendKeys(nowyUzytkownikImie);
+        System.out.println("Wprowadzenie imienia użytkownika: " + nowyUzytkownikImie);
 
         nazwiskoUzytkowkikaInput.clear();
         nazwiskoUzytkowkikaInput.sendKeys(nowyUzytkownikNazwisko);
+        System.out.println("Wprowadzenie nazwiska użytkownika: " + nowyUzytkownikNazwisko);
     }
 
+    // Wybiera język "Polski" z listy rozwijanej
     public void wybierzJezykPolskiUzytkownika(){
         wait.waitForVisibility(jezykListaRozwijana).click();
         wait.waitForVisibility(polskiLista).click();
+        System.out.println("Wybranie języka polskiego dla użytkownika.");
     }
 
+    // Klika przycisk "Generuj hasło"
     public void nacisnijGenerujHasloButton(){
         wait.waitForVisibility(generujHasloButton).click();
+        System.out.println("Naciśnięcie przycisku 'Generuj hasło'.");
     }
 
+    // Sprawdza, czy hasło ma status "Silne"
     public boolean sprawdzCzyHasloJestSilne(){
         boolean status = false;
 
@@ -108,27 +116,30 @@ import java.util.List;
             status = true;
             System.out.println("Haslo ma status: " + silaHaslaResult.getText());
         } else {
-            System.out.println("Haslo ma zły status: " + silaHaslaResult.getText());
+            System.out.println("Haslo ma zły status. Oczekiwany status: Silne. Obecny status: " + silaHaslaResult.getText());
         }
 
         return status;
     }
 
+    // Sprawdza, czy checkbox "Wyślij powiadomienie użytkownikowi" jest domyślnie zaznaczony
     public boolean sprawdzCzyCheckboxWyslijPowiadomienieUzytkownikowiJestZaznaczony(){
         boolean status = false;
 
         if (wyslijPowiadomienieUzytkownikowiCheckbox.isSelected()) {
             status = true;
-            System.out.println("Checkbox 'Wyślij powiadomienie użytkownikowi' jest zaznaczony.");
+            System.out.println("Checkbox 'Wyślij powiadomienie użytkownikowi' jest domyślnie zaznaczony.");
         } else {
-            System.out.println("Checkbox 'Wyślij powiadomienie użytkownikowi' nie jest zaznaczony.");
+            System.out.println("Checkbox 'Wyślij powiadomienie użytkownikowi' nie jest domyślnie zaznaczony.");
         }
 
         return status;
     }
 
+    // Klika przycisk "Utwórz użytkownika"
     public void nacisnijPrzyciskUtworzUzytkownika(){
         wait.waitForVisibility(utworzUzytkownikaButton).click();
+        System.out.println("Naciśnięcie przycisku 'Utwórz użytkownika'.");
     }
 
 

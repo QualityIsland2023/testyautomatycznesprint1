@@ -104,4 +104,13 @@ public class WideoPageTest extends TestBase {
                 "Nie znaleziono tekstu 'Uwaga! Po wczytaniu plików wideo...'");
     }
 
+    // Test sprawdzający proces dodawania pliku wideo – od logowania po finalną weryfikację
+    @Test(priority = 110, enabled = true, description = "Weryfikacja poprawnosci procesu dodawania pliku wideo")
+    public void zweryfikujProcesDodawaniaPlikuWideo() {
+        przejdzDoZakladkiWideo();
+        wideoPage.kliknijDodajWideoButton();
+        dodajWideoPage.przeslijWideo();
+        Assert.assertEquals(wideoPage.zwrocNazwePlikuWideo(), wideoPage.zwrocPoprawnaNAzwaPlikuWideo(), "Proces dodawania pliku wideo przebiega nieprawidlowo");
+    }
+
 }

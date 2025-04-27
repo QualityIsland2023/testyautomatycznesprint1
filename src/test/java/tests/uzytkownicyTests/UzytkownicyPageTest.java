@@ -58,6 +58,26 @@ public class UzytkownicyPageTest extends TestBase {
         Assert.assertTrue(uzytkownicyPage.sprawdzCzyUzytkownikPosiadaRoleMenadzerTresciPubligo(), "Zmiana roli nie powiodla sie.");
     }
 
+    @Test(priority = 20, enabled = true, description = "Weryfikacja poprawności pełnego procesu tworzenia nowego użytkownika: "
+            + "wprowadzenie nazwy, emaila, imienia i nazwiska, wybór języka polskiego, wygenerowanie hasła o domyślnym statusie 'Silne', "
+            + "domyślne zaznaczony checkbox 'Wyślij powiadomienie użytkownikowi', kliknięcie przycisku 'Utwórz użytkownika'.")
+    public void weryfikacjaUtworzeniaNowegoUzytkownika() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkaUzytkownicyMenuBoczne();
+        uzytkownicyPage.nacisnijDodajNowegoUzytkownikaButton();
+        utworzUzytkownikaPage.wprowadzNazweIEmailUzytkownika();
+        utworzUzytkownikaPage.wprowadzImieINazwiskoUzytkownika();
+        utworzUzytkownikaPage.wybierzJezykPolskiUzytkownika();
+        utworzUzytkownikaPage.nacisnijGenerujHasloButton();
+        utworzUzytkownikaPage.sprawdzCzyHasloJestSilne();
+        utworzUzytkownikaPage.sprawdzCzyCheckboxWyslijPowiadomienieUzytkownikowiJestZaznaczony();
+        utworzUzytkownikaPage.nacisnijPrzyciskUtworzUzytkownika();
+
+        Assert.assertTrue(uzytkownicyPage.sprawdzCzyWidacKomunikatUzytkownikUtworzonyPomyslnie()
+                        &&uzytkownicyPage.sprawdzCzyWidacNowegoUtworzonegoUzytkownika(),
+                "Nie udało się poprawnie utworzyć użytkownika.");
+    }
+
 
 
 

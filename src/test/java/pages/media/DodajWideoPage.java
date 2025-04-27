@@ -1,6 +1,8 @@
 package pages.media;
 
+import config.PropertiesReader;
 import helpers.Waits;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +19,11 @@ public class DodajWideoPage {
     // Poprawny tytuł podstrony "Dodaj wideo"
     private String poprawnyTytulWideo = "‹ Platforma kursów online — WordPress";
 
+    // Zmienna przechowująca lokalną ścieżkę do pliku wideo, który ma być przesłany.
+    // Uwaga: Ścieżka jest absolutna i unikalna dla konkretnego użytkownika.
+    // Przed uruchomieniem testu należy zmienić ją na własną, poprawną ścieżkę absolutną na swoim komputerze — to bardzo ważne dla poprawnego działania testu.
+    private String sciezkaDoPlikuWideo =  PropertiesReader.read("sciezkaPlikWideo");
+
     // Nagłówek strony "Dodaj wideo" znajdujący się nad oknem do upuszczenia pliku wideo
     @FindBy(xpath = "//h1[text()='Prześlij pliki wideo']")
     private WebElement naglowekPrzeslijPlikWideo;
@@ -32,6 +39,12 @@ public class DodajWideoPage {
     // Button "Wróć" znajdujący się w prawym-dolnym rogu strony
     @FindBy(xpath = "//a[text()=' Wróć    ']")
     private WebElement wrocButton;
+
+    // Definicja ukrytego inputa do przesyłania plików
+    @FindBy(className ="dz-hidden-input") private WebElement inputPrzeslijWideo;
+
+    // Definicja ikony potwierdzającej poprawne przesłanie pliku
+    @FindBy(className ="dz-success-mark") private WebElement ikonaPoprawnegoPrzeslaniaPliku;
 
     public DodajWideoPage(WebDriver driver) {
         this.driver = driver;
@@ -62,4 +75,29 @@ public class DodajWideoPage {
     public WebElement getWrocButton() {
         return wrocButton;
     }
+
+    // Metoda przesyłająca plik wideo
+    public void przeslijWideo() {
+
+        // Odblokowanie ukrytego inputa za pomocą JavaScript (ustawienie jego widoczności, wielkości i pozycji)
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript(
+                "arguments[0].style.visibility='visible';" +
+                        "arguments[0].style.height='1px';" +
+                        "arguments[0].style.width='1px';" +
+                        "arguments[0].style.opacity='1';" +
+                        "arguments[0].style.position='static';",
+                inputPrzeslijWideo
+        );
+
+        // Przesłanie pliku wideo przez przypisanie ścieżki do inputa
+        inputPrzeslijWideo.sendKeys(sciezkaDoPlikuWideo);
+
+        // Oczekiwanie na pojawienie się ikony potwierdzającej przesłanie pliku
+        wait.waitForVisibility(ikonaPoprawnegoPrzeslaniaPliku);
+
+        // Kliknięcie przycisku powrotu po poprawnym przesłaniu pliku
+        wait.waitForClickability(wrocButton).click();
+    }
+
 }

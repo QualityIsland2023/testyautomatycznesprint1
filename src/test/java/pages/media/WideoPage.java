@@ -17,6 +17,9 @@ public class WideoPage {
     // Poprawny URL podstrony "Wideo
     private String poprawnyUrlWideo = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-videos";
 
+    // Zmienna przechowująca oczekiwaną nazwę pliku wideo
+    private String poprawnaNAzwaPlikuWideo = "fajny_piesek.mp4";
+
     // Poprawny tytuł podstrony "Wideo"
     private String poprawnyTytulWideo = "Wideo ‹ Platforma kursów online — WordPress";
 
@@ -27,6 +30,10 @@ public class WideoPage {
     // Button "Typy danych" znajdujący się w prawym-górnym rogu strony "Wideo"
     @FindBy(xpath = "//button[text()='Typy danych']")
     private WebElement typyDanychButton;
+
+    // Definicja elementu reprezentującego nazwę przesłanego pliku wideo w tabeli
+    @FindBy(xpath ="//td[@class='type-default' and text()='fajny_piesek.mp4']") private WebElement nazwaPlikuWideo;
+
 
     public WideoPage(WebDriver driver) {
         this.driver = driver;
@@ -61,6 +68,19 @@ public class WideoPage {
 
     public void kliknijTypyDanychButton() {
         typyDanychButton.click();
+    }
+
+    // Metoda zwracająca oczekiwaną (poprawną) nazwę pliku wideo
+    public String zwrocNazwePlikuWideo() {
+        String rzeczywsitaNazwaWideo = wait.waitForVisibility(nazwaPlikuWideo).getText();
+        System.out.println("Rzeczywista nazwa pliku wideo: " + rzeczywsitaNazwaWideo);
+        return rzeczywsitaNazwaWideo;
+    }
+
+    // Metoda zwracająca rzeczywistą nazwę pliku wideo po jego przesłaniu
+    public String zwrocPoprawnaNAzwaPlikuWideo() {
+        System.out.println("Oczekiwana nazwa pliku wideo: " + poprawnaNAzwaPlikuWideo);
+        return poprawnaNAzwaPlikuWideo;
     }
 
 }

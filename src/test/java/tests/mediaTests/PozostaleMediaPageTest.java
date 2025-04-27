@@ -14,6 +14,7 @@ public class PozostaleMediaPageTest extends TestBase {
     private MediaPage mediaPage;
     private PozostaleMediaPage pozostaleMediaPage;
 
+
     @BeforeMethod
     public void setUpPozostaleMediaPage() {
         loginPageNew = new LoginPageNew(driver);
@@ -86,6 +87,20 @@ public class PozostaleMediaPageTest extends TestBase {
 
         Assert.assertTrue(pozostaleMediaPage.getMaksymalnaWielkoscPlikowText().isDisplayed(),
                 "Nie znaleziono tekstu 'Maksymalna wielkość dodawanych plików: 3 GB.'");
+    }
+
+    @Test(priority = 160, enabled = true, description = "")
+    public void weryfikacjaCzyDodanyPlikJestWidocznyNaLisciePlikowMultimedialnych(){
+        loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
+        loginPageNew.wpiszHasloDoPolaHaslo();
+        loginPageNew.nacisnijPrzyciskZalogujSie();
+        panelPage.przejdzDoZakladkiMedia();
+        mediaPage.przejdzDoZakladkiPozostaleMedia();
+        pozostaleMediaPage.nacisnijDodajNowyPlikMultimedialnyButton();
+        pozostaleMediaPage.przeslijPlikPng();
+
+        Assert.assertTrue(pozostaleMediaPage.weryfikacjaCzyPrzeslanyPlikJestWidoczny(), "Przeslany plik nie jest widoczny w bibliotece mediow.");
+
     }
 
 }

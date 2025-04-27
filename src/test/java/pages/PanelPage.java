@@ -148,7 +148,7 @@ public class PanelPage {
         }
 
         public void przejdzDoZakladkiMedia() {
-            zakladkaMedia.click();
+            wait.waitForClickability(zakladkaMedia).click();
         }
 
         public void przejdzDoZakladkiKomentarze() {

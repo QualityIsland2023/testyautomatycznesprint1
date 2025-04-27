@@ -55,5 +55,9 @@ public class Waits {
         return wait.until(driver -> driver.getPageSource().contains(text));
     }
 
+    public boolean waitForAttributeToBe(WebElement element, String attribute, String value) {
+        return wait.until(ExpectedConditions.attributeToBe(element, attribute, value));
+    }
+
 
 }

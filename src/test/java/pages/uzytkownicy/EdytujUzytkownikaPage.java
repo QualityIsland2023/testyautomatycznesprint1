@@ -1,11 +1,15 @@
  package pages.uzytkownicy;
 
 import helpers.Waits;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+import java.nio.channels.Selector;
 
  public class EdytujUzytkownikaPage {
 
@@ -39,6 +43,11 @@ import org.openqa.selenium.support.PageFactory;
     @FindBy(id ="submit") private WebElement buttonZaktualizujKontoUzytkownika;
     @FindBy(xpath = "//strong[contains(text(), 'Konto użytkownika zostało zaktualizowane.')]") private WebElement strongKomunikatPotwierdzajacyZmianeHasla;
 
+    @FindBy(id = "role")
+    private WebElement rolaUzytkownika;
+
+    @FindBy (id = "submit")
+    private WebElement zaktualizujKontoUzytkownikaButton;
 
 
 
@@ -76,6 +85,17 @@ import org.openqa.selenium.support.PageFactory;
         System.out.println("Komunikat oczekiwany - Konto użytkownika zostało zaktualizowane.");
         System.out.println("komunikat rzeczywisty - " + strongKomunikatPotwierdzajacyZmianeHasla.getText());
         return strongKomunikatPotwierdzajacyZmianeHasla.getText().equals("Konto użytkownika zostało zaktualizowane.");
+    }
+
+    public void edytujRoleUzytkownikaNaMenadzerTresciPubligo(){
+        Select select = new Select(rolaUzytkownika);
+        select.selectByVisibleText("Menedżer treści Publigo");
+    }
+
+    public void nacisnijPrzyciskZaktualizujKontoUzytkownika(){
+        ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];", zaktualizujKontoUzytkownikaButton);
+
+        wait.waitForVisibility(zaktualizujKontoUzytkownikaButton).click();
     }
 
 

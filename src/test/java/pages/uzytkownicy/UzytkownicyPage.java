@@ -1,10 +1,13 @@
  package pages.uzytkownicy;
 
+import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 import static helpers.Utils.generujLiczbeOd1Do100000JakoString;
 
@@ -12,6 +15,8 @@ import static helpers.Utils.generujLiczbeOd1Do100000JakoString;
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
 
+    private static final String nowyUzytkownikNazwa = PropertiesReader.read("nowyUzytkownikNazwa");
+    private static final String nowyUzytkownikEmail = PropertiesReader.read("nowyUzytkownikEmail");
 
     // Obiekt WebDriver, służący do sterowania przeglądarką
     private WebDriver driver;
@@ -37,9 +42,23 @@ import static helpers.Utils.generujLiczbeOd1Do100000JakoString;
 
      @FindBy(linkText ="test@test.pld") private WebElement linkTestUser;
 
+     @FindBy(className = "filters-button")
+     private WebElement lupaButton;
 
+     @FindBy(xpath = "//input[@placeholder= 'Wpisz by wyszukać'][1]")
+     private WebElement wpiaszByWyszukacNazweInput;
 
+     @FindBy(xpath = "//span[contains(text(), '#')]")
+     private List<WebElement> idUzytkownikow;
 
+     @FindBy(xpath = "//table[contains(@class, 'dynamic-table loaded')]")
+     private WebElement zaladowanieTabeli;
+
+     @FindBy(xpath = "//a[contains(text(), 'Dodaj nowego użytkownika')]")
+     private WebElement dodajNowegoUzytkownikaButton;
+
+    @FindBy(xpath = "//td[contains(., 'Menedżer treści Publigo')]")
+    private WebElement rolaMenadzerTresciPubligo;
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
 
@@ -53,6 +72,40 @@ import static helpers.Utils.generujLiczbeOd1Do100000JakoString;
         wait.waitForClickability(linkTestUser).click();
     }
 
+    public void nacisnijPrzyciskLupy(){
+        wait.waitForVisibility(lupaButton).click();
+    }
+
+    public void wpiszNazweDoPolaWpiszByWyszukacNazwe(){
+        wait.waitForVisibility(wpiaszByWyszukacNazweInput).clear();
+        wpiaszByWyszukacNazweInput.sendKeys(nowyUzytkownikNazwa);
+    }
+
+    public void nacisnijWIdWyswietlonegoUzytkownika(){
+        wait.waitForVisibility(zaladowanieTabeli);
+        wait.waitForClickability(idUzytkownikow.get(0)).click();
+    }
+
+    public void cofnijSieDoStronyUzytkownicy(){
+        wait.waitForTextInPageSource("Konto użytkownika zostało zaktualizowane.");
+        driver.navigate().back();
+        driver.navigate().back();
+
+    }
+
+     public void nacisnijDodajNowegoUzytkownikaButton(){
+         wait.waitForVisibility(dodajNowegoUzytkownikaButton).click();
+     }
+
+     public boolean sprawdzCzyUzytkownikPosiadaRoleMenadzerTresciPubligo(){
+        boolean status = false;
+
+        if(wait.waitForVisibility(rolaMenadzerTresciPubligo).isDisplayed()){
+            status = true;
+            System.out.println("Zmiana roli przebiegla prawidlowo.");
+        }
+        return status;
+     }
 
      /**********************************Operacje na webelementach KONIEC ******************************************/
 

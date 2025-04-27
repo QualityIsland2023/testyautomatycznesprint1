@@ -271,7 +271,7 @@ public class EdytujKursyPage {
     }
 
     public void wpiszNazweTestu(){
-        int losowaLiczba = ThreadLocalRandom.current().nextInt(2,10);
+        int losowaLiczba = ThreadLocalRandom.current().nextInt(1,100);
         wait.waitForVisibility(nazwaWariantuInput).clear();
         nazwaWariantuInput.sendKeys("Wariant testu" + losowaLiczba);
     }

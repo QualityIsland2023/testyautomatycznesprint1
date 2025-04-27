@@ -55,8 +55,5 @@ public class Waits {
         return wait.until(driver -> driver.getPageSource().contains(text));
     }
 
-    public boolean waitForInvisibility(WebElement element) {
-        return wait.until(ExpectedConditions.invisibilityOf(element));
-    }
 
 }

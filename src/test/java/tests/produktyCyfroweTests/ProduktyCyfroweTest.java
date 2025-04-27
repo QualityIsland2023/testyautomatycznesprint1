@@ -150,8 +150,8 @@ public class ProduktyCyfroweTest extends TestBase {
         produktyCyfrowePage.wejdzWPierwszyProduktCyfrowyZListy();
         Assert.assertTrue(
                 edytujProduktCyfrowyPage.getZakladkaPodstawowe().isDisplayed() &&
-                    edytujProduktCyfrowyPage.getZakladkaPliki().isDisplayed() &&
-                    edytujProduktCyfrowyPage.getZakladkaGeneratorLinkow().isDisplayed(),
+                        edytujProduktCyfrowyPage.getZakladkaPliki().isDisplayed() &&
+                        edytujProduktCyfrowyPage.getZakladkaGeneratorLinkow().isDisplayed(),
                 "Nie znaleziono wszystkich zakładek z menu bocznego");
     }
 

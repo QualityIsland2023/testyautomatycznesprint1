@@ -57,6 +57,7 @@ import static helpers.Utils.generujLiczbeOd1Do100JakoString;
      @FindBy(xpath ="//*[@data-related-field=\"purchase_limit\"]//button[normalize-space(.)='Zapisz']") private WebElement buttonZapiszLiczbaSztukDoZakupu;
      @FindBy(xpath ="//*[@data-related-field=\"purchase_limit_items_left\"]//button[normalize-space(.)='Zapisz']") private WebElement buttonZapiszLiczbaSztukPozostalychDoZakupu;
      @FindBy(id ="link_generator") private WebElement zakladkaLinkGenerator;
+     @FindBy(xpath = "//*[@data-related-field='hide_from_list']//span[text()='Zapisano!']") private WebElement spanPokazKatalogZapisano;
 
 
 
@@ -72,38 +73,7 @@ import static helpers.Utils.generujLiczbeOd1Do100JakoString;
     /****************************Operacje na webelementach START **********************************************/
 
 
-    // Zaznacza checkbox "Pokaż produkt cyfrowy w katalogu" i wykonuje płynne przewijanie w górę strony
-    public void zaznaczCheckboxPokazProduktCyfrowyKatalogScrolling() {
-        Actions actions = new Actions(driver);
-        actions.moveToElement(checkboxPokazProduktCyfrowyKatalog).click().perform();
 
-        // Scroll w górę strony przy użyciu JavaScript i animacji
-        String script = """
-        let start = null;
-        const duration = 5000;
-        const distance = -100;
-        const startY = window.scrollY;
-
-        function smoothScrollUp(timestamp) {
-            if (!start) start = timestamp;
-            const elapsed = timestamp - start;
-            const progress = Math.min(elapsed / duration, 1);
-            window.scrollTo(0, startY + distance * progress);
-            if (progress < 1) {
-                requestAnimationFrame(smoothScrollUp);
-            } else {
-                document.body.setAttribute('data-scroll-ready', 'true');
-            }
-        }
-
-        requestAnimationFrame(smoothScrollUp);
-    """;
-        ((JavascriptExecutor) driver).executeScript(script);
-
-        // Oczekiwanie na zakończenie animowanego przewijania
-        new WebDriverWait(driver, Duration.ofSeconds(6))
-                .until(ExpectedConditions.attributeToBe(By.tagName("body"), "data-scroll-ready", "true"));
-    }
 
      // Klika przycisk konfiguracji ceny dla produktu cyfrowego
      public void kliknijKonfigurujCenaProduktCyfrowy() {
@@ -143,11 +113,29 @@ import static helpers.Utils.generujLiczbeOd1Do100JakoString;
          actions.moveToElement(checkboxWlaczSprzedaz).click().perform();
      }
 
+     // Zaznacza checkbox odpowiedzialny za włączenie opcji widoczny w katalogu produktow
+     public void zaznaczCheckboxPokazProduktCyfrowyKatalog() {
+         Actions actions = new Actions(driver);
+         actions.moveToElement(checkboxPokazProduktCyfrowyKatalog).click().perform();
+     }
+
+
+     // Czeka na zmianę atrybutu display elementu <span> w sekcji 'pokaz produkt w katalogu', aż nie będzie już ukryty
+     public void poczekajNaPojawienieSieKomunikatuZapisano() {
+         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+         wait.until(ExpectedConditions.attributeToBeNotEmpty(spanPokazKatalogZapisano, "style")); // czeka na jakąkolwiek zmianę stylu
+         wait.until(driver -> {
+             String display = spanPokazKatalogZapisano.getCssValue("display");
+             return !"none".equals(display); // czekaj aż display nie będzie "none"
+         });
+     }
+
      // Przewija stronę do zakładki "Link Generator" i klika w nią
-    public void przejdzDoZakladkaLinkGenerator() {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", zakladkaLinkGenerator);
-        wait.waitForClickability(zakladkaLinkGenerator).click();
-    }
+     public void przejdzDoZakladkaLinkGenerator() {
+         poczekajNaPojawienieSieKomunikatuZapisano();
+         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", zakladkaLinkGenerator);
+         wait.waitForClickability(zakladkaLinkGenerator).click();
+     }
 
 
      // Edytuje produkt cyfrowy wykonując szereg akcji konfiguracyjnych
@@ -157,9 +145,18 @@ import static helpers.Utils.generujLiczbeOd1Do100JakoString;
         ustawLiczbaSztukDoZakupu();
         ustawLiczbaSztukPozostalychDoZakupu();
         zaznaczcheckboxWlaczSprzedaz();
-        zaznaczCheckboxPokazProduktCyfrowyKatalogScrolling();
+        zaznaczCheckboxPokazProduktCyfrowyKatalog();
         przejdzDoZakladkaLinkGenerator();
+
     }
+
+
+
+
+
+
+
+
 
      /**********************************Operacje na webelementach KONIEC ******************************************/
 

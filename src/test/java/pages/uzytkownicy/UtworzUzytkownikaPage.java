@@ -15,6 +15,8 @@ import java.util.List;
 
     private static final String nowyUzytkownikNazwa = PropertiesReader.read("nowyUzytkownikNazwa");
     private static final String nowyUzytkownikEmail = PropertiesReader.read("nowyUzytkownikEmail");
+    private static final String nowyUzytkownikImie = PropertiesReader.read("nowyUzytkownikImie");
+    private static final String nowyUzytkownikNazwisko = PropertiesReader.read("nowyUzytkownikNazwisko");
 
 
     // Obiekt WebDriver, służący do sterowania przeglądarką
@@ -43,6 +45,27 @@ import java.util.List;
     @FindBy(id = "email")
     private WebElement emailUzytkowkikaInput;
 
+    @FindBy(id = "first_name")
+    private WebElement imieUzytkowkikaInput;
+
+    @FindBy(id = "last_name")
+    private WebElement nazwiskoUzytkowkikaInput;
+
+    @FindBy(id = "locale")
+    private WebElement jezykListaRozwijana;
+
+    @FindBy(xpath = "//*[contains(text(), 'Polski')]")
+    private WebElement polskiLista;
+
+    @FindBy(xpath = "//*[contains(text(), 'Generuj hasło')]")
+    private WebElement generujHasloButton;
+
+    @FindBy(id = "pass-strength-result")
+    private WebElement silaHaslaResult;
+
+    @FindBy(id = "send_user_notification")
+    private WebElement wyslijPowiadomienieUzytkownikowiCheckbox;
+
     @FindBy(id = "createusersub")
     private WebElement utworzUzytkownikaButton;
     /***************************Repozytorium webelementów KONIEC ******************************************/
@@ -57,6 +80,51 @@ import java.util.List;
 
         emailUzytkowkikaInput.clear();
         emailUzytkowkikaInput.sendKeys(nowyUzytkownikEmail);
+    }
+
+    public void wprowadzImieINazwiskoUzytkownika(){
+        wait.waitForVisibility(imieUzytkowkikaInput).clear();
+        imieUzytkowkikaInput.sendKeys(nowyUzytkownikImie);
+
+        nazwiskoUzytkowkikaInput.clear();
+        nazwiskoUzytkowkikaInput.sendKeys(nowyUzytkownikNazwisko);
+    }
+
+    public void wybierzJezykPolskiUzytkownika(){
+        wait.waitForVisibility(jezykListaRozwijana).click();
+        wait.waitForVisibility(polskiLista).click();
+    }
+
+    public void nacisnijGenerujHasloButton(){
+        wait.waitForVisibility(generujHasloButton).click();
+    }
+
+    public boolean sprawdzCzyHasloJestSilne(){
+        boolean status = false;
+
+        wait.waitForVisibility(silaHaslaResult);
+
+        if (silaHaslaResult.getText().contains("Silne")) {
+            status = true;
+            System.out.println("Haslo ma status: " + silaHaslaResult.getText());
+        } else {
+            System.out.println("Haslo ma zły status: " + silaHaslaResult.getText());
+        }
+
+        return status;
+    }
+
+    public boolean sprawdzCzyCheckboxWyslijPowiadomienieUzytkownikowiJestZaznaczony(){
+        boolean status = false;
+
+        if (wyslijPowiadomienieUzytkownikowiCheckbox.isSelected()) {
+            status = true;
+            System.out.println("Checkbox 'Wyślij powiadomienie użytkownikowi' jest zaznaczony.");
+        } else {
+            System.out.println("Checkbox 'Wyślij powiadomienie użytkownikowi' nie jest zaznaczony.");
+        }
+
+        return status;
     }
 
     public void nacisnijPrzyciskUtworzUzytkownika(){

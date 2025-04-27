@@ -33,6 +33,7 @@ public class PakietyPage {
 
     //oczekiwany (poprawny) adres URL strony
     String poprawnyURLStronyPakiety = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-packages";
+
     //oczekiwany (poprawny) tytuł strony
     String poprawnyTytulStronyPakiety = "Pakiety ‹ Platforma kursów online — WordPress";
 
@@ -81,6 +82,15 @@ public class PakietyPage {
         return driver.getTitle();
     }
 
+    //utworzenie nowego pakietu
+    public void dodajNowyPakiet(){
+        przejdzDoDodaniaNowegoPakietu();
+        poczekajNaOknoUtworzNowyPakiet();
+        wpiszNazwePakietu();
+        wpiszCenePakietu();
+        nacisnijPrzyciskUtworzIEdytuj();
+    }
+
     //kliknięcie przycisku 'Dodaj pakiet'
     public void przejdzDoDodaniaNowegoPakietu() {
         wait.waitForClickability(utworzNowyPakietButton).click();
@@ -93,7 +103,7 @@ public class PakietyPage {
 
     //wpisanie nazwy pakietu
     public void wpiszNazwePakietu() {
-        wait.waitForVisibility(nazwaPakietuInput).clear();
+        wait.waitForClickability(nazwaPakietuInput).clear();
         wait.waitForVisibility(nazwaPakietuInput).sendKeys("Test pakiet");
     }
 
@@ -106,9 +116,7 @@ public class PakietyPage {
     //kliknięcie przcisku 'Utwórz i edytuj'
     public void nacisnijPrzyciskUtworzIEdytuj() {
         wait.waitForClickability(utworzIEdytujButton).click();
-
     }
-
 
 /********************************** Operacje na Webelementach KONIEC ******************************************/
 

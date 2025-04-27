@@ -137,7 +137,7 @@ public class EdytujKursyPage {
     }
 
     //zwrócenie aktualnego url strony
-    public Boolean zwrocUrlAktualnejStrony(){
+    public boolean zwrocUrlAktualnejStrony(){
         System.out.println("Adres strony 'Edycja kursu' jest poprawny, status: " + driver.getCurrentUrl().contains("//mmrmqpr585.publigo.onl/" ));
         return driver.getCurrentUrl().contains("//mmrmqpr585.publigo.onl/");
     }
@@ -155,7 +155,7 @@ public class EdytujKursyPage {
     }
 
     //sprawdzenie widoczności sekcji 'Edycja kursu:'
-    public Boolean pobranieTekstuOknaEdycjaKursu(){
+    public boolean pobranieTekstuOknaEdycjaKursu(){
         boolean status = false;
         if(wait.waitForTextInPageSource("Edycja kursu:")){
             status = true;
@@ -246,20 +246,24 @@ public class EdytujKursyPage {
         return List.of("Nazwa i opis", "Umiejscowienie", "Warianty", "Graficzne", "Widok", "Certyfikacja", "Brak autoryzacji", "Sprzedaż");
     }
 
+    //przewinięcie strony do sekcji 'Sprzedaz'
     public void przewinStroneDoSekcjiSprzedaz(){
         wait.waitForVisibility(sekcjaNazwaIOpis);
         ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)]", sekcjaSprzedaz);
     }
 
+    //włączenie sprzedaży
     public void wlaczSprzedazWSekcjiSprzedaz(){
         wait.waitForVisibility(wlaczSprzedazToggle).click();
     }
 
+    //przewinięcie strony do sekcji 'Warianty'
     public void przewinStroneDoSekcjiWarianty(){
         ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];", sekcjaWarianty);
 
     }
 
+    //odświeżenie strony i przejście do sekcji 'Warianty'
     public void odswiezStroneIPrzejdzDoSekcjiWarianty(){
         driver.navigate().refresh();
         wait.waitForVisibility(sekcjaNazwaIOpis);

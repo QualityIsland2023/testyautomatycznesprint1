@@ -127,6 +127,7 @@ public class PanelPage {
             wait.waitForClickability(zakladkaRaportyMenuBoczne).click();
         }
 
+        //przejście do zakładki 'Kursy'
         public void przejdzDoZakladkiKursy(){
         wait.waitForClickability(zakladkaKursyMenuBoczne).click();
         }
@@ -148,7 +149,7 @@ public class PanelPage {
         }
 
         public void przejdzDoZakladkiMedia() {
-            zakladkaMedia.click();
+            wait.waitForClickability(zakladkaMedia).click();
         }
 
         public void przejdzDoZakladkiKomentarze() {
@@ -198,6 +199,7 @@ public class PanelPage {
             wait.waitForVisibility(historiaCenMenuLista).click();
         }
 
+        //przejście do zakładki 'Pakiety'
         public void przejdzDoZakladkiPakiety(){
             wait.waitForClickability(zakladkaPakietyMenuBoczne).click();
     }

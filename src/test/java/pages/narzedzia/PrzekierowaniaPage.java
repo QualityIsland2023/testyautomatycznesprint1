@@ -27,13 +27,15 @@ public class PrzekierowaniaPage {
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) tytuł strony "Przekierowania"
-    String poprawnyTytulStronyPrzekierowania = "Przekierowania po zakupie ‹ Platforma kursów online — WordPress";
+    // STAŁE POPRAWNE ELEMENTY STRONY:
 
-    // Oczekiwany (poprawny) adres URL strony "Przekierowania"
+    // Tytuł strony "Przekierowania"
+    String poprawnyTytulStronyPrzekierowania = "Przekierowania po zakupie ‹ Platforma kursów online — WordPress";
+    // URL strony "Przekierowania"
     String poprawnyURLStronyPrzekierowania = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-purchase-redirections";
 
 
+    // ELEMENTY NA STRONIE:
 
 
 

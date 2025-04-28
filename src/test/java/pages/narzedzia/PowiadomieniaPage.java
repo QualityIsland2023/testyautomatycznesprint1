@@ -26,8 +26,18 @@ public class PowiadomieniaPage {
 
     /************************Repozytorium webelementów START **********************************************/
 
+    // STAŁE POPRAWNE ELEMENTY STRONY:
+
+    // URL strony "Powiadomienia"
     String poprawnyURLZakladkiPowiadomienia = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-notifications";
+    // Tytuł strony "Powiadomienia"
     String poprawnyTytulZakladkiPowiadomienia = "Powiadomienia ‹ Platforma kursów online — WordPress";
+
+
+    // ELEMENTY NA STRONIE:
+
+
+
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 

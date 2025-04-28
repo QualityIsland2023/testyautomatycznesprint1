@@ -58,7 +58,7 @@ public class WebhookiTest extends TestBase {
 
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkiNarzedzia();
-        narzedziaPage.przejdzDoZakladkiNarzedziaPowiadomieniaMenuBoczne();
+        narzedziaPage.przejdzDoZakladkiNarzedziaWebhookiMenuBoczne();
 
         Assert.assertEquals(webhookiPage.zwrocAktualnyTytulStronyWebhooki(),
                 webhookiPage.zwrocPoprawnyTytulStronyWebhooki(),

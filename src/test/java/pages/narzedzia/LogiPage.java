@@ -26,8 +26,17 @@ public class LogiPage {
 
     /************************Repozytorium webelementów START **********************************************/
 
+    // STAŁE POPRAWNE ELEMENTY STRONY:
+
+    // URL strony "Logi"
     String poprawnyURLZakladkiLogi = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-logs";
+    // Tytuł strony "Logi"
     String poprawnyTytulZakladkiLogi = "Logi ‹ Platforma kursów online — WordPress";
+
+
+    // ELEMENTY NA STRONIE:
+
+
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 

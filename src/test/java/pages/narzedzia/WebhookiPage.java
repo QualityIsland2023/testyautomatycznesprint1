@@ -27,13 +27,15 @@ public class WebhookiPage {
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) tytuł strony "Webhooki"
-    String poprawnyTytulStronyWebhooki = "Webhooki ‹ Platforma kursów online — WordPress";
+    // STAŁE POPRAWNE ELEMENTY STRONY:
 
-    // Oczekiwany (poprawny) adres URL strony "Webhooki"
+    // Tytuł strony "Webhooki"
+    String poprawnyTytulStronyWebhooki = "Webhooki ‹ Platforma kursów online — WordPress";
+    // URL strony "Webhooki"
     String poprawnyURLStronyWebhooki = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-webhooks";
 
 
+    // ELEMENTY NA STRONIE:
 
 
 

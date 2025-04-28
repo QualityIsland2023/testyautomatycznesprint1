@@ -40,14 +40,20 @@ public class PanelPage {
     @FindBy(xpath ="//div[contains(text(),'Ustawienia')]")
     private WebElement zakladkaUstawienia;
 
+    @FindBy(xpath = "//div[contains(text(), 'Narzędzia')]")
+    private WebElement zakladkaNarzedziaMenuBoczne;
+
     @FindBy(xpath = "//a[contains(text(), 'Powiadomienia')]")
     private WebElement zakladkaPowiadomieniaMenuBoczne;
 
     @FindBy(xpath = "//a[contains(text(), 'Logi')]")
     private WebElement zakladkaLogiMenuBoczne;
 
-    @FindBy(xpath = "//div[contains(text(), 'Narzędzia')]")
-    private WebElement zakladkaNarzedziaMenuBoczne;
+    @FindBy(xpath = "//a[contains(text(), 'Webhooki')]")
+    private WebElement webhookiMenuBoczne;
+
+    @FindBy(xpath = "//a[contains(text(), 'Przekierowania')]")
+    private WebElement przekierowaniaMenuBoczne;
 
     @FindBy(xpath = "//div[contains(text(), 'Raporty')]")
     private WebElement zakladkaRaportyMenuBoczne;
@@ -203,6 +209,20 @@ public class PanelPage {
         public void przejdzDoZakladkiPakiety(){
             wait.waitForClickability(zakladkaPakietyMenuBoczne).click();
     }
+
+        // Przechodzi do strony "Webhooki": menu boczne > mouse hover "Narzędzia" > kliknij "Webhooki"
+        public void kliknijNarzedziaWebhookiMenu(){
+            Actions actions = new Actions(driver);
+            actions.moveToElement(zakladkaNarzedziaMenuBoczne).perform();
+            wait.waitForVisibility(webhookiMenuBoczne).click();
+        }
+
+        // Przechodzi do strony "Przekierowania": menu boczne > mouse hover "Narzędzia" > kliknij "Przekierowania"
+        public void kliknijNarzedziaPrzekierowaniaMenu(){
+            Actions actions = new Actions(driver);
+            actions.moveToElement(zakladkaNarzedziaMenuBoczne).perform();
+            wait.waitForVisibility(przekierowaniaMenuBoczne).click();
+        }
 
 
 

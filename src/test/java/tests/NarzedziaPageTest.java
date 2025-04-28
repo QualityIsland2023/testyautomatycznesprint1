@@ -105,6 +105,15 @@ public class NarzedziaPageTest extends TestBase {
                 "Nie znaleziono przycisku IMPORT KURSANTÓW na stronie NARZĘDZIA");
     }
 
+    @Test(priority = 90, enabled = true, description = "Weryfikacja, czy w bocznym menu głównym NARZĘDZIA widać wszystkie podpozycje i czy mają zgodne nazwy: Narzędzia, Powiadomienia, Logi, Webhooki, Przekierowania")
+    public void weryfikacjaWidocznosciPodpozycjiMenuNarzedzia() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiNarzedzia();
+
+        Assert.assertTrue(narzedziaPage.zweryfikujWidocznoscINazwyPodpozycjiMenuGlowneNarzedzia(),
+                "Nie znaleziono podpozycji w bocznym menu głównym NARZĘDZIA");
+    }
+
 
 
 

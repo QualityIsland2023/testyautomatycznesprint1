@@ -64,6 +64,23 @@ public class NarzedziaPage {
     @FindBy(xpath = "//*[contains(@value, 'Import kursantów')]")
     private WebElement importKursantowButton;
 
+    @FindBy(xpath = "//a[contains(text(), 'Narzędzia')]")
+    private WebElement narzedziaMenuBoczne;
+
+    @FindBy(xpath = "//a[contains(text(), 'Powiadomienia')]")
+    private WebElement powiadomieniaMenuBoczne;
+
+    @FindBy(xpath = "//a[contains(text(), 'Logi')]")
+    private WebElement logiMenuBoczne;
+
+    @FindBy(xpath = "//a[contains(text(), 'Webhooki')]")
+    private WebElement webhookiMenuBoczne;
+
+    @FindBy(xpath = "//a[contains(text(), 'Przekierowania')]")
+    private WebElement przekierowaniaMenuBoczne;
+
+
+
 
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
@@ -201,6 +218,51 @@ public class NarzedziaPage {
             System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje przycisk: " + importKursantowButton.getAccessibleName());
         } else {
             System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma przycisku DODAJ KOLEJNY");
+        }
+
+        return status;
+    }
+
+    // Sprawdza, czy na pasku bocznym menu głównego "Narzędzia" podpozycje są widoczne i mają aktualne nazwy
+    public boolean zweryfikujWidocznoscINazwyPodpozycjiMenuGlowneNarzedzia() {
+        Map<String, WebElement> nazwyPozycji = new HashMap<>();
+        nazwyPozycji.put("Narzędzia", narzedziaMenuBoczne);
+        nazwyPozycji.put("Powiadomienia", powiadomieniaMenuBoczne);
+        nazwyPozycji.put("Logi", logiMenuBoczne);
+        nazwyPozycji.put("Webhooki", webhookiMenuBoczne);
+        nazwyPozycji.put("Przekierowania", przekierowaniaMenuBoczne);
+
+        boolean status = true;
+
+        for (Map.Entry<String, WebElement> entry : nazwyPozycji.entrySet()) {
+            String oczekiwanaNazwaPozycji = entry.getKey();
+            WebElement aktualnaNazwaPozycji = entry.getValue();
+
+            try {
+                WebElement obecnyElement = wait.waitForVisibility(aktualnaNazwaPozycji);
+
+                boolean nazwaWidoczna = obecnyElement.isDisplayed();
+                boolean nazwaZgodna = obecnyElement.getText().trim().equals(oczekiwanaNazwaPozycji);
+
+                if (!nazwaWidoczna || !nazwaZgodna) {
+                    if (!nazwaWidoczna) {
+                        System.out.println("Podpozycja w menu głównym NARZĘDZIA nie jest widoczna: " + oczekiwanaNazwaPozycji);
+                    }
+                    if (!nazwaZgodna) {
+                        System.out.println("Nazwa podpozycji w menu głównym NARZĘDZIA jest niezgodna. "
+                                + "Oczekiwano: '" + oczekiwanaNazwaPozycji + "' "
+                                + "Znaleziono: '" + obecnyElement.getText().trim() + "' ");
+                    }
+                    status = false;
+                } else {
+                    System.out.println("Podpozycja w menu głównym NARZĘDZIA jest widoczna i ma zgodną nazwę : " + oczekiwanaNazwaPozycji);
+                }
+
+            } catch (Exception e) {
+                System.out.println("W menu głównym NARZĘDZIA nie ma podpozycji: " + oczekiwanaNazwaPozycji);
+                e.printStackTrace();
+                status = false;
+            }
         }
 
         return status;

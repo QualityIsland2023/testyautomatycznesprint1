@@ -67,7 +67,7 @@ public class NarzedziaPage {
     @FindBy(xpath = "//a[contains(text(), 'Narzędzia')]")
     private WebElement narzedziaMenuBoczne;
 
-    @FindBy(xpath = "//a[contains(text(), 'Powiadomienia')]")
+    @FindBy(xpath = "//li/a[contains(text(), 'Powiadomienia')]")
     private WebElement powiadomieniaMenuBoczne;
 
     @FindBy(xpath = "//a[contains(text(), 'Logi')]")
@@ -270,22 +270,22 @@ public class NarzedziaPage {
     // Kliknięcia w podpozycje w bocznym menu głównym NARZĘDZIA
         // Przejście do strony "Powiadomienia"
     public void przejdzDoZakladkiNarzedziaPowiadomieniaMenuBoczne() {
-        wait.waitForVisibility(powiadomieniaMenuBoczne).click();
+        wait.waitForClickability(powiadomieniaMenuBoczne).click();
         System.out.println("Kliiknięcie podpozycji 'Powiadomienia' w menu bocznym 'Narzędzia'");
     }
         // Przejście do strony "Logi"
     public void przejdzDoZakladkiNarzedziaLogiMenuBoczne() {
-        wait.waitForVisibility(logiMenuBoczne).click();
+        wait.waitForClickability(logiMenuBoczne).click();
         System.out.println("Kliiknięcie podpozycji 'Logi' w menu bocznym 'Narzędzia'");
     }
         // Przejście do strony "Webhooki"
     public void przejdzDoZakladkiNarzedziaWebhookiMenuBoczne() {
-        wait.waitForVisibility(webhookiMenuBoczne).click();
+        wait.waitForClickability(webhookiMenuBoczne).click();
         System.out.println("Kliiknięcie podpozycji 'Webhooki' w menu bocznym 'Narzędzia'");
     }
         // Przejście do strony "Przekierowania"
     public void przejdzDoZakladkiNarzedziaPrzekierowaniaMenuBoczne() {
-        wait.waitForVisibility(przekierowaniaMenuBoczne).click();
+        wait.waitForClickability(przekierowaniaMenuBoczne).click();
         System.out.println("Kliiknięcie podpozycji 'Przekierowania' w menu bocznym 'Narzędzia'");
     }
 

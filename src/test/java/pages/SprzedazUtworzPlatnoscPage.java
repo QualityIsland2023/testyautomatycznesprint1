@@ -38,8 +38,11 @@ public class SprzedazUtworzPlatnoscPage {
 
     // STAŁE POPRAWNE ELEMENTY STRONY:
 
+    // Tytuł strony "Utwórz płatność"
     private String poprawnyTytulStronyUtworzPlatnosc = "Utwórz płatność ‹ Platforma kursów online — WordPress";
+    // URL strony "Utwórz płatność"
     private String poprawnyURLStronyUtworzPlatnosc = "https://mmrmqpr585.publigo.onl/wp-admin/options.php?page=edd-manual-purchase";
+    // Liczba pozycji w formularzu "Utwórz nową płatność"
     private int prawidlowaLiczbaPozycjiFormularza = 8;
 
 
@@ -69,8 +72,7 @@ public class SprzedazUtworzPlatnoscPage {
     private WebElement checkboxWyslijPotwierdzenieZakupu;
 
 
-
-    // Pola formularza:
+    // Nazwy pól formularza:
     @FindBy(xpath = "//*[contains(@class, 'form-field')]")
     private List<WebElement> pozycjeFormularzaUtworzNowaPlatnosc;
 
@@ -101,6 +103,8 @@ public class SprzedazUtworzPlatnoscPage {
     @FindBy(xpath = "//label[contains(text(),'Data')]")
     private WebElement pozycjaData;
 
+
+    // Edytowalne pola formularza (tekstowe i kalendarz):
     @FindBy(xpath = "//input[@id='edd-mp-date']")
     private WebElement poleData;
 

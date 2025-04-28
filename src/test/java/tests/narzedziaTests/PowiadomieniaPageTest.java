@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
+import pages.narzedzia.NarzedziaPage;
 import pages.narzedzia.PowiadomieniaPage;
 import tests.TestBase;
 
@@ -14,6 +15,7 @@ public class PowiadomieniaPageTest extends TestBase {
 
     private LoginPageNew loginPageNew; //instancja strony logowania
     private PanelPage panelPage;
+    private NarzedziaPage narzedziaPage;
     private PowiadomieniaPage powiadomieniaPage;
 
     /*****************sekja techniczna KONIEC **********************************************/
@@ -23,6 +25,7 @@ public class PowiadomieniaPageTest extends TestBase {
         //inicjalizacja strony logowania , linijka techniczna, konfiguracyjna
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
+        narzedziaPage = new NarzedziaPage(driver);
         powiadomieniaPage = new PowiadomieniaPage(driver);
 
     }
@@ -48,5 +51,20 @@ public class PowiadomieniaPageTest extends TestBase {
         Assert.assertEquals(powiadomieniaPage.zwrocAktualnyTytulZakladkiPowiadomienia(), powiadomieniaPage.zwrocPoprawnyTytulZakladkiPowiadomienia());
     }
 
+    @Test(priority = 30, enabled = true, description = "Weryfikacja przejścia do strony POWIADOMIENIA z poziomu strony NARZĘDZIA")
+    public void weryfikacjaPrzejsciaDoStronyPowiadomieniZPoziomuNarzedzia() {
+
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiNarzedzia();
+        narzedziaPage.przejdzDoZakladkiNarzedziaPowiadomieniaMenuBoczne();
+
+        Assert.assertEquals(powiadomieniaPage.zwrocAktualnyTytulZakladkiPowiadomienia(),
+                powiadomieniaPage.zwrocPoprawnyTytulZakladkiPowiadomienia(),
+                "Tytuł strony POWIADOMIENIA nie jest poprawny");
+
+        Assert.assertEquals(powiadomieniaPage.zwrocAktualnyURLZakladkiPowiadomienia(),
+                powiadomieniaPage.zwrocPoprawnyURLZakladkiPowiadomienia(),
+                "Adres url strony POWIADOMIENIA nie jest poprawny");
+    }
 
 }

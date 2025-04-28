@@ -45,25 +45,25 @@ public class PrzekierowaniaPage {
 
     // Zwraca aktualny tytuł strony "Przekierowania" i wypisuje go w konsoli
     public String zwrocAktualnyTytulStronyPrzekierowania() {
-        System.out.println("Aktualny tytuł strony WEBHOOKI: " + driver.getTitle());
+        System.out.println("Aktualny tytuł strony PRZEKIEROWANIA: " + driver.getTitle());
         return driver.getTitle();
     }
 
     // Zwraca oczekiwany (poprawny) tytuł strony "Przekierowania" i wypisuje go w konsoli
     public String zwrocPoprawnyTytulStronyPrzekierowania() {
-        System.out.println("Poprawny tytuł strony WEBHOOKI: " + poprawnyTytulStronyPrzekierowania);
+        System.out.println("Poprawny tytuł strony PRZEKIEROWANIA: " + poprawnyTytulStronyPrzekierowania);
         return poprawnyTytulStronyPrzekierowania;
     }
 
     // Zwraca aktualny adres URL strony "Przekierowania" i wypisuje go w konsoli
     public String zwrocAktualnyUrlStronyPrzekierowania() {
-        System.out.println("Aktualny URL strony WEBHOOKI: " + driver.getCurrentUrl());
+        System.out.println("Aktualny URL strony PRZEKIEROWANIA: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 
     // Zwraca oczekiwany (poprawny) adres URL strony "Przekierowania" i wypisuje go w konsoli
     public String zwrocPoprawnyUrlStronyPrzekierowania() {
-        System.out.println("Poprawny URL strony WEBHOOKI: " + poprawnyURLStronyPrzekierowania);
+        System.out.println("Poprawny URL strony PRZEKIEROWANIA: " + poprawnyURLStronyPrzekierowania);
         return poprawnyURLStronyPrzekierowania;
     }
 

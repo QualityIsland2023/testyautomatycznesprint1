@@ -52,7 +52,7 @@ public class PowiadomieniaPageTest extends TestBase {
     }
 
     @Test(priority = 30, enabled = true, description = "Weryfikacja przejścia do strony POWIADOMIENIA z poziomu strony NARZĘDZIA")
-    public void weryfikacjaPrzejsciaDoStronyPowiadomieniZPoziomuNarzedzia() {
+    public void weryfikacjaPrzejsciaDoStronyPowiadomieniaZPoziomuNarzedzia() {
 
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkiNarzedzia();

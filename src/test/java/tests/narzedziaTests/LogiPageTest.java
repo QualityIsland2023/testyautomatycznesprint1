@@ -1,4 +1,4 @@
-package tests;
+package tests.narzedziaTests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import pages.LogiPage;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.PowiadomieniaPage;
+import tests.TestBase;
 
 public class LogiPageTest extends TestBase {
 

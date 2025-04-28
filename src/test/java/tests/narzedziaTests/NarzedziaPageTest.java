@@ -1,13 +1,12 @@
-package tests;
+package tests.narzedziaTests;
 
-import org.checkerframework.checker.units.qual.N;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.CertyfikatyPage;
 import pages.LoginPageNew;
-import pages.NarzedziaPage;
+import pages.narzedzia.NarzedziaPage;
 import pages.PanelPage;
+import tests.TestBase;
 
 public class NarzedziaPageTest extends TestBase {
 

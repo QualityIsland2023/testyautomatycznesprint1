@@ -1,4 +1,4 @@
-package pages;
+package pages.narzedzia;
 import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;

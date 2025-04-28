@@ -1,12 +1,12 @@
-package tests;
+package tests.narzedziaTests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
-import pages.NarzedziaPage;
 import pages.PanelPage;
 import pages.PowiadomieniaPage;
+import tests.TestBase;
 
 public class PowiadomieniaPageTest extends TestBase {
 

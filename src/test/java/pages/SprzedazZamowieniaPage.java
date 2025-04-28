@@ -163,15 +163,10 @@ public class SprzedazZamowieniaPage {
     public boolean zweryfikujCzyPrzyciskDodajZamowienieIstnieje() {
         boolean status = false;
 
-        try {
-            boolean przyciskWidoczny = dodajZamowienieButton.isDisplayed();
-
-            if (przyciskWidoczny) {
-                status = true;
-                System.out.println("Widać przycisk: " + dodajZamowienieButton.getText());
-            }
-
-        } catch (Exception e) {
+        if (dodajZamowienieButton.isDisplayed()) {
+            status = true;
+            System.out.println("Widać przycisk: " + dodajZamowienieButton.getText());
+        } else {
             System.out.println("Nie widać przycisku DODAJ ZAMÓWIENIE");
         }
 
@@ -182,15 +177,10 @@ public class SprzedazZamowieniaPage {
     public boolean zweryfikujCzyPrzyciskTypyDanychIstnieje() {
         boolean status = false;
 
-        try {
-            boolean przyciskWidoczny = typyDanychButton.isDisplayed();
-
-            if (przyciskWidoczny) {
-                status = true;
-                System.out.println("Widać przycisk: " + typyDanychButton.getText());
-            }
-
-        } catch (Exception e) {
+        if (typyDanychButton.isDisplayed()) {
+            status = true;
+            System.out.println("Widać przycisk: " + typyDanychButton.getText());
+        } else {
             System.out.println("Nie widać przycisku TYPY DANYCH");
         }
 
@@ -215,20 +205,15 @@ public class SprzedazZamowieniaPage {
         return poprawnaInformacjaWSekcjiTypyDanych;
     }
 
-    // Zwraca informację w sekcji "Typy danych" i wypisuje ją w konsoli.
+    // Zwraca tekst informacji w sekcji "Typy danych" i wypisuje w konsoli.
     // Oczekiwany tekst: "Wybierz, które kolumny mają być widoczne w tabeli:"
     public boolean zweryfikujCzyInformacjaWSekcjiTypyDanychIstnieje() {
         boolean status = false;
 
-        try {
-            boolean przyciskWidoczny = informacjaWSekcjiTypyDanych.isDisplayed();
-
-            if (przyciskWidoczny) {
-                status = true;
-                System.out.println("Widać informację w sekcji TYPY DANYCH: " + informacjaWSekcjiTypyDanych.getText());
-            }
-
-        } catch (Exception e) {
+        if (informacjaWSekcjiTypyDanych.isDisplayed()) {
+            status = true;
+            System.out.println("Widać informację w sekcji TYPY DANYCH: " + informacjaWSekcjiTypyDanych.getText());
+        } else {
             System.out.println("Nie widać informacji w sekcji TYPY DANYCH. " +
                     "Oczekiwany tekst: " + poprawnaInformacjaWSekcjiTypyDanych);
         }

@@ -32,38 +32,21 @@ public class NarzedziaPage {
 
     /************************Repozytorium webelementów START **********************************************/
 
+    // STAŁE POPRAWNE ELEMENTY STRONY:
+
+    // URL strony "Narzędzia"
     String poprawnyURLZakladkiNarzedzia = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-tools";
+    // Tytuł strony "Narzędzia"
     String poprawnyTytulZakladkiNarzedzia = "Narzędzia ‹ Platforma kursów online — WordPress";
+    // Liczba zakładek w menu bocznym
     int prawidlowaLiczbaZakladekMenuBoczne = 3;
+    // Liczba checkboxów na stronie
     int prawidlowaLiczbaCkeckboxowNaStronie = 3;
 
-    @FindBy(xpath = "//ul[contains(@class, 'settings-nav-tab')]/li")
-    private List<WebElement> zakladkiMenuBoczne;
 
-    @FindBy(xpath = "//*[contains(@id, 'wp-idea-import_students-tab-link')]")
-    private WebElement zakladkaImportKursantow;
+    // ELEMENTY NA STRONIE:
 
-    @FindBy(xpath = "//*[contains(@id, 'wp-idea-banned_emails-tab-link')]")
-    private WebElement zakladkaZablokowaneAdresyEmail;
-
-    @FindBy(xpath = "//*[contains(@id, 'wp-idea-api-tab-link')]")
-    private WebElement zakladkaKluczAPI;
-
-    @FindBy(xpath = "//input[contains(@type, 'checkbox')]")
-    private List<WebElement> ckeckboxyNaStronie;
-
-    @FindBy(xpath = "//input[contains(@name, 'access')]")
-    private WebElement checkboxWyslijEmailZDanymiDostepowymi;
-
-    @FindBy(xpath = "//input[contains(@name, 'notification')]")
-    private WebElement checkboxWyslijPotwierdzenieZamowienia;
-
-    @FindBy(xpath = "//input[contains(@name, 'mailing')]")
-    private WebElement checkboxZapiszNaListeMailingowa;
-
-    @FindBy(xpath = "//*[contains(@value, 'Import kursantów')]")
-    private WebElement importKursantowButton;
-
+    // Podpozycje podstron w menu głównym (pasek boczny) dla "Narzędzia"
     @FindBy(xpath = "//a[contains(text(), 'Narzędzia')]")
     private WebElement narzedziaMenuBoczne;
 
@@ -78,6 +61,45 @@ public class NarzedziaPage {
 
     @FindBy(xpath = "//a[contains(text(), 'Przekierowania')]")
     private WebElement przekierowaniaMenuBoczne;
+
+
+    // Lista wszystkich zakładek w menu bocznym na stronie "Narzędzia"
+    @FindBy(xpath = "//ul[contains(@class, 'settings-nav-tab')]/li")
+    private List<WebElement> zakladkiMenuBoczne;
+
+
+    // Zakładki w menu bocznym na stronie "Narzędzia"
+    @FindBy(xpath = "//*[contains(@id, 'wp-idea-import_students-tab-link')]")
+    private WebElement zakladkaImportKursantow;
+
+    @FindBy(xpath = "//*[contains(@id, 'wp-idea-banned_emails-tab-link')]")
+    private WebElement zakladkaZablokowaneAdresyEmail;
+
+    @FindBy(xpath = "//*[contains(@id, 'wp-idea-api-tab-link')]")
+    private WebElement zakladkaKluczAPI;
+
+
+    // Wszystkie checkboxy na stronie:
+    @FindBy(xpath = "//input[contains(@type, 'checkbox')]")
+    private List<WebElement> ckeckboxyNaStronie;
+
+
+    // Klikalne checkboxy dla danych pozycji:
+    @FindBy(xpath = "//input[contains(@name, 'access')]")
+    private WebElement checkboxWyslijEmailZDanymiDostepowymi;
+
+    @FindBy(xpath = "//input[contains(@name, 'notification')]")
+    private WebElement checkboxWyslijPotwierdzenieZamowienia;
+
+    @FindBy(xpath = "//input[contains(@name, 'mailing')]")
+    private WebElement checkboxZapiszNaListeMailingowa;
+
+
+    // Przyciski:
+    @FindBy(xpath = "//*[contains(@value, 'Import kursantów')]")
+    private WebElement importKursantowButton;
+
+
 
 
 

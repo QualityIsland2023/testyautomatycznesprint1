@@ -1,10 +1,10 @@
-package pages;
+package pages.narzedzia;
 import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class PowiadomieniaPage {
+public class LogiPage {
 
     /************************Seckja techniczno konfiguracyjna START **********************************************/
     //przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
@@ -16,7 +16,7 @@ public class PowiadomieniaPage {
     private Waits wait;
 
     //konstrukotor, który tworzy nową instancję strony logowania
-    public PowiadomieniaPage(WebDriver driver){
+    public LogiPage(WebDriver driver){
         this.driver = driver;
         this.wait = new Waits(driver);
         PageFactory.initElements(driver, this);
@@ -26,32 +26,32 @@ public class PowiadomieniaPage {
 
     /************************Repozytorium webelementów START **********************************************/
 
-    String poprawnyURLZakladkiPowiadomienia = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-notifications";
-    String poprawnyTytulZakladkiPowiadomienia = "Powiadomienia ‹ Platforma kursów online — WordPress";
+    String poprawnyURLZakladkiLogi = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-logs";
+    String poprawnyTytulZakladkiLogi = "Logi ‹ Platforma kursów online — WordPress";
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
 
 
     /****************************Operacje na webelementach START **********************************************/
 
-    public String zwrocAktualnyURLZakladkiPowiadomienia(){
+    public String zwrocAktualnyURLZakladkiLogi(){
         System.out.println("Aktualny adres URL strony to: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 
-    public String zwrocPoprawnyURLZakladkiPowiadomienia(){
-        System.out.println("Poprawny adres URL strony to: " + poprawnyURLZakladkiPowiadomienia);
-        return poprawnyURLZakladkiPowiadomienia;
+    public String zwrocPoprawnyURLZakladkiLogi(){
+        System.out.println("Poprawny adres URL strony to: " + poprawnyURLZakladkiLogi);
+        return poprawnyURLZakladkiLogi;
     }
 
-    public String zwrocAktualnyTytulZakladkiPowiadomienia(){
+    public String zwrocAktualnyTytulZakladkiLogi(){
         System.out.println("Aktualny tytul strony to: " + driver.getTitle());
         return driver.getTitle();
     }
 
-    public String zwrocPoprawnyTytulZakladkiPowiadomienia(){
-        System.out.println("Poprawny tytul strony to: " + poprawnyTytulZakladkiPowiadomienia);
-        return poprawnyTytulZakladkiPowiadomienia;
+    public String zwrocPoprawnyTytulZakladkiLogi(){
+        System.out.println("Poprawny tytul strony to: " + poprawnyTytulZakladkiLogi);
+        return poprawnyTytulZakladkiLogi;
     }
 
     /**********************************Operacje na webelementach KONIEC ******************************************/

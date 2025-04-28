@@ -3,7 +3,7 @@ package tests.narzedziaTests;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.LogiPage;
+import pages.narzedzia.LogiPage;
 import pages.LoginPageNew;
 import pages.PanelPage;
 import tests.TestBase;

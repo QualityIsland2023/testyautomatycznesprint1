@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.PowiadomieniaPage;
+import pages.narzedzia.PowiadomieniaPage;
 import tests.TestBase;
 
 public class PowiadomieniaPageTest extends TestBase {

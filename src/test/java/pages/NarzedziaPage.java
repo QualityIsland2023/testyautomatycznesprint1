@@ -61,6 +61,9 @@ public class NarzedziaPage {
     @FindBy(xpath = "//input[contains(@name, 'mailing')]")
     private WebElement checkboxZapiszNaListeMailingowa;
 
+    @FindBy(xpath = "//*[contains(@value, 'Import kursantów')]")
+    private WebElement importKursantowButton;
+
 
 
     /***************************Repozytorium webelementów KONIEC ******************************************/
@@ -184,6 +187,20 @@ public class NarzedziaPage {
                 System.out.println("BŁĄD! Nie widać checkboxa na stronie NARZĘDZIA: " + checkbox.getAttribute("name"));
 
             }
+        }
+
+        return status;
+    }
+
+    // Sprawdza, czy przycisk "Import kursantów" istnieje stronie
+    public boolean zweryfikujCzyPrzyciskImportKursantowIstnieje(){
+        boolean status = false;
+
+        if (importKursantowButton.isDisplayed()) {
+            status = true;
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje przycisk: " + importKursantowButton.getAccessibleName());
+        } else {
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma przycisku DODAJ KOLEJNY");
         }
 
         return status;

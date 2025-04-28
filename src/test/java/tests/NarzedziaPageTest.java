@@ -96,6 +96,15 @@ public class NarzedziaPageTest extends TestBase {
                 "Checkboxy na stronie NARZĘDZIA są zaznaczone");
     }
 
+    @Test(priority = 80, enabled = true, description = "Weryfikacja, czy istnieje przycisk IMPORT KURSANTÓW na stronie NARZĘDZIA")
+    public void weryfikacjaWidocznosciPrzyciskuImportKursantow() {
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiNarzedzia();
+
+        Assert.assertTrue(narzedziaPage.zweryfikujCzyPrzyciskImportKursantowIstnieje(),
+                "Nie znaleziono przycisku IMPORT KURSANTÓW na stronie NARZĘDZIA");
+    }
+
 
 
 

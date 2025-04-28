@@ -33,17 +33,21 @@ public class SprzedazZamowieniaPage {
 
     //************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) tytuł strony "Zamówienia"
+    // STAŁE POPRAWNE ELEMENTY STRONY:
+
+    // Tytuł strony "Zamówienia"
     String poprawnyTytulStronyZamowienia = "Zamówienia ‹ Platforma kursów online — WordPress";
-
-    // Oczekiwany (poprawny) adres URL strony "Zamówienia"
+    // URL strony "Zamówienia"
     String poprawnyURLStronyZamowienia = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-payment-history";
-
-    // Oczekiwana (poprawna) informacja w sekcji po kliknięciu przycisku "Typy danych"
+    // Tekst informacji w sekcji po kliknięciu przycisku "Typy danych"
     String poprawnaInformacjaWSekcjiTypyDanych = "Wybierz, które kolumny mają być widoczne w tabeli:";
-
+    // Liczba checkboxów w polu "Typy danych"
     int prawidlowaLiczbaChecboxowTypyDanych = 17;
 
+
+    // ELEMENTY NA STRONIE:
+
+    // Przyciski:
     @FindBy(xpath = "//*[contains(text(),'Dodaj zamówienie')]")
     private WebElement dodajZamowienieButton;
 
@@ -53,16 +57,22 @@ public class SprzedazZamowieniaPage {
     @FindBy(xpath = "//button[@class='filters-button ']")
     private WebElement filtrujButton;
 
+
+    // Tekst informacji w polu "Typy danych":
     @FindBy(className = "dynamic-table__column-visibility-checkboxes__hint")
     private WebElement informacjaWSekcjiTypyDanych;
 
-    //    Xpath zamienny/alternatywny po poprawie błędu interpunkcyjnego w tekście informacji w sekcji "Typy danych"
+//    Xpath zamienny/alternatywny po poprawie błędu interpunkcyjnego w tekście informacji w sekcji "Typy danych"
 //    @FindBy(xpath = "//*[contains(text(),'Wybierz, które kolumny mają być widoczne w tabeli')]")
 //    private WebElement informacjaWSekcjiTypyDanych;
 
+
+    // Wszystkie checkboxy w polu "Typy danych":
     @FindBy(xpath = "//*[contains(@class,'checkbox-replacement')]")
     private List<WebElement> wszytkieCheckboxyTypyDanych;
 
+
+    // Nazwy checkboxów w polu "Typy danych":
     @FindBy(xpath = "//label[contains(text(),'ID')]")
     private WebElement idTypyDanych;
 
@@ -114,6 +124,8 @@ public class SprzedazZamowieniaPage {
     @FindBy(xpath = "//label[contains(text(),'Zaznaczone checkboxy')]")
     private WebElement zaznaczoneCheckboxyTypyDanych;
 
+
+
     public WebElement getPoleKolumnySortowaniaProdukty() {
         return driver.findElement(By.xpath("//tr/th[8]//input"));
     }
@@ -155,7 +167,7 @@ public class SprzedazZamowieniaPage {
 
     // Klika przycisk "Dodaj zamówienie" i wypisuje go w konsoli
     public void kliknijDodajZamowienieButton() {
-        System.out.println("Klikam przycisk: " + dodajZamowienieButton.getText());
+        System.out.println("Kliknięcie przycisku: " + dodajZamowienieButton.getText());
         wait.waitForVisibility(dodajZamowienieButton).click();
     }
 
@@ -189,7 +201,7 @@ public class SprzedazZamowieniaPage {
 
     // Klika przycisk "Typy danych" i wypisuje go w konsoli
     public void kliknijTypyDanychButton() {
-        System.out.println("Klikam przycisk: " + typyDanychButton.getText());
+        System.out.println("Kliknięcie przycisku: " + typyDanychButton.getText());
         wait.waitForVisibility(typyDanychButton).click();
     }
 
@@ -235,6 +247,9 @@ public class SprzedazZamowieniaPage {
 
     // Sprawdza, czy aktualne nazwy checkboxów w polu "Typy danych" są takie same, jak oczekiwane
     public boolean zweryfikujNazwyCheckboxowTypyDanych() {
+
+        // Mapa z nazwami checkboxów (oczekiwana, obecna)
+        // W przypadku zmian w nazwach checkboxów należy wprowadzić tu odpowiednie zmiany (zmienić tekst / dodać nowy checkbox i jego nazwę)
         Map<String, WebElement> nazwyPozycji = new HashMap<>();
         nazwyPozycji.put("ID", idTypyDanych);
         nazwyPozycji.put("Imię i nazwisko", imieINazwiskoTypyDanych);
@@ -256,10 +271,12 @@ public class SprzedazZamowieniaPage {
 
         boolean status = true;
 
+        // Iterujemy po mapie z nazwami checkboxów
         for (Map.Entry<String, WebElement> entry : nazwyPozycji.entrySet()) {
             String oczekiwanaNazwaPozycji = entry.getKey();
             WebElement aktualnaNazwaPozycji = entry.getValue();
 
+            // Sprawdzamy, czy nazwa checkboxa jest widoczna i zgodna z oczekiwaną
             try {
                 WebElement obecnyElement = wait.waitForVisibility(aktualnaNazwaPozycji);
 

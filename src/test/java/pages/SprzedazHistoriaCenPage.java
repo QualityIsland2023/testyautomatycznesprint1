@@ -28,13 +28,15 @@ public class SprzedazHistoriaCenPage {
 
     //************************ Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) tytuł strony "Historia cen"
-    String poprawnyTytulStronyHistoriaCen = "Historia cen ‹ Platforma kursów online — WordPress";
+    // STAŁE POPRAWNE ELEMENTY STRONY:
 
-    // Oczekiwany (poprawny) adres URL strony "Historia cen"
+    // Tytuł strony "Historia cen"
+    String poprawnyTytulStronyHistoriaCen = "Historia cen ‹ Platforma kursów online — WordPress";
+    // URL strony "Historia cen"
     String poprawnyURLStronyHistoriaCen = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-price-history";
 
 
+    // ELEMENTY NA STRONIE:
 
 
 

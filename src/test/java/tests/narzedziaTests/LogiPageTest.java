@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.narzedzia.LogiPage;
 import pages.LoginPageNew;
 import pages.PanelPage;
+import pages.narzedzia.NarzedziaPage;
 import tests.TestBase;
 
 public class LogiPageTest extends TestBase {
@@ -14,6 +15,7 @@ public class LogiPageTest extends TestBase {
 
     private LoginPageNew loginPageNew; //instancja strony logowania
     private PanelPage panelPage;
+    private NarzedziaPage narzedziaPage;
     private LogiPage logiPage;
 
     /*****************sekja techniczna KONIEC **********************************************/
@@ -23,6 +25,7 @@ public class LogiPageTest extends TestBase {
         //inicjalizacja strony logowania , linijka techniczna, konfiguracyjna
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
+        narzedziaPage = new NarzedziaPage(driver);
         logiPage = new LogiPage(driver);
 
     }
@@ -46,6 +49,20 @@ public class LogiPageTest extends TestBase {
         panelPage.przejdzDoZakladkiLogi();
 
         Assert.assertEquals(logiPage.zwrocAktualnyTytulZakladkiLogi(), logiPage.zwrocPoprawnyTytulZakladkiLogi());
+    }
+
+    @Test(priority = 30, enabled = true, description = "Weryfikacja przejścia do strony LOGI z poziomu strony NARZĘDZIA")
+    public void weryfikacjaPrzejsciaDoStronyLogiZPoziomuNarzedzia() {
+
+        loginPageNew.wykonajLogowanie();
+        panelPage.przejdzDoZakladkiNarzedzia();
+        narzedziaPage.przejdzDoZakladkiNarzedziaLogiMenuBoczne();
+
+        Assert.assertEquals(logiPage.zwrocAktualnyTytulZakladkiLogi(), logiPage.zwrocPoprawnyTytulZakladkiLogi(),
+                "Tytuł strony LOGI nie jest poprawny");
+
+        Assert.assertEquals(logiPage.zwrocAktualnyURLZakladkiLogi(), logiPage.zwrocPoprawnyURLZakladkiLogi(),
+                "Adres url strony LOGI nie jest poprawny");
     }
 
 

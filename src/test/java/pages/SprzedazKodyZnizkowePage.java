@@ -30,12 +30,17 @@ public class SprzedazKodyZnizkowePage {
 
     /************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) tytuł strony "Kody zniżkowe"
-    String poprawnyTytulStronyKodyZnizkowe = "Kody zniżkowe ‹ Platforma kursów online — WordPress";
+    // STAŁE POPRAWNE ELEMENTY STRONY:
 
-    // Oczekiwany (poprawny) adres URL strony "Kody zniżkowe"
+    // Tytuł strony "Kody zniżkowe"
+    String poprawnyTytulStronyKodyZnizkowe = "Kody zniżkowe ‹ Platforma kursów online — WordPress";
+    // URL strony "Kody zniżkowe"
     String poprawnyURLStronyKodyZnizkowe = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-discounts";
 
+
+    // ELEMENTY NA STRONIE:
+
+    // Przyciski:
     @FindBy(xpath = "//a[contains(text(),'Dodaj kod zniżkowy')]")
     private WebElement dodajKodZnizkowyButton;
 

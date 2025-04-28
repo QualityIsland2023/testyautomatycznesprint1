@@ -150,15 +150,10 @@ public class SprzedazUtworzPlatnoscPage {
     public boolean zwrocSekcjeTytulowaUtworzNowaPlatnosc(){
         boolean status = false;
 
-        try {
-            boolean sekcjaWidoczna = sekcjaTytulowaUtworzNowaPlatnosc.isDisplayed();
-
-            if (sekcjaWidoczna) {
-                status = true;
-                System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje sekcja tytułowa UTWÓRZ NOWĄ PŁATNOŚĆ");
-            }
-
-        } catch (Exception e) {
+        if (sekcjaTytulowaUtworzNowaPlatnosc.isDisplayed()) {
+            status = true;
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje sekcja tytułowa UTWÓRZ NOWĄ PŁATNOŚĆ");
+        } else {
             System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma sekcji tytułowej UTWÓRZ NOWĄ PŁATNOŚĆ");
         }
 
@@ -169,15 +164,10 @@ public class SprzedazUtworzPlatnoscPage {
     public boolean zweryfikujCzyListaProduktowIstnieje(){
         boolean status = false;
 
-        try {
-            boolean listaWidoczna = listaWybierzProdukty.isDisplayed();
-
-            if (listaWidoczna) {
-                status = true;
-                System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje lista: " + listaWybierzProdukty.getText());
-            }
-
-        } catch (Exception e) {
+        if (listaWybierzProdukty.isDisplayed()) {
+            status = true;
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje lista: " + listaWybierzProdukty.getText());
+        } else {
             System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma listy WYBIERZ PRODUKTY");
         }
 
@@ -188,15 +178,10 @@ public class SprzedazUtworzPlatnoscPage {
     public boolean zweryfikujCzyListaDlaStatusPlatnosciIstnieje(){
         boolean status = false;
 
-        try {
-            boolean listaWidoczna = wait.waitForVisibility(listaStatusPlatnosci).isDisplayed();
-
-            if (listaWidoczna) {
-                status = true;
-                System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje lista dla 'Status płatności'");
-            }
-
-        } catch (Exception e) {
+        if (listaStatusPlatnosci.isDisplayed()) {
+            status = true;
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje lista dla 'Status płatności'");
+        } else {
             System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma listy dla 'Status płatności'");
         }
 
@@ -207,15 +192,10 @@ public class SprzedazUtworzPlatnoscPage {
     public boolean zweryfikujCzyPrzyciskDodajKolejnyIstnieje(){
         boolean status = false;
 
-        try {
-            boolean przyciskWidoczny = dodajKolejnyButton.isDisplayed();
-
-            if (przyciskWidoczny) {
-                status = true;
-                System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje przycisk: " + dodajKolejnyButton.getText());
-            }
-
-        } catch (Exception e) {
+        if (dodajKolejnyButton.isDisplayed()) {
+            status = true;
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje przycisk: " + dodajKolejnyButton.getText());
+        } else {
             System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma przycisku DODAJ KOLEJNY");
         }
 
@@ -226,15 +206,10 @@ public class SprzedazUtworzPlatnoscPage {
     public boolean zweryfikujCzyPrzyciskUtworzPlatnoscIstnieje(){
         boolean status = false;
 
-        try {
-            boolean przyciskWidoczny = wait.waitForVisibility(utworzPlatnoscButton).isDisplayed();
-
-            if (przyciskWidoczny) {
-                status = true;
-                System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje przycisk: " + utworzPlatnoscButton.getAccessibleName());
-            }
-
-        } catch (Exception e) {
+        if (utworzPlatnoscButton.isDisplayed()) {
+            status = true;
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje przycisk: " + utworzPlatnoscButton.getAccessibleName());
+        } else {
             System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma przycisku DODAJ KOLEJNY");
         }
 

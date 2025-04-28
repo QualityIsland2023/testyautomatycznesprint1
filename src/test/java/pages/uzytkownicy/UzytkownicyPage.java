@@ -72,7 +72,7 @@ import static helpers.Utils.generujLiczbeOd1Do100000JakoString;
     @FindBy(xpath = "//div[contains(text(), 'Nowe konto użytkownika zostało pomyślnie utworzone')]")
     private WebElement komunikatPomyslneUtworzenieUzytkownika;
 
-    @FindBy (xpath = "//td[contains(@class, 'type-default')]")
+    @FindBy(xpath = "//td[contains(@role, 'cell')]")
     private List<WebElement> wszystkieKomorkiTabeli;
 
      /***************************Repozytorium webelementów KONIEC ******************************************/

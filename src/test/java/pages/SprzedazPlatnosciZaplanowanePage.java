@@ -28,13 +28,15 @@ public class SprzedazPlatnosciZaplanowanePage {
 
     //************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) tytuł strony "Płatności zaplanowane"
-    String poprawnyTytulStronyPlatnosciZaplanowane = "Płatności zaplanowane ‹ Platforma kursów online — WordPress";
+    // STAŁE POPRAWNE ELEMENTY STRONY:
 
-    // Oczekiwany (poprawny) adres URL strony "Płatności zaplanowane"
+    // Tytuł strony "Płatności zaplanowane"
+    String poprawnyTytulStronyPlatnosciZaplanowane = "Płatności zaplanowane ‹ Platforma kursów online — WordPress";
+    // URL strony "Płatności zaplanowane"
     String poprawnyURLStronyPlatnosciZaplanowane = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-scheduled-payments";
 
 
+    // ELEMENTY NA STRONIE:
 
 
 

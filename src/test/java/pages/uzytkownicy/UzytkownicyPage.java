@@ -8,9 +8,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.ObjectOutputStream;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static helpers.Utils.generujLiczbeOd1Do100000JakoString;
 
@@ -68,11 +72,8 @@ import static helpers.Utils.generujLiczbeOd1Do100000JakoString;
     @FindBy(xpath = "//div[contains(text(), 'Nowe konto użytkownika zostało pomyślnie utworzone')]")
     private WebElement komunikatPomyslneUtworzenieUzytkownika;
 
-     @FindBy (xpath = "//*[contains(@role, 'rowgroup')]/tr[1]")
-     private List<WebElement> pierwszyRzadTabeli;
-
-     @FindBy (xpath = "//table[contains(@class, 'dynamic-table loaded')]/tbody/tr")
-     private List<WebElement> wszystkieRzedyTabeli;
+    @FindBy (xpath = "//td[contains(@class, 'type-default')]")
+    private List<WebElement> wszystkieKomorkiTabeli;
 
      /***************************Repozytorium webelementów KONIEC ******************************************/
 
@@ -135,48 +136,33 @@ import static helpers.Utils.generujLiczbeOd1Do100000JakoString;
         return status;
      }
 
-     // Sprawdza, czy użytkownik został poprawnie dodany do tabeli w pierwszym rzędzie wg danych: nazwa, email, imię, nazwisko
-     public boolean sprawdzCzyWidacNowegoUtworzonegoUzytkownika(){
-             boolean status = false;
+     // Sprawdza, czy użytkownik został poprawnie dodany do tabeli
+     // -> czy w komórkach tabeli widać dane użytkownika: nazwa, email, imię, nazwisko
+     public boolean sprawdzCzyWidacDaneNowegoUtworzonegoUzytkownikaWTabeli(){
+        boolean status = false;
 
-                for (WebElement element : pierwszyRzadTabeli) {
+        wait.waitForVisibility(zaladowanieTabeli);
 
-                    if (element.getText().contains(nowyUzytkownikNazwa)) {
-                        status = true;
-                        System.out.println("Nazwa użytkownika widoczna na stronie: " + nowyUzytkownikNazwa);
-                    } else {
-                        System.out.println("Nie widać nazwy użytkownika: " + element.getText());
+        List<String> wartosci = wszystkieKomorkiTabeli
+                .stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
 
-                    }
+        List<String> oczekiwaneWartosci = Arrays.asList(nowyUzytkownikNazwa, nowyUzytkownikEmail,
+                nowyUzytkownikImie + " " + nowyUzytkownikNazwisko);
 
-                    if (element.getText().contains(nowyUzytkownikEmail)) {
-                        status = true;
-                        System.out.println("Email użytkownika widoczny na stronie: " + nowyUzytkownikEmail);
-                    } else {
-                        System.out.println("Nie widać emaila użytkownika: " + element.getText());
+        for (String wartosc : oczekiwaneWartosci) {
+            if (wartosci.contains(wartosc)) {
+                status = true;
+                System.out.println("Znaleziono użytkownika w tabeli: " + wartosc);
+            } else {
+                System.out.println("Nie widać użytkownika: " + wartosc);
+            }
+        }
 
-                    }
+        return status;
 
-                    if (element.getText().contains(nowyUzytkownikImie)) {
-                        status = true;
-                        System.out.println("Imię użytkownika widoczne na stronie: " + nowyUzytkownikImie);
-                    } else {
-                        System.out.println("Nie widać imienia użytkownika: " + element.getText());
-
-                    }
-
-                    if (element.getText().contains(nowyUzytkownikNazwisko)) {
-                        status = true;
-                        System.out.println("Nazwisko użytkownika widoczne na stronie: " + nowyUzytkownikNazwisko);
-                    } else {
-                        System.out.println("Nie widać nazwiska użytkownika: " + element.getText());
-
-                    }
-                }
-
-             return status;
-         }
-
+    }
 
 
 

@@ -59,8 +59,9 @@ public class UzytkownicyPageTest extends TestBase {
     }
 
     @Test(priority = 20, enabled = true, description = "Weryfikacja poprawności pełnego procesu tworzenia nowego użytkownika: "
-            + "wprowadzenie nazwy, emaila, imienia i nazwiska, wybór języka polskiego, wygenerowanie hasła o domyślnym statusie 'Silne', "
-            + "domyślne zaznaczony checkbox 'Wyślij powiadomienie użytkownikowi', kliknięcie przycisku 'Utwórz użytkownika'.")
+            + "nazwa, email, imię, nazwisko, język 'Polski', generuj hasło o domyślnym statusie 'Silne', "
+            + "domyślne zaznaczony checkbox 'Wyślij powiadomienie użytkownikowi', kliknięcie przycisku 'Utwórz użytkownika'."
+            + "Oczekiwany wynik: pojawia się komunikat o pomyślnym utworzeniu użytkownika i widać dane użytkownika w tabeli.")
     public void weryfikacjaUtworzeniaNowegoUzytkownika() {
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkaUzytkownicyMenuBoczne();
@@ -73,9 +74,10 @@ public class UzytkownicyPageTest extends TestBase {
         utworzUzytkownikaPage.sprawdzCzyCheckboxWyslijPowiadomienieUzytkownikowiJestZaznaczony();
         utworzUzytkownikaPage.nacisnijPrzyciskUtworzUzytkownika();
 
-        Assert.assertTrue(uzytkownicyPage.sprawdzCzyWidacKomunikatUzytkownikUtworzonyPomyslnie()
-                        &&uzytkownicyPage.sprawdzCzyWidacNowegoUtworzonegoUzytkownika(),
+        Assert.assertTrue(uzytkownicyPage.sprawdzCzyWidacKomunikatUzytkownikUtworzonyPomyslnie(),
                 "Nie udało się poprawnie utworzyć użytkownika.");
+        Assert.assertTrue(uzytkownicyPage.sprawdzCzyWidacDaneNowegoUtworzonegoUzytkownikaWTabeli(),
+                "Nie widać danych użytkownika w tabeli.");
     }
 
 

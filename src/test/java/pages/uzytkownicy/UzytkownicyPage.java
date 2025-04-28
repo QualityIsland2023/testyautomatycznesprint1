@@ -154,9 +154,9 @@ import static helpers.Utils.generujLiczbeOd1Do100000JakoString;
         for (String wartosc : oczekiwaneWartosci) {
             if (wartosci.contains(wartosc)) {
                 status = true;
-                System.out.println("Znaleziono użytkownika w tabeli: " + wartosc);
+                System.out.println("Znaleziono dane użytkownika w tabeli: " + wartosc);
             } else {
-                System.out.println("Nie widać użytkownika: " + wartosc);
+                System.out.println("Nie widać danych użytkownika: " + wartosc);
             }
         }
 

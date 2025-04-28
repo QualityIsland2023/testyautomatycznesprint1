@@ -28,13 +28,15 @@ public class SprzedazKlienciPage {
 
     //************************Repozytorium webelementów START **********************************************/
 
-    // Oczekiwany (poprawny) tytuł strony "Klienci"
-    String poprawnyTytulStronyKlienci = "Klienci ‹ Platforma kursów online — WordPress";
+    // STAŁE POPRAWNE ELEMENTY STRONY:
 
-    // Oczekiwany (poprawny) adres URL strony "Klienci"
+    // Tytuł strony "Klienci"
+    String poprawnyTytulStronyKlienci = "Klienci ‹ Platforma kursów online — WordPress";
+    // URL strony "Klienci"
     String poprawnyURLStronyKlienci = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-customers";
 
 
+    // ELEMENTY NA STRONIE:
 
 
 

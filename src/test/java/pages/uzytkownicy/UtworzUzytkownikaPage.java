@@ -139,7 +139,7 @@ import java.util.List;
     // Klika przycisk "Utwórz użytkownika"
     public void nacisnijPrzyciskUtworzUzytkownika(){
         wait.waitForVisibility(utworzUzytkownikaButton).click();
-        System.out.println("Naciśnięcie przycisku 'Utwórz użytkownika'.");
+        System.out.println("Kliknięcie przycisku 'Utwórz użytkownika'.");
     }
 
 

@@ -267,6 +267,28 @@ public class NarzedziaPage {
 
         return status;
     }
+    // Kliknięcia w podpozycje w bocznym menu głównym NARZĘDZIA
+        // Przejście do strony "Powiadomienia"
+    public void przejdzDoZakladkiNarzedziaPowiadomieniaMenuBoczne() {
+        wait.waitForVisibility(powiadomieniaMenuBoczne).click();
+        System.out.println("Kliiknięcie podpozycji 'Powiadomienia' w menu bocznym 'Narzędzia'");
+    }
+        // Przejście do strony "Logi"
+    public void przejdzDoZakladkiNarzedziaLogiMenuBoczne() {
+        wait.waitForVisibility(logiMenuBoczne).click();
+        System.out.println("Kliiknięcie podpozycji 'Logi' w menu bocznym 'Narzędzia'");
+    }
+        // Przejście do strony "Webhooki"
+    public void przejdzDoZakladkiNarzedziaWebhookiMenuBoczne() {
+        wait.waitForVisibility(webhookiMenuBoczne).click();
+        System.out.println("Kliiknięcie podpozycji 'Webhooki' w menu bocznym 'Narzędzia'");
+    }
+        // Przejście do strony "Przekierowania"
+    public void przejdzDoZakladkiNarzedziaPrzekierowaniaMenuBoczne() {
+        wait.waitForVisibility(przekierowaniaMenuBoczne).click();
+        System.out.println("Kliiknięcie podpozycji 'Przekierowania' w menu bocznym 'Narzędzia'");
+    }
+
 
     /**********************************Operacje na webelementach KONIEC ******************************************/
 

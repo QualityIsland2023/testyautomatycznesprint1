@@ -141,16 +141,21 @@ import static helpers.Utils.generujLiczbeOd1Do100000JakoString;
      public boolean sprawdzCzyWidacDaneNowegoUtworzonegoUzytkownikaWTabeli(){
         boolean status = false;
 
+        // Czekamy na załadowanie tabeli
         wait.waitForVisibility(zaladowanieTabeli);
 
+        // Zbieramy wszystkie komórki tabeli do listy
+        // -> używamy streama, aby pobrać tekst z każdej komórki i złożyć je w jedną listę
         List<String> wartosci = wszystkieKomorkiTabeli
                 .stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
 
+        // Lista oczekiwanych wartości, które mają być widoczne w tabeli
         List<String> oczekiwaneWartosci = Arrays.asList(nowyUzytkownikNazwa, nowyUzytkownikEmail,
                 nowyUzytkownikImie + " " + nowyUzytkownikNazwisko);
 
+        // Iterujemy po oczekiwanych wartościach i sprawdzamy, czy są obecne w liście z wartościami
         for (String wartosc : oczekiwaneWartosci) {
             if (wartosci.contains(wartosc)) {
                 status = true;

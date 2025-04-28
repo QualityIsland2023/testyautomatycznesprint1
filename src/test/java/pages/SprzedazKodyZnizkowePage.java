@@ -3,6 +3,8 @@ package pages;
 import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class SprzedazKodyZnizkowePage {
@@ -34,10 +36,8 @@ public class SprzedazKodyZnizkowePage {
     // Oczekiwany (poprawny) adres URL strony "Kody zniżkowe"
     String poprawnyURLStronyKodyZnizkowe = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-discounts";
 
-
-
-
-
+    @FindBy(xpath = "//a[contains(text(),'Dodaj kod zniżkowy')]")
+    private WebElement dodajKodZnizkowyButton;
 
 
     //***************************Repozytorium webelementów KONIEC ******************************************/
@@ -69,10 +69,10 @@ public class SprzedazKodyZnizkowePage {
         return poprawnyURLStronyKodyZnizkowe;
     }
 
-
-
-
-
+    //kliknięcie w przycisk 'Dodaj kod zniżkowy'
+    public void kliknijWDodajKodZnizkowy(){
+        wait.waitForClickability(dodajKodZnizkowyButton).click();
+    }
 
     //**********************************Operacje na webelementach KONIEC ******************************************/
 

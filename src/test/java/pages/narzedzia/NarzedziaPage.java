@@ -156,6 +156,10 @@ public class NarzedziaPage {
 
     // Sprawdza, czy aktualne nazwy zakładek w menu bocznym strony "Narzędzia" są widoczne i takie same, jak oczekiwane
     public boolean zweryfikujNazwyZakladekMenuBoczneNarzedzia() {
+
+        // Mapa z nazwami zakładek w menu bocznym (oczekiwana, obecna)
+        // W przypadku zmian w nazwach zakładek należy wprowadzić tu odpowiednie zmiany:
+        // (zmienić tekst zakładki / dodać nazwę zakładki i jej WebElement)
         Map<String, WebElement> nazwyPozycji = new HashMap<>();
         nazwyPozycji.put("Import kursantów", zakladkaImportKursantow);
         nazwyPozycji.put("Zablokowane adresy email", zakladkaZablokowaneAdresyEmail);
@@ -164,10 +168,12 @@ public class NarzedziaPage {
 
         boolean status = true;
 
+        // Iterujemy po mapie z nazwami zakładek
         for (Map.Entry<String, WebElement> entry : nazwyPozycji.entrySet()) {
             String oczekiwanaNazwaPozycji = entry.getKey();
             WebElement aktualnaNazwaPozycji = entry.getValue();
 
+            // Sprawdzamy, czy nazwa zakładki jest widoczna i zgodna z oczekiwaną
             try {
                 WebElement obecnyElement = wait.waitForVisibility(aktualnaNazwaPozycji);
 
@@ -202,7 +208,12 @@ public class NarzedziaPage {
     public boolean zweryfikujCzyCheckboxSaNieznaczoneNarzedzia() {
         boolean status = true;
 
+        // Iterujemy po wszystkich checkboxach na stronie
         for(WebElement checkbox : ckeckboxyNaStronie){
+
+            // Sprawdzamy, czy checkbox jest domyślnie zaznaczony:
+            // Jeśli tak -> BŁĄD
+            // Jeśli nie -> OK
             if(checkbox.isSelected()){
                 status = false;
                 System.out.println("BŁĄD! Checkbox domyślnie zaznaczony: " + checkbox.getAttribute("name"));
@@ -218,7 +229,12 @@ public class NarzedziaPage {
     public boolean zweryfikujCzyCheckboxSaWidoczneNarzedzia() {
         boolean status = true;
 
+        // Iterujemy po wszystkich checkboxach na stronie
         for(WebElement checkbox : ckeckboxyNaStronie){
+
+            // Sprawdzamy, czy checkbox jest widoczny na stronie:
+            // Jeśli tak -> OK
+            // Jeśli nie -> BŁĄD
             if(checkbox.isDisplayed()){
                 System.out.println("Checkbox widoczny na stronie NARZĘDZIA: " + checkbox.getAttribute("name"));
             }else{
@@ -247,6 +263,10 @@ public class NarzedziaPage {
 
     // Sprawdza, czy na pasku bocznym menu głównego "Narzędzia" podpozycje są widoczne i mają aktualne nazwy
     public boolean zweryfikujWidocznoscINazwyPodpozycjiMenuGlowneNarzedzia() {
+
+        // Mapa z nazwami podpozycji w menu głównym "Narzędzia" (oczekiwana, obecna)
+        // W przypadku zmian w nazwach podpozycji należy wprowadzić tu odpowiednie zmiany:
+        // (zmienić tekst podpozycji / dodać nazwę podpozycji i jej WebElement)
         Map<String, WebElement> nazwyPozycji = new HashMap<>();
         nazwyPozycji.put("Narzędzia", narzedziaMenuBoczne);
         nazwyPozycji.put("Powiadomienia", powiadomieniaMenuBoczne);
@@ -256,10 +276,12 @@ public class NarzedziaPage {
 
         boolean status = true;
 
+        // Iterujemy po mapie z nazwami podpozycji
         for (Map.Entry<String, WebElement> entry : nazwyPozycji.entrySet()) {
             String oczekiwanaNazwaPozycji = entry.getKey();
             WebElement aktualnaNazwaPozycji = entry.getValue();
 
+            // Sprawdzamy, czy nazwa podpozycji jest widoczna i zgodna z oczekiwaną
             try {
                 WebElement obecnyElement = wait.waitForVisibility(aktualnaNazwaPozycji);
 
@@ -289,27 +311,34 @@ public class NarzedziaPage {
 
         return status;
     }
-    // Kliknięcia w podpozycje w bocznym menu głównym NARZĘDZIA
-        // Przejście do strony "Powiadomienia"
+
+
+    // KLIKNIĘCIA W PODPOZYCJE W BOCZNYM MENU GŁÓWNYM "NARZĘDZIA":
+
+        // -> Przejście do strony "Powiadomienia"
     public void przejdzDoZakladkiNarzedziaPowiadomieniaMenuBoczne() {
         wait.waitForClickability(powiadomieniaMenuBoczne).click();
         System.out.println("Kliiknięcie podpozycji 'Powiadomienia' w menu bocznym 'Narzędzia'");
     }
-        // Przejście do strony "Logi"
+        // -> Przejście do strony "Logi"
     public void przejdzDoZakladkiNarzedziaLogiMenuBoczne() {
         wait.waitForClickability(logiMenuBoczne).click();
         System.out.println("Kliiknięcie podpozycji 'Logi' w menu bocznym 'Narzędzia'");
     }
-        // Przejście do strony "Webhooki"
+        // -> Przejście do strony "Webhooki"
     public void przejdzDoZakladkiNarzedziaWebhookiMenuBoczne() {
         wait.waitForClickability(webhookiMenuBoczne).click();
         System.out.println("Kliiknięcie podpozycji 'Webhooki' w menu bocznym 'Narzędzia'");
     }
-        // Przejście do strony "Przekierowania"
+        // -> Przejście do strony "Przekierowania"
     public void przejdzDoZakladkiNarzedziaPrzekierowaniaMenuBoczne() {
         wait.waitForClickability(przekierowaniaMenuBoczne).click();
         System.out.println("Kliiknięcie podpozycji 'Przekierowania' w menu bocznym 'Narzędzia'");
     }
+
+
+
+
 
 
     /**********************************Operacje na webelementach KONIEC ******************************************/

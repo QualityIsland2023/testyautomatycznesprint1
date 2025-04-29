@@ -8,6 +8,9 @@ import pages.PanelPage;
 import pages.uzytkownicy.EdytujUzytkownikaPage;
 import pages.uzytkownicy.UzytkownicyPage;
 import tests.TestBase;
+import static helpers.Utils.generatePassword;
+
+
 
 
 public class EdytujUzytkownikaPageTest extends TestBase {
@@ -41,10 +44,10 @@ public class EdytujUzytkownikaPageTest extends TestBase {
         loginPageNew.wykonajLogowanie();
         panelPage.przejdzDoZakladkaUzytkownicyMenuBoczne();
         uzytkownicyPage.kliknijLinkTestUser();
-        edytujUzytkownikaPage.kliknijButtonUtworzNoweHaslo();
-        edytujUzytkownikaPage.kliknijButtonZaktualizujKontoUzytkownika();
+        edytujUzytkownikaPage.aktualizujKontoUzytkownika();
         Assert.assertTrue(edytujUzytkownikaPage.czyZmianaHaslaPoprawna(), "Proces zmiany hasla uzytkownika tetsowego przebiega nieprawidlowo");
     }
+
 
 
 

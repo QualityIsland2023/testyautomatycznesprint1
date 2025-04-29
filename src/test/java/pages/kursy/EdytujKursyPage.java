@@ -242,7 +242,7 @@ public class EdytujKursyPage {
 
     //zwrócenie oczekiwanych elementów listy sekcji zakładki 'Podstawowe' menu bocznego okna 'Edycja Kursów'
     public List<String> zwrocPoprawneNazywySekcjiZakladkiPodstawoweWMenuBocznymOknaEdycjaKursow() {
-        System.out.println("Aktualna lista sekcji zakładki 'Podstawowe' menu bocznego okna 'Edycja kursów': [Nazwa i opis, Umiejscowienie, Warianty, Graficzne, Widok, Certyfikacja, Brak autoryzacji, Sprzedaż]");
+        System.out.println("Poprawna lista sekcji zakładki 'Podstawowe' menu bocznego okna 'Edycja kursów': [Nazwa i opis, Umiejscowienie, Warianty, Graficzne, Widok, Certyfikacja, Brak autoryzacji, Sprzedaż]");
         return List.of("Nazwa i opis", "Umiejscowienie", "Warianty", "Graficzne", "Widok", "Certyfikacja", "Brak autoryzacji", "Sprzedaż");
     }
 

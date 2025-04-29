@@ -67,8 +67,8 @@ public class KodyZnizkowePageTest extends TestBase {
         //wpisanie nazwy kodu zniżkowego
         kodyZnizkoweDodajNowyPage.wpiszNazweKoduZnizkowego();
 
-        //wpisanie kodu zniżkowego zawierającego min 10 znaków w tym min 1 cyfrę
-        kodyZnizkoweDodajNowyPage.wpiszKodKoduZnizkowego();
+        //wpisanie kodu 'Kodu zniżkowego'
+        kodyZnizkoweDodajNowyPage.ustawienieKoduKoduZnizkowego();
 
         //ustawienie listy 'Typ' na stałą wartość
         kodyZnizkoweDodajNowyPage.ustawienieStalejWartosciTypuKoduZnizkowego();
@@ -97,9 +97,15 @@ public class KodyZnizkowePageTest extends TestBase {
         //kliknęcie przycisku ‘Dodaj kod zniżkowy’
         kodyZnizkoweDodajNowyPage.wybierzPrzyciskDodajKodZnizkowy();
 
-        Assert.assertTrue(kodyZnizkoweDodajNowyPage.sprawdzKodZnizkowyZostalUtworzony(),"Kod zniżkowy nie został utworzony");
+        //poczekanie na załadowanie tabeli kodów zniżkowych
+        kodyZnizkoweDodajNowyPage.poczekajNaZaladowanieTabeliKodyZnizkowe();
+
+        Assert.assertTrue(kodyZnizkoweDodajNowyPage.sprawdzKomunikatKodZnizkowyZostalDodany() &&
+                kodyZnizkoweDodajNowyPage.sprawdzKodZnizkowyZostalUtworzony(),
+                "Kod zniżkowy nie został utworzony");
 
     }
+
 
 
 

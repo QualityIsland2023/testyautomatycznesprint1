@@ -249,7 +249,8 @@ public class SprzedazZamowieniaPage {
     public boolean zweryfikujNazwyCheckboxowTypyDanych() {
 
         // Mapa z nazwami checkboxów (oczekiwana, obecna)
-        // W przypadku zmian w nazwach checkboxów należy wprowadzić tu odpowiednie zmiany (zmienić tekst / dodać nowy checkbox i jego nazwę)
+        // W przypadku zmian w nazwach checkboxów należy wprowadzić tu odpowiednie zmiany:
+        // (zmienić tekst / dodać nowy checkbox i jego nazwę)
         Map<String, WebElement> nazwyPozycji = new HashMap<>();
         nazwyPozycji.put("ID", idTypyDanych);
         nazwyPozycji.put("Imię i nazwisko", imieINazwiskoTypyDanych);

@@ -234,6 +234,9 @@ public class SprzedazUtworzPlatnoscPage {
 
     // Sprawdza, czy aktualne nazwy pozycji formularza są takie same, jak oczekiwane
     public boolean zweryfikujNazwyPozycjiFormularzaUtworzNowaPlatnosc() {
+        // Mapa z nazwami pozycji formularza (oczekiwana, obecna)
+        // W przypadku zmian w nazwach pozycji formularza należy wprowadzić tu odpowiednie zmiany:
+        // (zmienić tekst / dodać nową pozycję formularza i jej nazwę)
         Map<String, WebElement> nazwyPozycji = new HashMap<>();
         nazwyPozycji.put("Produkt", pozycjaProdukt);
         nazwyPozycji.put("Email lub ID kupującego", pozycjaEmailLubIDKupujacego);
@@ -246,10 +249,12 @@ public class SprzedazUtworzPlatnoscPage {
 
         boolean status = true;
 
+        // Iterujemy po mapie z nazwami pozycji formularza
         for (Map.Entry<String, WebElement> entry : nazwyPozycji.entrySet()) {
             String oczekiwanaNazwaPozycji = entry.getKey();
             WebElement aktualnaNazwaPozycji = entry.getValue();
 
+            // Sprawdzamy, czy nazwa pozycji formularza jest widoczna i zgodna z oczekiwaną
             try {
                 WebElement obecnyElement = wait.waitForVisibility(aktualnaNazwaPozycji);
 

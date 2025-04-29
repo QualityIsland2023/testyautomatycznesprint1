@@ -1,22 +1,23 @@
-package tests;
+package tests.sprzedazTests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.SprzedazUtworzPlatnoscPage;
-import pages.SprzedazZamowieniaPage;
+import pages.sprzedaz.ZamowieniaUtworzPlatnoscPage;
+import pages.sprzedaz.ZamowieniaPage;
+import tests.TestBase;
 
 
-public class SprzedazUtworzPlatnoscPageTest extends TestBase {
+public class ZamowieniaUtworzPlatnoscPageTest extends TestBase {
 
     //**************** Sekcja techniczna START **********************************************/
 
     private LoginPageNew loginPageNew;
     private PanelPage panelPage;
-    private SprzedazZamowieniaPage sprzedazZamowieniaPage;
-    private SprzedazUtworzPlatnoscPage sprzedazUtworzPlatnoscPage;
+    private ZamowieniaPage zamowieniaPage;
+    private ZamowieniaUtworzPlatnoscPage zamowieniaUtworzPlatnoscPage;
 
 
     //***************** Sekcja techniczna KONIEC **********************************************/
@@ -26,8 +27,8 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
         //inicjalizacja strony logowania, linijka techniczna, konfiguracyjna
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
-        sprzedazZamowieniaPage = new SprzedazZamowieniaPage(driver);
-        sprzedazUtworzPlatnoscPage = new SprzedazUtworzPlatnoscPage(driver);
+        zamowieniaPage = new ZamowieniaPage(driver);
+        zamowieniaUtworzPlatnoscPage = new ZamowieniaUtworzPlatnoscPage(driver);
     }
 
     @Test(priority = 10, enabled = true, description = "Weryfikacja tytułu strony UTWÓRZ PŁATNOŚĆ")
@@ -35,10 +36,10 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
 
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
-        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+        zamowieniaPage.kliknijDodajZamowienieButton();
 
-        Assert.assertEquals(sprzedazUtworzPlatnoscPage.zwrocAktualnyTytulStronyUtworzPlatnosc(),
-                sprzedazUtworzPlatnoscPage.zwrocPoprawnyTytulStronyUtworzPlatnosc(),
+        Assert.assertEquals(zamowieniaUtworzPlatnoscPage.zwrocAktualnyTytulStronyUtworzPlatnosc(),
+                zamowieniaUtworzPlatnoscPage.zwrocPoprawnyTytulStronyUtworzPlatnosc(),
                 "Tytuł strony UTWÓRZ PŁATNOŚĆ nie jest poprawny");
     }
 
@@ -47,10 +48,10 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
 
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
-        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+        zamowieniaPage.kliknijDodajZamowienieButton();
 
-        Assert.assertEquals(sprzedazUtworzPlatnoscPage.zwrocAktualnyUrlStronyUtworzPlatnosc(),
-                sprzedazUtworzPlatnoscPage.zwrocPoprawnyUrlStronyUtworzPlatnosc(),
+        Assert.assertEquals(zamowieniaUtworzPlatnoscPage.zwrocAktualnyUrlStronyUtworzPlatnosc(),
+                zamowieniaUtworzPlatnoscPage.zwrocPoprawnyUrlStronyUtworzPlatnosc(),
                 "Adres url strony UTWÓRZ PŁATNOŚĆ nie jest poprawny");
     }
 
@@ -58,9 +59,9 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
     public void weryfikacjaWyswietleniaEkranuUtworzNowaPlatnosc(){
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
-        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+        zamowieniaPage.kliknijDodajZamowienieButton();
 
-        Assert.assertTrue(sprzedazUtworzPlatnoscPage.zwrocSekcjeTytulowaUtworzNowaPlatnosc(),
+        Assert.assertTrue(zamowieniaUtworzPlatnoscPage.zwrocSekcjeTytulowaUtworzNowaPlatnosc(),
                 "Nie wyświetla się ekran UTWÓRZ NOWĄ PŁATNOŚĆ po kliknięciu przycisku DODAJ ZAMÓWIENIE");
     }
 
@@ -68,9 +69,9 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
     public void weryfikacjaWidocznosciListyWybierzProdukty() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
-        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+        zamowieniaPage.kliknijDodajZamowienieButton();
 
-        Assert.assertTrue(sprzedazUtworzPlatnoscPage.zweryfikujCzyListaProduktowIstnieje(),
+        Assert.assertTrue(zamowieniaUtworzPlatnoscPage.zweryfikujCzyListaProduktowIstnieje(),
                 "Lista WYBIERZ PRODUKTY nie jest widoczna");
     }
 
@@ -78,9 +79,9 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
     public void weryfikacjaWidocznosciListyDlaStatusPlatnosci() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
-        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+        zamowieniaPage.kliknijDodajZamowienieButton();
 
-        Assert.assertTrue(sprzedazUtworzPlatnoscPage.zweryfikujCzyListaDlaStatusPlatnosciIstnieje(),
+        Assert.assertTrue(zamowieniaUtworzPlatnoscPage.zweryfikujCzyListaDlaStatusPlatnosciIstnieje(),
                 "Lista dla 'Status płatności' nie jest widoczna");
     }
 
@@ -88,9 +89,9 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
     public void weryfikacjaWidocznosciPrzyciskuDodajKolejny() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
-        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+        zamowieniaPage.kliknijDodajZamowienieButton();
 
-        Assert.assertTrue(sprzedazUtworzPlatnoscPage.zweryfikujCzyPrzyciskDodajKolejnyIstnieje(),
+        Assert.assertTrue(zamowieniaUtworzPlatnoscPage.zweryfikujCzyPrzyciskDodajKolejnyIstnieje(),
                 "Przycisk DODAJ KOLEJNY nie jest widoczny");
     }
 
@@ -98,9 +99,9 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
     public void weryfikacjaWidocznosciPrzyciskuUtworzPlatnosc() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
-        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+        zamowieniaPage.kliknijDodajZamowienieButton();
 
-        Assert.assertTrue(sprzedazUtworzPlatnoscPage.zweryfikujCzyPrzyciskUtworzPlatnoscIstnieje(),
+        Assert.assertTrue(zamowieniaUtworzPlatnoscPage.zweryfikujCzyPrzyciskUtworzPlatnoscIstnieje(),
                 "Przycisk UTWÓRZ PŁATNOŚĆ nie jest widoczny");
     }
 
@@ -109,10 +110,10 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
     public void weryfikacjaLiczbyPozycjiWFormularzuUtworzNowaPlatnosc() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
-        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+        zamowieniaPage.kliknijDodajZamowienieButton();
 
-        Assert.assertEquals(sprzedazUtworzPlatnoscPage.zwrocAktualnaLiczbePozycjiFormularzaUtworzNowaPlatnosc(),
-                sprzedazUtworzPlatnoscPage.zwrocPoprawnaLiczbePozycjiFormularzaUtworzNowaPlatnosc(),
+        Assert.assertEquals(zamowieniaUtworzPlatnoscPage.zwrocAktualnaLiczbePozycjiFormularzaUtworzNowaPlatnosc(),
+                zamowieniaUtworzPlatnoscPage.zwrocPoprawnaLiczbePozycjiFormularzaUtworzNowaPlatnosc(),
                 "Niepoprawna liczba pozycji w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ");
     }
 
@@ -120,9 +121,9 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
     public void weryfikacjaNazwPozycjiWFormularzuUtworzNowaPlatnosc() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
-        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+        zamowieniaPage.kliknijDodajZamowienieButton();
 
-        Assert.assertTrue(sprzedazUtworzPlatnoscPage.zweryfikujNazwyPozycjiFormularzaUtworzNowaPlatnosc(),
+        Assert.assertTrue(zamowieniaUtworzPlatnoscPage.zweryfikujNazwyPozycjiFormularzaUtworzNowaPlatnosc(),
                 "Pozycje w formularzu UTWÓRZ NOWĄ PŁATNOŚĆ są niewidoczne lub mają nieprawidłowe nazwy");
     }
 
@@ -130,9 +131,9 @@ public class SprzedazUtworzPlatnoscPageTest extends TestBase {
     public void weryfikacjaWidocznosciCheckboxWyślijPotwierdzenieZakupu() {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazZamowieniaMenu();
-        sprzedazZamowieniaPage.kliknijDodajZamowienieButton();
+        zamowieniaPage.kliknijDodajZamowienieButton();
 
-        Assert.assertTrue(sprzedazUtworzPlatnoscPage.zweryfikujCzyCheckboxWyslijPotwierdzenieZakupuIstniejeIJestZaznaczony(),
+        Assert.assertTrue(zamowieniaUtworzPlatnoscPage.zweryfikujCzyCheckboxWyslijPotwierdzenieZakupuIstniejeIJestZaznaczony(),
                 "Checkbox 'Wyślij potwierdzenie zakupu' nie jest widoczny lub nie jest zaznaczony");
     }
 

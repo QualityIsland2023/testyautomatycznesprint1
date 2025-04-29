@@ -1,11 +1,11 @@
-package pages;
+package pages.sprzedaz;
 
 import config.PropertiesReader;
 import helpers.Waits;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class SprzedazKlienciPage {
+public class PlatnosciZaplanowanePage {
 
     //************************ Sekcja techniczno konfiguracyjna START **********************************************/
     // Przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
@@ -17,7 +17,7 @@ public class SprzedazKlienciPage {
     private Waits wait;
 
     // Konstrukotor, który tworzy nową instancję strony logowania
-    public SprzedazKlienciPage(WebDriver driver){
+    public PlatnosciZaplanowanePage(WebDriver driver){
         this.driver = driver;
         this.wait = new Waits(driver);
         PageFactory.initElements(driver, this);
@@ -30,10 +30,10 @@ public class SprzedazKlienciPage {
 
     // STAŁE POPRAWNE ELEMENTY STRONY:
 
-    // Tytuł strony "Klienci"
-    String poprawnyTytulStronyKlienci = "Klienci ‹ Platforma kursów online — WordPress";
-    // URL strony "Klienci"
-    String poprawnyURLStronyKlienci = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-customers";
+    // Tytuł strony "Płatności zaplanowane"
+    String poprawnyTytulStronyPlatnosciZaplanowane = "Płatności zaplanowane ‹ Platforma kursów online — WordPress";
+    // URL strony "Płatności zaplanowane"
+    String poprawnyURLStronyPlatnosciZaplanowane = "https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=publigo-scheduled-payments";
 
 
     // ELEMENTY NA STRONIE:
@@ -42,33 +42,34 @@ public class SprzedazKlienciPage {
 
 
 
+
     //***************************Repozytorium webelementów KONIEC ******************************************/
 
 
-    //****************************Operacje na webelementach START **********************************************/
+    /****************************Operacje na webelementach START **********************************************/
 
-    // Zwraca aktualny tytuł strony "Klienci" i wypisuje go w konsoli
-    public String zwrocAktualnyTytulStronyKlienci(){
+    // Zwraca aktualny tytuł strony "Płatności zaplanowane" i wypisuje go w konsoli
+    public String zwrocAktualnyTytulStronyPlatnosciZaplanowane(){
         System.out.println("Aktualny tytuł strony: " + driver.getTitle());
         return driver.getTitle();
     }
 
-    // Zwraca oczekiwany (poprawny) tytuł strony "Klienci" i wypisuje go w konsoli
-    public String zwrocPoprawnyTytulStronyKlienci(){
-        System.out.println("Poprawny tytuł strony KLIENCI: " + poprawnyTytulStronyKlienci);
-        return poprawnyTytulStronyKlienci;
+    // Zwraca oczekiwany (poprawny) tytuł strony "Płatności zaplanowane" i wypisuje go w konsoli
+    public String zwrocPoprawnyTytulStronyPlatnosciZaplanowane(){
+        System.out.println("Poprawny tytuł strony PŁATNOŚCI ZAPLANOWANE: " + poprawnyTytulStronyPlatnosciZaplanowane);
+        return poprawnyTytulStronyPlatnosciZaplanowane;
     }
 
-    // Zwraca aktualny adres URL strony "Klienci" i wypisuje go w konsoli
-    public String zwrocAktualnyUrlStronyKlienci(){
+    // Zwraca aktualny adres URL strony "Płatności zaplanowane" i wypisuje go w konsoli
+    public String zwrocAktualnyUrlStronyPlatnosciZaplanowane(){
         System.out.println("Aktualny URL: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 
-    // Zwraca oczekiwany (poprawny) adres URL strony "Klienci" i wypisuje go w konsoli
-    public String zwrocPoprawnyUrlStronyKlienci() {
-        System.out.println("Poprawny URL strony KLIENCI: " + poprawnyURLStronyKlienci);
-        return poprawnyURLStronyKlienci;
+    // Zwraca oczekiwany (poprawny) adres URL strony "Płatności zaplanowane" i wypisuje go w konsoli
+    public String zwrocPoprawnyUrlStronyPlatnosciZaplanowane() {
+        System.out.println("Poprawny URL strony PŁATNOŚCI ZAPLANOWANE: " + poprawnyURLStronyPlatnosciZaplanowane);
+        return poprawnyURLStronyPlatnosciZaplanowane;
     }
 
 

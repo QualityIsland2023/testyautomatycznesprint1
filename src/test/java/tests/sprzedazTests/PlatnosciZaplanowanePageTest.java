@@ -1,20 +1,21 @@
-package tests;
+package tests.sprzedazTests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.SprzedazPlatnosciZaplanowanePage;
+import pages.sprzedaz.PlatnosciZaplanowanePage;
+import tests.TestBase;
 
 
-public class SprzedazPlatnosciZaplanowanePageTest extends TestBase {
+public class PlatnosciZaplanowanePageTest extends TestBase {
 
     //**************** Sekcja techniczna START **********************************************/
 
     private LoginPageNew loginPageNew;
     private PanelPage panelPage;
-    private SprzedazPlatnosciZaplanowanePage sprzedazPlatnosciZaplanowanePage; //instancja strony logowania
+    private PlatnosciZaplanowanePage platnosciZaplanowanePage; //instancja strony logowania
 
     //***************** Sekcja techniczna KONIEC **********************************************/
 
@@ -23,7 +24,7 @@ public class SprzedazPlatnosciZaplanowanePageTest extends TestBase {
         //inicjalizacja strony logowania , linijka techniczna, konfiguracyjna
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
-        sprzedazPlatnosciZaplanowanePage = new SprzedazPlatnosciZaplanowanePage(driver);
+        platnosciZaplanowanePage = new PlatnosciZaplanowanePage(driver);
     }
 
 
@@ -33,8 +34,8 @@ public class SprzedazPlatnosciZaplanowanePageTest extends TestBase {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazPlatnosciZaplanowaneMenu();
 
-        Assert.assertEquals(sprzedazPlatnosciZaplanowanePage.zwrocAktualnyTytulStronyPlatnosciZaplanowane(),
-                sprzedazPlatnosciZaplanowanePage.zwrocPoprawnyTytulStronyPlatnosciZaplanowane(),
+        Assert.assertEquals(platnosciZaplanowanePage.zwrocAktualnyTytulStronyPlatnosciZaplanowane(),
+                platnosciZaplanowanePage.zwrocPoprawnyTytulStronyPlatnosciZaplanowane(),
                 "Tytuł strony PŁATNOŚCI ZAPLANOWANE nie jest poprawny");
     }
 
@@ -44,8 +45,8 @@ public class SprzedazPlatnosciZaplanowanePageTest extends TestBase {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazPlatnosciZaplanowaneMenu();
 
-        Assert.assertEquals(sprzedazPlatnosciZaplanowanePage.zwrocAktualnyUrlStronyPlatnosciZaplanowane(),
-                sprzedazPlatnosciZaplanowanePage.zwrocPoprawnyUrlStronyPlatnosciZaplanowane(),
+        Assert.assertEquals(platnosciZaplanowanePage.zwrocAktualnyUrlStronyPlatnosciZaplanowane(),
+                platnosciZaplanowanePage.zwrocPoprawnyUrlStronyPlatnosciZaplanowane(),
                 "Adres url strony PŁATNOŚCI ZAPLANOWANE nie jest poprawny");
     }
 

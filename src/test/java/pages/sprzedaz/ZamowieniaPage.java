@@ -1,4 +1,4 @@
-package pages;
+package pages.sprzedaz;
 
 import config.PropertiesReader;
 import helpers.Waits;
@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SprzedazZamowieniaPage {
+public class ZamowieniaPage {
 
     //************************ Sekcja techniczno konfiguracyjna START **********************************************/
     // Przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
@@ -22,7 +22,7 @@ public class SprzedazZamowieniaPage {
     private Waits wait;
 
     // Konstrukotor, który tworzy nową instancję strony logowania
-    public SprzedazZamowieniaPage(WebDriver driver) {
+    public ZamowieniaPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new Waits(driver);
         PageFactory.initElements(driver, this);

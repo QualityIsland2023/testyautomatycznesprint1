@@ -1,20 +1,21 @@
-package tests;
+package tests.sprzedazTests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.SprzedazHistoriaCenPage;
+import pages.sprzedaz.HistoriaCenPage;
+import tests.TestBase;
 
 
-public class SprzedazHistoriaCenPageTest extends TestBase {
+public class HistoriaCenPageTest extends TestBase {
 
     //**************** Sekcja techniczna START **********************************************/
 
     private LoginPageNew loginPageNew;
     private PanelPage panelPage;
-    private SprzedazHistoriaCenPage sprzedazHistoriaCenPage; //instancja strony logowania
+    private HistoriaCenPage historiaCenPage; //instancja strony logowania
 
     //***************** Sekcja techniczna KONIEC **********************************************/
 
@@ -23,7 +24,7 @@ public class SprzedazHistoriaCenPageTest extends TestBase {
         //inicjalizacja strony logowania , linijka techniczna, konfiguracyjna
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
-        sprzedazHistoriaCenPage = new SprzedazHistoriaCenPage(driver);
+        historiaCenPage = new HistoriaCenPage(driver);
     }
 
 
@@ -33,8 +34,8 @@ public class SprzedazHistoriaCenPageTest extends TestBase {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazHistoriaCenMenu();
 
-        Assert.assertEquals(sprzedazHistoriaCenPage.zwrocAktualnyTytulStronyHistoriaCen(),
-                sprzedazHistoriaCenPage.zwrocPoprawnyTytulStronyHistoriaCen(),
+        Assert.assertEquals(historiaCenPage.zwrocAktualnyTytulStronyHistoriaCen(),
+                historiaCenPage.zwrocPoprawnyTytulStronyHistoriaCen(),
                 "Tytuł strony HISTORIA CEN nie jest poprawny");
     }
 
@@ -44,8 +45,8 @@ public class SprzedazHistoriaCenPageTest extends TestBase {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazHistoriaCenMenu();
 
-        Assert.assertEquals(sprzedazHistoriaCenPage.zwrocAktualnyUrlStronyHistoriaCen(),
-                sprzedazHistoriaCenPage.zwrocPoprawnyUrlStronyHistoriaCen(),
+        Assert.assertEquals(historiaCenPage.zwrocAktualnyUrlStronyHistoriaCen(),
+                historiaCenPage.zwrocPoprawnyUrlStronyHistoriaCen(),
                 "Adres url strony HISTORIA CEN nie jest poprawny");
     }
 

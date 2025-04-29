@@ -1,27 +1,27 @@
-package tests;
+package tests.sprzedazTests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.SprzedazUtworzPlatnoscPage;
-import pages.SprzedazZamowieniaPage;
+import pages.sprzedaz.ZamowieniaUtworzPlatnoscPage;
+import pages.sprzedaz.ZamowieniaPage;
 import pages.produktyCyfrowe.EdytujProduktCyfrowyPage;
 import pages.produktyCyfrowe.ProduktyCyfrowePage;
+import tests.TestBase;
 
 import java.util.Random;
 
 
-public class SprzedazZamowieniaPageTest extends TestBase {
+public class ZamowieniaPageTest extends TestBase {
 
     //**************** Sekcja techniczna START **********************************************/
 
     private LoginPageNew loginPageNew;
     private PanelPage panelPage;
-    private SprzedazZamowieniaPage sprzedazZamowieniaPage;
-
-    private SprzedazUtworzPlatnoscPage sprzedazUtworzPlatnoscPage;
+    private ZamowieniaPage zamowieniaPage;
+    private ZamowieniaUtworzPlatnoscPage zamowieniaUtworzPlatnoscPage;
     private ProduktyCyfrowePage produktyCyfrowePage;
     private EdytujProduktCyfrowyPage edytujProduktCyfrowyPage;
 
@@ -33,8 +33,8 @@ public class SprzedazZamowieniaPageTest extends TestBase {
         //inicjalizacja strony logowania, linijka techniczna, konfiguracyjna
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
-        sprzedazZamowieniaPage = new SprzedazZamowieniaPage(driver);
-        sprzedazUtworzPlatnoscPage = new SprzedazUtworzPlatnoscPage(driver);
+        zamowieniaPage = new ZamowieniaPage(driver);
+        zamowieniaUtworzPlatnoscPage = new ZamowieniaUtworzPlatnoscPage(driver);
         produktyCyfrowePage = new ProduktyCyfrowePage(driver);
         edytujProduktCyfrowyPage = new EdytujProduktCyfrowyPage(driver);
     }
@@ -50,8 +50,8 @@ public class SprzedazZamowieniaPageTest extends TestBase {
 
         przejdzDoZakladkiZamowienia();
 
-        Assert.assertEquals(sprzedazZamowieniaPage.zwrocAktualnyTytulStronyZamowienia(),
-                sprzedazZamowieniaPage.zwrocPoprawnyTytulStronyZamowienia(),
+        Assert.assertEquals(zamowieniaPage.zwrocAktualnyTytulStronyZamowienia(),
+                zamowieniaPage.zwrocPoprawnyTytulStronyZamowienia(),
                 "Tytuł strony ZAMÓWIENIA nie jest poprawny");
     }
 
@@ -60,8 +60,8 @@ public class SprzedazZamowieniaPageTest extends TestBase {
 
         przejdzDoZakladkiZamowienia();
 
-        Assert.assertEquals(sprzedazZamowieniaPage.zwrocAktualnyUrlStronyZamowienia(),
-                sprzedazZamowieniaPage.zwrocPoprawnyUrlStronyZamowienia(),
+        Assert.assertEquals(zamowieniaPage.zwrocAktualnyUrlStronyZamowienia(),
+                zamowieniaPage.zwrocPoprawnyUrlStronyZamowienia(),
                 "Adres url strony ZAMÓWIENIA nie jest poprawny");
     }
 
@@ -70,7 +70,7 @@ public class SprzedazZamowieniaPageTest extends TestBase {
 
         przejdzDoZakladkiZamowienia();
 
-        Assert.assertTrue(sprzedazZamowieniaPage.zweryfikujCzyPrzyciskDodajZamowienieIstnieje(),
+        Assert.assertTrue(zamowieniaPage.zweryfikujCzyPrzyciskDodajZamowienieIstnieje(),
                 "Przycisk DODAJ ZAMÓWIENIE nie jest widoczny");
     }
 
@@ -79,7 +79,7 @@ public class SprzedazZamowieniaPageTest extends TestBase {
 
         przejdzDoZakladkiZamowienia();
 
-        Assert.assertTrue(sprzedazZamowieniaPage.zweryfikujCzyPrzyciskTypyDanychIstnieje(),
+        Assert.assertTrue(zamowieniaPage.zweryfikujCzyPrzyciskTypyDanychIstnieje(),
                 "Przycisk TYPY DANYCH nie jest widoczny");
     }
 
@@ -87,10 +87,10 @@ public class SprzedazZamowieniaPageTest extends TestBase {
     public void weryfikacjaPoprawnegoTekstuInformacjiWSekcjiTypyDanych(){
 
         przejdzDoZakladkiZamowienia();
-        sprzedazZamowieniaPage.kliknijTypyDanychButton();
+        zamowieniaPage.kliknijTypyDanychButton();
 
-        Assert.assertEquals(sprzedazZamowieniaPage.zwrocAktualnyTekstInformacjiWSekcjiTypyDanych(),
-                sprzedazZamowieniaPage.zwrocPoprawnyTekstInformacjiWSekcjiTypyDanych(),
+        Assert.assertEquals(zamowieniaPage.zwrocAktualnyTekstInformacjiWSekcjiTypyDanych(),
+                zamowieniaPage.zwrocPoprawnyTekstInformacjiWSekcjiTypyDanych(),
                 "Informacja w sekcji TYPY DANYCH nie jest poprawna");
     }
 
@@ -98,28 +98,28 @@ public class SprzedazZamowieniaPageTest extends TestBase {
     public void weryfikacjaWidocznosciInformacjiWSekcjiTypyDanych(){
 
         przejdzDoZakladkiZamowienia();
-        sprzedazZamowieniaPage.kliknijTypyDanychButton();
+        zamowieniaPage.kliknijTypyDanychButton();
 
-        Assert.assertTrue(sprzedazZamowieniaPage.zweryfikujCzyInformacjaWSekcjiTypyDanychIstnieje(),
+        Assert.assertTrue(zamowieniaPage.zweryfikujCzyInformacjaWSekcjiTypyDanychIstnieje(),
                 "Informacja w sekcji TYPY DANYCH nie jest widoczna");
     }
 
     @Test(priority = 70, enabled = true, description = "Weryfikacja liczby checkboxów w polu TYPY DANYCH")
     public void weryfikacjaLiczbyCheckboxowTypyDanych() {
         przejdzDoZakladkiZamowienia();
-        sprzedazZamowieniaPage.kliknijTypyDanychButton();
+        zamowieniaPage.kliknijTypyDanychButton();
 
-        Assert.assertEquals(sprzedazZamowieniaPage.zwrocAktualnaLiczbeCheckboxowTypyDanych(),
-                sprzedazZamowieniaPage.zwrocPoprawnaLiczbeCheckboxowTypyDanych(),
+        Assert.assertEquals(zamowieniaPage.zwrocAktualnaLiczbeCheckboxowTypyDanych(),
+                zamowieniaPage.zwrocPoprawnaLiczbeCheckboxowTypyDanych(),
                 "Niepoprawna liczba checkboxów w polu TYPY DANYCH");
     }
 
     @Test(priority = 80, enabled = true, description = "Weryfikacja nazw checkboxów w polu TYPY DANYCH")
     public void weryfikacjaNazwCheckboxowTypyDanych() {
         przejdzDoZakladkiZamowienia();
-        sprzedazZamowieniaPage.kliknijTypyDanychButton();
+        zamowieniaPage.kliknijTypyDanychButton();
 
-        Assert.assertTrue(sprzedazZamowieniaPage.zweryfikujNazwyCheckboxowTypyDanych(),
+        Assert.assertTrue(zamowieniaPage.zweryfikujNazwyCheckboxowTypyDanych(),
                 "Nazwy checkboxów w polu TYPY DANYCH są niewidoczne lub mają nieprawidłowe nazwy");
     }
 
@@ -146,15 +146,15 @@ public class SprzedazZamowieniaPageTest extends TestBase {
         driver.get("https://mmrmqpr585.publigo.onl/wp-admin/options.php?page=edd-manual-purchase");
 
         // Tworzy nową płatność
-        sprzedazUtworzPlatnoscPage.stworzNowaPlatnosc(nazwaProduktu, email, "Błędne", "03/01/2025");
+        zamowieniaUtworzPlatnoscPage.stworzNowaPlatnosc(nazwaProduktu, email, "Błędne", "03/01/2025");
 
         // Przechodzi do zamówień
         driver.get("https://mmrmqpr585.publigo.onl/wp-admin/admin.php?page=wp-idea-payment-history");
 
         // Filtruje wyniki po nazwie produktu
-        sprzedazZamowieniaPage.przeflitrujWynikPoNazwieProduktu(nazwaProduktu);
+        zamowieniaPage.przeflitrujWynikPoNazwieProduktu(nazwaProduktu);
 
-        Assert.assertTrue(sprzedazZamowieniaPage.getPierwszeZamowienieZListy().isDisplayed(),
+        Assert.assertTrue(zamowieniaPage.getPierwszeZamowienieZListy().isDisplayed(),
                 "Stworzone zamówienie nie jest widoczne na liście zamówień");
     }
 

@@ -1,22 +1,23 @@
-package tests;
+package tests.sprzedazTests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.SprzedazKodyZnizkoweDodajNowyPage;
-import pages.SprzedazKodyZnizkowePage;
+import pages.sprzedaz.KodyZnizkoweDodajNowyPage;
+import pages.sprzedaz.KodyZnizkowePage;
+import tests.TestBase;
 
 
-public class SprzedazKodyZnizkowePageTest extends TestBase {
+public class KodyZnizkowePageTest extends TestBase {
 
     //**************** Sekcja techniczna START **********************************************/
     //instancja strony logowania
     private LoginPageNew loginPageNew;
     private PanelPage panelPage;
-    private SprzedazKodyZnizkowePage sprzedazKodyZnizkowePage;
-    private SprzedazKodyZnizkoweDodajNowyPage sprzedazKodyZnizkoweDodajNowyPage;
+    private KodyZnizkowePage kodyZnizkowePage;
+    private KodyZnizkoweDodajNowyPage kodyZnizkoweDodajNowyPage;
     //***************** Sekcja techniczna KONIEC **********************************************/
 
     @BeforeMethod
@@ -24,8 +25,8 @@ public class SprzedazKodyZnizkowePageTest extends TestBase {
         //inicjalizacja strony logowania, linijka techniczna, konfiguracyjna
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
-        sprzedazKodyZnizkowePage = new SprzedazKodyZnizkowePage(driver);
-        sprzedazKodyZnizkoweDodajNowyPage = new SprzedazKodyZnizkoweDodajNowyPage(driver);
+        kodyZnizkowePage = new KodyZnizkowePage(driver);
+        kodyZnizkoweDodajNowyPage = new KodyZnizkoweDodajNowyPage(driver);
     }
 
     @Test(priority = 10, enabled = true, description = "Weryfikacja tytułu strony KODY ZNIŻKOWE")
@@ -34,8 +35,8 @@ public class SprzedazKodyZnizkowePageTest extends TestBase {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazKodyZnizkoweMenu();
 
-        Assert.assertEquals(sprzedazKodyZnizkowePage.zwrocAktualnyTytulStronyKodyZnizkowe(),
-                sprzedazKodyZnizkowePage.zwrocPoprawnyTytulStronyKodyZnizkowe(),
+        Assert.assertEquals(kodyZnizkowePage.zwrocAktualnyTytulStronyKodyZnizkowe(),
+                kodyZnizkowePage.zwrocPoprawnyTytulStronyKodyZnizkowe(),
                 "Tytuł strony KODY ZNIŻKOWE nie jest poprawny");
     }
 
@@ -45,8 +46,8 @@ public class SprzedazKodyZnizkowePageTest extends TestBase {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazKodyZnizkoweMenu();
 
-        Assert.assertEquals(sprzedazKodyZnizkowePage.zwrocAktualnyUrlStronyKodyZnizkowe(),
-                sprzedazKodyZnizkowePage.zwrocPoprawnyUrlStronyKodyZnizkowe(),
+        Assert.assertEquals(kodyZnizkowePage.zwrocAktualnyUrlStronyKodyZnizkowe(),
+                kodyZnizkowePage.zwrocPoprawnyUrlStronyKodyZnizkowe(),
                 "Adres url strony KODY ZNIŻKOWE nie jest poprawny");
     }
 
@@ -61,42 +62,42 @@ public class SprzedazKodyZnizkowePageTest extends TestBase {
         panelPage.kliknijSprzedazKodyZnizkoweMenu();
 
         //dodanie nowego kodu zniżkowego
-        sprzedazKodyZnizkowePage.kliknijWDodajKodZnizkowy();
+        kodyZnizkowePage.kliknijWDodajKodZnizkowy();
 
         //wpisanie nazwy kodu zniżkowego
-        sprzedazKodyZnizkoweDodajNowyPage.wpiszNazweKoduZnizkowego();
+        kodyZnizkoweDodajNowyPage.wpiszNazweKoduZnizkowego();
 
         //wpisanie kodu zniżkowego zawierającego min 10 znaków w tym min 1 cyfrę
-        sprzedazKodyZnizkoweDodajNowyPage.wpiszKodKoduZnizkowego();
+        kodyZnizkoweDodajNowyPage.wpiszKodKoduZnizkowego();
 
         //ustawienie listy 'Typ' na stałą wartość
-        sprzedazKodyZnizkoweDodajNowyPage.ustawienieStalejWartosciTypuKoduZnizkowego();
+        kodyZnizkoweDodajNowyPage.ustawienieStalejWartosciTypuKoduZnizkowego();
 
         //ustawienie kwoty zniżki na 15
-        sprzedazKodyZnizkoweDodajNowyPage.wpiszKwoteZnizki();
+        kodyZnizkoweDodajNowyPage.wpiszKwoteZnizki();
 
         //ustawienie co najmniej jednego produktu wymaganego
-        sprzedazKodyZnizkoweDodajNowyPage.wybierzProduktyWymagane();
+        kodyZnizkoweDodajNowyPage.wybierzProduktyWymagane();
 
         //ustawienie przynajmniej jednego produktu wykluczonego
-        sprzedazKodyZnizkoweDodajNowyPage.wybierzProduktWykluczony();
+        kodyZnizkoweDodajNowyPage.wybierzProduktWykluczony();
 
         //ustawienie daty początkowej na ‘04/01/2025’
-        sprzedazKodyZnizkoweDodajNowyPage.wpiszDatePoczatkowaZnizki();
+        kodyZnizkoweDodajNowyPage.wpiszDatePoczatkowaZnizki();
 
         //ustawienie kwoty minimalnej na 100
-        sprzedazKodyZnizkoweDodajNowyPage.wpiszKwoteMinimalnaZnizki();
+        kodyZnizkoweDodajNowyPage.wpiszKwoteMinimalnaZnizki();
 
         //ustawienie maksymalnej ilości użyć na 10
-        sprzedazKodyZnizkoweDodajNowyPage.wpiszMaksymalnaIloscUzycZnizki();
+        kodyZnizkoweDodajNowyPage.wpiszMaksymalnaIloscUzycZnizki();
 
         //zaznaczenie checkbox na ‘Jednorazowy dla danego klienta’
-        sprzedazKodyZnizkoweDodajNowyPage.wybierzJednorazowyDlaDanegoKlienta();
+        kodyZnizkoweDodajNowyPage.wybierzJednorazowyDlaDanegoKlienta();
 
         //kliknęcie przycisku ‘Dodaj kod zniżkowy’
-        sprzedazKodyZnizkoweDodajNowyPage.wybierzPrzyciskDodajKodZnizkowy();
+        kodyZnizkoweDodajNowyPage.wybierzPrzyciskDodajKodZnizkowy();
 
-        Assert.assertTrue(sprzedazKodyZnizkoweDodajNowyPage.sprawdzKodZnizkowyZostalUtworzony(),"Kod zniżkowy nie został utworzony");
+        Assert.assertTrue(kodyZnizkoweDodajNowyPage.sprawdzKodZnizkowyZostalUtworzony(),"Kod zniżkowy nie został utworzony");
 
     }
 

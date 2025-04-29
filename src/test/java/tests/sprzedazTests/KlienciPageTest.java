@@ -1,20 +1,21 @@
-package tests;
+package tests.sprzedazTests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageNew;
 import pages.PanelPage;
-import pages.SprzedazKlienciPage;
+import pages.sprzedaz.KlienciPage;
+import tests.TestBase;
 
 
-public class SprzedazKlienciPageTest extends TestBase {
+public class KlienciPageTest extends TestBase {
 
     //**************** Sekcja techniczna START **********************************************/
 
     private LoginPageNew loginPageNew;
     private PanelPage panelPage;
-    private SprzedazKlienciPage sprzedazKlienciPage; //instancja strony logowania
+    private KlienciPage klienciPage; //instancja strony logowania
 
     //***************** Sekcja techniczna KONIEC **********************************************/
 
@@ -23,7 +24,7 @@ public class SprzedazKlienciPageTest extends TestBase {
         //inicjalizacja strony logowania , linijka techniczna, konfiguracyjna
         loginPageNew = new LoginPageNew(driver);
         panelPage = new PanelPage(driver);
-        sprzedazKlienciPage = new SprzedazKlienciPage(driver);
+        klienciPage = new KlienciPage(driver);
     }
 
 
@@ -33,8 +34,8 @@ public class SprzedazKlienciPageTest extends TestBase {
         loginPageNew.wykonajLogowanie();;
         panelPage.kliknijSprzedazKlienciMenu();
 
-        Assert.assertEquals(sprzedazKlienciPage.zwrocAktualnyTytulStronyKlienci(),
-                sprzedazKlienciPage.zwrocPoprawnyTytulStronyKlienci(),
+        Assert.assertEquals(klienciPage.zwrocAktualnyTytulStronyKlienci(),
+                klienciPage.zwrocPoprawnyTytulStronyKlienci(),
                 "Tytuł strony KLIENCI nie jest poprawny");
     }
 
@@ -44,8 +45,8 @@ public class SprzedazKlienciPageTest extends TestBase {
         loginPageNew.wykonajLogowanie();
         panelPage.kliknijSprzedazKlienciMenu();
 
-        Assert.assertEquals(sprzedazKlienciPage.zwrocAktualnyUrlStronyKlienci(),
-                sprzedazKlienciPage.zwrocPoprawnyUrlStronyKlienci(),
+        Assert.assertEquals(klienciPage.zwrocAktualnyUrlStronyKlienci(),
+                klienciPage.zwrocPoprawnyUrlStronyKlienci(),
                 "Adres url strony KLIENCI nie jest poprawny");
     }
 

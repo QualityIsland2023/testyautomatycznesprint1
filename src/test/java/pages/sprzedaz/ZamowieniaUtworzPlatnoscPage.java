@@ -1,19 +1,16 @@
-package pages;
+package pages.sprzedaz;
 
 import config.PropertiesReader;
 import helpers.Waits;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import org.xml.sax.Locator;
 
-import java.nio.channels.Selector;
 import java.util.*;
 
-public class SprzedazUtworzPlatnoscPage {
+public class ZamowieniaUtworzPlatnoscPage {
 
     //************************ Sekcja techniczno konfiguracyjna START **********************************************/
     // Przypisanie loginu i hasła z pliku konfiguracyjnego, teraz korzystamy z danych pliku konfguracyjnego
@@ -25,7 +22,7 @@ public class SprzedazUtworzPlatnoscPage {
     private Waits wait;
 
     // Konstrukotor, który tworzy nową instancję strony logowania
-    public SprzedazUtworzPlatnoscPage(WebDriver driver){
+    public ZamowieniaUtworzPlatnoscPage(WebDriver driver){
         this.driver = driver;
         this.wait = new Waits(driver);
         PageFactory.initElements(driver, this);

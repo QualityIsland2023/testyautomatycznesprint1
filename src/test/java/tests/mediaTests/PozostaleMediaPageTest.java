@@ -89,7 +89,7 @@ public class PozostaleMediaPageTest extends TestBase {
                 "Nie znaleziono tekstu 'Maksymalna wielkość dodawanych plików: 3 GB.'");
     }
 
-    @Test(priority = 160, enabled = true, description = "")
+    @Test(priority = 160, enabled = true, description = "Weryfikacja czy dodany plik jest widoczny na liscie plikow multimedialnych")
     public void weryfikacjaCzyDodanyPlikJestWidocznyNaLisciePlikowMultimedialnych(){
         loginPageNew.wpiszLoginDoPolaNazwaUzytkownika();
         loginPageNew.wpiszHasloDoPolaHaslo();

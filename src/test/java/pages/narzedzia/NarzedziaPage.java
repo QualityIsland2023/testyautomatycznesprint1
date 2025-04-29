@@ -191,7 +191,7 @@ public class NarzedziaPage {
                     }
                     status = false;
                 } else {
-                    System.out.println("Zakładki w menu bocznym strony NARZĘDZIA są widoczne i mają zgodne nazwy: " + oczekiwanaNazwaPozycji);
+                    System.out.println("Zakładka w menu bocznym strony NARZĘDZIA jest widoczna i ma zgodną nazwę: " + oczekiwanaNazwaPozycji);
                 }
 
             } catch (Exception e) {
@@ -299,7 +299,7 @@ public class NarzedziaPage {
                     }
                     status = false;
                 } else {
-                    System.out.println("Podpozycja w menu głównym NARZĘDZIA jest widoczna i ma zgodną nazwę : " + oczekiwanaNazwaPozycji);
+                    System.out.println("Podpozycja w menu głównym NARZĘDZIA jest widoczna i ma zgodną nazwę: " + oczekiwanaNazwaPozycji);
                 }
 
             } catch (Exception e) {

@@ -62,7 +62,7 @@ public class LogiPageTest extends TestBase {
                 "Tytuł strony LOGI nie jest poprawny");
 
         Assert.assertEquals(logiPage.zwrocAktualnyURLZakladkiLogi(), logiPage.zwrocPoprawnyURLZakladkiLogi(),
-                "Adres url strony LOGI nie jest poprawny");
+                "Adres URL strony LOGI nie jest poprawny");
     }
 
 

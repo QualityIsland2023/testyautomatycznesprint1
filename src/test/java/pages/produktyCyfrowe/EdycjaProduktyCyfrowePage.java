@@ -57,6 +57,7 @@ import static helpers.Utils.generujLiczbeOd1Do100JakoString;
      @FindBy(xpath ="//*[@data-related-field=\"purchase_limit\"]//button[normalize-space(.)='Zapisz']") private WebElement buttonZapiszLiczbaSztukDoZakupu;
      @FindBy(xpath ="//*[@data-related-field=\"purchase_limit_items_left\"]//button[normalize-space(.)='Zapisz']") private WebElement buttonZapiszLiczbaSztukPozostalychDoZakupu;
      @FindBy(id ="link_generator") private WebElement zakladkaLinkGenerator;
+     @FindBy(xpath = "//*[@data-related-field='sales_disabled']//span[text()='Zapisano!']") private WebElement spanWlaczSprzedazZapisano;
      @FindBy(xpath = "//*[@data-related-field='hide_from_list']//span[text()='Zapisano!']") private WebElement spanPokazKatalogZapisano;
 
 
@@ -120,19 +121,20 @@ import static helpers.Utils.generujLiczbeOd1Do100JakoString;
      }
 
 
-     // Czeka na zmianę atrybutu display elementu <span> w sekcji 'pokaz produkt w katalogu', aż nie będzie już ukryty
-     public void poczekajNaPojawienieSieKomunikatuZapisano() {
+     // Czeka na zmianę atrybutu display elementu <span>, aż nie będzie już ukryty
+     public void poczekajNaPojawienieSieKomunikatuZapisano(WebElement element) {
          WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-         wait.until(ExpectedConditions.attributeToBeNotEmpty(spanPokazKatalogZapisano, "style")); // czeka na jakąkolwiek zmianę stylu
+         wait.until(ExpectedConditions.attributeToBeNotEmpty(element, "style")); // czeka na jakąkolwiek zmianę stylu
          wait.until(driver -> {
-             String display = spanPokazKatalogZapisano.getCssValue("display");
+             String display = element.getCssValue("display");
              return !"none".equals(display); // czekaj aż display nie będzie "none"
          });
      }
 
      // Przewija stronę do zakładki "Link Generator" i klika w nią
      public void przejdzDoZakladkaLinkGenerator() {
-         poczekajNaPojawienieSieKomunikatuZapisano();
+         poczekajNaPojawienieSieKomunikatuZapisano(spanWlaczSprzedazZapisano);
+         poczekajNaPojawienieSieKomunikatuZapisano(spanPokazKatalogZapisano);
          ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", zakladkaLinkGenerator);
          wait.waitForClickability(zakladkaLinkGenerator).click();
      }

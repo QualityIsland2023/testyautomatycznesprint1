@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -82,16 +83,13 @@ public class KodyZnizkoweDodajNowyPage {
     @FindBy(xpath = "//input[contains(@value, 'Dodaj kod zniżkowy')]")
     private WebElement dodajKodZnizkowyButton;
 
+    @FindBy(xpath = "//table[contains(@class, 'dynamic-table loaded')]")
+    private WebElement zaladowanieTabeliKodyZnizkowe;
 
     //***************************Repozytorium webelementów KONIEC ******************************************/
 
 
     //****************************Operacje na webelementach START **********************************************/
-
-    //odświeżenie strony
-    public void odswiezenieStrony(){
-        driver.navigate().refresh();
-    }
 
     //wpisanie nazwy kodu zniżkowego
     public void wpiszNazweKoduZnizkowego() {
@@ -103,7 +101,8 @@ public class KodyZnizkoweDodajNowyPage {
     public String wpiszKodKoduZnizkowego(){
         int losowaLiczba = ThreadLocalRandom.current().nextInt(1,1000);
         wait.waitForVisibility(kodKodZnizkowyInput).clear();
-        kodKodZnizkowyInput.sendKeys("TestKodZnizkowy" + losowaLiczba);
+        kodKodZnizkowyInput.sendKeys("TestKodZnizkowy"  + losowaLiczba);
+        System.out.println("Kod utworzonego 'Kodu zniżkowego: " + kodKodZnizkowyInput.getAttribute("value"));
         return kodKodZnizkowyInput.getAttribute("value");
 
     }
@@ -111,11 +110,6 @@ public class KodyZnizkoweDodajNowyPage {
     //ustawienie wartości kodu 'Kodu zniżkowego'
     public void ustawienieKoduKoduZnizkowego(){
          kod = wpiszKodKoduZnizkowego();
-    }
-
-    //pobranie wartości kodu 'Kodu zniżkowego'
-    public String pobranieKoduKoduZnizkowego(){
-        return kod;
     }
 
     //ustawienie 'Stała wartość' w 'Typ' kodu zniżkowego
@@ -148,14 +142,14 @@ public class KodyZnizkoweDodajNowyPage {
     public void wybierzProdukt1Wymagany() {
         wybierzProduktInput.get(0).click();
         listaProdukty.get(1).click();
-        System.out.println("Produkt 1 dodany do 'Produkty wymagane'");
+        System.out.println("Produkt 1 dodany do 'Produkty wymagane'.");
     }
 
     //dodanie drugiego produktu wymaganego kodu zniżkowego
     public void wybierzProdukt2wymagany() {
         wybierzProduktInput.get(0).click();
         listaProdukty.get(2).click();
-        System.out.println("Produkt 2 dodany do 'Produkty wymagane'");
+        System.out.println("Produkt 2 dodany do 'Produkty wymagane'.");
     }
 
     //wybranie z listy opcji 'Koszyk musi zawierać co najmniej jeden z wybranych Produktów'
@@ -182,7 +176,6 @@ public class KodyZnizkoweDodajNowyPage {
     public void przewinStroneDoSekcjiProduktyWykluczone(){
         wait.waitForClickability(sekcjaProduktyWykluczone);
         ((JavascriptExecutor)driver).executeScript("[arguments[0].scrollIntoView(true)];", wybierzProduktInput.get(1));
-
     }
 
     //dodanie produktu wykluczonego kodu zniżkowego
@@ -190,7 +183,7 @@ public class KodyZnizkoweDodajNowyPage {
         wait.waitForClickability(wybierzProduktInput.get(1)).click();
         wait.waitForClickability(listaWybierzProdukt.get(1)).click();
         listaProdukty.get(0);
-        System.out.println("Produkt dodany do 'Produkty wykluczone'");
+        System.out.println("Produkt dodany do 'Produkty wykluczone'.");
     }
 
     //wpisanie daty początkowej zniżki
@@ -224,15 +217,35 @@ public class KodyZnizkoweDodajNowyPage {
         dodajKodZnizkowyButton.click();
     }
 
-    //sprawdzenie czy kod zniżkowy został utworzony
+    //oczekiwanie na okno 'Kody zniżkowe'
+    public void poczekajNaZaladowanieTabeliKodyZnizkowe(){
+        wait.waitForVisibility(zaladowanieTabeliKodyZnizkowe);
+    }
+
+//    //sprawdzenie, komunikatu 'Kod zniżkowy został dodany!'
+    public boolean sprawdzKomunikatKodZnizkowyZostalDodany() {
+        boolean status = false;
+        if(wait.waitForTextInPageSource("Kod zniżkowy został dodany!")){
+            status = true;
+            System.out.println("Komunikat: 'Kod zniżkowy został dodany!' widoczny.");
+        } else {
+            System.out.println("Komunikat: 'Kod zniżkowy został dodany!' NIEWIDOCZNY.");
+        }
+        return status;
+    }
+
+
+    //sprawdzenie, czy kod zniżkowy został utworzony
     public boolean sprawdzKodZnizkowyZostalUtworzony(){
         boolean status = false;
+        System.out.println("Kod utworzonego 'Kodu zniżkowego': " + kod);
         if(wait.waitForTextInPageSource(kod)){
             status = true;
             System.out.println( "Kod zniżkowy został utworzony!");
         }
         return status;
     }
+
 
     //**********************************Operacje na webelementach KONIEC ******************************************/
 

@@ -172,7 +172,7 @@ public class PanelPage {
 
         // Przechodzi do strony "Zamówienia": menu boczne > mouse hover "Sprzedaż" > kliknij "Zamówienia"
         public void kliknijSprzedazZamowieniaMenu(){
-            System.out.println("Kliknięcie przycisku w menu głównym: " + zamowieniaMenuLista.getText());
+            System.out.println("Kliknięcie przycisku w menu głównym: " + zamowieniaMenuLista.getAccessibleName());
             Actions actions = new Actions(driver);
             actions.moveToElement(sprzedazMenuLista).perform();
             wait.waitForVisibility(zamowieniaMenuLista).click();
@@ -180,7 +180,7 @@ public class PanelPage {
 
         // Przechodzi do strony "Płatności zaplanowane": menu boczne > mouse hover "Sprzedaż" > kliknij "Płatności zaplanowane"
         public void kliknijSprzedazPlatnosciZaplanowaneMenu(){
-            System.out.println("Kliknięcie przycisku w menu głównym: " + platnosciZaplanowaneMenuLista.getText());
+            System.out.println("Kliknięcie przycisku w menu głównym: " + platnosciZaplanowaneMenuLista.getAccessibleName());
             Actions actions = new Actions(driver);
             actions.moveToElement(sprzedazMenuLista).perform();
             wait.waitForVisibility(platnosciZaplanowaneMenuLista).click();
@@ -188,7 +188,7 @@ public class PanelPage {
 
         // Przechodzi do strony "Kody zniżkowe": menu boczne > mouse hover "Sprzedaż" > kliknij "Kody zniżkowe"
         public void kliknijSprzedazKodyZnizkoweMenu(){
-            System.out.println("Kliknięcie przycisku w menu głównym: " + kodyZnizkoweMenuLista.getText());
+            System.out.println("Kliknięcie przycisku w menu głównym: " + kodyZnizkoweMenuLista.getAccessibleName());
             Actions actions = new Actions(driver);
             actions.moveToElement(sprzedazMenuLista).perform();
             wait.waitForVisibility(kodyZnizkoweMenuLista).click();
@@ -196,7 +196,7 @@ public class PanelPage {
 
         // Przechodzi do strony "Klienci": menu boczne > mouse hover "Sprzedaż" > kliknij "Klienci"
         public void kliknijSprzedazKlienciMenu(){
-            System.out.println("Kliknięcie przycisku w menu głównym: " + klienciMenuLista.getText());
+            System.out.println("Kliknięcie przycisku w menu głównym: " + klienciMenuLista.getAccessibleName());
             Actions actions = new Actions(driver);
             actions.moveToElement(sprzedazMenuLista).perform();
             wait.waitForVisibility(klienciMenuLista).click();
@@ -204,7 +204,7 @@ public class PanelPage {
 
         // Przechodzi do strony "Historia cen": menu boczne > mouse hover "Sprzedaż" > kliknij "Historia cen"
         public void kliknijSprzedazHistoriaCenMenu(){
-            System.out.println("Kliknięcie przycisku w menu głównym: " + historiaCenMenuLista.getText());
+            System.out.println("Kliknięcie przycisku w menu głównym: " + historiaCenMenuLista.getAccessibleName());
             Actions actions = new Actions(driver);
             actions.moveToElement(sprzedazMenuLista).perform();
             wait.waitForVisibility(historiaCenMenuLista).click();
@@ -217,7 +217,7 @@ public class PanelPage {
 
         // Przechodzi do strony "Webhooki": menu boczne > mouse hover "Narzędzia" > kliknij "Webhooki"
         public void kliknijNarzedziaWebhookiMenu(){
-            System.out.println("Kliknięcie przycisku w menu głównym: " + webhookiMenuBoczne.getText());
+            System.out.println("Kliknięcie przycisku w menu głównym: " + webhookiMenuBoczne.getAccessibleName());
             Actions actions = new Actions(driver);
             actions.moveToElement(zakladkaNarzedziaMenuBoczne).perform();
             wait.waitForVisibility(webhookiMenuBoczne).click();
@@ -225,7 +225,7 @@ public class PanelPage {
 
         // Przechodzi do strony "Przekierowania": menu boczne > mouse hover "Narzędzia" > kliknij "Przekierowania"
         public void kliknijNarzedziaPrzekierowaniaMenu(){
-            System.out.println("Kliknięcie przycisku w menu głównym: " + przekierowaniaMenuBoczne.getText());
+            System.out.println("Kliknięcie przycisku w menu głównym: " + przekierowaniaMenuBoczne.getAccessibleName());
             Actions actions = new Actions(driver);
             actions.moveToElement(zakladkaNarzedziaMenuBoczne).perform();
             wait.waitForVisibility(przekierowaniaMenuBoczne).click();

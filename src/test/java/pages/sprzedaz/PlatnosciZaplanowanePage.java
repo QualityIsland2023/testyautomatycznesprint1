@@ -50,7 +50,7 @@ public class PlatnosciZaplanowanePage {
 
     // Zwraca aktualny tytuł strony "Płatności zaplanowane" i wypisuje go w konsoli
     public String zwrocAktualnyTytulStronyPlatnosciZaplanowane(){
-        System.out.println("Aktualny tytuł strony: " + driver.getTitle());
+        System.out.println("Aktualny tytuł strony PŁATNOŚCI ZAPLANOWANE: " + driver.getTitle());
         return driver.getTitle();
     }
 
@@ -62,7 +62,7 @@ public class PlatnosciZaplanowanePage {
 
     // Zwraca aktualny adres URL strony "Płatności zaplanowane" i wypisuje go w konsoli
     public String zwrocAktualnyUrlStronyPlatnosciZaplanowane(){
-        System.out.println("Aktualny URL: " + driver.getCurrentUrl());
+        System.out.println("Aktualny URL strony PŁATNOŚCI ZAPLANOWANE: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 

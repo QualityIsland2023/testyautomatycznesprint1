@@ -49,7 +49,7 @@ public class KlienciPage {
 
     // Zwraca aktualny tytuł strony "Klienci" i wypisuje go w konsoli
     public String zwrocAktualnyTytulStronyKlienci(){
-        System.out.println("Aktualny tytuł strony: " + driver.getTitle());
+        System.out.println("Aktualny tytuł strony KLIENCI: " + driver.getTitle());
         return driver.getTitle();
     }
 
@@ -61,7 +61,7 @@ public class KlienciPage {
 
     // Zwraca aktualny adres URL strony "Klienci" i wypisuje go w konsoli
     public String zwrocAktualnyUrlStronyKlienci(){
-        System.out.println("Aktualny URL: " + driver.getCurrentUrl());
+        System.out.println("Aktualny URL strony KLIENCI: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 

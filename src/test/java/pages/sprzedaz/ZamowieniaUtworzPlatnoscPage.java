@@ -167,7 +167,10 @@ public class ZamowieniaUtworzPlatnoscPage {
 
         if (listaWybierzProdukty.isDisplayed()) {
             status = true;
-            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje lista: " + listaWybierzProdukty.getText());
+
+            System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ istnieje lista: " + listaWybierzProdukty.getText().trim().substring(0, 16));
+            //FYI do wyżej: Użycie samego getText() pobiera wszystkie nazwy z listy rozwijalnej do konsoli.
+            // Zastosowano substring(), aby pobrać pierwszą widoczną pozycję z listy ("Wybierz produkty" - 16 znaków)
         } else {
             System.out.println("Na stronie UTWÓRZ PŁATNOŚĆ nie ma listy WYBIERZ PRODUKTY");
         }

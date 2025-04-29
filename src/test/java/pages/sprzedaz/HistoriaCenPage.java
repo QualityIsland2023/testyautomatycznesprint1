@@ -49,7 +49,7 @@ public class HistoriaCenPage {
 
     // Zwraca aktualny tytuł strony "Historia cen" i wypisuje go w konsoli
     public String zwrocAktualnyTytulStronyHistoriaCen(){
-        System.out.println("Aktualny tytuł strony: " + driver.getTitle());
+        System.out.println("Aktualny tytuł strony HISTORIA CEN: " + driver.getTitle());
         return driver.getTitle();
     }
 
@@ -61,7 +61,7 @@ public class HistoriaCenPage {
 
     // Zwraca aktualny adres URL strony "Historia cen" i wypisuje go w konsoli
     public String zwrocAktualnyUrlStronyHistoriaCen(){
-        System.out.println("Aktualny URL: " + driver.getCurrentUrl());
+        System.out.println("Aktualny URL strony HISTORIA CEN: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 

@@ -52,7 +52,7 @@ public class KodyZnizkowePage {
 
     // Zwraca aktualny tytuł strony "Kody zniżkowe" i wypisuje go w konsoli
     public String zwrocAktualnyTytulStronyKodyZnizkowe(){
-        System.out.println("Aktualny tytuł strony: " + driver.getTitle());
+        System.out.println("Aktualny tytuł strony KODY ZNIŻKOWE: " + driver.getTitle());
         return driver.getTitle();
     }
 
@@ -64,7 +64,7 @@ public class KodyZnizkowePage {
 
     // Zwraca aktualny adres URL strony "Kody zniżkowe" i wypisuje go w konsoli
     public String zwrocAktualnyUrlStronyKodyZnizkowe(){
-        System.out.println("Aktualny URL: " + driver.getCurrentUrl());
+        System.out.println("Aktualny URL strony KODY ZNIŻKOWE: " + driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 

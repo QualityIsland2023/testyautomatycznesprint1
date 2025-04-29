@@ -295,7 +295,7 @@ public class ZamowieniaPage {
                     }
                     status = false;
                 } else {
-                    System.out.println("Nazwy checkboxów w polu TYPY DANYCH są widoczne i mają zgodne nazwy : " + oczekiwanaNazwaPozycji);
+                    System.out.println("Nazwa checkboxa w polu TYPY DANYCH jest widoczna i ma zgodną nazwę : " + oczekiwanaNazwaPozycji);
                 }
 
             } catch (Exception e) {
